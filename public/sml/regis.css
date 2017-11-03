@@ -1,0 +1,49 @@
+.formshow {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.headform{
+    color:#444;
+    margin:0;
+    margin-bottom: .5rem;
+    font-weight: 400;
+    font-size: 1.7rem;
+    padding-bottom: 10px;
+}
+
+.headDetail{
+    color: #676767;
+    line-height: 1.45rem;
+    font-size: 1rem;
+    margin: 0 auto;
+    font-family: proxima-nova,"proxima nova","helvetica neue",helvetica,arial,sans-serif;
+    padding-bottom: 20px;
+
+
+}
+.textCenter{
+    text-align: center;
+}
+
+.hero{
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+.label-form {
+    
+    display: block;
+    margin-bottom: .5rem;
+    position: relative;
+    width: 100%;
+    letter-spacing: .06rem;
+    font-size: .8rem;
+    color: #bbb;
+    font-weight: 600;
+    text-transform: uppercase;
+    height: 1px;
+    background: #dfdfdf;
+    
+}
