@@ -110,3 +110,24 @@ $di->setShared('session', function () {
 
     return $session;
 });
+
+$di->set('mongo', function() {
+    $mongo = new MongoClient();
+    return $mongo->selectDb("sml");
+}, true);
+
+
+// $di->set( 
+//     "mongo", 
+//     function () { 
+//        $mongo = new MongoClient( 
+//           "mongodb:///tmp/mongodb-27017.sock,localhost:27017" 
+//        );  
+//        return $mongo->selectDB("test"); 
+//     }, 
+//     true 
+//  );
+
+$di->set('collectionManager', function(){
+    return new Phalcon\Mvc\Collection\Manager();
+}, true);
