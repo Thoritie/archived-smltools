@@ -9,7 +9,8 @@
         {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }}  
         {{ stylesheet_link('sml/regis.css') }}     
         <!-- {{ stylesheet_link('nav/css/creative-override.css') }} -->
-        {{ stylesheet_link('nav/css/creative.css') }}        
+        {{ stylesheet_link('nav/css/creative.css') }}  
+              
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     </head>
     <body>
@@ -25,5 +26,8 @@
 
         <!-- navbar js -->
         {{ javascript_include('nav/js/creative.js') }}
+        {{ javascript_include('jquery/jquery.js') }}
+        {{ javascript_include('jquery/jquery.min.js') }}
+
     </body>
 </html>
