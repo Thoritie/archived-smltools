@@ -8,14 +8,15 @@
         <title>Phalcon PHP Framework</title>
         <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?> 
         <!-- <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?> -->
-        <!-- <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?> 
-        <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?>  -->
         <?= $this->tag->stylesheetLink('sml/regis.css') ?>
         <?= $this->tag->stylesheetLink('sml/navindex.css') ?>
+        <?= $this->tag->stylesheetLink('home/global.css') ?>
 
-        <!-- <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>       
-        <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?> -->
-        
+          <!-- auto tag css edit lif -->
+          <?= $this->tag->stylesheetLink('jslif/bootstrap-tagsinput.css') ?>
+          <?= $this->tag->stylesheetLink('jslif/app.css') ?>
+          <?= $this->tag->stylesheetLink('jslif/sb-admin-override.css') ?>
+
     </head>
     <body id="page-top">
         <div>
@@ -36,10 +37,23 @@
         
 
         <!-- navbar js -->
-        <?= $this->tag->javascriptInclude('nav/js/creative.js') ?>
+        
         <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
+        <!-- <?= $this->tag->javascriptInclude('nav/js/creative.js') ?> -->
         <?= $this->tag->javascriptInclude('jquery/checkLogin.js') ?>
         <?= $this->tag->javascriptInclude('home/global.js') ?>
+
+        
+        <!-- auto tag js edit lif -->
+        <?= $this->tag->javascriptInclude('jslif/jquery.easing.min.js') ?>
+        <?= $this->tag->javascriptInclude('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') ?>
+        <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
+        <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
+        
+        <?= $this->tag->javascriptInclude('jslif/tag.js') ?>
+        <?= $this->tag->javascriptInclude('home/global.js') ?>
+        
+
 
     </body>
 </html>

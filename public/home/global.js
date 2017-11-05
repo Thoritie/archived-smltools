@@ -1,185 +1,122 @@
-$(document).ready(function () {([5], {
-    12: function(t, e, s) {
-        "use strict";
-        (function(e) {
-            var s = "undefined" != typeof t && t.exports && "undefined" != typeof e ? e : window;
-            (s._gsQueue || (s._gsQueue = [])).push(function() {
-                function t(t, e, s, i) {
-                    return s = parseFloat(s) - parseFloat(t),
-                    i = parseFloat(i) - parseFloat(e),
-                    Math.sqrt(s * s + i * i)
-                }
-                function e(t) {
-                    return "string" != typeof t && t.nodeType || (t = s.TweenLite.selector(t),
-                    t.length && (t = t[0])),
-                    t
-                }
-                function i(t, e, s) {
-                    var i, a, r = t.indexOf(" ");
-                    return r === -1 ? (i = void 0 !== s ? s + "" : t,
-                    a = t) : (i = t.substr(0, r),
-                    a = t.substr(r + 1)),
-                    i = i.indexOf("%") !== -1 ? parseFloat(i) / 100 * e : parseFloat(i),
-                    a = a.indexOf("%") !== -1 ? parseFloat(a) / 100 * e : parseFloat(a),
-                    i > a ? [a, i] : [i, a]
-                }
-                function a(s) {
-                    if (!s)
-                        return 0;
-                    s = e(s);
-                    var i, a, r, o, n, f, l, u = s.tagName.toLowerCase();
-                    if ("path" === u) {
-                        o = s.style.strokeDasharray,
-                        s.style.strokeDasharray = "none",
-                        i = s.getTotalLength() || 0;
-                        try {
-                            a = s.getBBox()
-                        } catch (t) {}
-                        s.style.strokeDasharray = o
-                    } else if ("rect" === u)
-                        i = 2 * s.getAttribute("width") + 2 * s.getAttribute("height");
-                    else if ("circle" === u)
-                        i = 2 * Math.PI * parseFloat(s.getAttribute("r"));
-                    else if ("line" === u)
-                        i = t(s.getAttribute("x1"), s.getAttribute("y1"), s.getAttribute("x2"), s.getAttribute("y2"));
-                    else if ("polyline" === u || "polygon" === u)
-                        for (r = s.getAttribute("points").match(h) || [],
-                        "polygon" === u && r.push(r[0], r[1]),
-                        i = 0,
-                        n = 2; n < r.length; n += 2)
-                            i += t(r[n - 2], r[n - 1], r[n], r[n + 1]) || 0;
-                    else
-                        "ellipse" === u && (f = parseFloat(s.getAttribute("rx")),
-                        l = parseFloat(s.getAttribute("ry")),
-                        i = Math.PI * (3 * (f + l) - Math.sqrt((3 * f + l) * (f + 3 * l))));
-                    return i || 0
-                }
-                function r(t, s) {
-                    if (!t)
-                        return [0, 0];
-                    t = e(t),
-                    s = s || a(t) + 1;
-                    var i = n(t)
-                      , r = i.strokeDasharray || ""
-                      , o = parseFloat(i.strokeDashoffset)
-                      , h = r.indexOf(",");
-                    return h < 0 && (h = r.indexOf(" ")),
-                    r = h < 0 ? s : parseFloat(r.substr(0, h)) || 1e-5,
-                    r > s && (r = s),
-                    [Math.max(0, -o), Math.max(0, r - o)]
-                }
-                var o, n = document.defaultView ? document.defaultView.getComputedStyle : function() {}
-                , h = /(?:(-|-=|\+=)?\d*\.?\d*(?:e[\-+]?\d+)?)[0-9]/gi;
-                o = s._gsDefine.plugin({
-                    propName: "drawSVG",
-                    API: 2,
-                    version: "0.0.10",
-                    global: !0,
-                    overwriteProps: ["drawSVG"],
-                    init: function(t, e, s) {
-                        if (!t.getBBox)
-                            return !1;
-                        var o, n, h, f = a(t) + 1;
-                        return this._style = t.style,
-                        e === !0 || "true" === e ? e = "0 100%" : e ? (e + "").indexOf(" ") === -1 && (e = "0 " + e) : e = "0 0",
-                        o = r(t, f),
-                        n = i(e, f, o[0]),
-                        this._length = f + 10,
-                        0 === o[0] && 0 === n[0] ? (h = Math.max(1e-5, n[1] - f),
-                        this._dash = f + h,
-                        this._offset = f - o[1] + h,
-                        this._addTween(this, "_offset", this._offset, f - n[1] + h, "drawSVG")) : (this._dash = o[1] - o[0] || 1e-6,
-                        this._offset = -o[0],
-                        this._addTween(this, "_dash", this._dash, n[1] - n[0] || 1e-5, "drawSVG"),
-                        this._addTween(this, "_offset", this._offset, -n[0], "drawSVG")),
-                        !0
-                    },
-                    set: function(t) {
-                        this._firstPT && (this._super.setRatio.call(this, t),
-                        this._style.strokeDashoffset = this._offset,
-                        1 === t || 0 === t ? this._style.strokeDasharray = this._offset < .001 && this._length - this._dash <= 10 ? "none" : this._offset === this._dash ? "0px, 999999px" : this._dash + "px," + this._length + "px" : this._style.strokeDasharray = this._dash + "px," + this._length + "px")
-                    }
-                }),
-                o.getLength = a,
-                o.getPosition = r
-            }),
-            s._gsDefine && s._gsQueue.pop()()
+$(document).ready(function () {
+
+    class Particle {
+        constructor(svg, coordinates, friction) {
+          this.svg = svg;
+          this.steps = $(window).height() / 2;
+          this.item = null;
+          this.friction = friction;
+          this.coordinates = coordinates;
+          this.position = this.coordinates.y;
+          this.dimensions = this.render();
+          this.rotation = Math.random() > 0.5 ? "-" : "+";
+          this.scale = 0.5 + Math.random();
+          this.siner = 200 * Math.random();
         }
-        ).call(e, s(5))
-    },
-    54: function(t, e, s) {
-        "use strict";
-        (function(t) {
-            function e() {
-                window.matchMedia("(min-width: " + i.config.breakpoints.medium + ")").matches ? o.paused() && o.play() : o.seek(0).pause()
+      
+        destroy() {
+          this.item.remove();
+        }
+      
+        move() {
+          this.position = this.position - this.friction;
+          let top = this.position;
+          let left =
+            this.coordinates.x +
+            Math.sin(this.position * Math.PI / this.steps) * this.siner;
+          this.item.css({
+            transform:
+              "translateX(" +
+              left +
+              "px) translateY(" +
+              top +
+              "px) scale(" +
+              this.scale +
+              ") rotate(" +
+              this.rotation +
+              (this.position + this.dimensions.height) +
+              "deg)"
+          });
+      
+          if (this.position < -this.dimensions.height) {
+            this.destroy();
+            return false;
+          } else {
+            return true;
+          }
+        }
+      
+        render() {
+          this.item = $(this.svg, {
+            css: {
+              transform:
+                "translateX(" +
+                this.coordinates.x +
+                "px) translateY(" +
+                this.coordinates.y +
+                "px)"
             }
-            var i = s(0)
-              , a = s(1);
-            s(12);
-            var r = (s(7),
-            s(8),
-            document.querySelector(".ForWork-svg"))
-              , o = new a.TimelineMax({
-                paused: !0
-            });
-            a.TweenMax.set(r, {
-                visibility: "visible"
-            }),
-            o.from(".ForWork--globe", 1, {
-                autoAlpha: 0,
-                y: "100%",
-                ease: i.config.easing
-            }).staggerFrom(".ForWork--mesh path", 1, {
-                delay: .25,
-                drawSVG: "0",
-                ease: i.config.easing
-            }, .2, "segment").staggerFrom(".ForWork--dots circle", 1, {
-                autoAlpha: 0,
-                y: "100%",
-                ease: i.config.easing
-            }, .2, "segment").staggerTo(".ForWork--dots circle", 1.5, {
-                autoAlpha: 0,
-                attr: {
-                    r: 20
-                },
-                repeat: -1
-            }, .5, "segment+=0.75"),
-            t(".ForWork--dots circle").hover(function() {
-                var t = new a.TimelineMax;
-                this.animation = t,
-                o.pause(),
-                t.to(this, .5, {
-                    attr: {
-                        r: 20
-                    },
-                    fill: "#005FE6",
-                    opacity: 1
-                }),
-                this.animation.play()
-            }, function() {
-                this.animation.reverse(),
-                o.resume()
-            });
-            var n = "";
-            t(".forWork-blockIdentifier").hover(function() {
-                var e = new a.TimelineMax
-                  , s = this.getAttribute("data-js-block");
-                n = t(".ForWork-Block-" + s),
-                n.animation = e,
-                n.animation.to(n, .5, {
-                    x: "0",
-                    ease: i.config.easing
-                })
-            }, function() {
-                n.animation.reverse()
-            }),
-            e(),
-            i.optimizedResize.add(function() {
-                e()
-            })
+          });
+          $("body").append(this.item);
+          return {
+            width: this.item.width(),
+            height: this.item.height()
+          };
         }
-        ).call(e, s(2))
-    }
-}, [54]);
+      }
+      
+      const rhombus =
+        '<svg viewBox="0 0 13 14"><path class="rhombus" d="M5.9,1.2L0.7,6.5C0.5,6.7,0.5,7,0.7,7.2l5.2,5.4c0.2,0.2,0.5,0.2,0.7,0l5.2-5.4 C12,7,12,6.7,11.8,6.5L6.6,1.2C6.4,0.9,6.1,0.9,5.9,1.2L5.9,1.2z M3.4,6.5L6,3.9c0.2-0.2,0.5-0.2,0.7,0l2.6,2.6 c0.2,0.2,0.2,0.5,0,0.7L6.6,9.9c-0.2,0.2-0.5,0.2-0.7,0L3.4,7.3C3.2,7.1,3.2,6.8,3.4,6.5L3.4,6.5z" /></svg>';
+      
+      const pentahedron =
+        '<svg viewBox="0 0 561.8 559.4"><path class="pentahedron" d="M383.4,559.4h-204l-2.6-0.2c-51.3-4.4-94-37-108.8-83l-0.2-0.6L6,276.7l-0.2-0.5c-14.5-50,3.1-102.7,43.7-131.4 L212.1,23C252.4-7.9,310.7-7.9,351,23l163.5,122.5l0.4,0.3c39,30.3,56,82.6,42.2,130.3l-0.3,1.1l-61.5,198 C480.4,525.6,435.5,559.4,383.4,559.4z M185.5,439.4h195.2l61.1-196.8c0-0.5-0.3-1.6-0.7-2.1L281.5,120.9L120.9,241.2 c0,0.3,0.1,0.7,0.2,1.2l60.8,195.8C182.5,438.5,183.7,439.1,185.5,439.4z M441,240.3L441,240.3L441,240.3z"/></svg>';
+      const x =
+        '<svg viewBox="0 0 12 12"> <path class="x" d="M10.3,4.3H7.7V1.7C7.7,0.8,7,0,6,0S4.3,0.8,4.3,1.7v2.5H1.7C0.8,4.3,0,5,0,6s0.8,1.7,1.7,1.7h2.5v2.5 C4.3,11.2,5,12,6,12s1.7-0.8,1.7-1.7V7.7h2.5C11.2,7.7,12,7,12,6S11.2,4.3,10.3,4.3z"/></svg>';
+      
+      const circle =
+        '<svg x="0px" y="0px" viewBox="0 0 13 12"> <path class="circle" d="M6.5,0.1C3.4,0.1,0.8,2.8,0.8,6s2.6,5.9,5.7,5.9s5.7-2.7,5.7-5.9S9.7,0.1,6.5,0.1L6.5,0.1z M6.5,8.8 C5,8.8,3.8,7.6,3.8,6S5,3.2,6.5,3.2S9.2,4.4,9.2,6S8,8.8,6.5,8.8L6.5,8.8z"/> </svg>';
+      
+      const point =
+        '<svg viewBox="0 0 12 12"> <path class="point" d="M6,7.5L6,7.5C5.1,7.5,4.5,6.9,4.5,6v0c0-0.9,0.7-1.5,1.5-1.5h0c0.9,0,1.5,0.7,1.5,1.5v0C7.5,6.9,6.9,7.5,6,7.5z "/> </svg>';
+      
+      function randomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      
+      const data = [point, rhombus, pentahedron, circle, x];
+      
+      let isPaused = false;
+      window.onblur = function() {
+        isPaused = true;
+      }.bind(this);
+      window.onfocus = function() {
+        isPaused = false;
+      }.bind(this);
+      
+      let particles = [];
+      
+      setInterval(function() {
+        if (!isPaused) {
+          particles.push(
+            new Particle(
+              data[randomInt(0, data.length - 1)],
+              {
+                x: Math.random() * $(window).width(),
+                y: $(window).height()
+              },
+              1 + Math.random() * 3
+            )
+          );
+        }
+      }, 200);
+      
+      function update() {
+        particles = particles.filter(function(p) {
+          return p.move();
+        });
+        requestAnimationFrame(update.bind(this));
+      }
+      update();
+      
+
 });
-//# sourceMappingURL=business.js-205c7dde.map
