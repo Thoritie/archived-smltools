@@ -1,0 +1,8 @@
+[ { "value": 1 , "text": "first"       , "continent": ""    },
+  { "value": 2 , "text": "second"      , "continent": ""    },
+  { "value": 3 , "text": "third"       , "continent": ""    },
+  { "value": 4 , "text": "Washington"  , "continent": ""    },
+  { "value": 5 , "text": "Mexico City" , "continent": ""    },
+  { "value": 6 , "text": "Buenos Aires", "continent": ""    },
+  { "value": 7 , "text": "Sydney"      , "continent": ""    }
+]

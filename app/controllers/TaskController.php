@@ -53,5 +53,21 @@ class TaskController extends ControllerBase
             'action' => 'index'
         ]);
     }
+
+    public function findStakeAction()
+    {
+        $this->view->disable();
+        $input = $this->request->getPost('project');
+        
+        $condition = [];
+        
+        if($input){
+            $condition["project"] = $input;
+        }
+
+        $test = Stakeholder::Find(array($condition));
+
+        return json_encode($test);
+    }
 }
 
