@@ -28,6 +28,7 @@
         {{ javascript_include('nav/js/creative.js') }}
         {{ javascript_include('jquery/jquery.js') }}
         {{ javascript_include('jquery/jquery.min.js') }}
+        {{ javascript_include('jquery/checkLogin.js') }}
 
     </body>
 </html>

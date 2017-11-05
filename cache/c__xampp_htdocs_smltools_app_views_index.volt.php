@@ -9,7 +9,8 @@
         <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?>  
         <?= $this->tag->stylesheetLink('sml/regis.css') ?>     
         <!-- <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?> -->
-        <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>        
+        <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>  
+              
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     </head>
     <body>
@@ -25,5 +26,9 @@
 
         <!-- navbar js -->
         <?= $this->tag->javascriptInclude('nav/js/creative.js') ?>
+        <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
+        <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
+        <?= $this->tag->javascriptInclude('jquery/checkLogin.js') ?>
+
     </body>
 </html>

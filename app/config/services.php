@@ -7,6 +7,7 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Direct as Flash;
+use Phalcon\Security;
 
 /**
  * Shared configuration service
@@ -127,6 +128,20 @@ $di->set('mongo', function() {
 //     }, 
 //     true 
 //  );
+
+
+$di->set(
+    "security",
+    function () {
+        $security = new Security();
+
+        // Set the password hashing factor to 12 rounds
+        $security->setWorkFactor(12);
+
+        return $security;
+    },
+    true
+);
 
 $di->set('collectionManager', function(){
     return new Phalcon\Mvc\Collection\Manager();
