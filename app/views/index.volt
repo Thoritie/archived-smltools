@@ -8,14 +8,14 @@
         <title>Phalcon PHP Framework</title>
         {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }} 
         <!-- {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }} -->
-        <!-- {{ stylesheet_link('magnific-popup/magnific-popup.css') }} 
-        {{ stylesheet_link('device-mockups/device-mockups.min.css') }}  -->
         {{ stylesheet_link('sml/regis.css') }}
         {{ stylesheet_link('sml/navindex.css') }}
 
-        <!-- {{ stylesheet_link('nav/css/creative.css') }}       
-        {{ stylesheet_link('nav/css/creative-override.css') }} -->
-        
+          <!-- auto tag css edit lif -->
+          {{ stylesheet_link('jslif/bootstrap-tagsinput.css') }}
+          {{ stylesheet_link('jslif/app.css') }}
+          {{ stylesheet_link('jslif/sb-admin-override.css') }}
+
     </head>
     <body id="page-top">
         <div>
@@ -36,10 +36,21 @@
         
 
         <!-- navbar js -->
-        {{ javascript_include('nav/js/creative.js') }}
+        
         {{ javascript_include('jquery/jquery.js') }}
+        <!-- {{ javascript_include('nav/js/creative.js') }} -->
         {{ javascript_include('jquery/checkLogin.js') }}
         {{ javascript_include('home/global.js') }}
+
+        
+        <!-- auto tag js edit lif -->
+        {{ javascript_include('jslif/jquery.easing.min.js') }}
+        {{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') }}
+        {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
+        {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
+        
+        {{ javascript_include('jslif/tag.js') }}
+
 
     </body>
 </html>
