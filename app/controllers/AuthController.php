@@ -13,6 +13,43 @@ class AuthController extends ControllerBase
         
     }
 
+    public function signinAction()
+    {
+        if ($this->request->isPost()) 
+        {
+            if ($this->security->checkToken()) 
+            {
+                $login    = $this->request->getPost("username");
+                $password = $this->request->getPost("password");
+
+                $user = Users::findFirst(
+                [
+                    [
+                        'username' => $login,
+                    ]
+                ]
+                );
+                if ($user) 
+                {
+                    if ($this->security->checkHash($password, $user->password)) 
+                    {
+                        $this->flashSession->success("Successful login");
+                        return $this->response->redirect("project");
+                    }
+                    } else 
+                    {
+                // To protect against timing attacks. Regardless of whether a user exists or not, the script will take roughly the same amount as it will always be computing a hash.
+                        $this->security->hash(rand());
+                        $this->flashSession->error("Unsuccessful login, please try again");
+                        return $this->response->redirect("Auth/login");
+                    }
+            }
+        }
+        
+
+        // The validation has failed
+    }
+
     public function signupAction()
     {
         $this->view->disable();
@@ -53,4 +90,3 @@ class AuthController extends ControllerBase
         return json_encode($check);
     }
 }
-

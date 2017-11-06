@@ -39,8 +39,10 @@
         <!-- navbar js -->
         
         {{ javascript_include('jquery/jquery.js') }}
+        {{ javascript_include('dist/jquery.validate.js')}}
         <!-- {{ javascript_include('nav/js/creative.js') }} -->
         {{ javascript_include('jquery/checkLogin.js') }}
+        {{ javascript_include('jquery/signinvalidate.js') }}
         {{ javascript_include('home/global.js') }}
 
         

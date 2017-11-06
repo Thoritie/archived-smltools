@@ -8,17 +8,15 @@
         <title>Phalcon PHP Framework</title>
         <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?> 
         <!-- <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?> -->
-        <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?> 
-        <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?> 
         <?= $this->tag->stylesheetLink('sml/regis.css') ?>
-        <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>       
-        <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?>
+        <?= $this->tag->stylesheetLink('sml/navindex.css') ?>
+        <?= $this->tag->stylesheetLink('home/global.css') ?>
 
           <!-- auto tag css edit lif -->
           <?= $this->tag->stylesheetLink('jslif/bootstrap-tagsinput.css') ?>
           <?= $this->tag->stylesheetLink('jslif/app.css') ?>
           <?= $this->tag->stylesheetLink('jslif/sb-admin-override.css') ?>
-          
+
     </head>
     <body id="page-top">
         <div>
@@ -32,17 +30,20 @@
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
         
         <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
-        <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
+        <!-- <?= $this->tag->javascriptInclude('popper/popper.min.js') ?> -->
         <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
-        <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
-        <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?> 
+        <!-- <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
+        <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?> -->
         
 
         <!-- navbar js -->
         
         <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
+        <?= $this->tag->javascriptInclude('dist/jquery.validate.js') ?>
         <!-- <?= $this->tag->javascriptInclude('nav/js/creative.js') ?> -->
         <?= $this->tag->javascriptInclude('jquery/checkLogin.js') ?>
+        <?= $this->tag->javascriptInclude('jquery/signinvalidate.js') ?>
+        <?= $this->tag->javascriptInclude('home/global.js') ?>
 
         
         <!-- auto tag js edit lif -->
@@ -52,6 +53,8 @@
         <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
         
         <?= $this->tag->javascriptInclude('jslif/tag.js') ?>
+        <?= $this->tag->javascriptInclude('home/global.js') ?>
+        
 
 
     </body>
