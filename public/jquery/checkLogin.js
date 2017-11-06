@@ -4,13 +4,13 @@ $(document).ready(function () {
         errorClass: 'help-block',
         highlight: function (element) {
             $(element)
-                .closest('.form-group')
-                .addClass('has-danger');
+                .closest('.form-control')
+                .addClass('is-invalid');
         },
         unhighlight: function (element) {
             $(element)
-                .closest('.form-group')
-                .removeClass('has-danger');
+                .closest('.form-control')
+                .removeClass('is-invalid');
         }
     });
 
@@ -60,7 +60,10 @@ $(document).ready(function () {
             sirname: sirname,
             email: email,
             password: password
-        }, function (data) {});
+        }, function (data) {
+
+        }); 
         window.location.href = 'login';
+       
     }
 });

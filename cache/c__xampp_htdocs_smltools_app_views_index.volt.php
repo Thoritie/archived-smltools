@@ -10,7 +10,6 @@
         <!-- <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?> -->
         <?= $this->tag->stylesheetLink('sml/regis.css') ?>
         <?= $this->tag->stylesheetLink('sml/navindex.css') ?>
-        <?= $this->tag->stylesheetLink('home/global.css') ?>
 
           <!-- auto tag css edit lif -->
           <?= $this->tag->stylesheetLink('jslif/bootstrap-tagsinput.css') ?>
@@ -30,10 +29,10 @@
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
         
         <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
-        <!-- <?= $this->tag->javascriptInclude('popper/popper.min.js') ?> -->
+        <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
         <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
-        <!-- <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
-        <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?> -->
+        <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
+        <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>
         
 
         <!-- navbar js -->
@@ -53,7 +52,6 @@
         <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
         
         <?= $this->tag->javascriptInclude('jslif/tag.js') ?>
-        <?= $this->tag->javascriptInclude('home/global.js') ?>
         
 
 
