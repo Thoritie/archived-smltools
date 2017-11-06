@@ -1,24 +1,50 @@
 $(document).ready(function () {
+    
+    $.validator.setDefaults({
+        errorClass: 'help-block',
+        highlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .addClass('has-danger');
+        },
+        unhighlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .removeClass('has-danger');
+        }
+    });
 
-    //task
-    $('#signup').click(function () {
-        var input = $("#username").val();
-        $.post("checkLogin", {
-            username: input
-        }, function (data) {
-            console.log(data);
-            if (data == 0) {
-                alert("your username is already taken");
-            } else {
-                if ($('#password').val() == $('#password2').val()) {
-                    alert("save");
-                    signup();
-                }else {
-                    alert("your password Not Matching");
-                }
-                
+    $("#signup-form").validate({
+        rules: {
+            username: "required",
+            name: "required",
+            sirname: "required",
+            email:{
+                required: true,
+                email: true,
+            },
+            password:"required",
+            password2:{
+                required: true,
+                equalTo: "#password"
             }
-        }, "json");
+        }
+    });
+    $('#signup').click(function () {
+        if ($('#signup-form').valid()) {
+            var input = $("#username").val();
+            $.post("checkLogin", {
+                username: input
+            }, function (data) {
+                console.log(data);
+                if (data == 0) {
+                    alert("your username is already taken");
+                } else {
+                    alert("save");
+                    signup();   
+                }
+            }, "json");
+        }
     });
 
 
@@ -31,11 +57,10 @@ $(document).ready(function () {
         $.post("signup", {
             username: username,
             name: name,
-            sirname : sirname,
-            email : email,
-            password : password
-        }, function (data) {
-        });
+            sirname: sirname,
+            email: email,
+            password: password
+        }, function (data) {});
         window.location.href = 'login';
     }
 });
