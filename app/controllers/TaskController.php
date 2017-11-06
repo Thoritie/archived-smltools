@@ -21,19 +21,14 @@ class TaskController extends ControllerBase
         $task->Description = $this->request->getPost("Description");
         $task->includes = $this->request->getPost("includes");
         $task->asIsState = $this->request->getPost("asIsState");
-        $owner = $this->request->getPost("owner");
-        
-        $owner = explode(",", $owner);
-        $task->owner = $owner;
-
-
-        $task->collaburator = $this->request->getPost("collaburator");
-        $task->regular = $this->request->getPost("regular");
+        $task->owner = explode(",", $this->request->getPost("owner"));
+        $task->collaburator = explode(",", $this->request->getPost("collaburator"));
+        $task->regulator = explode(",", $this->request->getPost("regulator"));
         $task->uses = $this->request->getPost("uses");
         $task->produces = $this->request->getPost("produces");
         $task->toBeState = $this->request->getPost("toBeState");
-        $task->ownerToBe = $this->request->getPost("ownerToBe");
-        $task->collaboratorToBe = $this->request->getPost("collaboratorToBe");
+        $task->ownerToBe = explode(",", $this->request->getPost("ownerToBe"));
+        $task->collaboratorToBe = explode(",", $this->request->getPost("collaboratorToBe"));
         $task->toUse = $this->request->getPost("toUse");
         $task->toProduce = $this->request->getPost("toProduce");
         
