@@ -77,9 +77,14 @@
                     <div class="form-group row">
                       <label for="project" class="col-sm-2 col-form-label">asIsState</label>
                       <div class="col-sm-6">
-                        <?php 
-                            echo $this->tag->textField(["asIsState", "size" => 30, 
-                            "class" => "form-control", "id" => "asIsState" , "placeholder"=>"asIsState"]) 
+                      <?php 
+                            echo $this->tag->selectStatic(["toBeState", "class" => "form-control", 
+                            "id" => "asIsState" 
+                            ,[
+                                "E" => "EXIST",
+                                "N" => "NEXIST",
+                            ]
+                            ]) 
                         ?>
                       </div>
                     </div>
@@ -169,6 +174,13 @@
                             "class" => "form-control", "id" => "toUse"]) 
                         ?>
                       </div>
+                              
+                      <div class="float-right pl-3">
+                        <button type="button" class="btn btn-active" data-toggle="modal" data-target="#exampleModal2">
+                          <i class="fa fa-fw fa-plus"></i>
+                        </button>
+                      </div>
+
                     </div>
                     <div class="form-group row">
                       <label for="project" class="col-sm-2 col-form-label">toProduce</label>
@@ -185,7 +197,8 @@
                             echo $this->tag->submitButton(["Save", "size" => 30, 
                             "class" => "btn btn-primary", "id" => "btnsubmit"]) 
                         ?>
-				              </div>
-				    </div>
+                      </div>
+                    </div>
+				    
                 <?php echo $this->tag->endForm(); ?>
-            </div>
+        </div>

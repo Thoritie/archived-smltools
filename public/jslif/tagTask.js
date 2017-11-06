@@ -13,16 +13,12 @@ $(document).ready(function() {
     
             jsonObj.push(item);
         });
-    
-         //console.log(jsonObj);
         return jsonObj;
     }
-
 
     function createString(auto){
         return JSON.stringify(auto)
     }
-
 
     function test(n){
         
@@ -32,7 +28,6 @@ $(document).ready(function() {
             local: JSON.parse(n)
     
         });
-
         
         Stakeholder.initialize();
     
@@ -43,7 +38,10 @@ $(document).ready(function() {
             typeaheadjs: {
                 name: 'name',
                 displayKey: 'text',
-                source: Stakeholder.ttAdapter()
+                source: Stakeholder.ttAdapter(),
+                templates : {
+                    empty: '<div class="empty-message text-info"> No matches.</div>'
+                }
             }
         });
         elt2.tagsinput('add', { "value": 1, "text": "first", "continent": "" });
@@ -60,6 +58,5 @@ $(document).ready(function() {
              test(n);
             console.log(data);
         },  "json");
-
-       
+ 
 });
