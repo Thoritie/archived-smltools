@@ -10,7 +10,6 @@
         <!-- <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?> -->
         <?= $this->tag->stylesheetLink('sml/regis.css') ?>
         <?= $this->tag->stylesheetLink('sml/navindex.css') ?>
-        <?= $this->tag->stylesheetLink('home/global.css') ?>
 
           <!-- auto tag css edit lif -->
           <?= $this->tag->stylesheetLink('jslif/bootstrap-tagsinput.css') ?>
@@ -39,8 +38,10 @@
         <!-- navbar js -->
         
         <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
+        <?= $this->tag->javascriptInclude('dist/jquery.validate.js') ?>
         <!-- <?= $this->tag->javascriptInclude('nav/js/creative.js') ?> -->
         <?= $this->tag->javascriptInclude('jquery/checkLogin.js') ?>
+        <?= $this->tag->javascriptInclude('jquery/signinvalidate.js') ?>
         <?= $this->tag->javascriptInclude('home/global.js') ?>
 
         
@@ -51,7 +52,6 @@
         <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
         
         <?= $this->tag->javascriptInclude('jslif/tag.js') ?>
-        <?= $this->tag->javascriptInclude('home/global.js') ?>
         
 
 

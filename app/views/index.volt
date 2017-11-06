@@ -10,7 +10,6 @@
         <!-- {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }} -->
         {{ stylesheet_link('sml/regis.css') }}
         {{ stylesheet_link('sml/navindex.css') }}
-        {{ stylesheet_link('home/global.css') }}
 
           <!-- auto tag css edit lif -->
           {{ stylesheet_link('jslif/bootstrap-tagsinput.css') }}
@@ -53,7 +52,6 @@
         {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
         
         {{ javascript_include('jslif/tag.js') }}
-        {{ javascript_include('home/global.js') }}
         
 
 
