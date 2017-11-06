@@ -97,5 +97,10 @@ h1, h2 {
 }
 
 .nav-pad{
-    padding-right: 100px;
+    padding-right: 100px !important;
+}
+
+.card-pad{
+    padding: 80px !important;
+    
 }

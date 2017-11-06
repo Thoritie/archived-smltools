@@ -30,10 +30,10 @@
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
         
         <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
-        <!-- <?= $this->tag->javascriptInclude('popper/popper.min.js') ?> -->
+        <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
         <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
-        <!-- <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
-        <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?> -->
+        <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
+        <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>
         
 
         <!-- navbar js -->

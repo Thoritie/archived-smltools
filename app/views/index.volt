@@ -30,10 +30,10 @@
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
         
         {{ javascript_include('jquery/jquery.min.js') }}
-        <!-- {{ javascript_include('popper/popper.min.js') }} -->
+        {{ javascript_include('popper/popper.min.js') }}
         {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}
-        <!-- {{ javascript_include('scrollreveal/scrollreveal.min.js') }}
-        {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }} -->
+        {{ javascript_include('scrollreveal/scrollreveal.min.js') }}
+        {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}
         
 
         <!-- navbar js -->
