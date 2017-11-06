@@ -220,7 +220,7 @@ $(document).ready(function() {
     
      ///---------------input id collaboratorToBe
 
-     function tagcollaboratorToBe(n){
+    function tagcollaboratorToBe(n){
         var Stakeholder = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -255,4 +255,6 @@ $(document).ready(function() {
                 var n = createString(auto);
                 tagcollaboratorToBe(n);
         },  "json");
+
+
 });

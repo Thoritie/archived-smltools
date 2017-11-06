@@ -21,7 +21,12 @@ class TaskController extends ControllerBase
         $task->Description = $this->request->getPost("Description");
         $task->includes = $this->request->getPost("includes");
         $task->asIsState = $this->request->getPost("asIsState");
-        $task->owner = $this->request->getPost("owner");
+        $owner = $this->request->getPost("owner");
+        
+        $owner = explode(",", $owner);
+        $task->owner = $owner;
+
+
         $task->collaburator = $this->request->getPost("collaburator");
         $task->regular = $this->request->getPost("regular");
         $task->uses = $this->request->getPost("uses");
@@ -32,6 +37,8 @@ class TaskController extends ControllerBase
         $task->toUse = $this->request->getPost("toUse");
         $task->toProduce = $this->request->getPost("toProduce");
         
+       
+
 
         if (!$task->save()) {
             foreach ($teacher->getMessages() as $message) {
@@ -46,12 +53,13 @@ class TaskController extends ControllerBase
             return;
         }
 
-        $this->flash->success("teacher was created successfully");
+        // $this->flash->success("teacher was created successfully");
 
-        $this->dispatcher->forward([
-            'controller' => "task",
-            'action' => 'index'
-        ]);
+        // $this->dispatcher->forward([
+        //     'controller' => "task",
+        //     'action' => 'index'
+        // ]);
+        return $this->response->redirect("task/index");
     }
 
     public function findStakeAction()
@@ -66,6 +74,23 @@ class TaskController extends ControllerBase
         }
 
         $test = Stakeholder::Find(array($condition));
+
+        return json_encode($test);
+    }
+
+
+    public function findResourceAction()
+    {
+        $this->view->disable();
+        $input = $this->request->getPost('project');
+        
+        $condition = [];
+        
+        if($input){
+            $condition["project"] = $input;
+        }
+
+        $test = Resource::Find(array($condition));
 
         return json_encode($test);
     }
