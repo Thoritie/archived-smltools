@@ -7,7 +7,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Phalcon PHP Framework</title>
         {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }} 
-        <!-- {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }} -->
+        {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }} 
         {{ stylesheet_link('sml/regis.css') }}
         {{ stylesheet_link('sml/navindex.css') }}
 
@@ -51,7 +51,7 @@
         {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
         {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
         
-        {{ javascript_include('jslif/tag.js') }}
+        {{ javascript_include('jslif/tagTask.js') }}
         
 
 
