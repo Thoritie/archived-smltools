@@ -3,16 +3,23 @@ $(document).ready(function() {
     
     function createJSON(data) {
         jsonObj = [];
-        
+        var i = 2;
         $.each(data, function(index ,data){
 
             item = {}
-            item ["value"] = index+1;
+            item ["value"] = i;
             item ["text"] = data.name;
             item ["continent"] = "";
-    
+            i++
             jsonObj.push(item);
         });
+
+        item = {}
+        item ["value"] = 1;
+        item ["text"] = "?";
+        item ["continent"] = "";
+        jsonObj.push(item);
+
         return jsonObj;
     }
 
@@ -46,7 +53,7 @@ $(document).ready(function() {
                 }
             }
         });
-        owner.tagsinput('add', { "value": 1, "text": "first", "continent": "" });
+        
     }
 
             //findStake ชื่อ action return name stakeholder กลับมา
@@ -86,7 +93,7 @@ $(document).ready(function() {
                 }
             }
         });
-        collaburator.tagsinput('add', { "value": 1, "text": "first", "continent": "" });
+       
     }
 
         var project = "1";     //input project id .val()
@@ -126,7 +133,7 @@ $(document).ready(function() {
                 }
             }
         });
-        regulator.tagsinput('add', { "value": 1, "text": "first", "continent": "" });
+        
     }
 
         var project = "1";     //input project id .val()
@@ -165,7 +172,7 @@ $(document).ready(function() {
                 }
             }
         });
-        regulator.tagsinput('add', { "value": 1, "text": "first", "continent": "" });
+       
     }
 
         var project = "1";     //input project id .val()
@@ -204,7 +211,7 @@ $(document).ready(function() {
                 }
             }
         });
-        ownerToBe.tagsinput('add', { "value": 1, "text": "first", "continent": "" });
+       
     }
 
         var project = "1";     //input project id .val()
@@ -240,12 +247,20 @@ $(document).ready(function() {
                 source: Stakeholder.ttAdapter(),
                 templates : {
                     empty: '<div class="empty-message text-info"> No matches.</div>'
-                }
+                },
             }
         });
-        collaboratorToBe.tagsinput('add', { "value": 1, "text": "first", "continent": "" });
+      
+
     }
 
+
+        // var tags = $('#collaboratorToBe').val()
+        // var qes ="1";
+        // console.log(qes.indexOf(tags));
+        // if(qes.indexOf(tags) > -1){
+        //     $('#collaboratorToBe').tagsinput('removeAll');
+        // }
         var project = "1";     //input project id .val()
 
         $.post("findStake",{

@@ -100,5 +100,46 @@ class TaskController extends ControllerBase
 
         return json_encode($test);
     }
+
+    public function editAction($name)
+    {
+ 
+                $task = Task::findFirst([
+                    [
+                        "name" => $name,
+                    ]
+                ]);
+                if (!$task) {
+                    $this->flash->error("task was not found");
+            
+                    $this->dispatcher->forward([
+                        'controller' => "task",
+                        'action' => 'index'
+                    ]);
+            
+                    return;
+                }
+                
+                
+                // $this->view->idTask = $task->_id;
+                $this->tag->setDefault("taskname", $task->name);
+                $this->tag->setDefault("isA", $task->isA);
+                $this->tag->setDefault("Description", $task->Description);
+                $this->tag->setDefault("includes", $task->includes);
+                $this->tag->setDefault("asIsState", $task->asIsState);
+                
+               
+                // $this->tag->setDefault("regulator", $task->regulator);
+                $this->tag->setDefault("uses", $task->uses);
+                $this->tag->setDefault("produces", $task->produces);
+                $this->tag->setDefault("toBeState", $task->toBeState);
+               
+                $this->tag->setDefault("toUse", $task->toUse);
+                $this->tag->setDefault("toProduce", $task->toProduce);
+                        
+               
+        }
+    
+
 }
 
