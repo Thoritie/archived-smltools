@@ -5,6 +5,17 @@ class TaskController extends ControllerBase
 
     public function indexAction()
     {
+        // $idProject = $this->request->getPost("idProject");
+
+        // $condition = [];
+        // if($input){
+        //     $condition["project"] = $input;
+        // }
+        // $task = Task::Find(array($condition));
+        
+        $task = Task::Find();
+
+        $this->view->task = $task;
 
     }
 
