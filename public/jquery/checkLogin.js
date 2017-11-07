@@ -1,5 +1,8 @@
 $(document).ready(function () {
-    
+    $.validator.addMethod("nowhitespace", function (value, element) {
+        return this.optional(element) || /^\S+$/i.test(value);
+    }, "No space please");
+
     $.validator.setDefaults({
         errorClass: 'help-block',
         highlight: function (element) {
@@ -16,7 +19,10 @@ $(document).ready(function () {
 
     $("#signup-form").validate({
         rules: {
-            username: "required",
+            username:{
+                required: true,
+                nowhitespace: true
+            },
             name: "required",
             sirname: "required",
             email:{
@@ -27,6 +33,27 @@ $(document).ready(function () {
             password2:{
                 required: true,
                 equalTo: "#password"
+            }
+        },
+        messages: {
+            username:{
+                required :"Username is required"
+            },
+            name:{
+                required :"Name is required"
+            },
+            sirname:{
+                required :"Lastname is required"
+            },
+            email:{
+                required :"Email is required"
+            },
+            password:{
+                required :"Password is required"
+            },
+            password2:{
+                required :"You need to confirm password",
+                equalTo: "Please enter your password again"
             }
         }
     });
