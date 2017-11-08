@@ -39,11 +39,19 @@
         <!-- Latest compiled and minified JavaScript -->
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
         
+        <!-- js for home -->
         
+        {{ javascript_include('popper/popper.min.js') }}        
+        {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}        
+        {{ javascript_include('jquery-easing/jquery.easing.min.js') }}                
+        {{ javascript_include('scrollreveal/scrollreveal.min.js') }}        
+        {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}        
+        {{ javascript_include('nav/js/creative.js') }}
 
         <!-- navbar js -->
         
         {{ javascript_include('jquery/jquery.js') }}
+        {{ javascript_include('jquery/jquery.min.js') }}        
         {{ javascript_include('dist/jquery.validate.js')}}
         
         <!-- {{ javascript_include('nav/js/creative.js') }} -->
@@ -63,15 +71,7 @@
         
         {{ javascript_include('jslif/tag.js') }}
 
-        <!-- js for home -->
-
-        {{ javascript_include('jquery/jquery.min.js') }}        
-        {{ javascript_include('popper/popper.min.js') }}        
-        {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}        
-        {{ javascript_include('jquery-easing/jquery.easing.min.js') }}                
-        {{ javascript_include('scrollreveal/scrollreveal.min.js') }}        
-        {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}        
-        {{ javascript_include('nav/js/creative.js') }}
+        
         
 
 
