@@ -39,10 +39,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
         
-<<<<<<< HEAD
-=======
         <!-- js for home -->
->>>>>>> 4902863e05d93a4ab6e6f4b7e32fee17ccaf3504
         
         <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>        
         <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>        
