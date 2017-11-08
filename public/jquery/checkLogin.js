@@ -59,38 +59,47 @@ $(document).ready(function () {
     });
     $('#signup').click(function () {
         if ($('#signup-form').valid()) {
-            var input = $("#username").val();
+            var username = $("#username").val();
+            var name = $("#name").val();
+            var sirname = $("#sirname").val();
+            var email = $("#email").val();
+            var password = $("#password").val();
             $.post("checkLogin", {
-                username: input
+                username: username,
+                name: name,
+                sirname: sirname,
+                email: email,
+                password: password
             }, function (data) {
-                console.log(data);
-                if (data == 0) {
-                    alert("your username is already taken");
-                } else {
-                    alert("save");
-                    signup();   
-                }
-            }, "json");
+                if(data==0)
+                {
+                   alert("Username is already taken");
+                }else
+                {
+                    alert("Save");
+                    window.location.href = 'login';
+                } "json"
+            });
         }
     });
 
 
-    function signup() {
-        var username = $("#username").val();
-        var name = $("#name").val();
-        var sirname = $("#sirname").val();
-        var email = $("#email").val();
-        var password = $("#password").val();
-        $.post("signup", {
-            username: username,
-            name: name,
-            sirname: sirname,
-            email: email,
-            password: password
-        }, function (data) {
+    // function signup() {
+    //     var username = $("#username").val();
+    //     var name = $("#name").val();
+    //     var sirname = $("#sirname").val();
+    //     var email = $("#email").val();
+    //     var password = $("#password").val();
+    //     $.post("signup", {
+    //         username: username,
+    //         name: name,
+    //         sirname: sirname,
+    //         email: email,
+    //         password: password
+    //     }, function (data) {
 
-        }); 
-        window.location.href = 'login';
+    //     }); 
+        
        
-    }
+    // }
 });

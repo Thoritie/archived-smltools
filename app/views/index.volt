@@ -42,7 +42,7 @@
         
 
         <!-- navbar js -->
-        
+        {{ javascript_include('jquery/jquery.min.js') }}
         {{ javascript_include('jquery/jquery.js') }}
         {{ javascript_include('dist/jquery.validate.js')}}
         
@@ -65,7 +65,7 @@
 
         <!-- js for home -->
 
-        {{ javascript_include('jquery/jquery.min.js') }}        
+               
         {{ javascript_include('popper/popper.min.js') }}        
         {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}        
         {{ javascript_include('jquery-easing/jquery.easing.min.js') }}                
