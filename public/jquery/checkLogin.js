@@ -4,7 +4,7 @@ $(document).ready(function () {
     }, "No space please");
 
     $.validator.setDefaults({
-        errorClass: 'help-block',
+        errorClass: 'badge badge-danger',
         highlight: function (element) {
             $(element)
                 .closest('.form-control')
@@ -64,7 +64,7 @@ $(document).ready(function () {
             var sirname = $("#sirname").val();
             var email = $("#email").val();
             var password = $("#password").val();
-            $.post("checkLogin", {
+            $.post("signup", {
                 username: username,
                 name: name,
                 sirname: sirname,

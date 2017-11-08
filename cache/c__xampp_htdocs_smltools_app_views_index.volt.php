@@ -71,19 +71,7 @@
         
         <?= $this->tag->javascriptInclude('jslif/tag.js') ?>
 
-<<<<<<< HEAD
-        <!-- js for home -->
-
-               
-        <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>        
-        <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>        
-        <?= $this->tag->javascriptInclude('jquery-easing/jquery.easing.min.js') ?>                
-        <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>        
-        <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>        
-        <?= $this->tag->javascriptInclude('nav/js/creative.js') ?>
-=======
         
->>>>>>> 4902863e05d93a4ab6e6f4b7e32fee17ccaf3504
         
 
 

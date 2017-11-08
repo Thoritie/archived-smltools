@@ -61,7 +61,7 @@ class AuthController extends ControllerBase
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $condition = [];
-        if($input){
+        if($username){
             $condition["username"] = $username;
         }
         $user = Users::Find(array($condition));

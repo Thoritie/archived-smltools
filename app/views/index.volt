@@ -71,19 +71,7 @@
         
         {{ javascript_include('jslif/tag.js') }}
 
-<<<<<<< HEAD
-        <!-- js for home -->
-
-               
-        {{ javascript_include('popper/popper.min.js') }}        
-        {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}        
-        {{ javascript_include('jquery-easing/jquery.easing.min.js') }}                
-        {{ javascript_include('scrollreveal/scrollreveal.min.js') }}        
-        {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}        
-        {{ javascript_include('nav/js/creative.js') }}
-=======
         
->>>>>>> 4902863e05d93a4ab6e6f4b7e32fee17ccaf3504
         
 
 
