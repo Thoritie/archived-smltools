@@ -1,21 +1,21 @@
 
         <!-- css for home -->
-        {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }} 
-        {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }}
-        {{ stylesheet_link('magnific-popup/magnific-popup.css')}}
-        {{ stylesheet_link('device-mockups/device-mockups.min.css') }}
+        <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?> 
+        <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
+        <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?>
+        <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?>
 
         <!-- css for dashboard page -->
 
         
           <!-- auto tag css edit lif -->
-          {{ stylesheet_link('jslif/bootstrap-tagsinput.css') }}
-          {{ stylesheet_link('jslif/app.css') }}
-          {{ stylesheet_link('jslif/sb-admin.css') }} 
-          {{ stylesheet_link('jslif/sb-admin-override.css') }}
+          <?= $this->tag->stylesheetLink('jslif/bootstrap-tagsinput.css') ?>
+          <?= $this->tag->stylesheetLink('jslif/app.css') ?>
+          <?= $this->tag->stylesheetLink('jslif/sb-admin.css') ?> 
+          <?= $this->tag->stylesheetLink('jslif/sb-admin-override.css') ?>
 
           
-        {{ stylesheet_link('pro/css/style.css') }} 
+        <?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
           
 
     </head>
@@ -39,7 +39,7 @@
                             <a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
                         </nav>
             <div class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
-                    {{ content() }}
+                    <?= $this->getContent() ?>
             </div>
         </div>
     </div>
@@ -47,25 +47,25 @@
        
 
         <!-- navbar js -->
-        <!-- {{ javascript_include('jquery/jquery.min.js') }} -->
-        {{ javascript_include('jquery/jquery.js') }}
+        <!-- <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?> -->
+        <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
 
          <!-- js for dashboard -->
-         {{ javascript_include('jquery/jquery.min.js') }}
-         {{ javascript_include('popper/popper.min.js') }}
-         {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}
-         {{ javascript_include('scrollreveal/scrollreveal.min.js') }}
-         {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}
+         <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
+         <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
+         <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
+         <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
+         <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>
          
         
-        {{ javascript_include('jslif/sb-admin.js') }}
+        <?= $this->tag->javascriptInclude('jslif/sb-admin.js') ?>
         <!-- auto tag js edit lif -->
        
-        {{ javascript_include('jslif/jquery.easing.min.js') }}
-        {{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') }}
-        {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
-        {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
-        {{ javascript_include('jslif/sb-admin.min.js') }}
-        {{ javascript_include('jslif/tag.js') }}
+        <?= $this->tag->javascriptInclude('jslif/jquery.easing.min.js') ?>
+        <?= $this->tag->javascriptInclude('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') ?>
+        <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
+        <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
+        <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
+        <?= $this->tag->javascriptInclude('jslif/tag.js') ?>
 
         
