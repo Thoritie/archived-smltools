@@ -4,8 +4,6 @@
         {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }}
         {{ stylesheet_link('magnific-popup/magnific-popup.css')}}
         {{ stylesheet_link('device-mockups/device-mockups.min.css') }}
-        {{ stylesheet_link('nav/css/creative.css') }}
-        {{ stylesheet_link('nav/css/creative-override.css') }}
 
         <!-- css for regis page -->
 
@@ -22,7 +20,7 @@
           <!-- navbar new  -->
          
         {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }}
-        {{ stylesheet_link('project/css/style.css') }} 
+        {{ stylesheet_link('pro/css/style.css') }} 
           
 
     </head>

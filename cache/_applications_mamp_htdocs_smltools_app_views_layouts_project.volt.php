@@ -8,8 +8,8 @@
      <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
      <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?>
      <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?>
-     <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>
-     <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?>
+     <!-- <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>
+     <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?> -->
 
      <!-- css for regis page -->
 
@@ -34,10 +34,7 @@
                             <ul class="nav nav-pills flex-column sidebar-nav">
                                 <li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
                                 <li class="nav-item"><a class="nav-link" href="create"><em class="fa fa-calendar-o"></em>Create</a></li>
-                                <li class="nav-item"><a class="nav-link" href="charts.html"><em class="fa fa-bar-chart"></em> Charts</a></li>
-                                <li class="nav-item"><a class="nav-link" href="elements.html"><em class="fa fa-hand-o-up"></em> UI Elements</a></li>
-                                <li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li>
-                            </ul>
+                               </ul>
                             
                             <a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
                         </nav>
