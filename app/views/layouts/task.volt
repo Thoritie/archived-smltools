@@ -56,6 +56,7 @@
          {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}
          {{ javascript_include('scrollreveal/scrollreveal.min.js') }}
          {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}
+        
          
         
         {{ javascript_include('jslif/sb-admin.js') }}
