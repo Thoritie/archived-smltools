@@ -19,38 +19,18 @@
           <?= $this->tag->stylesheetLink('jslif/app.css') ?>
           <?= $this->tag->stylesheetLink('jslif/sb-admin-override.css') ?>
 
-          <!-- navbar new  -->
-         
-        <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?>
-        <?= $this->tag->stylesheetLink('project/css/style.css') ?> 
-          
-
     </head>
-
     <body id="page-top">
-            <div class="container-fluid" id="wrapper">
-                    <div class="row">
-                        <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-                            <h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> Brand.name</a></h1>
-                            
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
-                            
-                            <ul class="nav nav-pills flex-column sidebar-nav">
-                                <li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="create"><em class="fa fa-calendar-o"></em>Create</a></li>
-                                <li class="nav-item"><a class="nav-link" href="charts.html"><em class="fa fa-bar-chart"></em> Charts</a></li>
-                                <li class="nav-item"><a class="nav-link" href="elements.html"><em class="fa fa-hand-o-up"></em> UI Elements</a></li>
-                                <li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li>
-                            </ul>
-                            
-                            <a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
-                        </nav>
-            <div class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
-                    <?= $this->getContent() ?>
-            </div>
+        <div>
+            <?= $this->getContent() ?>
         </div>
-    </div>
 
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+        <!-- Latest compiled and minified JavaScript -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+        
         <!-- js for home -->
         
         <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>        
@@ -66,6 +46,13 @@
         <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>        
         <?= $this->tag->javascriptInclude('dist/jquery.validate.js') ?>
         
+        <!-- <?= $this->tag->javascriptInclude('nav/js/creative.js') ?> -->
+        <?= $this->tag->javascriptInclude('jquery/checkLogin.js') ?>
+        <?= $this->tag->javascriptInclude('jquery/signinvalidate.js') ?>
+        <?= $this->tag->javascriptInclude('home/global.js') ?>
+
+        
+
         
         <!-- auto tag js edit lif -->
         
