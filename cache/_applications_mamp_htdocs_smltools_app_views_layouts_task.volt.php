@@ -4,8 +4,8 @@
         <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
         <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?>
         <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?>
-        <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>
-        <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?>
+        <!-- <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>
+        <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?> -->
 
         <!-- css for regis page -->
 
