@@ -1,7 +1,7 @@
 <?php 
 use Phalcon\Mvc\Collection;  
 
-class Stakeholder extends Collection { 
+class Stakeholders extends Collection { 
    public function initialize() { 
       $this->setSource("stakeholders"); 
    } 
