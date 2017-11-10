@@ -10,6 +10,14 @@
   
     </head>
     <body>
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                    <a class="navbar-brand">Navbar</a>
+                    <form class="form-inline">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+            </nav>
+
             <div class="container-fluid" id="wrapper">
                     <div class="row">
                         <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">

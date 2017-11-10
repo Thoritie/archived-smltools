@@ -4,8 +4,6 @@
         <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
         <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?>
         <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?>
-        <!-- <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>
-        <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?> -->
 
         <!-- css for regis page -->
 
@@ -22,7 +20,7 @@
           <!-- navbar new  -->
          
         <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?>
-        <?= $this->tag->stylesheetLink('project/css/style.css') ?> 
+        <?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
           
 
     </head>
