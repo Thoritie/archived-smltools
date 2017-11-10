@@ -21,7 +21,9 @@
     <body>
             <div class="">
                     <nav class="navbar navbar-expand-lg padnav-rl">
-                            <a class="navbar-brand" href="#">Navbar</a>
+                           
+                            <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">SMLTOOLS</a></div>
+                            
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                               <span class="navbar-toggler-icon"></span>
                             </button>
@@ -49,10 +51,15 @@
                                   <a class="nav-link disabled" href="#">Disabled</a>
                                 </li>
                               </ul>
-                              <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                              </form>
+                              <div class="column column-30">
+                                    <div class="user-section"><a href="#">
+                                        <img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+                                        <div class="username">
+                                            <h4>User Name</h4>
+                                            <p>Administrator</p>
+                                        </div>
+                                    </a></div>
+                                </div>
                             </div>
                           </nav>
                     <!-- <div class="row">
