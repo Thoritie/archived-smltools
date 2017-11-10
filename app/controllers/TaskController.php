@@ -13,7 +13,7 @@ class TaskController extends ControllerBase
         // }
         // $task = Task::Find(array($condition));
         
-        $task = Task::Find();
+        $task = Tasks::Find();
 
         $this->view->task = $task;
 
@@ -26,20 +26,20 @@ class TaskController extends ControllerBase
 
     public function saveAction()
     {
-        $task = new Task();
+        $task = new Tasks();
         $task->name = $this->request->getPost("taskname");
         $task->isA = $this->request->getPost("isA");
         $task->Description = $this->request->getPost("Description");
         $task->includes = $this->request->getPost("includes");
         $task->asIsState = $this->request->getPost("asIsState");
-        $task->owner = explode(",", $this->request->getPost("owner"));
-        $task->collaburator = explode(",", $this->request->getPost("collaburator"));
-        $task->regulator = explode(",", $this->request->getPost("regulator"));
+        $task->owner = $this->request->getPost("owner");
+        $task->collaburator = $this->request->getPost("collaburator");
+        $task->regulator = $this->request->getPost("regulator");
         $task->uses = $this->request->getPost("uses");
         $task->produces = $this->request->getPost("produces");
         $task->toBeState = $this->request->getPost("toBeState");
-        $task->ownerToBe = explode(",", $this->request->getPost("ownerToBe"));
-        $task->collaboratorToBe = explode(",", $this->request->getPost("collaboratorToBe"));
+        $task->ownerToBe = $this->request->getPost("ownerToBe");
+        $task->collaboratorToBe =  $this->request->getPost("collaboratorToBe");
         $task->toUse = $this->request->getPost("toUse");
         $task->toProduce = $this->request->getPost("toProduce");
         
@@ -58,14 +58,14 @@ class TaskController extends ControllerBase
 
             return;
         }
-
+        return;
         // $this->flash->success("teacher was created successfully");
 
         // $this->dispatcher->forward([
         //     'controller' => "task",
         //     'action' => 'index'
         // ]);
-        return $this->response->redirect("task/index");
+        // return $this->response->redirect("task/index");
     }
 
     public function findStakeAction()
@@ -79,7 +79,7 @@ class TaskController extends ControllerBase
             $condition["project"] = $input;
         }
 
-        $test = Stakeholder::Find(array($condition));
+        $test = Stakeholders::Find(array($condition));
 
         return json_encode($test);
     }
@@ -104,7 +104,7 @@ class TaskController extends ControllerBase
     public function editAction($name)
     {
  
-                $task = Task::findFirst([
+                $task = Tasks::findFirst([
                     [
                         "name" => $name,
                     ]
@@ -140,6 +140,14 @@ class TaskController extends ControllerBase
                
         }
     
+    public function testAction()
+    {
+         
+        $this->view->disable();
+        $input = $this->request->getPost('name');
+        
+        return json_encode($input);
+    }
 
 }
 
