@@ -10,6 +10,7 @@ $(document).ready(function() {
             item ["value"] = i;
             item ["text"] = data.name;
             item ["continent"] = "";
+            item ["index"] = data._id.$id;
             i++
             jsonObj.push(item);
         });
@@ -19,7 +20,7 @@ $(document).ready(function() {
         item ["text"] = "?";
         item ["continent"] = "";
         jsonObj.push(item);
-
+       
         return jsonObj;
     }
 
@@ -49,6 +50,7 @@ $(document).ready(function() {
                 }
             }
         });
+
     }
 
     ///---------------input id collaburator
@@ -131,6 +133,7 @@ $(document).ready(function() {
             project : project
         }, function(data){
                 var auto = createJSON(data);
+                console.log(auto);
                 var n = createString(auto);
                 tagOwner(n);
                 tagCollaburator(n);
@@ -151,13 +154,13 @@ $(document).ready(function() {
             var owner = $("#owner").tagsinput('items')
             item1 = {};
             $.each(owner, function(index ,input){   
-                item1 [index] = input.text
+                item1 [index] = input.index
             });
 
             var collaburator = $("#collaburator").tagsinput('items')
             item2 = {};
             $.each(collaburator, function(index ,input){   
-                item2 [index] = input.text
+                item2 [index] = input.index
             });
             var regulator = $("#regulator").val();
             var uses = $("#uses").val();
@@ -167,16 +170,17 @@ $(document).ready(function() {
             var ownerToBe = $("#ownerToBe").tagsinput('items')
             item3 = {};
             $.each(ownerToBe, function(index ,input){   
-                item3 [index] = input.text
+                item3 [index] = input.index
             });
             var collaboratorToBe = $("#collaboratorToBe").tagsinput('items')
             item4 = {};
             $.each(collaboratorToBe, function(index ,input){   
-                item4 [index] = input.text
+                item4 [index] = input.index
             });
             var toUse = $("#toUse").val();
             var toProduce = $("#toProduce").val();
-
+           
+           
                 $.post("save", {
                     taskname : taskname,
                     isA : isA,
@@ -194,7 +198,7 @@ $(document).ready(function() {
                     toUse : toUse,
                     toProduce : toProduce
                 }, function (data) {
-                    
+                  
                 },"json");
             });
 });
