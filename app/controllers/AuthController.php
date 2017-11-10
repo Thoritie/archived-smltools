@@ -35,7 +35,7 @@ class AuthController extends ControllerBase
                     {
                         $this->session->set("login", $user->_id);
                         $this->flashSession->success("Successful login");
-                        return $this->response->redirect("project");
+                        return $this->response->redirect("project/index");
                     }
                     } else 
                     {

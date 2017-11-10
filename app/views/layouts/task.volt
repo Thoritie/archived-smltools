@@ -5,21 +5,16 @@
         {{ stylesheet_link('magnific-popup/magnific-popup.css')}}
         {{ stylesheet_link('device-mockups/device-mockups.min.css') }}
 
-        <!-- css for regis page -->
-
-        {{ stylesheet_link('sml/regis.css') }}
-        {{ stylesheet_link('sml/navindex.css') }}
+        <!-- css for dashboard page -->
 
         
-       
           <!-- auto tag css edit lif -->
           {{ stylesheet_link('jslif/bootstrap-tagsinput.css') }}
           {{ stylesheet_link('jslif/app.css') }}
+          {{ stylesheet_link('jslif/sb-admin.css') }} 
           {{ stylesheet_link('jslif/sb-admin-override.css') }}
 
-          <!-- navbar new  -->
-         
-        {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }}
+          
         {{ stylesheet_link('pro/css/style.css') }} 
           
 
@@ -49,29 +44,29 @@
         </div>
     </div>
 
-        <!-- js for home -->
-        
-        {{ javascript_include('popper/popper.min.js') }}        
-        {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}        
-        {{ javascript_include('jquery-easing/jquery.easing.min.js') }}                
-        {{ javascript_include('scrollreveal/scrollreveal.min.js') }}        
-        {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}        
-        {{ javascript_include('nav/js/creative.js') }}
+       
 
         <!-- navbar js -->
-        {{ javascript_include('jquery/jquery.min.js') }}
+        <!-- {{ javascript_include('jquery/jquery.min.js') }} -->
         {{ javascript_include('jquery/jquery.js') }}
-        {{ javascript_include('jquery/jquery.min.js') }}        
-        {{ javascript_include('dist/jquery.validate.js')}}
+
+         <!-- js for dashboard -->
+         {{ javascript_include('jquery/jquery.min.js') }}
+         {{ javascript_include('popper/popper.min.js') }}
+         {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}
+         {{ javascript_include('scrollreveal/scrollreveal.min.js') }}
+         {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}
         
+         
         
+        {{ javascript_include('jslif/sb-admin.js') }}
         <!-- auto tag js edit lif -->
-        
+       
         {{ javascript_include('jslif/jquery.easing.min.js') }}
         {{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') }}
         {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
         {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
-        
+        {{ javascript_include('jslif/sb-admin.min.js') }}
         {{ javascript_include('jslif/tag.js') }}
 
         
