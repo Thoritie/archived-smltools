@@ -109,6 +109,15 @@ h1, h2 {
     padding-top: 80px !important;
 }
 
+.padnav-top{
+    padding-top: 20px !important;
+}
+
+.padnav-rl{
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+
 
 .white{
     background-color: white;

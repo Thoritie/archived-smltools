@@ -226,6 +226,15 @@ body {
   
   .sidebar {
     position: fixed;
+    z-index: 0;
+    width: 20% !important;
+    background: #fff;
+    padding: 10px 30px !important;
+    box-shadow: 3px 0px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 80px;
+    height: 100%;
+}
+    /* position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -234,10 +243,12 @@ body {
     padding-right: 0;
     z-index: 1000;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto; */
     /* Scrollable contents if viewport is shorter than content. */
     /* border-right: 1px solid #eee; */
-    background: #ffffff; }
+    /* background: #ffffff; } */
+
+    
     .sidebar a {
       color: #8a8a8a;
       text-transform: uppercase;
