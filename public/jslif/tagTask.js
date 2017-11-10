@@ -27,15 +27,11 @@ $(document).ready(function() {
         return JSON.stringify(auto)
     }
 
-
-    //input id owner
-
     function tagOwner(n){
         var Stakeholder = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(n)
-    
         });
         
         Stakeholder.initialize();
@@ -53,20 +49,7 @@ $(document).ready(function() {
                 }
             }
         });
-        
     }
-
-            //findStake ชื่อ action return name stakeholder กลับมา
-        var project = "1";     //input project id .val()
-
-        $.post("findStake",{
-            project : project
-        }, function(data){
-                var auto = createJSON(data);
-                var n = createString(auto);
-                tagOwner(n);
-        },  "json");
- 
 
     ///---------------input id collaburator
 
@@ -75,7 +58,6 @@ $(document).ready(function() {
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(n)
-    
         });
         
         Stakeholder.initialize();
@@ -93,107 +75,13 @@ $(document).ready(function() {
                 }
             }
         });
-       
     }
-
-        var project = "1";     //input project id .val()
-
-        $.post("findStake",{
-            project : project
-        }, function(data){
-                var auto = createJSON(data);
-                var n = createString(auto);
-                tagCollaburator(n);
-        },  "json");
-
-
-
-    ///---------------input id regulator
-
-    function tagRegulator(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-    
-        });
-        
-        Stakeholder.initialize();
-    
-        var regulator = $('#regulator');
-        regulator.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div class="empty-message text-info"> No matches.</div>'
-                }
-            }
-        });
-        
-    }
-
-        var project = "1";     //input project id .val()
-
-        $.post("findStake",{
-            project : project
-        }, function(data){
-                var auto = createJSON(data);
-                var n = createString(auto);
-                tagRegulator(n);
-        },  "json");
-
-
- ///---------------input id regulator
-
-    function tagRegulator(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-    
-        });
-        
-        Stakeholder.initialize();
-    
-        var regulator = $('#regulator');
-        regulator.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div class="empty-message text-info"> No matches.</div>'
-                }
-            }
-        });
-       
-    }
-
-        var project = "1";     //input project id .val()
-
-        $.post("findStake",{
-            project : project
-        }, function(data){
-                var auto = createJSON(data);
-                var n = createString(auto);
-                tagRegulator(n);
-        },  "json");
-
-
-     ///---------------input id ownerToBe
 
      function tagOwnerToBe(n){
         var Stakeholder = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(n)
-    
         });
         
         Stakeholder.initialize();
@@ -211,28 +99,13 @@ $(document).ready(function() {
                 }
             }
         });
-       
     }
-
-        var project = "1";     //input project id .val()
-
-        $.post("findStake",{
-            project : project
-        }, function(data){
-                var auto = createJSON(data);
-                var n = createString(auto);
-                tagOwnerToBe(n);
-        },  "json");
-        
-    
-     ///---------------input id collaboratorToBe
 
     function tagcollaboratorToBe(n){
         var Stakeholder = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(n)
-    
         });
         
         Stakeholder.initialize();
@@ -250,8 +123,6 @@ $(document).ready(function() {
                 },
             }
         });
-      
-
     }
 
         var project = "1";     //input project id .val()
@@ -261,9 +132,14 @@ $(document).ready(function() {
         }, function(data){
                 var auto = createJSON(data);
                 var n = createString(auto);
+                tagOwner(n);
+                tagCollaburator(n);
+                tagOwnerToBe(n);
                 tagcollaboratorToBe(n);
         },  "json");
 
+
+        
         //save task
         $('#saveTask').click(function () {
             var taskname = $("#taskname").val();
