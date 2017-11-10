@@ -2,6 +2,8 @@
         <!-- css for pro -->
         <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?>
         <?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
+        <?= $this->tag->stylesheetLink('sml/regis.css') ?>
+        <?= $this->tag->stylesheetLink('sml/navindex.css') ?>
         
      <!-- css for home -->
      <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
@@ -10,7 +12,7 @@
   
     </head>
     <body>
-            <nav class="navbar navbar-light bg-light justify-content-between">
+            <nav class="white navcolor navbar navbar-light bg-light justify-content-between">
                     <a class="navbar-brand">Navbar</a>
                     <form class="form-inline">
                       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -20,7 +22,7 @@
 
             <div class="container-fluid" id="wrapper">
                     <div class="row">
-                        <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
+                        <nav class="white sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
                             <h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> Brand.name</a></h1>
                             
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
@@ -57,7 +59,7 @@
         scaleGridLineColor: "rgba(0,0,0,.05)",
         scaleFontColor: "#c5c7cc"
         });
-    };
+        };
         </script>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
