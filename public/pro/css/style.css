@@ -236,10 +236,10 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     /* Scrollable contents if viewport is shorter than content. */
-    border-right: 1px solid #eee;
-    background: #383c42; }
+    /* border-right: 1px solid #eee; */
+    background: #ffffff; }
     .sidebar a {
-      color: #fff;
+      color: #8a8a8a;
       text-transform: uppercase;
       font-size: .7rem;
       letter-spacing: .2rem;
@@ -288,7 +288,7 @@ body {
     right: 1rem; }
   
   .sidebar a:focus, .sidebar a:visited, .sidebar a:hover, .sidebar a:active {
-    background-color: #3093ab !important; }
+    background-color: #e3eef1 !important; }
   
   @media screen and (max-width: 576px) {
     #wrapper .sidebar-nav {

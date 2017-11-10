@@ -2,6 +2,8 @@
         <!-- css for pro -->
         {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }}
         {{ stylesheet_link('pro/css/style.css') }} 
+        {{ stylesheet_link('sml/regis.css') }}
+        {{ stylesheet_link('sml/navindex.css') }}
         
      <!-- css for home -->
      {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }}
@@ -10,9 +12,17 @@
   
     </head>
     <body>
+            <nav class="white navcolor navbar navbar-light bg-light justify-content-between">
+                    <a class="navbar-brand">Navbar</a>
+                    <form class="form-inline">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+            </nav>
+
             <div class="container-fluid" id="wrapper">
                     <div class="row">
-                        <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
+                        <nav class="white sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
                             <h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> Brand.name</a></h1>
                             
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
