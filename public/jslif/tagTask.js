@@ -254,13 +254,6 @@ $(document).ready(function() {
 
     }
 
-
-        // var tags = $('#collaboratorToBe').val()
-        // var qes ="1";
-        // console.log(qes.indexOf(tags));
-        // if(qes.indexOf(tags) > -1){
-        //     $('#collaboratorToBe').tagsinput('removeAll');
-        // }
         var project = "1";     //input project id .val()
 
         $.post("findStake",{
@@ -271,5 +264,61 @@ $(document).ready(function() {
                 tagcollaboratorToBe(n);
         },  "json");
 
+        //save task
+        $('#saveTask').click(function () {
+            var taskname = $("#taskname").val();
+            var isA = $("#isA").val();
+            var Description = $("#isA").val();
+            var includes = $("#includes").val();
+            var asIsState = $("#asIsState").val();
+           
+            var owner = $("#owner").tagsinput('items')
+            item1 = {};
+            $.each(owner, function(index ,input){   
+                item1 [index] = input.text
+            });
 
+            var collaburator = $("#collaburator").tagsinput('items')
+            item2 = {};
+            $.each(collaburator, function(index ,input){   
+                item2 [index] = input.text
+            });
+            var regulator = $("#regulator").val();
+            var uses = $("#uses").val();
+            var produces = $("#produces").val();
+            var toBeState = $("#toBeState").val();
+
+            var ownerToBe = $("#ownerToBe").tagsinput('items')
+            item3 = {};
+            $.each(ownerToBe, function(index ,input){   
+                item3 [index] = input.text
+            });
+            var collaboratorToBe = $("#collaboratorToBe").tagsinput('items')
+            item4 = {};
+            $.each(collaboratorToBe, function(index ,input){   
+                item4 [index] = input.text
+            });
+            var toUse = $("#toUse").val();
+            var toProduce = $("#toProduce").val();
+
+                $.post("save", {
+                    taskname : taskname,
+                    isA : isA,
+                    Description : Description,
+                    includes : includes,
+                    asIsState : asIsState,
+                    owner : item1,
+                    collaburator : item2,
+                    regulator : regulator,
+                    uses : uses,
+                    produces : produces,
+                    toBeState : toBeState,
+                    ownerToBe : item3,
+                    collaboratorToBe : item4,
+                    toUse : toUse,
+                    toProduce : toProduce
+                }, function (data) {
+                    
+                },"json");
+            });
 });
