@@ -35,7 +35,9 @@
                 <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
                 <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
                 <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
-                <!-- <?= $this->tag->javascriptInclude('jslif/tagTask.js') ?> -->
+                <?= $this->tag->javascriptInclude('jslif/tagTaskCreate.js') ?>
+                
+                
 
     </head>
 

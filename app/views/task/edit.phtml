@@ -30,7 +30,7 @@
 
 
 <div class="formshow hero">
-  <h2 class="headform textCenter">Create Task</h2>
+  <h2 class="headform textCenter">Edit Task</h2>
   <?php
                     echo $this->tag->form(
                         [
@@ -42,7 +42,7 @@
                 ?>
 
     <?php 
-                             echo $this->tag->textField(["idtask", "id" => "idtask" , "value" => $idTask]) ;
+                             echo $this->tag->hiddenField(["idtask", "id" => "idtask" , "value" => $idTask]) ;
           
                         ?>
 
@@ -51,7 +51,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["taskname", "size" => 30, 
-                            "class" => "form-control", "id" => "name" , "placeholder"=>"task name"]) 
+                            "class" => "form-control", "id" => "Edname" , "placeholder"=>"task name"]) 
                         ?>
       </div>
     </div>
@@ -60,7 +60,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["isA", "size" => 30, 
-                            "class" => "form-control", "id" => "isA" , "placeholder"=>"isA"]) 
+                            "class" => "form-control", "id" => "EdisA" , "placeholder"=>"isA"]) 
                         ?>
       </div>
     </div>
@@ -69,7 +69,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textArea(["Description", "class" => "form-control", 
-                            "id" => "Description" , "placeholder"=>"Description","rows" => 3,]) 
+                            "id" => "EdDescription" , "placeholder"=>"Description","rows" => 3,]) 
                         ?>
       </div>
     </div>
@@ -78,7 +78,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["includes", "size" => 30, 
-                            "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
+                            "class" => "form-control", "id" => "Edincludes" , "placeholder"=>"includes"]) 
                         ?>
       </div>
     </div>
@@ -87,7 +87,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->selectStatic(["asIsState", "class" => "form-control", 
-                            "id" => "asIsState" 
+                            "id" => "easIsState" 
                             ,[
                                 "E" => "EXIST",
                                 "N" => "NEXIST",
@@ -101,18 +101,17 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["owner", "size" => 30, 
-                            "class" => "form-control", "id" => "owner" ]) 
+                            "class" => "form-control", "id" => "Edowner" ]) 
                         ?>
 
-        <button class="btn" type="button" onclick="createOwner($('#owner'));">New</button>
       </div>
     </div>
     <div class="form-group row">
       <label for="project" class="col-sm-2 col-form-label">collaburator</label>
       <div class="col-sm-6">
         <?php 
-                            echo $this->tag->textField(["collaburator", "size" => 30, 
-                            "class" => "form-control", "id" => "collaburator" ]) 
+                            echo $this->tag->textField(["Edcollaburator", "size" => 30, 
+                            "class" => "form-control", "id" => "Edcollaburator" ]) 
                         ?>
       </div>
     </div>
@@ -121,7 +120,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["regulator", "size" => 30, 
-                            "class" => "form-control", "id" => "regulator"]) 
+                            "class" => "form-control", "id" => "Edregulator"]) 
                         ?>
       </div>
     </div>
@@ -130,7 +129,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["uses", "size" => 30, 
-                            "class" => "form-control", "id" => "uses" , "placeholder"=>"uses"]) 
+                            "class" => "form-control", "id" => "Eduses" , "placeholder"=>"uses"]) 
                         ?>
       </div>
     </div>
@@ -139,7 +138,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["produces", "size" => 30, 
-                            "class" => "form-control", "id" => "produces" , "placeholder"=>"produces"]) 
+                            "class" => "form-control", "id" => "Edproduces" , "placeholder"=>"produces"]) 
                         ?>
       </div>
     </div>
@@ -148,7 +147,7 @@
       <div class="col-sm-4">
         <?php 
                             echo $this->tag->selectStatic(["toBeState", "class" => "form-control", 
-                            "id" => "toBeState" 
+                            "id" => "EdtoBeState" 
                             ,[
                                 "E" => "EXIST",
                                 "N" => "NEXIST",
@@ -162,8 +161,8 @@
       <label for="project" class="col-sm-2 col-form-label">ownerToBe</label>
       <div class="col-sm-6">
         <?php 
-                            echo $this->tag->textField(["ownerToBe", "size" => 30, 
-                            "class" => "form-control", "id" => "ownerToBe"]) 
+                            echo $this->tag->textField(["EdownerToBe", "size" => 30, 
+                            "class" => "form-control", "id" => "EdownerToBe"]) 
                         ?>
       </div>
     </div>
@@ -171,8 +170,8 @@
       <label for="project" class="col-sm-2 col-form-label">collaboratorToBe</label>
       <div class="col-sm-6">
         <?php 
-                            echo $this->tag->textField(["collaboratorToBe", "size" => 30, 
-                            "class" => "form-control", "id" => "collaboratorToBe" ]) 
+                            echo $this->tag->textField(["EdcollaboratorToBe", "size" => 30, 
+                            "class" => "form-control", "id" => "EdcollaboratorToBe" ]) 
                         ?>
       </div>
     </div>
@@ -181,15 +180,11 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["toUse", "size" => 30, 
-                            "class" => "form-control", "id" => "toUse"]) 
+                            "class" => "form-control", "id" => "EdtoUse"]) 
                         ?>
       </div>
 
-      <div class="float-right pl-3">
-        <button type="button" class="btn btn-active" data-toggle="modal" data-target="#exampleModal2">
-          <i class="fa fa-fw fa-plus"></i>
-        </button>
-      </div>
+      
 
     </div>
     <div class="form-group row">
@@ -197,7 +192,7 @@
       <div class="col-sm-6">
         <?php 
                             echo $this->tag->textField(["toProduce", "size" => 30, 
-                            "class" => "form-control", "id" => "toProduce" , "placeholder"=>"toProduce"]) 
+                            "class" => "form-control", "id" => "etoProduce" , "placeholder"=>"toProduce"]) 
                         ?>
       </div>
     </div>
@@ -215,24 +210,34 @@
 </div>
 
 <script>
-
-  var test = '[ { "value": 1 , "text": "Amsterdam" , "continent": "Europe" }, { "value": 2 , "text": "London" , "continent": "Europe" }, { "value": 3 , "text": "Paris" , "continent": "Europe" }, { "value": 4 , "text": "Washington" , "continent": "America" }, { "value": 5 , "text": "Mexico City" , "continent": "America" }, { "value": 6 , "text": "Buenos Aires", "continent": "America" }, { "value": 7 , "text": "Sydney" , "continent": "Australia" }, { "value": 8 , "text": "Wellington" , "continent": "Australia" }, { "value": 9 , "text": "Canberra" , "continent": "Australia" }, { "value": 10, "text": "Beijing" , "continent": "Asia" }, { "value": 11, "text": "New Delhi" , "continent": "Asia" }, { "value": 12, "text": "Kathmandu" , "continent": "Asia" }, { "value": 13, "text": "Cairo" , "continent": "Africa" }, { "value": 14, "text": "Cape Town" , "continent": "Africa" }, { "value": 15, "text": "Kinshasa" , "continent": "Africa" } ]';
+                  
+  var js_test = '<?php echo json_encode($test); ?>';
+  js_test = JSON.parse(js_test);
+  js_test = createJSON(js_test);
+  js_test = JSON.stringify(js_test);
+ 
+ 
+  var data_owner = '<?php echo json_encode($owner); ?>';
+ 
+  var data_collaburator = '<?php echo json_encode($collaburator); ?>';
   
-  var js_data = '<?php echo json_encode($owner); ?>';
-
+  var data_ownerTobe = '<?php echo json_encode($ownerTobe); ?>';
+  var data_collaboratorTobe = '<?php echo json_encode($collaboratorTobe); ?>';
+  
+  
 
   $(document).ready(function(){
 
     var Stakeholder = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: JSON.parse(test)
+      local: JSON.parse(js_test)
     });
 
     Stakeholder.initialize();
 
-    var collaboratorToBe = $('#owner');
-    collaboratorToBe.tagsinput({
+    var EdownerToBe = $('#EdownerToBe');
+    EdownerToBe.tagsinput({
       itemValue: 'value',
       itemText: 'text',
       typeaheadjs: {
@@ -244,15 +249,62 @@
         },
       }
     });
+    add(EdownerToBe, data_ownerTobe);
 
-    add(collaboratorToBe, js_data);
 
-  });
+    var Edowner = $('#Edowner');
+    Edowner.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Stakeholder.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(Edowner, data_owner);
+
+
+    var Edcollaburator = $('#Edcollaburator');
+    Edcollaburator.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Stakeholder.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(Edcollaburator, data_collaburator);
+   
+
+    var EdcollaboratorToBe = $('#EdcollaboratorToBe');
+    EdcollaboratorToBe.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Stakeholder.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(EdcollaboratorToBe, data_collaboratorTobe);
+ 
+});
 
 
   function add($elt, data){
-      $.each(JSON.parse(data), function(index ,value){   
-        $elt.tagsinput('add', { "value": value, "text": value, "continent": "" });
+      $.each(JSON.parse(data), function(index ,data){   
+        $elt.tagsinput('add', { "value": data.value, "text": data.name, "continent": "" });
       });
   }
 
@@ -260,4 +312,26 @@
     $elt.tagsinput('add', { "value": 5555, "text": "new owner", "continent": "" });
   }
 
+  function createJSON(data) {
+        jsonObj = [];
+        var i = 2;
+        $.each(data, function(index ,data){
+
+            item = {};
+            item ["value"] = data.value;
+            item ["text"] = data.name;
+            item ["continent"] = "";
+            item ["index"] = data._id.$id;
+            i++;
+            jsonObj.push(item);
+        });
+
+        item = {};
+        item ["value"] = 0;
+        item ["text"] = "?";
+        item ["continent"] = "";
+        jsonObj.push(item);
+       
+        return jsonObj;
+  }
 </script>

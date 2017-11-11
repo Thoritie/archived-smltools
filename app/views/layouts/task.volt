@@ -35,7 +35,9 @@
                 {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
                 {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
                 {{ javascript_include('jslif/sb-admin.min.js') }}
-                <!-- {{ javascript_include('jslif/tagTask.js') }} -->
+                {{ javascript_include('jslif/tagTaskCreate.js') }}
+                
+                
 
     </head>
 
