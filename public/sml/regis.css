@@ -1,7 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Hind+Siliguri:300,600|Martel:400,900);
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);/*!
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+    font-family: Hind Siliguri,Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    line-height: 1.42857;
+    color: #838383;
+    background-color: #fff;
+}
 .formshow {
     margin: auto;
     width: 50%;
-    padding: 10px;
+    padding: 50px;
 }
 .formadd{
     margin: auto;
@@ -50,4 +69,24 @@
     height: 1px;
     background: #dfdfdf;
     
+}
+
+.custom-select.is-invalid, .form-control.is-invalid, .was-validated .custom-select:invalid, .was-validated .form-control:invalid {
+    border-color: #dc3545;
+}
+.badge-danger {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
 }

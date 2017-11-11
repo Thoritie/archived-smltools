@@ -56,7 +56,7 @@ p.text-small {
   text-align: right; }
 
 a {
-  color: #35cebe; }
+  color: #5092d4; }
 
 a:focus, a:hover {
   color: #25beae; }
@@ -145,11 +145,11 @@ input[type='email'], input[type='number'], input[type='password'], input[type='s
   border: 1px solid #f9f9f9 !important; }
 
 input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus {
-  border: 1px solid #35cebe !important; }
+  border: 1px solid #5092d4 !important; }
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
-  background-color: #35cebe;
-  border: 0.1rem solid #35cebe;
+  background-color: #5092d4;
+  border: 0.1rem solid #5092d4;
   border-radius: 499rem;
   font-size: 1.15rem; }
 
@@ -164,12 +164,12 @@ input[type='email']:focus, input[type='number']:focus, input[type='password']:fo
   opacity: .5; }
 
 .button[disabled]:focus, .button[disabled]:hover, button[disabled]:focus, button[disabled]:hover, input[type='button'][disabled]:focus, input[type='button'][disabled]:hover, input[type='reset'][disabled]:focus, input[type='reset'][disabled]:hover, input[type='submit'][disabled]:focus, input[type='submit'][disabled]:hover {
-  background-color: #35cebe;
-  border-color: #35cebe; }
+  background-color: #5092d4;
+  border-color: #5092d4; }
 
 .button.button-outline, button.button-outline, input[type='button'].button-outline, input[type='reset'].button-outline, input[type='submit'].button-outline {
   background-color: transparent;
-  color: #35cebe; }
+  color: #5092d4; }
 
 .button.button-outline:focus, .button.button-outline:hover, button.button-outline:focus, button.button-outline:hover, input[type='button'].button-outline:focus, input[type='button'].button-outline:hover, input[type='reset'].button-outline:focus, input[type='reset'].button-outline:hover, input[type='submit'].button-outline:focus, input[type='submit'].button-outline:hover {
   background-color: transparent;
@@ -178,12 +178,12 @@ input[type='email']:focus, input[type='number']:focus, input[type='password']:fo
 
 .button.button-outline[disabled]:focus, .button.button-outline[disabled]:hover, button.button-outline[disabled]:focus, button.button-outline[disabled]:hover, input[type='button'].button-outline[disabled]:focus, input[type='button'].button-outline[disabled]:hover, input[type='reset'].button-outline[disabled]:focus, input[type='reset'].button-outline[disabled]:hover, input[type='submit'].button-outline[disabled]:focus, input[type='submit'].button-outline[disabled]:hover {
   border-color: inherit;
-  color: #35cebe; }
+  color: #5092d4; }
 
 .button.button-clear, button.button-clear, input[type='button'].button-clear, input[type='reset'].button-clear, input[type='submit'].button-clear {
   background-color: transparent;
   border-color: transparent;
-  color: #35cebe; }
+  color: #5092d4; }
 
 .button.button-clear:focus, .button.button-clear:hover, button.button-clear:focus, button.button-clear:hover, input[type='button'].button-clear:focus, input[type='button'].button-clear:hover, input[type='reset'].button-clear:focus, input[type='reset'].button-clear:hover, input[type='submit'].button-clear:focus, input[type='submit'].button-clear:hover {
   background-color: transparent;
@@ -191,7 +191,7 @@ input[type='email']:focus, input[type='number']:focus, input[type='password']:fo
   color: #333; }
 
 .button.button-clear[disabled]:focus, .button.button-clear[disabled]:hover, button.button-clear[disabled]:focus, button.button-clear[disabled]:hover, input[type='button'].button-clear[disabled]:focus, input[type='button'].button-clear[disabled]:hover, input[type='reset'].button-clear[disabled]:focus, input[type='reset'].button-clear[disabled]:hover, input[type='submit'].button-clear[disabled]:focus, input[type='submit'].button-clear[disabled]:hover {
-  color: #35cebe; }
+  color: #5092d4; }
 
 input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], textarea, select {
   border: 0.1rem solid #eee !important;
@@ -202,7 +202,7 @@ input[type='email'], input[type='number'], input[type='password'], input[type='s
   max-width: 60rem; }
 
 input[type='email']:focus, input[type='number']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus, textarea:focus, select:focus {
-  border-color: #35cebe;
+  border-color: #5092d4;
   outline: 0; }
 
 select {
@@ -222,7 +222,7 @@ select:focus {
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05); }
   .navbar a.site-title {
     color: #222;
-    color: #35cebe;
+    color: #5092d4;
     font-size: 2.3rem;
     font-weight: bold;
     display: block;
@@ -274,7 +274,7 @@ select:focus {
         #sidebar ul li a .fa {
           margin-right: 5px; }
       #sidebar ul li a:hover {
-        color: #35cebe;
+        color: #5092d4;
         background-color: #f9f9f9; }
 
 #main-content {
@@ -309,7 +309,7 @@ select:focus {
   margin-bottom: 2.2rem; }
 
 .user-section {
-  margin-top: -8px;
+  margin-top: 15px;
   margin-right: 40px; }
   .user-section a {
     float: right; }
@@ -346,7 +346,7 @@ select:focus {
   background-color: #888; }
 
 .background-primary {
-  background: #35cebe; }
+  background: #5092d4; }
 
 .background-success {
   background: #aee460; }
@@ -530,6 +530,7 @@ select:focus {
     width: 95%; }
 
   .user-section {
-    margin-right: 20px; }
+    margin-right: 20px; 
+  }
     .user-section .username {
       display: none; } }

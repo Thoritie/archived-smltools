@@ -109,7 +109,6 @@
       </script>
     <?= $this->tag->javascriptInclude('homes/main.0cf8b554.js') ?>
     <?= $this->tag->javascriptInclude('homes/word.js') ?>
-    <!-- <script type="text/javascript" src="./main.0cf8b554.js"></script>       -->
 
 
         
