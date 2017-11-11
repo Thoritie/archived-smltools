@@ -18,7 +18,14 @@
      <!-- {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }}
      {{ stylesheet_link('magnific-popup/magnific-popup.css')}}
      {{ stylesheet_link('device-mockups/device-mockups.min.css') }}
-   -->
+
+    <!-- auto tag css edit lif -->
+    {{ stylesheet_link('jslif/bootstrap-tagsinput.css') }} 
+    {{ stylesheet_link('jslif/app.css') }}  
+     {{ stylesheet_link('jslif/sb-admin.css')}} 
+    {{ stylesheet_link('jslif/sb-admin-override.css') }} 
+     
+  
     </head>
     <body>
             <div class="">
@@ -71,21 +78,27 @@
         {{ javascript_include('pro/js/easypiechart.js') }}  
         {{ javascript_include('pro/js/easypiechart-data.js') }}  
         {{ javascript_include('pro/js/bootstrap-datepicker.js') }}  
-        {{ javascript_include('Semantic/components/dropdown.js') }} 
-        {{ javascript_include('Semantic/components/dropdown.min.js') }}   
-    
+        {{ javascript_include('pro/js/custom.js') }}
+        {{ javascript_include('jslif/sb-admin.js') }}
+
+        <!-- tag input -->
+        {{ javascript_include('jslif/jquery.easing.min.js') }}
+        {{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js')}} 
+        {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
+        {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
+        {{ javascript_include('jslif/sb-admin.min.js') }}
+        {{ javascript_include('jslif/tagProject.js') }}
 
         <!-- <script>
             window.onload = function () {
-        var chart1 = document.getElementById("line-chart").getContext("2d");
-        window.myLine = new Chart(chart1).Line(lineChartData, {
-        responsive: true,
-        scaleLineColor: "rgba(0,0,0,.2)",
-        scaleGridLineColor: "rgba(0,0,0,.05)",
-        scaleFontColor: "#c5c7cc"
-        });
-        };
-        </script> -->
+                var chart1 = document.getElementById("line-chart").getContext("2d");
+                window.myLine = new Chart(chart1).Line(lineChartData, {
+                responsive: true,
+                scaleLineColor: "rgba(0,0,0,.2)",
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleFontColor: "#c5c7cc"
+                });
+            };
+        </script>
         
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
         

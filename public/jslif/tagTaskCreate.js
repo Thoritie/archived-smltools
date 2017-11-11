@@ -125,6 +125,7 @@ $(document).ready(function() {
                 },
             }
         });
+        collaboratorToBe.tagsinput('add', { "value": 1, "text": "?", "continent": "" });
     }
 
         var project = "1";     //input project id .val()
@@ -133,7 +134,6 @@ $(document).ready(function() {
             project : project
         }, function(data){
                 var auto = createJSON(data);
-                console.log(auto);
                 var n = createString(auto);
                 tagOwner(n);
                 tagCollaburator(n);
@@ -201,4 +201,7 @@ $(document).ready(function() {
                   
                 },"json");
             });
+
+           
+        
 });

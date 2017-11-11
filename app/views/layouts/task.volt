@@ -16,7 +16,26 @@
 
           
         {{ stylesheet_link('pro/css/style.css') }} 
-          
+        {{ javascript_include('jquery/jquery.js') }}
+        
+                 <!-- js for dashboard -->
+                 {{ javascript_include('jquery/jquery.min.js') }}
+                 {{ javascript_include('popper/popper.min.js') }}
+                 {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}
+                 {{ javascript_include('scrollreveal/scrollreveal.min.js') }}
+                 {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}
+                
+                 
+                
+                {{ javascript_include('jslif/sb-admin.js') }}
+                <!-- auto tag js edit lif -->
+               
+                {{ javascript_include('jslif/jquery.easing.min.js') }}
+                {{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') }}
+                {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
+                {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
+                {{ javascript_include('jslif/sb-admin.min.js') }}
+                <!-- {{ javascript_include('jslif/tagTask.js') }} -->
 
     </head>
 
@@ -48,25 +67,6 @@
 
         <!-- navbar js -->
         <!-- {{ javascript_include('jquery/jquery.min.js') }} -->
-        {{ javascript_include('jquery/jquery.js') }}
-
-         <!-- js for dashboard -->
-         {{ javascript_include('jquery/jquery.min.js') }}
-         {{ javascript_include('popper/popper.min.js') }}
-         {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}
-         {{ javascript_include('scrollreveal/scrollreveal.min.js') }}
-         {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}
-        
-         
-        
-        {{ javascript_include('jslif/sb-admin.js') }}
-        <!-- auto tag js edit lif -->
        
-        {{ javascript_include('jslif/jquery.easing.min.js') }}
-        {{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') }}
-        {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
-        {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
-        {{ javascript_include('jslif/sb-admin.min.js') }}
-        {{ javascript_include('jslif/tagTask.js') }}
 
         
