@@ -9,58 +9,47 @@ $(document).ready(function () {
             item["value"] = i;
             item["text"] = data.name;
             item["continent"] = "";
+            item["index"] = data._id.$id;
             i++
             jsonObj.push(item);
         });
-
-        item = {}
-        item["value"] = 1;
-        item["text"] = "?";
-        item["continent"] = "";
-        jsonObj.push(item);
-
         return jsonObj;
     }
-
     function createString(auto) {
         return JSON.stringify(auto)
     }
 
-    function tagOwner(n) {
-        var Stakeholder = new Bloodhound({
+    function tagPermission(n) {
+        var users = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(n)
-
         });
 
-        Stakeholder.initialize();
+        users.initialize();
 
-        var owner = $('#owner');
-        owner.tagsinput({
+        var permission = $('#permission');
+        permission.tagsinput({
             itemValue: 'value',
             itemText: 'text',
             typeaheadjs: {
-                name: 'name',
+                username: 'username',
                 displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
+                source: users.ttAdapter(),
                 templates: {
                     empty: '<div class="empty-message text-info"> No matches.</div>'
                 }
             }
         });
-
     }
 
-    //findStake ชื่อ action return name stakeholder กลับมา
-    var project = "1";     //input project id .val()
-
-    $.post("findStake", {
-        project: project
+    $.post("findUser", {
     }, function (data) {
         var auto = createJSON(data);
+        console.log(auto);
         var n = createString(auto);
-        tagOwner(n);
+        tagPermission(n);
     }, "json");
+
 
 });
