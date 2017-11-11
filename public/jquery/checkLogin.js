@@ -3,6 +3,19 @@ $(document).ready(function () {
         return this.optional(element) || /^\S+$/i.test(value);
     }, "No space please");
 
+    $.validator.addMethod("dupName", function (value, element) {
+        var response;
+      
+            $.post("test", {
+                username: value
+            }, function (response) {
+                console.log(response);
+                response = (response == 'true') ? true : false;
+            }, "json")
+
+        return response;
+    }, "Username is Already Taken");
+
     $.validator.setDefaults({
         errorClass: 'badge badge-danger',
         highlight: function (element) {
@@ -21,7 +34,8 @@ $(document).ready(function () {
         rules: {
             username:{
                 required: true,
-                nowhitespace: true
+                nowhitespace: true,
+                dupName: true
             },
             name: "required",
             sirname: "required",

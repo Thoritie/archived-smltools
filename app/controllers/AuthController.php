@@ -60,30 +60,35 @@ class AuthController extends ControllerBase
         $sirname = $this->request->getPost('sirname');
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
+        $user = new Users();
+        $user->username = $username;
+        $user->name = $name;
+        $user->sirname = $sirname;
+        $user->email = $email;
+        $user->password = $this->security->hash($password);
+        $user->save();
+        
+        
+    }
+    //  public function testAction()
+    // {
+    //     echo "1234";
+    //     $user = Users::findById("59ffb1df6e0588c00d00002a");
+    //     echo $user->name;
+    // }
+
+    public function testAction()
+    {
+        $result = false;
+        $username = $this->request->getPost('username');
         $condition = [];
         if($username){
             $condition["username"] = $username;
         }
         $user = Users::Find(array($condition));
         if($user){
-            $check=0;
-        }else{
-            $user = new Users();
-            $user->username = $username;
-            $user->name = $name;
-            $user->sirname = $sirname;
-            $user->email = $email;
-            $user->password = $this->security->hash($password);
-            $user->save();
-            $check=1;
+            $result = true;
         }
-        return json_encode($check);
-        
-    }
-     public function testAction()
-    {
-        echo "1234";
-        $user = Users::findById("59ffb1df6e0588c00d00002a");
-        echo $user->name;
+        return json_encode($result);
     }
 }
