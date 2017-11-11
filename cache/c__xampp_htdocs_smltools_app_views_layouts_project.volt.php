@@ -1,6 +1,9 @@
 
         <!-- css for pro -->
         <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?>
+<<<<<<< HEAD
+        <?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
+=======
         <!-- <?= $this->tag->stylesheetLink('pro2/css/font-awesome.min.css') ?>  -->
         <?= $this->tag->stylesheetLink('pro2/css/normalize.css') ?> 
         <?= $this->tag->stylesheetLink('pro2/css/milligram.min.css') ?> 
@@ -11,6 +14,7 @@
         <!-- <?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
         <?= $this->tag->stylesheetLink('sml/regis.css') ?>
         <?= $this->tag->stylesheetLink('sml/navindex.css') ?> -->
+>>>>>>> f93a73f2ee79f5f76415c479896c99572809f5ed
         
      <!-- css for home -->
      <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
