@@ -35,15 +35,20 @@ class AuthController extends ControllerBase
                     {
                         $this->session->set("login", $user->_id);
                         $this->flashSession->success("Successful login");
-                        return $this->response->redirect("project/index");
-                    }
-                    } else 
+                        return $this->response->redirect("project");
+                    }else
                     {
-                // To protect against timing attacks. Regardless of whether a user exists or not, the script will take roughly the same amount as it will always be computing a hash.
                         $this->security->hash(rand());
                         $this->flashSession->error("Unsuccessful login, please try again");
                         return $this->response->redirect("Auth/login");
                     }
+                } else 
+                {
+                // To protect against timing attacks. Regardless of whether a user exists or not, the script will take roughly the same amount as it will always be computing a hash.
+                    $this->security->hash(rand());
+                    $this->flashSession->error("Unsuccessful login, please try again");
+                    return $this->response->redirect("Auth/login");
+                }
             }
         }
         
@@ -91,4 +96,6 @@ class AuthController extends ControllerBase
         }
         return json_encode($result);
     }
+
+    
 }
