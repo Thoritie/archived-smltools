@@ -59,7 +59,7 @@ a {
   color: #5092d4; }
 
 a:focus, a:hover {
-  color: #25beae; }
+  color: #9cc1e7; }
 
 .text-muted {
   color: #888; }
@@ -285,31 +285,31 @@ select:focus {
   #main-content .page-heading {
     margin-bottom: 20px; }
 
-.card {
+.card1 {
   background: #fff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   margin-bottom: 2.2rem; }
-  .card .canvas-wrapper {
+  .card1 .canvas-wrapper {
     width: 98%; }
-  .card .card-title {
+  .card1 .card1-title {
     border-bottom: 1px solid #eee;
     padding: 15px 20px; }
-    .card .card-title h1, .card .card-title h2, .card .card-title h3, .card .card-title h4, .card .card-title h5, .card .card-title h6 {
+    .card1 .card1-title h1, .card1 .card1-title h2, .card1 .card1-title h3, .card1 .card1-title h4, .card1 .card1-title h5, .card1 .card1-title h6 {
       margin: 0;
       padding: 0; }
-    .card .card-title .badge {
+    .card1 .card1-title .badge {
       margin-top: 3px; }
-  .card .card-block {
+  .card1 .card1-block {
     padding: 10px 20px; }
 
-.large-card {
+.large-card1 {
   background: #fff;
   padding: 30px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   margin-bottom: 2.2rem; }
 
 .user-section {
-  margin-top: 15px;
+  margin-top: -8px;
   margin-right: 40px; }
   .user-section a {
     float: right; }
@@ -435,7 +435,7 @@ select:focus {
     margin: 0;
     padding: 1.5rem !important; }
 
-  .card .card-title, .card .card-block {
+  .card1 .card1-title, .card1 .card1-block {
     padding: 10px 15px; }
 
   .user-section {
@@ -490,7 +490,7 @@ select:focus {
     width: 100%;
     max-width: 100%; }
 
-  .card .canvas-wrapper {
+  .card1 .canvas-wrapper {
     width: 90%; }
 
   .user-section {
@@ -526,7 +526,7 @@ select:focus {
     width: 70% !important;
     margin-left: 30%; }
 
-  .card .canvas-wrapper {
+  .card1 .canvas-wrapper {
     width: 95%; }
 
   .user-section {
