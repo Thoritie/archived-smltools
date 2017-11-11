@@ -129,7 +129,7 @@ class TaskController extends ControllerBase
                 $this->tag->setDefault("asIsState", $task->asIsState);
                 
                
-                // $this->tag->setDefault("regulator", $task->regulator);
+                $this->tag->setDefault("regulator", $task->regulator);
                 $this->tag->setDefault("uses", $task->uses);
                 $this->tag->setDefault("produces", $task->produces);
                 $this->tag->setDefault("toBeState", $task->toBeState);
@@ -149,5 +149,6 @@ class TaskController extends ControllerBase
         return json_encode($input);
     }
 
+   
 }
 
