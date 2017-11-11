@@ -13,7 +13,7 @@ body {
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   
   a, a:visited {
-    color: #40a1b9; }
+    color: #000000; }
   
   a:hover, a:focus, a:active {
     color: #3093ab;
@@ -226,6 +226,15 @@ body {
   
   .sidebar {
     position: fixed;
+    z-index: 0;
+    width: 20% !important;
+    background: #fff;
+    padding: 10px 30px !important;
+    box-shadow: 3px 0px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 80px;
+    height: 100%;
+}
+    /* position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -234,12 +243,14 @@ body {
     padding-right: 0;
     z-index: 1000;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto; */
     /* Scrollable contents if viewport is shorter than content. */
-    border-right: 1px solid #eee;
-    background: #383c42; }
+    /* border-right: 1px solid #eee; */
+    /* background: #ffffff; } */
+
+    
     .sidebar a {
-      color: #fff;
+      color: #8a8a8a;
       text-transform: uppercase;
       font-size: .7rem;
       letter-spacing: .2rem;
@@ -288,7 +299,7 @@ body {
     right: 1rem; }
   
   .sidebar a:focus, .sidebar a:visited, .sidebar a:hover, .sidebar a:active {
-    background-color: #3093ab !important; }
+    background-color: #e3eef1 !important; }
   
   @media screen and (max-width: 576px) {
     #wrapper .sidebar-nav {

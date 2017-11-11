@@ -4,25 +4,18 @@
         <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
         <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?>
         <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?>
-        <!-- <?= $this->tag->stylesheetLink('nav/css/creative.css') ?>
-        <?= $this->tag->stylesheetLink('nav/css/creative-override.css') ?> -->
 
-        <!-- css for regis page -->
-
-        <?= $this->tag->stylesheetLink('sml/regis.css') ?>
-        <?= $this->tag->stylesheetLink('sml/navindex.css') ?>
+        <!-- css for dashboard page -->
 
         
-       
           <!-- auto tag css edit lif -->
           <?= $this->tag->stylesheetLink('jslif/bootstrap-tagsinput.css') ?>
           <?= $this->tag->stylesheetLink('jslif/app.css') ?>
+          <?= $this->tag->stylesheetLink('jslif/sb-admin.css') ?> 
           <?= $this->tag->stylesheetLink('jslif/sb-admin-override.css') ?>
 
-          <!-- navbar new  -->
-         
-        <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?>
-        <?= $this->tag->stylesheetLink('project/css/style.css') ?> 
+          
+        <?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
           
 
     </head>
@@ -51,29 +44,29 @@
         </div>
     </div>
 
-        <!-- js for home -->
-        
-        <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>        
-        <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>        
-        <?= $this->tag->javascriptInclude('jquery-easing/jquery.easing.min.js') ?>                
-        <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>        
-        <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>        
-        <?= $this->tag->javascriptInclude('nav/js/creative.js') ?>
+       
 
         <!-- navbar js -->
-        <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
+        <!-- <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?> -->
         <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
-        <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>        
-        <?= $this->tag->javascriptInclude('dist/jquery.validate.js') ?>
+
+         <!-- js for dashboard -->
+         <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
+         <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
+         <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
+         <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
+         <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>
         
+         
         
+        <?= $this->tag->javascriptInclude('jslif/sb-admin.js') ?>
         <!-- auto tag js edit lif -->
-        
+       
         <?= $this->tag->javascriptInclude('jslif/jquery.easing.min.js') ?>
         <?= $this->tag->javascriptInclude('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') ?>
         <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
         <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
-        
-        <?= $this->tag->javascriptInclude('jslif/tag.js') ?>
+        <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
+        <?= $this->tag->javascriptInclude('jslif/tagTask.js') ?>
 
         

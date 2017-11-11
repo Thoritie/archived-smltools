@@ -3,7 +3,11 @@
     width: 50%;
     padding: 10px;
 }
-
+.formadd{
+    margin: auto;
+    width: 90%;
+    /* padding: 10px; */
+}
 .headform{
     color:#444;
     margin:0;
