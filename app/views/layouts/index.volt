@@ -109,7 +109,6 @@
       </script>
     {{ javascript_include('homes/main.0cf8b554.js') }}
     {{ javascript_include('homes/word.js') }}
-    <!-- <script type="text/javascript" src="./main.0cf8b554.js"></script>       -->
 
 
         
