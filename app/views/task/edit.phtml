@@ -1,35 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><i class="fa fa-fw fa-map-pin"></i>SML TOOLS</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto text-center">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#feature">Feature</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="register">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login">Login</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <i class="fa fa-fw fa-map-pin"></i>SML TOOLS</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto text-center">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#feature">Feature</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
+        </li>
+      </ul>
     </div>
-  </nav> 
+  </div>
+</nav>
 
 
-            <div class="formshow hero">   
-                <h2 class="headform textCenter">Create Task</h2>           
-                <?php
+<div class="formshow hero">
+  <h2 class="headform textCenter">Create Task</h2>
+  <?php
                     echo $this->tag->form(
                         [
                             "task/save",
@@ -38,46 +40,52 @@
                         ]
                     );
                 ?>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">Task</label>
-                      <div class="col-sm-6">
-                        <?php 
+
+    <?php 
+                             echo $this->tag->textField(["idtask", "id" => "idtask" , "value" => $idTask]) ;
+          
+                        ?>
+
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">Task</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["taskname", "size" => 30, 
                             "class" => "form-control", "id" => "name" , "placeholder"=>"task name"]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">isA</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">isA</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["isA", "size" => 30, 
                             "class" => "form-control", "id" => "isA" , "placeholder"=>"isA"]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">Description</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textArea(["Description", "class" => "form-control", 
                             "id" => "Description" , "placeholder"=>"Description","rows" => 3,]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">includes</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">includes</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["includes", "size" => 30, 
                             "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">asIsState</label>
-                      <div class="col-sm-6">
-                      <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">asIsState</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->selectStatic(["asIsState", "class" => "form-control", 
                             "id" => "asIsState" 
                             ,[
@@ -86,57 +94,59 @@
                             ]
                             ]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">owner</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">owner</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["owner", "size" => 30, 
                             "class" => "form-control", "id" => "owner" ]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">collaburator</label>
-                      <div class="col-sm-6">
-                        <?php 
+
+        <button class="btn" type="button" onclick="createOwner($('#owner'));">New</button>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">collaburator</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["collaburator", "size" => 30, 
                             "class" => "form-control", "id" => "collaburator" ]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">regulator</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">regulator</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["regulator", "size" => 30, 
                             "class" => "form-control", "id" => "regulator"]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">uses</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">uses</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["uses", "size" => 30, 
                             "class" => "form-control", "id" => "uses" , "placeholder"=>"uses"]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">produces</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">produces</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["produces", "size" => 30, 
                             "class" => "form-control", "id" => "produces" , "placeholder"=>"produces"]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">toBeState</label>
-                      <div class="col-sm-4">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">toBeState</label>
+      <div class="col-sm-4">
+        <?php 
                             echo $this->tag->selectStatic(["toBeState", "class" => "form-control", 
                             "id" => "toBeState" 
                             ,[
@@ -146,60 +156,108 @@
                             ]
                             ]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">ownerToBe</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">ownerToBe</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["ownerToBe", "size" => 30, 
                             "class" => "form-control", "id" => "ownerToBe"]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">collaboratorToBe</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">collaboratorToBe</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["collaboratorToBe", "size" => 30, 
                             "class" => "form-control", "id" => "collaboratorToBe" ]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">toUse</label>
-                      <div class="col-sm-6">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">toUse</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["toUse", "size" => 30, 
                             "class" => "form-control", "id" => "toUse"]) 
                         ?>
-                      </div>
-                              
-                      <div class="float-right pl-3">
-                        <button type="button" class="btn btn-active" data-toggle="modal" data-target="#exampleModal2">
-                          <i class="fa fa-fw fa-plus"></i>
-                        </button>
-                      </div>
+      </div>
 
-                    </div>
-                    <div class="form-group row">
-                      <label for="project" class="col-sm-2 col-form-label">toProduce</label>
-                      <div class="col-sm-6">
-                        <?php 
+      <div class="float-right pl-3">
+        <button type="button" class="btn btn-active" data-toggle="modal" data-target="#exampleModal2">
+          <i class="fa fa-fw fa-plus"></i>
+        </button>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label for="project" class="col-sm-2 col-form-label">toProduce</label>
+      <div class="col-sm-6">
+        <?php 
                             echo $this->tag->textField(["toProduce", "size" => 30, 
                             "class" => "form-control", "id" => "toProduce" , "placeholder"=>"toProduce"]) 
                         ?>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-				              <div class="offset-sm-2 col-sm-10">
-                        <?php 
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <?php 
                             echo $this->tag->submitButton(["Save", "size" => 30, 
                             "class" => "btn btn-primary", "id" => "btnsubmittask"]) 
                         ?>
-                      </div>
-                    </div>
-            
-            
-                <?php echo $this->tag->endForm(); ?>
-        </div>
+      </div>
+    </div>
+
+
+    <?php echo $this->tag->endForm(); ?>
+</div>
+
+<script>
+
+  var test = '[ { "value": 1 , "text": "Amsterdam" , "continent": "Europe" }, { "value": 2 , "text": "London" , "continent": "Europe" }, { "value": 3 , "text": "Paris" , "continent": "Europe" }, { "value": 4 , "text": "Washington" , "continent": "America" }, { "value": 5 , "text": "Mexico City" , "continent": "America" }, { "value": 6 , "text": "Buenos Aires", "continent": "America" }, { "value": 7 , "text": "Sydney" , "continent": "Australia" }, { "value": 8 , "text": "Wellington" , "continent": "Australia" }, { "value": 9 , "text": "Canberra" , "continent": "Australia" }, { "value": 10, "text": "Beijing" , "continent": "Asia" }, { "value": 11, "text": "New Delhi" , "continent": "Asia" }, { "value": 12, "text": "Kathmandu" , "continent": "Asia" }, { "value": 13, "text": "Cairo" , "continent": "Africa" }, { "value": 14, "text": "Cape Town" , "continent": "Africa" }, { "value": 15, "text": "Kinshasa" , "continent": "Africa" } ]';
+  
+  var js_data = '<?php echo json_encode($owner); ?>';
+
+
+  $(document).ready(function(){
+
+    var Stakeholder = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: JSON.parse(test)
+    });
+
+    Stakeholder.initialize();
+
+    var collaboratorToBe = $('#owner');
+    collaboratorToBe.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Stakeholder.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+
+    add(collaboratorToBe, js_data);
+
+  });
+
+
+  function add($elt, data){
+      $.each(JSON.parse(data), function(index ,value){   
+        $elt.tagsinput('add', { "value": value, "text": value, "continent": "" });
+      });
+  }
+
+  function createOwner($elt){
+    $elt.tagsinput('add', { "value": 5555, "text": "new owner", "continent": "" });
+  }
+
+</script>

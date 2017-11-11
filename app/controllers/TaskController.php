@@ -101,14 +101,10 @@ class TaskController extends ControllerBase
         return json_encode($test);
     }
 
-    public function editAction($name)
+    public function editAction($id)
     {
  
-                $task = Tasks::findFirst([
-                    [
-                        "name" => $name,
-                    ]
-                ]);
+                $task = Tasks::findById($id);
                 if (!$task) {
                     $this->flash->error("task was not found");
             
@@ -119,15 +115,14 @@ class TaskController extends ControllerBase
             
                     return;
                 }
-                
-                
-                // $this->view->idTask = $task->_id;
+
+                $this->view->owner = $task->owner;
+                $this->view->idTask  = $task->_id;
                 $this->tag->setDefault("taskname", $task->name);
                 $this->tag->setDefault("isA", $task->isA);
                 $this->tag->setDefault("Description", $task->Description);
                 $this->tag->setDefault("includes", $task->includes);
                 $this->tag->setDefault("asIsState", $task->asIsState);
-                
                
                 $this->tag->setDefault("regulator", $task->regulator);
                 $this->tag->setDefault("uses", $task->uses);

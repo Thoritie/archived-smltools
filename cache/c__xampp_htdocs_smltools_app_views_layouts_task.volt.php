@@ -16,7 +16,26 @@
 
           
         <?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
-          
+        <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
+        
+                 <!-- js for dashboard -->
+                 <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
+                 <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
+                 <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
+                 <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
+                 <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>
+                
+                 
+                
+                <?= $this->tag->javascriptInclude('jslif/sb-admin.js') ?>
+                <!-- auto tag js edit lif -->
+               
+                <?= $this->tag->javascriptInclude('jslif/jquery.easing.min.js') ?>
+                <?= $this->tag->javascriptInclude('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') ?>
+                <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
+                <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
+                <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
+                <!-- <?= $this->tag->javascriptInclude('jslif/tagTask.js') ?> -->
 
     </head>
 
@@ -48,25 +67,6 @@
 
         <!-- navbar js -->
         <!-- <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?> -->
-        <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
-
-         <!-- js for dashboard -->
-         <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
-         <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
-         <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
-         <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
-         <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>
-        
-         
-        
-        <?= $this->tag->javascriptInclude('jslif/sb-admin.js') ?>
-        <!-- auto tag js edit lif -->
        
-        <?= $this->tag->javascriptInclude('jslif/jquery.easing.min.js') ?>
-        <?= $this->tag->javascriptInclude('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') ?>
-        <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
-        <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
-        <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
-        <?= $this->tag->javascriptInclude('jslif/tagTask.js') ?>
 
         
