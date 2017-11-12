@@ -71,9 +71,11 @@ class AuthController extends ControllerBase
         $user->sirname = $sirname;
         $user->email = $email;
         $user->password = $this->security->hash($password);
-        $user->save();
-        
-        
+        if(!$user->save())
+        {
+            return json_encode(0);
+        }
+        return json_encode(1);
     }
     //  public function testAction()
     // {

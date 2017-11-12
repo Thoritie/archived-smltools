@@ -14,14 +14,18 @@ class ProjectController extends ControllerBase
     }
     public function findUserAction()
     {
-        $session = $this->request->getPost("session");
-        $user = Users::find(
-        [
-            [
-                
-            ]
+        $session = $this->session->get('login');
+        // $session = $this->request->getPost("session");
+        // $condition = [];
+        
+        // if($session){
+        //     $condition["_id"] =["$ne"=>$session];
+        // }
+        $user = Users::find([
+        "conditions" => [
+            '_id' => ['$ne'=>$session]
         ]
-        );
+        ]);
         return json_encode($user);
     }
     public function saveAction()

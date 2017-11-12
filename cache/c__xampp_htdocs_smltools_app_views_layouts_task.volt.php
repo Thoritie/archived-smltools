@@ -1,74 +1,73 @@
+<!-- css for Semantic-->
+<?= $this->tag->stylesheetLink('Semantic/components/card.css') ?>
+<?= $this->tag->stylesheetLink('Semantic/components/dropdown.css') ?>
+<?= $this->tag->stylesheetLink('Semantic/components/dropdown.min.css') ?>
+<?= $this->tag->stylesheetLink('Semantic/components/segment.css') ?>
+<?= $this->tag->stylesheetLink('Semantic/components/segment.min.css') ?>
 
-        <!-- css for home -->
-        <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?> 
-        <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
-        <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?>
-        <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?>
+<?= $this->tag->stylesheetLink('pro2/css/normalize.css') ?> 
+<?= $this->tag->stylesheetLink('pro2/css/milligram.min.css') ?> 
+<?= $this->tag->stylesheetLink('pro2/css/styles.css') ?> 
+<?= $this->tag->stylesheetLink('sml/regis.css') ?>
+<?= $this->tag->stylesheetLink('sml/navindex.css') ?>
+<?= $this->tag->stylesheetLink('Semantic/semantic.css') ?>
 
-        <!-- css for dashboard page -->
-
-        
-          <!-- auto tag css edit lif -->
-          <?= $this->tag->stylesheetLink('jslif/bootstrap-tagsinput.css') ?>
-          <?= $this->tag->stylesheetLink('jslif/app.css') ?>
-          <?= $this->tag->stylesheetLink('jslif/sb-admin.css') ?> 
-          <?= $this->tag->stylesheetLink('jslif/sb-admin-override.css') ?>
-
-          
-        <?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
-        <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
-        
-                 <!-- js for dashboard -->
-                 <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
-                 <?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
-                 <?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
-                 <?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
-                 <?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>
-                
-                 
-                
-                <?= $this->tag->javascriptInclude('jslif/sb-admin.js') ?>
-                <!-- auto tag js edit lif -->
-               
-                <?= $this->tag->javascriptInclude('jslif/jquery.easing.min.js') ?>
-                <?= $this->tag->javascriptInclude('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') ?>
-                <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
-                <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
-                <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
-                <?= $this->tag->javascriptInclude('jslif/tagTaskCreate.js') ?>
-                
-                
-
-    </head>
-
-    <body id="page-top">
-            <div class="container-fluid" id="wrapper">
-                    <div class="row">
-                        <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-                            <h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> Brand.name</a></h1>
-                            
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
-                            
-                            <ul class="nav nav-pills flex-column sidebar-nav">
-                                <li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="create"><em class="fa fa-calendar-o"></em>Create</a></li>
-                                <li class="nav-item"><a class="nav-link" href="charts.html"><em class="fa fa-bar-chart"></em> Charts</a></li>
-                                <li class="nav-item"><a class="nav-link" href="elements.html"><em class="fa fa-hand-o-up"></em> UI Elements</a></li>
-                                <li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li>
-                            </ul>
-                            
-                            <a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
-                        </nav>
-            <div class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
-                    <?= $this->getContent() ?>
+<!-- css for home -->
+<!-- <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?> 
+   <?= $this->tag->stylesheetLink('font-awesome/css/font-awesome.min.css') ?>
+   <?= $this->tag->stylesheetLink('magnific-popup/magnific-popup.css') ?>
+   <?= $this->tag->stylesheetLink('device-mockups/device-mockups.min.css') ?> -->
+<!-- css for dashboard page -->
+<!-- auto tag css edit lif -->
+<?= $this->tag->stylesheetLink('jslif/bootstrap-tagsinput.css') ?>
+<?= $this->tag->stylesheetLink('jslif/app.css') ?>
+<?= $this->tag->stylesheetLink('jslif/sb-admin.css') ?> 
+<?= $this->tag->stylesheetLink('jslif/sb-admin-override.css') ?>
+<?= $this->tag->stylesheetLink('pro/css/style.css') ?> 
+<?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
+<!-- js for dashboard -->
+<?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
+<?= $this->tag->javascriptInclude('popper/popper.min.js') ?>
+<?= $this->tag->javascriptInclude('bootstrap-4/js/bootstrap.min.js') ?>
+<?= $this->tag->javascriptInclude('scrollreveal/scrollreveal.min.js') ?>
+<?= $this->tag->javascriptInclude('magnific-popup/jquery.magnific-popup.min.js') ?>
+<?= $this->tag->javascriptInclude('jslif/sb-admin.js') ?>
+<!-- auto tag js edit lif -->
+<?= $this->tag->javascriptInclude('jslif/jquery.easing.min.js') ?>
+<?= $this->tag->javascriptInclude('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') ?>
+<?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
+<?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
+<?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
+<?= $this->tag->javascriptInclude('jslif/tagTaskCreate.js') ?>
+</head>
+<body>
+   <div class="">
+      <div class="navbar">
+         <div class="row">
+            <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">SMLTOOLS</a></div>
+            <div class="column column-30">
+               <div class="user-section">
+                  <a href="#">
+                     <img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+                     <div class="username">
+                        <h4>User Name</h4>
+                        <p>Firstname</p>
+                     </div>
+                  </a>
+               </div>
             </div>
-        </div>
-    </div>
-
-       
-
-        <!-- navbar js -->
-        <!-- <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?> -->
-       
-
-        
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div id="sidebar" class="column">
+         <h5>Navigation</h5>
+         <ul>
+            <li><a href="index"><em class="fa fa-home"></em> Home</a></li>
+            <li><a href="create"><em class="fa fa-bar-chart"></em> Create</a></li>
+         </ul>
+      </div>
+      <div id="main-content" class="column column-offset-20">
+         <?= $this->getContent() ?>
+      </div>
+   </div>
