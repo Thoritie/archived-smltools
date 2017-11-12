@@ -13,10 +13,15 @@ class TaskController extends ControllerBase
         // }
         // $task = Task::Find(array($condition));
         
-        $task = Tasks::Find();
+        // $task = Tasks::Find();
 
-        $this->view->task = $task;
+        // $this->view->task = $task;
 
+    }
+
+    public function indextestAction()
+    {
+        
     }
 
     public function createAction()
