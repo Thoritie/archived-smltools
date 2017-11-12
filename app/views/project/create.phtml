@@ -40,30 +40,24 @@
 </div> -->
 
 <div class="ui raised segment very padded">
-<div class="ui large form">
-    <div class="field">
-        <label>Project Name</label>
-
-        <input type="text" class="form-control" name="projectname" id="projectname" placeholder="Project Name">
-    </div>
-
-    <div class="field">
-        <label>Description</label>
-        <textarea id="description" class="form-control" name="description" id="description" rows="3"></textarea>
-    </div>
-    
-    <div class="field">
-        <label>Permission</label>
-        <div>                
-                            <?php 
-                                echo $this->tag->textField(["permission", "size" => 30, 
-                                "class" => "form-control", "id" => "permission" ]) 
-                            ?>                 
-        </div>
-    </div>
-
-  <button type="submit" class="btn btn-primary">Save</button>
-
-
-</div>
+   <div class="ui large form">
+      <div class="field">
+         <label>Project Name</label>
+         <input type="text" class="form-control" name="projectname" id="projectname" placeholder="Project Name">
+      </div>
+      <div class="field">
+         <label>Description</label>
+         <textarea id="description" class="form-control" name="description" id="description" rows="3"></textarea>
+      </div>
+      <div class="field">
+         <label>Permission</label>
+         <div>                
+            <?php 
+               echo $this->tag->textField(["permission", "size" => 30, 
+               "class" => "form-control", "id" => "permission" ]) 
+               ?>                 
+         </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+   </div>
 </div>
