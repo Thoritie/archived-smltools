@@ -28,9 +28,9 @@
     background: rgba(255, 255, 255, 0.3);
 }
 
-.navbar {
+/* .navbar {
     padding: 0.5rem 0.3rem;
-}
+} */
 
 @media (max-width: 768px) {
     #mainNav .navbar-brand:hover {
