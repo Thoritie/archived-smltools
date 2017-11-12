@@ -17,7 +17,7 @@
                         <div class="card-body-icon">
                           <i class="fa fa-fw fa-cubes"></i>
                         </div>
-                        <h6 class="card-title"><a class="card-link text-top-100" href="#"><?=$tk->name?></a></h6>
+                        <h6 class="card-title"><a class="card-link text-top-100"><?=$tk->name?></a></h6>
                         <input type="hidden" id="idtask" value="Norway">
                         <!-- <div class="card-subtitle mb-2">
                           <a class="card-link text-top-100" href="#">Task</a>
@@ -38,7 +38,7 @@
 <!--                               <a class="dropdown-item" href="#"><i class="fa fa-fw fa-plus"></i> New Task</a> -->
                 
                               <a class="dropdown-item" href="<?=$this->url->get("task/edit/".$tk->_id); ?>"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="fa fa-fw fa-trash"></i> Delete</a>
+                              <a class="dropdown-item" href="#" onclick="deleteTask('<?=$tk->_id;?>')"><i class="fa fa-fw fa-trash"></i> Delete</a>
                               <a class="dropdown-item" href="stakeholder/stakeholder.php"><i class="fa fa-fw fa-users"></i> Stakeholder</a>
                               <a class="dropdown-item" href="#"><i class="fa fa-fw fa-book"></i> Resource</a>
 <!--                               <a class="dropdown-item" href="#"><i class="fa fa-fw fa-sitemap"></i> Relationship</a> -->
@@ -114,11 +114,33 @@
 
 
 
-
-
-    
-
-     
-
     </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                     <div class="modal-body" id="delele"></div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-success" href="login.html">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<script>
+
+        function deleteTask(task)
+        {
+            console.log(task);
+        }
+              
+</script>
   
