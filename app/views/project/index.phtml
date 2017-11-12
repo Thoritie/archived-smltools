@@ -1,33 +1,98 @@
 <?php $this->flashSession->output() ;
-echo $this->session->get('login');
-?>
-<div class="ui cards">
-  <div class="ui raised link card">
-    <div class="content">
-      <div class="header">Project name</div>
-      <div class="description">
-        project little detailed
+   echo $this->session->get('login');
+   ?>
+<div class="ui grid">
+   <div class="ten wide column">
+      <div class="ui cards">
+         <div class="ui raised link card">
+            <div class="content">
+               <div class="header">Project name</div>
+               <div class="description">
+                  project little detailed
+               </div>
+            </div>
+            <div class="ui bottom attached button">
+               <i class="add icon"></i>
+               Add Project
+            </div>
+         </div>
+         <div class="ui raised link card">
+            <div class="content">
+               <div class="header">Project name</div>
+               <div class="description">
+                  project little detailed
+               </div>
+            </div>
+            <div class="ui bottom attached button">
+               <i class="add icon"></i>
+               Add Project
+            </div>
+         </div>
+         <div class="ui raised link card">
+            <div class="content">
+               <div class="header">Project name</div>
+               <div class="description">
+                  project little detailed
+               </div>
+            </div>
+            <div class="ui bottom attached button">
+               <i class="add icon"></i>
+               Add Project
+            </div>
+         </div>
+         <div class="ui raised link card">
+            <div class="content">
+               <div class="header">Project name</div>
+               <div class="description">
+                  project little detailed
+               </div>
+            </div>
+            <div class="ui bottom attached button">
+               <i class="add icon"></i>
+               Add Project
+            </div>
+         </div>
       </div>
-    </div>
-    <div class="ui bottom attached button">
-      <i class="add icon"></i>
-      Add Project
-    </div>
-  </div>
+   </div>
+   <div class="five wide column">
+      <div class="ui raised segments">
+         <!-- <div class="ui segment">
+            <p>Top</p>
+         </div> -->
+         
+         <div class="ui segment very padded">
+            <h2 class="ui header">
+        
+                <div class="content">
+                    Search Project
+                    <div class="sub header">Search your projects</div>
+                </div>
+            </h2>
+            <div class="ui search">
+               <div class="ui icon input">
+                  <input class="prompt" type="text" placeholder="project name...">
+                  <i class="search icon"></i>
+               </div>
+               <div class="results"></div>
+            </div>
+            
+         </div>
 
-  <div class="ui raised link card">
-    <div class="content">
-      <div class="header">Project name</div>
-      <div class="description">
-        project little detailed
+         <div class="ui segment very padded">
+         <h2 class="ui header">
+     
+             <div class="content">
+                 Sort Project
+                 <div class="sub header">sort your project</div>
+             </div>
+         </h2>
+         <select class="ui dropdown">
+         <option value="">Sort</option>
+         <option value="1">List</option>
+         <option value="0">Title</option>
+       </select>
+         
       </div>
-    </div>
-    <div class="ui bottom attached button">
-      <i class="add icon"></i>
-      Add Project
-      
-    </div>
-  </div>
-  
+      </div>
+   </div>
 </div>
-
