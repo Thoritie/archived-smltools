@@ -103,7 +103,6 @@ class TaskController extends ControllerBase
 
     public function editAction($id)
     {
- 
                 $task = Tasks::findById($id);
                 if (!$task) {
                     $this->flash->error("task was not found");
@@ -116,7 +115,36 @@ class TaskController extends ControllerBase
                     return;
                 }
 
-                $this->view->owner = $task->owner;
+                $owner = array();
+                foreach($task->owner as $data){
+                    $item = Stakeholders::findById($data);
+                    array_push($owner,$item);
+                }
+                $this->view->owner = $owner;
+               
+
+                $collaburator = array();
+                foreach($task->collaburator as $data){
+                    $item = Stakeholders::findById($data);
+                    array_push($collaburator,$item);
+                }
+                $this->view->collaburator = $collaburator;
+
+                $ownerToBe = array();
+                foreach($task->ownerToBe as $data){
+                    $item = Stakeholders::findById($data);
+                    array_push($ownerToBe,$item);
+                }
+                $this->view->ownerTobe = $ownerToBe;
+
+                $collaboratorToBe = array();
+                foreach($task->collaboratorToBe as $data){
+                    $item = Stakeholders::findById($data);
+                    array_push($collaboratorToBe,$item);
+                }
+                $this->view->collaboratorTobe = $collaboratorToBe;
+
+
                 $this->view->idTask  = $task->_id;
                 $this->tag->setDefault("taskname", $task->name);
                 $this->tag->setDefault("isA", $task->isA);
@@ -131,9 +159,21 @@ class TaskController extends ControllerBase
                
                 $this->tag->setDefault("toUse", $task->toUse);
                 $this->tag->setDefault("toProduce", $task->toProduce);
-                        
+                   
+
+
+                $input = "1";
+                $condition = [];
+                
+                if($input){
+                    $condition["project"] = $input;
+                }
+        
+                $test = Stakeholders::Find(array($condition));
+        
+                $this->view->test = $test;
                
-        }
+    }
     
     public function testAction()
     {

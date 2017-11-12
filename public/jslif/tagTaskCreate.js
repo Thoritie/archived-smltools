@@ -3,20 +3,19 @@ $(document).ready(function() {
     
     function createJSON(data) {
         jsonObj = [];
-        var i = 2;
         $.each(data, function(index ,data){
 
             item = {}
-            item ["value"] = i;
+            item ["value"] = data.value;
             item ["text"] = data.name;
             item ["continent"] = "";
             item ["index"] = data._id.$id;
-            i++
+            
             jsonObj.push(item);
         });
 
         item = {}
-        item ["value"] = 1;
+        item ["value"] = 0;
         item ["text"] = "?";
         item ["continent"] = "";
         jsonObj.push(item);
@@ -125,7 +124,7 @@ $(document).ready(function() {
                 },
             }
         });
-        collaboratorToBe.tagsinput('add', { "value": 1, "text": "?", "continent": "" });
+        
     }
 
         var project = "1";     //input project id .val()
@@ -133,8 +132,10 @@ $(document).ready(function() {
         $.post("findStake",{
             project : project
         }, function(data){
+           
                 var auto = createJSON(data);
                 var n = createString(auto);
+                 console.log(n);
                 tagOwner(n);
                 tagCollaburator(n);
                 tagOwnerToBe(n);
