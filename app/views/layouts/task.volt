@@ -1,74 +1,73 @@
+<!-- css for Semantic-->
+{{stylesheet_link('Semantic/components/card.css') }}
+{{stylesheet_link('Semantic/components/dropdown.css') }}
+{{stylesheet_link('Semantic/components/dropdown.min.css') }}
+{{stylesheet_link('Semantic/components/segment.css') }}
+{{stylesheet_link('Semantic/components/segment.min.css') }}
 
-        <!-- css for home -->
-        {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }} 
-        {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }}
-        {{ stylesheet_link('magnific-popup/magnific-popup.css')}}
-        {{ stylesheet_link('device-mockups/device-mockups.min.css') }}
+{{ stylesheet_link('pro2/css/normalize.css') }} 
+{{ stylesheet_link('pro2/css/milligram.min.css') }} 
+{{ stylesheet_link('pro2/css/styles.css') }} 
+{{ stylesheet_link('sml/regis.css') }}
+{{ stylesheet_link('sml/navindex.css') }}
+{{stylesheet_link('Semantic/semantic.css') }}
 
-        <!-- css for dashboard page -->
-
-        
-          <!-- auto tag css edit lif -->
-          {{ stylesheet_link('jslif/bootstrap-tagsinput.css') }}
-          {{ stylesheet_link('jslif/app.css') }}
-          {{ stylesheet_link('jslif/sb-admin.css') }} 
-          {{ stylesheet_link('jslif/sb-admin-override.css') }}
-
-          
-        {{ stylesheet_link('pro/css/style.css') }} 
-        {{ javascript_include('jquery/jquery.js') }}
-        
-                 <!-- js for dashboard -->
-                 {{ javascript_include('jquery/jquery.min.js') }}
-                 {{ javascript_include('popper/popper.min.js') }}
-                 {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}
-                 {{ javascript_include('scrollreveal/scrollreveal.min.js') }}
-                 {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}
-                
-                 
-                
-                {{ javascript_include('jslif/sb-admin.js') }}
-                <!-- auto tag js edit lif -->
-               
-                {{ javascript_include('jslif/jquery.easing.min.js') }}
-                {{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') }}
-                {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
-                {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
-                {{ javascript_include('jslif/sb-admin.min.js') }}
-                {{ javascript_include('jslif/tagTaskCreate.js') }}
-                
-                
-
-    </head>
-
-    <body id="page-top">
-            <div class="container-fluid" id="wrapper">
-                    <div class="row">
-                        <nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-                            <h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> Brand.name</a></h1>
-                            
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
-                            
-                            <ul class="nav nav-pills flex-column sidebar-nav">
-                                <li class="nav-item"><a class="nav-link active" href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="create"><em class="fa fa-calendar-o"></em>Create</a></li>
-                                <li class="nav-item"><a class="nav-link" href="charts.html"><em class="fa fa-bar-chart"></em> Charts</a></li>
-                                <li class="nav-item"><a class="nav-link" href="elements.html"><em class="fa fa-hand-o-up"></em> UI Elements</a></li>
-                                <li class="nav-item"><a class="nav-link" href="cards.html"><em class="fa fa-clone"></em> Cards</a></li>
-                            </ul>
-                            
-                            <a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
-                        </nav>
-            <div class="col-xs-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 pt-3 pl-4">
-                    {{ content() }}
+<!-- css for home -->
+<!-- {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }} 
+   {{ stylesheet_link('font-awesome/css/font-awesome.min.css') }}
+   {{ stylesheet_link('magnific-popup/magnific-popup.css')}}
+   {{ stylesheet_link('device-mockups/device-mockups.min.css') }} -->
+<!-- css for dashboard page -->
+<!-- auto tag css edit lif -->
+{{ stylesheet_link('jslif/bootstrap-tagsinput.css') }}
+{{ stylesheet_link('jslif/app.css') }}
+{{ stylesheet_link('jslif/sb-admin.css') }} 
+{{ stylesheet_link('jslif/sb-admin-override.css') }}
+{{ stylesheet_link('pro/css/style.css') }} 
+{{ javascript_include('jquery/jquery.js') }}
+<!-- js for dashboard -->
+{{ javascript_include('jquery/jquery.min.js') }}
+{{ javascript_include('popper/popper.min.js') }}
+{{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}
+{{ javascript_include('scrollreveal/scrollreveal.min.js') }}
+{{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}
+{{ javascript_include('jslif/sb-admin.js') }}
+<!-- auto tag js edit lif -->
+{{ javascript_include('jslif/jquery.easing.min.js') }}
+{{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') }}
+{{ javascript_include('jslif/bootstrap-tagsinput.js') }}
+{{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
+{{ javascript_include('jslif/sb-admin.min.js') }}
+{{ javascript_include('jslif/tagTaskCreate.js') }}
+</head>
+<body>
+   <div class="">
+      <div class="navbar">
+         <div class="row">
+            <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">SMLTOOLS</a></div>
+            <div class="column column-30">
+               <div class="user-section">
+                  <a href="#">
+                     <img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+                     <div class="username">
+                        <h4>User Name</h4>
+                        <p>Firstname</p>
+                     </div>
+                  </a>
+               </div>
             </div>
-        </div>
-    </div>
-
-       
-
-        <!-- navbar js -->
-        <!-- {{ javascript_include('jquery/jquery.min.js') }} -->
-       
-
-        
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div id="sidebar" class="column">
+         <h5>Navigation</h5>
+         <ul>
+            <li><a href="index"><em class="fa fa-home"></em> Home</a></li>
+            <li><a href="create"><em class="fa fa-bar-chart"></em> Create</a></li>
+         </ul>
+      </div>
+      <div id="main-content" class="column column-offset-20">
+         {{ content() }}
+      </div>
+   </div>
