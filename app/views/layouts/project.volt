@@ -1,8 +1,11 @@
 
         <!-- css for pro -->
+
         {{stylesheet_link('Semantic/components/card.css') }}
         {{stylesheet_link('Semantic/components/dropdown.css') }}
         {{stylesheet_link('Semantic/components/dropdown.min.css') }}
+        {{stylesheet_link('Semantic/components/segment.css') }}
+        {{stylesheet_link('Semantic/components/segment.min.css') }}
         
         <!-- {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }} -->
         <!-- {{ stylesheet_link('pro2/css/font-awesome.min.css') }}  -->
@@ -11,6 +14,8 @@
         {{ stylesheet_link('pro2/css/styles.css') }} 
         {{ stylesheet_link('sml/regis.css') }}
         {{ stylesheet_link('sml/navindex.css') }}
+        {{stylesheet_link('Semantic/semantic.css') }}
+        
 
 
         
@@ -89,7 +94,7 @@
         {{ javascript_include('jslif/sb-admin.min.js') }}
         {{ javascript_include('jslif/tagProject.js') }}
 
-        <!-- <script>
+       <!-- <script>
             window.onload = function () {
                 var chart1 = document.getElementById("line-chart").getContext("2d");
                 window.myLine = new Chart(chart1).Line(lineChartData, {
@@ -100,5 +105,8 @@
                 });
             };
         </script>
-        
+         -->
+         {{ javascript_include('Semantic/componentsd/dropdown.js') }}
+         {{ javascript_include('Semantic/componentsd/dropdown.min.js') }}
+         
         
