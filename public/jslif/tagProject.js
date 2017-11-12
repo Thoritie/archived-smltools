@@ -7,7 +7,7 @@ $(document).ready(function () {
 
             item = {}
             item["value"] = i;
-            item["text"] = data.name;
+            item["text"] = data.username;
             item["continent"] = "";
             item["index"] = data._id.$id;
             i++
@@ -42,8 +42,9 @@ $(document).ready(function () {
             }
         });
     }
-
+    var session = $("#session").val();
     $.post("findUser", {
+        session : session
     }, function (data) {
         var auto = createJSON(data);
         console.log(auto);
@@ -51,5 +52,21 @@ $(document).ready(function () {
         tagPermission(n);
     }, "json");
 
+    $('#saveproject').click(function () {
+        var projectname = $("#projectname").val();
+        var description = $("#description").val();
+        var permission = $("#permission").tagsinput('items')
+        item1 = {};
+        $.each(permission, function (index, input) {
+            item1[index] = input.index
+        });
+        $.post("save", {
+            projectname: projectname,
+            description: description,
+            permission: item1,
+        }, function (data) {
+
+        }, "json");
+    });
 
 });

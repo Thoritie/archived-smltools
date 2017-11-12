@@ -84,7 +84,7 @@ class AuthController extends ControllerBase
 
     public function testAction()
     {
-        $result = false;
+        $result = true;
         $username = $this->request->getPost('username');
         $condition = [];
         if($username){
@@ -92,7 +92,7 @@ class AuthController extends ControllerBase
         }
         $user = Users::Find(array($condition));
         if($user){
-            $result = true;
+            $result = false;
         }
         return json_encode($result);
     }

@@ -14,8 +14,34 @@ class ProjectController extends ControllerBase
     }
     public function findUserAction()
     {
-        $user = Users::find();
+        $session = $this->request->getPost("session");
+        $user = Users::find(
+        [
+            [
+                
+            ]
+        ]
+        );
         return json_encode($user);
+    }
+    public function saveAction()
+    {
+        $project = new Project;
+        $project->name =$this->request->getPost("projectname");
+        $project->description =$this->request->getPost("description");
+        $project->createrId =$this->session->get('login');
+        $project->permission =$this->request->getPost("permission");
+        
+        if($project->save())
+        {
+            $this->flashSession->success("Successful Create Project");
+            return $this->response->redirect("project");
+        }
+        else
+        {
+            $this->flashSession->success("Not Successful Create Project");
+            return $this->response->redirect("project");
+        }
     }
 
 }
