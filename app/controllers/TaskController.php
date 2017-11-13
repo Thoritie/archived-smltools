@@ -6,27 +6,30 @@ class TaskController extends ControllerBase
     public function indexAction($id)
     {
         $condition = [];
-        
         if($id){
+                
             $condition["idProject"] = $id;
-        }
 
-        $task = Tasks::Find(array($condition));
+            $task = Tasks::Find(array($condition));
 
-        if (!$task) {
+            if (!$task) {
+                $this->flash->error("task was not found");
+        
+                $this->dispatcher->forward([
+                    'controller' => "project",
+                    'action' => 'index'
+                ]);
+        
+                return;
+            }
+            $this->view->task = $task;
+        }else{
             $this->flash->error("task was not found");
-    
             $this->dispatcher->forward([
                 'controller' => "project",
                 'action' => 'index'
             ]);
-    
-            return;
         }
-        
-        $this->view->task = $task;
-
-       
 
     }
 

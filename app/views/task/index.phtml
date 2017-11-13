@@ -11,10 +11,14 @@
                     Task detailed
                 </div>
                 </div>
-                <div class="ui bottom attached button">
-                <i class="add icon"></i>
-                Manage Task
-                </div>
+                <a class="ui bottom attached button" href="<?=$this->url->get("task/edit/".$tk->_id); ?>">
+                    <i class="add icon"></i>
+                    edit
+                </a>
+                <a class="ui bottom attached button">
+                    <i class="add icon"></i>
+                   delete
+                </a>
             </div>
             <?php } ?>
       </div>
