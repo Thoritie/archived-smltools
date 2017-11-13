@@ -3,23 +3,7 @@
 class TaskController extends ControllerBase
 {
 
-    public function indexAction()
-    {
-        // $idProject = $this->request->getPost("idProject");
-
-        // $condition = [];
-        // if($input){
-        //     $condition["project"] = $input;
-        // }
-        // $task = Task::Find(array($condition));
-        
-        $task = Tasks::Find();
-
-        $this->view->task = $task;
-
-    }
-
-    public function indextestAction($id)
+    public function indexAction($id)
     {
         $condition = [];
         
@@ -28,8 +12,27 @@ class TaskController extends ControllerBase
         }
 
         $task = Tasks::Find(array($condition));
+
+        if (!$task) {
+            $this->flash->error("task was not found");
+    
+            $this->dispatcher->forward([
+                'controller' => "project",
+                'action' => 'index'
+            ]);
+    
+            return;
+        }
         
         $this->view->task = $task;
+
+       
+
+    }
+
+    public function indextestAction($id)
+    {
+        
     }
 
     public function createAction()

@@ -1,150 +1,63 @@
 
-  
-      <div class="container-fluid">
-        <div class="row  mb-3">
-          <!-- Card Layout -->
-          <div class="col-md-9 col-sm-12 order-md-1 order-sm-1 order-2">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <!-- Card -->
-                  <?php
-                       foreach ($task as $key => $tk) {
-                  ?>
-                  
-                  <div class="col-xl-4 col-sm-6 mb-3 small">
-                    <div class="card text-white bg-primary o-hidden h-100">
-                      <div class="card-body">
-                        <div class="card-body-icon">
-                          <i class="fa fa-fw fa-cubes"></i>
-                        </div>
-                        <h6 class="card-title"><a class="card-link text-top-100"><?=$tk->name?></a></h6>
-                        <input type="hidden" id="idtask" value="Norway">
-                        <!-- <div class="card-subtitle mb-2">
-                          <a class="card-link text-top-100" href="#">Task</a>
-                        </div> -->
-                      </div>
-                      <div class="card-footer text-white clearfix small">
+<div class="ui grid">
 
-                        <!-- btn footter left -->
-                        <span class="float-left">
-                          <!-- emty -->
-                        </span>
-
-                        <!-- btn footer right -->
-                        <span class="float-right">
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-success icon-circle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                            <div class="dropdown-menu" style="z-index:3!important;">
-<!--                               <a class="dropdown-item" href="#"><i class="fa fa-fw fa-plus"></i> New Task</a> -->
-                
-                              <a class="dropdown-item" href="<?=$this->url->get("task/edit/".$tk->_id); ?>"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                              <a class="dropdown-item" href="#" onclick="deleteTask('<?=$tk->_id;?>')"><i class="fa fa-fw fa-trash"></i> Delete</a>
-                              <a class="dropdown-item" href="stakeholder/stakeholder.php"><i class="fa fa-fw fa-users"></i> Stakeholder</a>
-                              <a class="dropdown-item" href="#"><i class="fa fa-fw fa-book"></i> Resource</a>
-<!--                               <a class="dropdown-item" href="#"><i class="fa fa-fw fa-sitemap"></i> Relationship</a> -->
-<!--                               <a class="dropdown-item" href="#"><i class="fa fa-fw fa-file-text"></i> Report</a> -->
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#"><i class="fa fa-fw fa-info-circle"></i> More Detail</a>
-                            </div>
-                          </div>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <?php } ?>
+   <div class="ten wide column">
+      <div class="ui cards">
+        <?php foreach ($task as $key => $tk) { ?>
+            <div class="ui raised link card">
+                <div class="content">
+                <div class="header"><?=$tk->name?></div>
+                <div class="description">
+                    Task detailed
                 </div>
-              </div>
+                </div>
+                <div class="ui bottom attached button">
+                <i class="add icon"></i>
+                Manage Task
+                </div>
             </div>
-          </div>
-          <!-- /.Card Layout -->
-
-          <!-- Left Layout -->
-          <div id="filter" class="col-md-3 col-sm-12 order-md-2 order-sm-2 order-1 d-none d-sm-block">
-
-            <!-- sort layout -->
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fa fa-sort"></i> Sort
-              </div>
-              <div class="card-body">
-                <div class="form-group">
-                  <!-- <label class="control-label" for="input-status">Status</label> -->
-                  <select name="filter_status" id="input-status" class="form-control">
-                    <option value="">Choose your view</option>
-                    <option value="1">List</option>
-                    <option value="0">Title</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <!-- /.sort layout -->
-
-            <!-- Filter layout -->
-            <div class="card">
-              <div class="card-header">
-                <i class="fa fa-filter"></i> Filter</h3>
-              </div>
-              <div class="card-body">
-                <div class="form-group">
-                  <label class="control-label" for="input-model">Task Name</label>
-                  <input type="text" name="filter_model" value="" placeholder="Task Name" id="input-model" class="form-control" autocomplete="off"><ul class="dropdown-menu"></ul>
-                </div>
-                <div class="form-group">
-                  <label class="control-label" for="input-Stakeholder">Stakeholder</label>
-                  <input type="text" name="Stakeholder" value="" placeholder="Stakeholder" id="input-model" class="form-control" autocomplete="off"><ul class="dropdown-menu"></ul>
-                </div>
-                <div class="form-group text-right">
-                  <button type="button" class="btn btn-secondary">Filter</button>
-                </div>
-              </div>
-            </div>
-            <!-- /.Filter layout -->
-          </div>
-          <!-- /.Left Layout -->
-
-        </div>
+            <?php } ?>
       </div>
-      <!-- /.container-fluid-->
+      
+   </div>
 
-
-
-
-
-
-
-
-
-    </div>
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                     <div class="modal-body" id="delele"></div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-success" href="login.html">Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
+   <div class="five wide column">
+      <div class="ui raised segments">   
+         <div class="ui segment very padded">
+            <h2 class="ui header">
         
-
-
-<script>
-
-        function deleteTask(task)
-        {
-            console.log(task);
-        }
-              
-</script>
-  
+                <div class="content">
+                    Search Task
+                    <div class="sub header">Search your projects</div>
+                </div>
+            </h2>
+            <div class="ui search">
+               <div class="ui icon input">
+                  <input class="prompt" type="text" placeholder="project name...">
+                  <i class="search icon"></i>
+               </div>
+               <div class="results"></div>
+            </div>
+            
+         </div>
+        
+      <div class="ui segment very padded">
+            <h2 class="ui header">
+        
+                <div class="content">
+                    Search Stakeholder
+                    <div class="sub header">Search Stakeholder</div>
+                </div>  
+            </h2>
+            <div class="ui search">
+               <div class="ui icon input">
+                  <input class="prompt" type="text" placeholder="project name...">
+                  <i class="search icon"></i>
+               </div>
+               <div class="results"></div>
+            </div>
+            
+         </div>
+      </div>
+   </div>
+</div>
