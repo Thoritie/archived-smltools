@@ -12,23 +12,24 @@ class TaskController extends ControllerBase
 
             $task = Tasks::Find(array($condition));
 
-            if (!$task) {
-                $this->flash->error("task was not found");
+            // if (!$task) {
+            //     $this->flash->error("task was not found");
         
-                $this->dispatcher->forward([
-                    'controller' => "project",
-                    'action' => 'index'
-                ]);
+            //     $this->dispatcher->forward([
+            //         'controller' => "project",
+            //         'action' => 'index'
+            //     ]);
         
-                return;
-            }
+            //     return;
+            // }
+            $this->view->idProject = $id;
             $this->view->task = $task;
-        }else{
-            $this->flash->error("task was not found");
-            $this->dispatcher->forward([
-                'controller' => "project",
-                'action' => 'index'
-            ]);
+        // }else{
+        //     $this->flash->error("task was not found");
+        //     $this->dispatcher->forward([
+        //         'controller' => "project",
+        //         'action' => 'index'
+        //     ]);
         }
 
     }
@@ -40,12 +41,23 @@ class TaskController extends ControllerBase
 
     public function createAction()
     {
-        
+        $this->view->disable();
+        $IdProject = $this->request->getPost('IdProject');
+
+        $this->tag->setDefault("IdProject", $IdProject);
     }
 
     public function saveAction()
     {
-        $task = new Tasks();
+       
+        $id = $this->request->getPost("taskname");
+        if(!$id){
+            $task = new Tasks();
+        }else{
+            $task = Tasks::findById($id);
+        }
+
+       
         $task->name = $this->request->getPost("taskname");
         $task->isA = $this->request->getPost("isA");
         $task->Description = $this->request->getPost("Description");
@@ -61,9 +73,7 @@ class TaskController extends ControllerBase
         $task->collaboratorToBe =  $this->request->getPost("collaboratorToBe");
         $task->toUse = $this->request->getPost("toUse");
         $task->toProduce = $this->request->getPost("toProduce");
-        
-       
-
+        $idProject = $this->request->getPost("idProject");
 
         if (!$task->save()) {
             foreach ($teacher->getMessages() as $message) {

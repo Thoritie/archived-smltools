@@ -3,24 +3,39 @@
 
    <div class="ten wide column">
       <div class="ui cards">
-        <?php foreach ($task as $key => $tk) { ?>
+
             <div class="ui raised link card">
                 <div class="content">
-                <div class="header"><?=$tk->name?></div>
-                <div class="description">
-                    Task detailed
+                <div class="header">Create new Task</div>
+                
                 </div>
-                </div>
-                <a class="ui bottom attached button" href="<?=$this->url->get("task/edit/".$tk->_id); ?>">
+                <a class="ui bottom attached button" href="#" onclick="createTask('<?=$idProject?>')">
                     <i class="add icon"></i>
-                    edit
+                    create
                 </a>
-                <a class="ui bottom attached button">
-                    <i class="add icon"></i>
-                   delete
-                </a>
+               
             </div>
-            <?php } ?>
+        
+        <?php 
+            if($task == NULL){
+                foreach ($task as $key => $tk) { ?>
+                <div class="ui raised link card">
+                    <div class="content">
+                    <div class="header"><?=$tk->name?></div>
+                    <div class="description">
+                        Task detailed
+                    </div>
+                    </div>
+                    <a class="ui bottom attached button" href="<?=$this->url->get("task/edit/".$tk->_id); ?>">
+                        <i class="add icon"></i>
+                        edit
+                    </a>
+                    <a class="ui bottom attached button">
+                        <i class="add icon"></i>
+                    delete
+                    </a>
+                </div>
+                <?php } }?>
       </div>
       
    </div>
@@ -65,3 +80,9 @@
       </div>
    </div>
 </div>
+
+<script>
+    function createTask(IdProject){
+        console.log(IdProject);
+    }
+</script>
