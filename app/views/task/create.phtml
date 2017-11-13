@@ -6,7 +6,8 @@
        [
            "task/test",
            "autocomplete" => "off",
-           "class" => "form-horizontal"
+           "class" => "form-horizontal",
+           "id" => "createTask-form"
        ]
    );
    ?>
@@ -129,14 +130,7 @@
             "class" => "form-control", "id" => "toProduce" , "placeholder"=>"toProduce"]) 
             ?>
       </div>
-      <div class="field">
-         <label>Description</label>
-         <textarea id="description" class="form-control" name="description" id="description" rows="3"></textarea>
-      </div>
-      <div class="field">
-         <label>Description</label>
-         <textarea id="description" class="form-control" name="description" id="description" rows="3"></textarea>
-      </div>
+     
       <?php echo $this->tag->endForm(); ?>
       <?php 
          echo $this->tag->submitButton(["saveTask", "size" => 30, 

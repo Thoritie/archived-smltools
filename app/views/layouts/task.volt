@@ -39,6 +39,10 @@
 {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
 {{ javascript_include('jslif/sb-admin.min.js') }}
 {{ javascript_include('jslif/tagTaskCreate.js') }}
+
+
+{{ javascript_include('dist/jquery.validate.js')}}
+{{ javascript_include('jquery/createTaskValidate.js') }}
 </head>
 <body>
    <div class="">
