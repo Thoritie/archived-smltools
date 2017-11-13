@@ -5,23 +5,42 @@ class ProjectController extends ControllerBase
 
     public function indexAction()
     {
+        $session = $this->session->get('login');
+        $project = Project::Find(array(
+        array(
+            '$or' => array
+                (
+                    array('createrId' => $session),
+                    array('permission' => $session)
+                )
+            )
+        ));
 
+        $this->view->project = $project;
     }
 
     public function createAction()
     {
 
     }
+    public function editAction()
+    {
+
+    }
     public function findUserAction()
     {
-        $session = $this->request->getPost("session");
-        $user = Users::find(
-        [
-            [
-                
-            ]
+        $session = $this->session->get('login');
+        // $session = $this->request->getPost("session");
+        // $condition = [];
+        
+        // if($session){
+        //     $condition["_id"] =["$ne"=>$session];
+        // }
+        $user = Users::find([
+        "conditions" => [
+            '_id' => ['$ne'=>$session]
         ]
-        );
+        ]);
         return json_encode($user);
     }
     public function saveAction()
