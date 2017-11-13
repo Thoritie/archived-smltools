@@ -39,6 +39,11 @@
 <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
 <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
 <?= $this->tag->javascriptInclude('jslif/tagTaskCreate.js') ?>
+
+
+<?= $this->tag->javascriptInclude('dist/jquery.validate.js') ?>
+<?= $this->tag->javascriptInclude('jquery/createTaskValidate.js') ?>
+<?= $this->tag->javascriptInclude('jquery/editTaskValidate.js') ?>
 </head>
 <body>
    <div class="">
