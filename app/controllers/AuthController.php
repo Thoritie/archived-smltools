@@ -65,17 +65,26 @@ class AuthController extends ControllerBase
         $sirname = $this->request->getPost('sirname');
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
+        $dup = Users::find([
+        "conditions" => [
+            'username' => $username
+        ]
+        ]);
+        if($dup)
+        {
+            return json_encode(0);
+        }
         $user = new Users();
         $user->username = $username;
         $user->name = $name;
         $user->sirname = $sirname;
         $user->email = $email;
         $user->password = $this->security->hash($password);
-        if(!$user->save())
+        if($user->save())
         {
-            return json_encode(0);
+            return json_encode(1);
         }
-        return json_encode(1);
+       
     }
     //  public function testAction()
     // {

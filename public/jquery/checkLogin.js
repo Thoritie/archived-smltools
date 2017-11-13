@@ -90,8 +90,8 @@ $(document).ready(function () {
                 {
                     alert("Save");
                     window.location.href = 'login';
-                } "json"
-            });
+                } 
+            },"json");
         }
     });
 
