@@ -21,7 +21,9 @@ class TaskController extends ControllerBase
 
     public function indextestAction()
     {
+        $task = Tasks::Find();
         
+                $this->view->task = $task;
     }
 
     public function createAction()
