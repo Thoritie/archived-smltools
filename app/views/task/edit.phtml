@@ -1,12 +1,13 @@
 
 <!-- new -->
-<h2 class="headform textCenter">Create Task</h2>
+<h2 class="headform textCenter">Edit Task</h2>
 <?php
    echo $this->tag->form(
        [
            "task/test",
            "autocomplete" => "off",
-           "class" => "form-horizontal"
+           "class" => "form-horizontal",
+           "id" => "editTask-form"
        ]
    );
    ?>
@@ -129,14 +130,7 @@
             "class" => "form-control", "id" => "EdtoProduce" , "placeholder"=>"toProduce"]) 
             ?>
       </div>
-      <div class="field">
-         <label>Description</label>
-         <textarea id="description" class="form-control" name="description" id="description" rows="3"></textarea>
-      </div>
-      <div class="field">
-         <label>Description</label>
-         <textarea id="description" class="form-control" name="description" id="description" rows="3"></textarea>
-      </div>
+
       <?php echo $this->tag->endForm(); ?>
       <?php 
          echo $this->tag->submitButton(["saveTask", "size" => 30, 

@@ -43,6 +43,7 @@
 
 <?= $this->tag->javascriptInclude('dist/jquery.validate.js') ?>
 <?= $this->tag->javascriptInclude('jquery/createTaskValidate.js') ?>
+<?= $this->tag->javascriptInclude('jquery/editTaskValidate.js') ?>
 </head>
 <body>
    <div class="">

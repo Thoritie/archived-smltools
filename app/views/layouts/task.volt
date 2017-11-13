@@ -43,6 +43,7 @@
 
 {{ javascript_include('dist/jquery.validate.js')}}
 {{ javascript_include('jquery/createTaskValidate.js') }}
+{{ javascript_include('jquery/editTaskValidate.js') }}
 </head>
 <body>
    <div class="">
