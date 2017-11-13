@@ -19,11 +19,17 @@ class TaskController extends ControllerBase
 
     }
 
-    public function indextestAction()
+    public function indextestAction($id)
     {
-        $task = Tasks::Find();
+        $condition = [];
         
-                $this->view->task = $task;
+        if($id){
+            $condition["idProject"] = $id;
+        }
+
+        $task = Tasks::Find(array($condition));
+        
+        $this->view->task = $task;
     }
 
     public function createAction()
