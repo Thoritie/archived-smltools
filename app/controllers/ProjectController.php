@@ -63,5 +63,15 @@ class ProjectController extends ControllerBase
         }
     }
 
+    public function taskAction($id)
+    {
+        if($id){
+            $this->session->set("idtask", $id);   
+            return $this->response->redirect("task");
+        }else{
+            return $this->response->redirect("project");
+        }
+    }
+
 }
 
