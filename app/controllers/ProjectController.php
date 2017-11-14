@@ -23,7 +23,7 @@ class ProjectController extends ControllerBase
     {
 
     }
-    public function editAction()
+    public function editAction($id)
     {
 
     }
