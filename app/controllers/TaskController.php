@@ -191,10 +191,10 @@ class TaskController extends ControllerBase
     public function deleteTaskAction()
     {
         $id = $this->request->getPost('idTask');
-        $task = Tasks::findById($task);
+        $task = Tasks::findById($id);
 
         $task->delete();
-
+        return;
     }
 
    

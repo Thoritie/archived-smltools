@@ -30,7 +30,7 @@
                         <i class="add icon"></i>
                         edit
                     </a>
-                    <a class="ui bottom attached button">
+                    <a class="ui bottom attached button" onclick="deleteTask('<?=$tk->_id?>')">
                         <i class="add icon"></i>
                     delete
                     </a>
@@ -82,5 +82,14 @@
 </div>
 
 <script>
-   
+        function deleteTask(id){
+            var idTask =  id;
+            console.log(idTask);
+            $.post("task/deleteTask", {
+                idTask: idTask,
+            }, function () {
+            }, "json");
+
+            window.location="task/index";
+        }
 </script>
