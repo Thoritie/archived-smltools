@@ -180,6 +180,7 @@ $(document).ready(function() {
             });
             var toUse = $("#toUse").val();
             var toProduce = $("#toProduce").val();
+            var idProject = $("#idProject").val();
            
            
                 $.post("save", {
@@ -197,9 +198,9 @@ $(document).ready(function() {
                     ownerToBe : item3,
                     collaboratorToBe : item4,
                     toUse : toUse,
-                    toProduce : toProduce
+                    toProduce : toProduce,
+                    idProject : idProject
                 }, function (data) {
-                  
                 },"json");
             });
 

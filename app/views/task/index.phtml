@@ -9,7 +9,7 @@
                 <div class="header">Create new Task</div>
                 
                 </div>
-                <a class="ui bottom attached button" href="#" onclick="createTask('<?=$idProject?>')">
+                <a class="ui bottom attached button" href="<?=$this->url->get("task/create"); ?>">
                     <i class="add icon"></i>
                     create
                 </a>
@@ -82,7 +82,5 @@
 </div>
 
 <script>
-    function createTask(IdProject){
-        console.log(IdProject);
-    }
+   
 </script>

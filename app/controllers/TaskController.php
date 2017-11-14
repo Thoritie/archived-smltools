@@ -5,8 +5,8 @@ class TaskController extends ControllerBase
 
     public function indexAction()
     {
-       
-        $id = $this->session->get('idtask');
+        
+        $id = $this->session->get('idProject');
         $condition = [];
         if($id){
                 
@@ -16,7 +16,7 @@ class TaskController extends ControllerBase
             $this->view->idProject = $id;
             $this->view->task = $task;
         }
-
+        
     }
 
     public function indextestAction($id)
@@ -26,16 +26,15 @@ class TaskController extends ControllerBase
 
     public function createAction()
     {
-        $this->view->disable();
-        $IdProject = $this->request->getPost('IdProject');
-
-        $this->tag->setDefault("IdProject", $IdProject);
+        $id = $this->session->get('idProject');
+        $this->tag->setDefault("idProject", $id);
+        
     }
 
     public function saveAction()
     {
        
-        $id = $this->request->getPost("taskname");
+        $id = $this->request->getPost("idtask");
         if(!$id){
             $task = new Tasks();
         }else{
@@ -58,7 +57,7 @@ class TaskController extends ControllerBase
         $task->collaboratorToBe =  $this->request->getPost("collaboratorToBe");
         $task->toUse = $this->request->getPost("toUse");
         $task->toProduce = $this->request->getPost("toProduce");
-        $idProject = $this->request->getPost("idProject");
+        $task->idProject = $this->request->getPost("idProject");
 
         if (!$task->save()) {
             foreach ($teacher->getMessages() as $message) {
@@ -73,13 +72,7 @@ class TaskController extends ControllerBase
             return;
         }
         return;
-        // $this->flash->success("teacher was created successfully");
-
-        // $this->dispatcher->forward([
-        //     'controller' => "task",
-        //     'action' => 'index'
-        // ]);
-        // return $this->response->redirect("task/index");
+    
     }
 
     public function findStakeAction()
