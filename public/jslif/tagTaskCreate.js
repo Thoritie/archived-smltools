@@ -148,7 +148,7 @@ $(document).ready(function() {
         $('#saveTask').click(function () {
             var taskname = $("#taskname").val();
             var isA = $("#isA").val();
-            var Description = $("#isA").val();
+            var Description = $("#Description").val();
             var includes = $("#includes").val();
             var asIsState = $("#asIsState").val();
            
@@ -203,6 +203,70 @@ $(document).ready(function() {
                 }, function (data) {
                 },"json");
             });
+
+
+
+            $('#editTask').click(function () {
+                var taskname = $("#Edname").val();
+                var isA = $("#EdisA").val();
+                var Description = $("#EdDescription").val();
+                var includes = $("#Edincludes").val();
+                var asIsState = $("#EdasIsState").val();
+               
+                var owner = $("#Edowner").tagsinput('items')
+                item1 = {};
+                $.each(owner, function(index ,input){   
+                    item1 [index] = input.index
+                });
+    
+                var collaburator = $("#Edcollaburator").tagsinput('items')
+                item2 = {};
+                $.each(collaburator, function(index ,input){   
+                    item2 [index] = input.index
+                });
+                var regulator = $("#Edregulator").val();
+                var uses = $("#Eduses").val();
+                var produces = $("#Edproduces").val();
+                var toBeState = $("#EdtoBeState").val();
+    
+                var ownerToBe = $("#EdownerToBe").tagsinput('items')
+                item3 = {};
+                $.each(ownerToBe, function(index ,input){   
+                    item3 [index] = input.index
+                });
+                var collaboratorToBe = $("#EdcollaboratorToBe").tagsinput('items')
+                item4 = {};
+                $.each(collaboratorToBe, function(index ,input){   
+                    item4 [index] = input.index
+                });
+                var toUse = $("#EdtoUse").val();
+                var toProduce = $("#EdtoProduce").val();
+                var idProject = $("#EdidProject").val();
+                var idTask = $("#EdidTask").val();
+               
+               
+                    $.post("save", {
+                        idTask : idTask,
+                        taskname : taskname,
+                        isA : isA,
+                        Description : Description,
+                        includes : includes,
+                        asIsState : asIsState,
+                        owner : item1,
+                        collaburator : item2,
+                        regulator : regulator,
+                        uses : uses,
+                        produces : produces,
+                        toBeState : toBeState,
+                        ownerToBe : item3,
+                        collaboratorToBe : item4,
+                        toUse : toUse,
+                        toProduce : toProduce,
+                        idProject : idProject,
+                       
+                    }, function (data) {
+                    },"json");
+                });
 
            
         
