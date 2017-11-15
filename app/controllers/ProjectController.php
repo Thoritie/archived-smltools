@@ -127,5 +127,15 @@ class ProjectController extends ControllerBase
         $this->view->project = $project;
     }
 
+    public function taskAction($id)
+    {
+        if($id){
+            $this->session->set("idtask", $id);   
+            return $this->response->redirect("task");
+            return $this->response->redirect("project");
+        }
+    }
+
+
 }
 
