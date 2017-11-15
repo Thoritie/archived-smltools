@@ -6,15 +6,24 @@ class ProjectController extends ControllerBase
     public function indexAction()
     {
         $session = $this->session->get('login');
-        $project = Project::Find(array(
-        array(
-            '$or' => array
-                (
-                    array('createrId' => $session),
-                    array('permission' => $session)
-                )
-            )
-        ));
+        // $project = Project::Find(array(
+        // array(
+        //     '$or' => array(
+        //             array('createrId' => $session),
+        //             array('permission' => $session)
+        //         )
+        //     )
+        // ));
+        $project = Project::Find(
+        [
+        'conditions' => [
+            '$or' =>[
+                ['createrId' => $session],
+                ['permission' => $session],
+                ],
+            ]
+        ]
+        );
 
         $this->view->project = $project;
     }
