@@ -46,8 +46,8 @@
 <?= $this->tag->javascriptInclude('jquery/editTaskValidate.js') ?>
 
 <!--Modal -->
-    <?= $this->tag->stylesheetLink('Semantic/modal.css') ?>
-    <?= $this->tag->javascriptInclude('Semantic/modal.js') ?>
+    <!-- <?= $this->tag->stylesheetLink('Semantic/modal.css') ?>
+    <?= $this->tag->javascriptInclude('Semantic/modal.js') ?> -->
      
 </head>
 <body>

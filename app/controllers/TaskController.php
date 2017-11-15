@@ -64,16 +64,16 @@ class TaskController extends ControllerBase
                 $this->flash->error($message);
                
             }
-
-            $this->dispatcher->forward([
-                'controller' => "task",
-                'action' => 'index'
-            ]);
-
-            return;
         }
-        return;
-    
+        //     $this->dispatcher->forward([
+        //         'controller' => "task",
+        //         'action' => 'index'
+        //     ]);
+
+        //     return;
+        // }
+         return;
+            // return json_encode('true');
     }
 
     public function findStakeAction()

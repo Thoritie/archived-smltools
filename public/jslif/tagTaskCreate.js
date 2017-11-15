@@ -135,7 +135,7 @@ $(document).ready(function() {
            
                 var auto = createJSON(data);
                 var n = createString(auto);
-                 console.log(n);
+                
                 tagOwner(n);
                 tagCollaburator(n);
                 tagOwnerToBe(n);
@@ -143,131 +143,68 @@ $(document).ready(function() {
         },  "json");
 
 
-        
         //save task
-        $('#saveTask').click(function () {
-            var taskname = $("#taskname").val();
-            var isA = $("#isA").val();
-            var Description = $("#Description").val();
-            var includes = $("#includes").val();
-            var asIsState = $("#asIsState").val();
-           
-            var owner = $("#owner").tagsinput('items')
-            item1 = {};
-            $.each(owner, function(index ,input){   
-                item1 [index] = input.index
-            });
-
-            var collaburator = $("#collaburator").tagsinput('items')
-            item2 = {};
-            $.each(collaburator, function(index ,input){   
-                item2 [index] = input.index
-            });
-            var regulator = $("#regulator").val();
-            var uses = $("#uses").val();
-            var produces = $("#produces").val();
-            var toBeState = $("#toBeState").val();
-
-            var ownerToBe = $("#ownerToBe").tagsinput('items')
-            item3 = {};
-            $.each(ownerToBe, function(index ,input){   
-                item3 [index] = input.index
-            });
-            var collaboratorToBe = $("#collaboratorToBe").tagsinput('items')
-            item4 = {};
-            $.each(collaboratorToBe, function(index ,input){   
-                item4 [index] = input.index
-            });
-            var toUse = $("#toUse").val();
-            var toProduce = $("#toProduce").val();
-            var idProject = $("#idProject").val();
-           
-           
-                $.post("save", {
-                    taskname : taskname,
-                    isA : isA,
-                    Description : Description,
-                    includes : includes,
-                    asIsState : asIsState,
-                    owner : item1,
-                    collaburator : item2,
-                    regulator : regulator,
-                    uses : uses,
-                    produces : produces,
-                    toBeState : toBeState,
-                    ownerToBe : item3,
-                    collaboratorToBe : item4,
-                    toUse : toUse,
-                    toProduce : toProduce,
-                    idProject : idProject
-                }, function (data) {
-                },"json");
-            });
-
-
-
-            $('#editTask').click(function () {
-                var taskname = $("#Edname").val();
-                var isA = $("#EdisA").val();
-                var Description = $("#EdDescription").val();
-                var includes = $("#Edincludes").val();
-                var asIsState = $("#EdasIsState").val();
-               
-                var owner = $("#Edowner").tagsinput('items')
-                item1 = {};
-                $.each(owner, function(index ,input){   
-                    item1 [index] = input.index
-                });
-    
-                var collaburator = $("#Edcollaburator").tagsinput('items')
-                item2 = {};
-                $.each(collaburator, function(index ,input){   
-                    item2 [index] = input.index
-                });
-                var regulator = $("#Edregulator").val();
-                var uses = $("#Eduses").val();
-                var produces = $("#Edproduces").val();
-                var toBeState = $("#EdtoBeState").val();
-    
-                var ownerToBe = $("#EdownerToBe").tagsinput('items')
-                item3 = {};
-                $.each(ownerToBe, function(index ,input){   
-                    item3 [index] = input.index
-                });
-                var collaboratorToBe = $("#EdcollaboratorToBe").tagsinput('items')
-                item4 = {};
-                $.each(collaboratorToBe, function(index ,input){   
-                    item4 [index] = input.index
-                });
-                var toUse = $("#EdtoUse").val();
-                var toProduce = $("#EdtoProduce").val();
-                var idProject = $("#EdidProject").val();
-                var idTask = $("#EdidTask").val();
-               
-               
-                    $.post("save", {
-                        idTask : idTask,
-                        taskname : taskname,
-                        isA : isA,
-                        Description : Description,
-                        includes : includes,
-                        asIsState : asIsState,
-                        owner : item1,
-                        collaburator : item2,
-                        regulator : regulator,
-                        uses : uses,
-                        produces : produces,
-                        toBeState : toBeState,
-                        ownerToBe : item3,
-                        collaboratorToBe : item4,
-                        toUse : toUse,
-                        toProduce : toProduce,
-                        idProject : idProject,
-                       
-                    }, function (data) {
-                    },"json");
-                });
-
-           
+                $('#saveTask').click(function () {
+                    var taskname = $("#taskname").val();
+                    var isA = $("#isA").val();
+                    var Description = $("#Description").val();
+                    var includes = $("#includes").val();
+                    var asIsState = $("#asIsState").val();
+                   
+                    var owner = $("#owner").tagsinput('items')
+                    item1 = {};
+                    $.each(owner, function(index ,input){   
+                        item1 [index] = input.index
+                    });
         
+                    var collaburator = $("#collaburator").tagsinput('items')
+                    item2 = {};
+                    $.each(collaburator, function(index ,input){   
+                        item2 [index] = input.index
+                    });
+                    var regulator = $("#regulator").val();
+                    var uses = $("#uses").val();
+                    var produces = $("#produces").val();
+                    var toBeState = $("#toBeState").val();
+        
+                    var ownerToBe = $("#ownerToBe").tagsinput('items')
+                    item3 = {};
+                    $.each(ownerToBe, function(index ,input){   
+                        item3 [index] = input.index
+                    });
+                    var collaboratorToBe = $("#collaboratorToBe").tagsinput('items')
+                    item4 = {};
+                    $.each(collaboratorToBe, function(index ,input){   
+                        item4 [index] = input.index
+                    });
+                    var toUse = $("#toUse").val();
+                    var toProduce = $("#toProduce").val();
+                    var idProject = $("#idProject").val();
+                   
+                        $.ajax({
+                            type:'POST',
+                            url: "http://localhost/smltools/task/save",
+                            data:{
+                                taskname : taskname,
+                                isA : isA,
+                                Description : Description,
+                                includes : includes,
+                                asIsState : asIsState,
+                                owner : item1,
+                                collaburator : item2,
+                                regulator : regulator,
+                                uses : uses,
+                                produces : produces,
+                                toBeState : toBeState,
+                                ownerToBe : item3,
+                                collaboratorToBe : item4,
+                                toUse : toUse,
+                                toProduce : toProduce,
+                                idProject : idProject
+                            },
+                            success:function(data){
+                                window.location.href="http://localhost/smltools/task";
+                            }
+                        })    
+                });
 });
