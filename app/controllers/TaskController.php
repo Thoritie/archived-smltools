@@ -3,35 +3,20 @@
 class TaskController extends ControllerBase
 {
 
-    public function indexAction($id)
+    public function indexAction()
     {
+        
+        $id = $this->session->get('idProject');
         $condition = [];
         if($id){
                 
             $condition["idProject"] = $id;
 
             $task = Tasks::Find(array($condition));
-
-            // if (!$task) {
-            //     $this->flash->error("task was not found");
-        
-            //     $this->dispatcher->forward([
-            //         'controller' => "project",
-            //         'action' => 'index'
-            //     ]);
-        
-            //     return;
-            // }
             $this->view->idProject = $id;
             $this->view->task = $task;
-        // }else{
-        //     $this->flash->error("task was not found");
-        //     $this->dispatcher->forward([
-        //         'controller' => "project",
-        //         'action' => 'index'
-        //     ]);
         }
-
+        
     }
 
     public function indextestAction($id)
@@ -41,16 +26,15 @@ class TaskController extends ControllerBase
 
     public function createAction()
     {
-        $this->view->disable();
-        $IdProject = $this->request->getPost('IdProject');
-
-        $this->tag->setDefault("IdProject", $IdProject);
+        $id = $this->session->get('idProject');
+        $this->tag->setDefault("idProject", $id);
+        
     }
 
     public function saveAction()
     {
        
-        $id = $this->request->getPost("taskname");
+        $id = $this->request->getPost("idTask");
         if(!$id){
             $task = new Tasks();
         }else{
@@ -73,11 +57,12 @@ class TaskController extends ControllerBase
         $task->collaboratorToBe =  $this->request->getPost("collaboratorToBe");
         $task->toUse = $this->request->getPost("toUse");
         $task->toProduce = $this->request->getPost("toProduce");
-        $idProject = $this->request->getPost("idProject");
+        $task->idProject = $this->request->getPost("idProject");
 
         if (!$task->save()) {
             foreach ($teacher->getMessages() as $message) {
                 $this->flash->error($message);
+               
             }
 
             $this->dispatcher->forward([
@@ -88,13 +73,7 @@ class TaskController extends ControllerBase
             return;
         }
         return;
-        // $this->flash->success("teacher was created successfully");
-
-        // $this->dispatcher->forward([
-        //     'controller' => "task",
-        //     'action' => 'index'
-        // ]);
-        // return $this->response->redirect("task/index");
+    
     }
 
     public function findStakeAction()
@@ -133,6 +112,7 @@ class TaskController extends ControllerBase
     public function editAction($id)
     {
                 $task = Tasks::findById($id);
+                
                 if (!$task) {
                     $this->flash->error("task was not found");
             
@@ -174,7 +154,11 @@ class TaskController extends ControllerBase
                 $this->view->collaboratorTobe = $collaboratorToBe;
 
 
+                $idProject = $this->session->get('idProject');
+
                 $this->view->idTask  = $task->_id;
+                $this->tag->setDefault("idProject", $idProject);
+                $this->tag->setDefault("idTask", $id);
                 $this->tag->setDefault("taskname", $task->name);
                 $this->tag->setDefault("isA", $task->isA);
                 $this->tag->setDefault("Description", $task->Description);
@@ -204,13 +188,13 @@ class TaskController extends ControllerBase
                
     }
     
-    public function testAction()
+    public function deleteTaskAction()
     {
-         
-        $this->view->disable();
-        $input = $this->request->getPost('name');
-        
-        return json_encode($input);
+        $id = $this->request->getPost('idTask');
+        $task = Tasks::findById($id);
+
+        $task->delete();
+        return;
     }
 
    

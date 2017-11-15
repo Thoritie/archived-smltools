@@ -4,13 +4,17 @@
 <?php
    echo $this->tag->form(
        [
-           "task/test",
+           "task/index",
            "autocomplete" => "off",
            "class" => "form-horizontal",
            "id" => "createTask-form"
        ]
    );
    ?>
+            <?php 
+            echo $this->tag->textField(["idProject", "id" => "idProject" ]) 
+            ?>
+
 <div class="ui raised segment very padded">
    <div class="ui large form">
       <div class="field">

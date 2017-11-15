@@ -4,13 +4,17 @@
 <?php
    echo $this->tag->form(
        [
-           "task/test",
+         
            "autocomplete" => "off",
            "class" => "form-horizontal",
-           "id" => "editTask-form"
+          
        ]
    );
    ?>
+            <?php 
+            echo $this->tag->textField(["idProject", "id" => "EdidProject" ]);
+            echo $this->tag->textField(["idTask", "id" => "EdidTask" ]);
+            ?>
 <div class="ui raised segment very padded">
    <div class="ui large form">
       <div class="field">
@@ -134,7 +138,7 @@
       <?php echo $this->tag->endForm(); ?>
       <?php 
          echo $this->tag->submitButton(["saveTask", "size" => 30, 
-         "class" => "btn btn-primary", "id" => "EdsaveTask"]) 
+         "class" => "btn btn-primary", "id" => "editTask"]) 
          ?>
    </div>
 </div>
@@ -228,13 +232,13 @@
       }
     });
     add(EdcollaboratorToBe, data_collaboratorTobe);
- 
+
 });
 
 
   function add($elt, data){
       $.each(JSON.parse(data), function(index ,data){   
-        $elt.tagsinput('add', { "value": data.value, "text": data.name, "continent": "" });
+        $elt.tagsinput('add', { "value": data.value, "text": data.name, "continent": "" ,"index": data._id.$id});
       });
   }
 
