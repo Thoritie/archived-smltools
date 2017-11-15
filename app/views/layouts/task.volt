@@ -44,6 +44,11 @@
 {{ javascript_include('dist/jquery.validate.js')}}
 {{ javascript_include('jquery/createTaskValidate.js') }}
 {{ javascript_include('jquery/editTaskValidate.js') }}
+
+<!--Modal -->
+    {{ stylesheet_link('Semantic/modal.css') }}
+    {{ javascript_include('Semantic/modal.js') }}
+     
 </head>
 <body>
    <div class="">

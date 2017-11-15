@@ -30,7 +30,7 @@
                         <i class="add icon"></i>
                         edit
                     </a>
-                    <a class="ui bottom attached button" onclick="deleteTask('<?=$tk->_id?>')">
+                    <a class="ui bottom attached button" onclick="test()">
                         <i class="add icon"></i>
                     delete
                     </a>
@@ -80,6 +80,17 @@
       </div>
    </div>
 </div>
+<div class="ui modal" id="test">
+    <div class="header">Header</div>
+    <div class="content">
+      <p></p>
+    </div>
+    <div class="actions">
+      <div class="ui approve button">Approve</div>
+      <div class="ui button">Neutral</div>
+      <div class="ui cancel button">Cancel</div>
+    </div>
+  </div>
 
 <script>
         function deleteTask(id){
@@ -91,5 +102,9 @@
             }, "json");
 
             window.location="task/index";
+        }
+
+        function test(){
+            $('#test').modal('show');
         }
 </script>
