@@ -6,26 +6,48 @@ class ProjectController extends ControllerBase
     public function indexAction()
     {
         $session = $this->session->get('login');
+        $session =(String)$session;
+
         // $project = Project::Find(array(
-        // array(
+        // array(  
         //     '$or' => array(
         //             array('createrId' => $session),
         //             array('permission' => $session)
         //         )
         //     )
         // ));
-        $project = Project::Find(
-        [
-        'conditions' => [
-            '$or' =>[
-                ['createrId' => $session],
-                ['permission' => $session],
-                ],
+        // $project = Project::find(array( 
+        // '$or' => array(
+        //         array('createrId' => $session),
+        //         array('permission' => $session)
+        //     )
+        // ));
+        $create = Project::Find(
+            [
+                [
+                    'createrId' => $session,
+                ]
             ]
-        ]
         );
-
-        $this->view->project = $project;
+        $permis = Project::Find(
+            [
+                [
+                    'permission' => $session,
+                ]
+            ]
+        );
+        // $project = Project::Find(
+        // [
+        // 'conditions' => [
+        //     '$or' =>[
+        //         array('createrId' => $session),
+        //         array('permission' => $session)
+        //         ]
+        //     ],
+        // ]
+        // );
+        $this->view->create = $create;
+        $this->view->permis = $permis;
     }
 
     public function createAction()
@@ -54,10 +76,11 @@ class ProjectController extends ControllerBase
     }
     public function saveAction()
     {
+        $id=$this->session->get('login');
         $project = new Project;
         $project->name =$this->request->getPost("projectname");
         $project->description =$this->request->getPost("description");
-        $project->createrId =$this->session->get('login');
+        $project->createrId =(String)$id;
         $project->permission =$this->request->getPost("permission");
         
         if($project->save())
@@ -72,14 +95,36 @@ class ProjectController extends ControllerBase
         }
     }
 
-    public function taskAction($id)
+    public function testAction()
     {
-        if($id){
-            $this->session->set("idProject", $id);   
-            return $this->response->redirect("task");
-        }else{
-            return $this->response->redirect("project");
-        }
+        $session = $this->session->get('login');
+        $session =(String)$session;
+        var_dump ($session);
+        // $project = Project::Find(array(
+        // array(  
+        //     '$or' => array(
+        //             array('createrId' => $session),
+        //             array('permission' => $session)
+        //         )
+        //     )
+        // ));
+        $project = Project::find(array( 
+        '$or' => array(
+                array('createrId' => $session),
+                array('permission' => $session)
+            )
+        ));
+        // $project = Project::Find(
+        // [
+        // 'conditions' => [
+        //     '$or' =>[
+        //         ['createrId' => $session],
+        //         ['permission' => $session],
+        //         ],
+        //     ]
+        // ]
+        // );
+        $this->view->project = $project;
     }
 
 }

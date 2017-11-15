@@ -93,6 +93,15 @@ class AuthController extends ControllerBase
     //     echo $user->name;
     // }
 
+    public function logoutAction(){
+        if($this->session->has("login")){
+        $this->session->remove("login"); ///only one
+        //$this->session->destroy();
+        $this->flashSession->success("Successful logout");
+        return $this->response->redirect("index");
+      }
+    }
+
     public function testAction()
     {
         $result = true;
