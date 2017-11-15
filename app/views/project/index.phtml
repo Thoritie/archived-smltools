@@ -5,7 +5,7 @@
     <div class="ten wide column">
         <div class="ui cards">
             <?php
-            foreach ($project as $key => $pro) {
+            foreach ($create as $key => $pro) {
         ?>
 
                 <div class="ui raised link card">
@@ -35,6 +35,29 @@
                         </div>
 
                     </div>
+
+                </div>
+                <!-- </a> -->
+                <?php } ?>
+<!-- -----------------------------------------------------------permission------------------------------------------------------------------------------ -->
+            <?php
+            foreach ($permis as $key => $per) {
+            ?>
+
+                <div class="ui raised link card">
+                    <div class="content">
+                        <div class="header">
+                            <a href="<?=$this->url->get("project/task/".$per->_id); ?>">
+                                <?=$per->name?>
+                            </a>
+                        </div>
+                        <div class="description">
+                            <?=$per->description?>
+                        </div>
+                    </div>
+                    <!-- <a href="<?=$this->url->get("project/edit/"); ?>"> -->
+
+                    
 
                 </div>
                 <!-- </a> -->
