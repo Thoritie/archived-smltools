@@ -34,7 +34,7 @@
 <?= $this->tag->javascriptInclude('jslif/sb-admin.js') ?>
 <!-- auto tag js edit lif -->
 <?= $this->tag->javascriptInclude('jslif/jquery.easing.min.js') ?>
-<?= $this->tag->javascriptInclude('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') ?>
+<?= $this->tag->javascriptInclude('jslif/typeahead.bundle.min.js') ?>
 <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
 <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
 <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
