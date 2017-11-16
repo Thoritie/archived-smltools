@@ -3,11 +3,19 @@
    <div class="ui large form">
       <div class="field">
          <label>Project Name</label>
-         <input type="text" class="form-control" name="projectname" id="projectname" placeholder="Project Name">
+         
+         <?php 
+            echo $this->tag->textField(["projectname", "size" => 30, 
+            "class" => "form-control", "id" => "projectname" , "placeholder"=>"Project Name"]) 
+            ?>
       </div>
       <div class="field">
          <label>Description</label>
-         <textarea id="description" class="form-control" name="description" id="description" rows="3"></textarea>
+         
+         <?php 
+            echo $this->tag->textArea(["description", "rows" => 3, 
+            "class" => "form-control", "id" => "description" , "placeholder"=>"Project Name"]) 
+            ?>
       </div>
       <div class="field">
          <label>Permission</label>

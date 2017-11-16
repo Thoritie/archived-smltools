@@ -56,7 +56,18 @@ class ProjectController extends ControllerBase
     }
     public function editAction($id)
     {
+        $pro = Project::findById($id);
+        $permission = array();
+                foreach($pro->permission as $data){
+                    $user = Users::findById($data);
+                    array_push($permission,$user);
+                }
+                $this->view->permission = $permission;
 
+                $this->view->pro  = $pro;
+                $this->tag->setDefault("projectname", $pro->name);
+                $this->tag->setDefault("description", $pro->description);
+                
     }
     public function findUserAction()
     {
