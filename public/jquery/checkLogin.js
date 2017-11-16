@@ -1,39 +1,36 @@
 $(document).ready(function () {
-    $.validator.addMethod("nowhitespace", function (value, element) {
-        return this.optional(element) || /^\S+$/i.test(value);
-    }, "No space please");
-
-    // $.validator.addMethod("dupName", function (value, element) {
-    //     var response;
-      
-    //         $.post("test", {
-    //             username: value
-    //         }, function (response) {
-    //             console.log(response);
-    //             response = (response == 'true') ? true : false;
-    //         }, "json")
-    //     return response;
-    // }, "Username is Already Taken");
 
     $.validator.setDefaults({
         errorClass: 'badge badge-danger',
         highlight: function (element) {
             $(element)
                 .closest('.form-control')
-                .addClass('is-invalid');
+                .addClass('is-invalid')
         },
         unhighlight: function (element) {
             $(element)
                 .closest('.form-control')
-                .removeClass('is-invalid');
+                .removeClass('is-invalid')
         }
-    });
+    })
+    $.validator.addMethod("nowhitespace", function (value, element) {
+        return this.optional(element) || /^\S+$/i.test(value);
+    }, "No space please")
 
     $("#signup-form").validate({
         rules: {
             username:{
                 required: true,
-                nowhitespace: true
+                nowhitespace: true,
+                remote: {
+                    url: "http://localhost/smltools/auth/checkDup",
+                    type: "post",
+                    data: {
+                        username: function () {
+                            return $("#username").val()
+                        }
+                    }
+                }
             },
             name: "required",
             sirname: "required",
@@ -49,7 +46,8 @@ $(document).ready(function () {
         },
         messages: {
             username:{
-                required :"Username is required"
+                required :"Username is required",
+                remote: jQuery.validator.format("{0} is already taken.")
             },
             name:{
                 required :"Name is required"
@@ -68,50 +66,28 @@ $(document).ready(function () {
                 equalTo: "Please enter your password again"
             }
         }
-    });
+    })
     $('#signup').click(function () {
         if ($('#signup-form').valid()) {
-            var username = $("#username").val();
-            var name = $("#name").val();
-            var sirname = $("#sirname").val();
-            var email = $("#email").val();
-            var password = $("#password").val();
-            $.post("signup", {
-                username: username,
-                name: name,
-                sirname: sirname,
-                email: email,
-                password: password
-            }, function (data) {
-                if(data==0)
-                {
-                   alert("Username is already taken");
-                }else
-                {
-                    alert("Save");
-                    window.location.href = 'login';
-                } 
-            },"json");
+            var username = $("#username").val()
+            var name = $("#name").val()
+            var sirname = $("#sirname").val()
+            var email = $("#email").val()
+            var password = $("#password").val()
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/smltools/auth/signup",
+                data: {
+                    username: username,
+                    name: name,
+                    sirname: sirname,
+                    email: email,
+                    password: password
+                },
+                success: function (data) {
+                    window.location.href ="http://localhost/smltools/auth/login";
+                }
+            })    
         }
-    });
-
-
-    // function signup() {
-    //     var username = $("#username").val();
-    //     var name = $("#name").val();
-    //     var sirname = $("#sirname").val();
-    //     var email = $("#email").val();
-    //     var password = $("#password").val();
-    //     $.post("signup", {
-    //         username: username,
-    //         name: name,
-    //         sirname: sirname,
-    //         email: email,
-    //         password: password
-    //     }, function (data) {
-
-    //     }); 
-        
-       
-    // }
-});
+    })
+})

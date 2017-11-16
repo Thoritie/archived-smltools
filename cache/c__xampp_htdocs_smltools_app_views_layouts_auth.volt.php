@@ -129,7 +129,6 @@
         <!-- navbar js -->
         <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>
         <?= $this->tag->javascriptInclude('jquery/jquery.js') ?>
-        <?= $this->tag->javascriptInclude('jquery/jquery.min.js') ?>        
         <?= $this->tag->javascriptInclude('dist/jquery.validate.js') ?>
         
         <!-- <?= $this->tag->javascriptInclude('nav/js/creative.js') ?> -->
