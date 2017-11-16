@@ -34,7 +34,7 @@
 {{ javascript_include('jslif/sb-admin.js') }}
 <!-- auto tag js edit lif -->
 {{ javascript_include('jslif/jquery.easing.min.js') }}
-{{ javascript_include('https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js') }}
+{{ javascript_include('jslif/typeahead.bundle.min.js') }}
 {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
 {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
 {{ javascript_include('jslif/sb-admin.min.js') }}

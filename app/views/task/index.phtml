@@ -17,7 +17,7 @@
             </div>
         
         <?php 
-           
+           if($task!=0){
                 foreach ($task as $key => $tk) { ?>
                 <div class="ui raised link card">
                     <div class="content">
@@ -30,12 +30,14 @@
                         <i class="add icon"></i>
                         edit
                     </a>
-                    <a class="ui bottom attached button" onclick="test()">
+                    <a class="ui bottom attached button" onclick="deleteTask('<?=$tk->_id?>','<?=$tk->name?>')">
                         <i class="add icon"></i>
                     delete
                     </a>
                 </div>
-                <?php  }?>
+                <?php  }
+            }
+        ?>
       </div>
       
    </div>
@@ -80,31 +82,39 @@
       </div>
    </div>
 </div>
-<div class="ui modal" id="test">
-    <div class="header">Header</div>
-    <div class="content">
-      <p></p>
+
+
+    <div class="ui tiny test modal">
+        <div class="header">
+            Delete Your Project
+        </div>
+        <div class="content">
+            <p>Are you sure you want to delete your project</p>
+        </div>
+        <div class="footer">
+            <button type="button" class="ui grey button" data-dismiss="modal">Close</button>
+            <button type="button" class="negative ui button">Delete</button>
+        </div>
     </div>
-    <div class="actions">
-      <div class="ui approve button">Approve</div>
-      <div class="ui button">Neutral</div>
-      <div class="ui cancel button">Cancel</div>
-    </div>
-  </div>
 
 <script>
-        function deleteTask(id){
+        function deleteTask(id,name){
             var idTask =  id;
+            var name =  name;
+            
             console.log(idTask);
-            $.post("task/deleteTask", {
+            console.log(name);
+            /* $.post("task/deleteTask", {
                 idTask: idTask,
             }, function () {
             }, "json");
 
-            window.location="task/index";
+            // window.location="task/index"; */
         }
 
         function test(){
-            $('#test').modal('show');
+            $('.tiny.modal')
+                .modal('show')
+                ;
         }
 </script>

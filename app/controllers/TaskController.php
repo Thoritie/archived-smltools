@@ -11,11 +11,13 @@ class TaskController extends ControllerBase
         if($id){
                 
             $condition["idProject"] = $id;
-
             $task = Tasks::Find(array($condition));
-            $this->view->idProject = $id;
-            $this->view->task = $task;
+            
+        }else{
+            $this->view->task = 0;
         }
+        $this->view->idProject = $id;
+        $this->view->task = $task;
         
     }
 
