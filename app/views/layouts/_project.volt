@@ -1,3 +1,5 @@
+
+
 <!-- css for Semantic-->
 {{stylesheet_link('Semantic/components/card.css') }}
 {{stylesheet_link('Semantic/components/dropdown.css') }}

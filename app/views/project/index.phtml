@@ -1,10 +1,10 @@
-<div class="ui grid">
-    <div class="ten wide column">
+<!-- <div class="ui grid"> -->
+    <!-- <div class="ten wide column">
         <div class="ui cards">
             <?php
             foreach ($create as $key => $pro) {
-        ?>
-
+        ?> -->
+<!-- 
                 <div class="ui raised link card">
                     <div class="content">
                         <div class="header">
@@ -15,9 +15,9 @@
                         <div class="description">
                             <?=$pro->description?>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <a href="<?=$this->url->get("project/edit/"); ?>"> -->
-
+<!-- 
                     <div class="ui bottom attached button">
 
                         <div class="ui simple dropdown item">
@@ -33,11 +33,11 @@
 
                     </div>
 
-                </div>
+                </div> -->
                 <!-- </a> -->
                 <?php } ?>
 <!-- -----------------------------------------------------------permission------------------------------------------------------------------------------ -->
-            <?php
+            <!-- <?php
             foreach ($permis as $key => $per) {
             ?>
 
@@ -51,61 +51,106 @@
                         <div class="description">
                             <?=$per->description?>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <a href="<?=$this->url->get("project/edit/"); ?>"> -->
 
                     
-
-                </div>
+<!-- 
+                </div> -->
                 <!-- </a> -->
-                <?php } ?>
-        </div>
+                <!-- <?php } ?>
+        </div> -->
 
 
         <!-- This one have dropdown and link but i'm query to make sure it's alright  -->
 
 
-    </div>
+    <!-- </div> -->
 
-    <div class="five wide column">
-        <div class="ui raised segments">
-            <!-- <div class="ui segment">
-            <p>Top</p>
-         </div> -->
 
-            <div class="ui segment very padded">
-                <h2 class="ui header">
+    <!-- random color just for fun -->
+    <?php 
+        $co = array('blue', 'green', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow' );
+        $i = rand(0, count($co)-1);
+        $selectedCo = "$co[$i]"; 
+    ?>
+    <!-- new project card -->
 
-                    <div class="content">
-                        Search Project
-                        <div class="sub header">Search your projects</div>
-                    </div>
-                </h2>
-                <div class="ui search">
-                    <div class="ui icon input">
-                        <input class="prompt" type="text" placeholder="project name...">
-                        <i class="search icon"></i>
-                    </div>
-                    <div class="results"></div>
-                </div>
+<section class="books">
+   <h2 class="section__title">Projects</h2>
+   <p class="section__summary">All Project is here</p>
+   <ul class="resources">
+    <li class="resource--add">
+         <div class="resource__add-icon">
+            <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+               <circle cx="30" cy="30" r="30" />
+               <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "/>
+            </svg>
+         </div>
+      </li> 
 
+      <?php
+            foreach ($create as $key => $pro) {
+        ?>
+
+      <!-- <li class="resource--book"> -->
+      <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+     
+         <a href="" class="resource__link">
+            <h1 class="resource__title"><?=$pro->name?></h1>
+            <p class="resource__summary"><?=$pro->description?></p>
+            
+         </a>
+      </li>
+      <?php } ?>
+
+      <!-- permis -->
+
+
+      <?php
+            foreach ($permis as $key => $per) {
+        ?>
+
+      <!-- <li class="resource--book"> -->
+      <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+     
+         <a href="" class="resource__link">
+            <h1 class="resource__title"><?=$pro->name?></h1>
+            <p class="resource__summary"><?=$pro->description?></p>
+            
+         </a>
+      </li>
+      <?php } ?>
+   </ul>
+</section>
+
+<!-- Test card to show if query card error -->
+<section class="talks">
+   <h2 class="section__title">Test Card</h2>
+   <p class="section__summary">Talks that have been given about SVG.</p>
+   <ul class="resources">
+     
+      <li class="resource--add">
+         <h1 class="resource--add__title">Add Project</h1>
+         <div class="resource__add-icon">
+            <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+               <circle cx="30" cy="30" r="30" />
+               <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "/>
+            </svg>
+         </div>
+         <div class="resource--add__card"></div>
+      </li>
+
+      <li class="resource--talks">
+         <a href="" class="resource__link">
+            <h1 class="resource__title">Project Name</h1>
+            <p class="resource__summary">description</p>
+            <div class="recommended">
+            <h4><i class="pe-7s-tools" style="font-weight: 900"></i></h4>
             </div>
-
-            <div class="ui segment very padded">
-                <h2 class="ui header">
-
-                    <div class="content">
-                        Sort Project
-                        <div class="sub header">sort your project</div>
-                    </div>
-                </h2>
-                <select class="ui dropdown">
-                    <option value="">Sort</option>
-                    <option value="1">List</option>
-                    <option value="0">Title</option>
-                </select>
-
-            </div>
-        </div>
-    </div>
-</div>
+         </a>
+      </li>
+   </ul>
+</section>
+   
+<!-- </div> -->
