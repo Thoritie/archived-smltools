@@ -23,7 +23,7 @@ $(document).ready(function () {
                 required: true,
                 nowhitespace: true,
                 remote: {
-                    url: "http://localhost/smltools/auth/checkDup",
+                    url: "checkDup",
                     type: "post",
                     data: {
                         username: function () {
@@ -68,15 +68,17 @@ $(document).ready(function () {
         }
     })
     $('#signup').click(function () {
+        var x = $(location).attr('host');
         if ($('#signup-form').valid()) {
             var username = $("#username").val()
             var name = $("#name").val()
             var sirname = $("#sirname").val()
             var email = $("#email").val()
             var password = $("#password").val()
+           
             $.ajax({
                 type: 'POST',
-                url: "http://localhost/smltools/auth/signup",
+                url: "signup",
                 data: {
                     username: username,
                     name: name,
@@ -85,7 +87,7 @@ $(document).ready(function () {
                     password: password
                 },
                 success: function (data) {
-                    window.location.href ="http://localhost/smltools/auth/login";
+                    window.location.href = "login";
                 }
             })    
         }
