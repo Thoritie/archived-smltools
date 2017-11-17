@@ -70,7 +70,10 @@
    {{ javascript_include('jslif/bootstrap-tagsinput.js') }}
    {{ javascript_include('jslif/bootstrap-tagsinput.min.js') }}
    {{ javascript_include('jslif/sb-admin.min.js') }}
+   {{ javascript_include('jquery/jquery.redirect.js') }}
    {{ javascript_include('jslif/tagProject.js') }}
+    {{ javascript_include('jquery/projectRedirect.js') }}
+ 
    <!-- <script>
       window.onload = function () {
           var chart1 = document.getElementById("line-chart").getContext("2d");

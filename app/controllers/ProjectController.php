@@ -57,8 +57,9 @@ class ProjectController extends ControllerBase
     {
 
     }
-    public function editAction($id)
+    public function editAction()
     {
+        $id = $this->request->getPost('id');
         $pro = Project::findById($id);
         $permission = array();
                 foreach($pro->permission as $data){
@@ -71,6 +72,15 @@ class ProjectController extends ControllerBase
                 $this->tag->setDefault("projectname", $pro->name);
                 $this->tag->setDefault("description", $pro->description);
                 
+                $session = $this->session->get('login');
+                
+                $user = Users::find([
+                "conditions" => [
+                '_id' => ['$ne'=>$session]
+                ]
+                ]);
+
+                $this->view->user = $user;
     }
     public function findUserAction()
     {

@@ -16,12 +16,17 @@ $(document).ready(function () {
     $.validator.addMethod("nowhitespace", function (value, element) {
         return this.optional(element) || /^\S+$/i.test(value);
     }, "No space please")
+    $.validator.addMethod("loginRegex", function (value, element) {
+        return this.optional(element) || /^[a-z0-9\-]+$/i.test(value);
+    }, "Username must contain only letters, numbers, or dashes.");
 
     $("#signup-form").validate({
         rules: {
             username:{
                 required: true,
                 nowhitespace: true,
+                minlength: 4,
+                loginRegex:true,
                 remote: {
                     url: "http://localhost/smltools/auth/checkDup",
                     type: "post",
