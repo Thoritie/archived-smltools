@@ -113,10 +113,17 @@
             
          </a>
       </li>
+      <?php 
+        $i = rand(0, count($co)-1);
+        $selectedCo = "$co[$i]"; 
+        ?>
       <?php } ?>
 
       <!-- permis -->
-
+    <?php 
+        $i = rand(0, count($co)-1);
+        $selectedCo = "$co[$i]"; 
+    ?>
 
       <?php
             foreach ($permis as $key => $per) {
@@ -135,6 +142,11 @@
    </ul>
 </section>
 
+<?php 
+        $i = rand(0, count($co)-1);
+        $selectedCo = "$co[$i]"; 
+    ?>
+
 <!-- Test card to show if query card error -->
 <section class="talks">
    <h2 class="section__title">Test Card</h2>
@@ -152,13 +164,39 @@
          <div class="resource--add__card"></div>
       </li>
 
-      <li class="resource--talks">
-         <a href="" class="resource__link">
+
+      <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+              <a href="" class="resource__link">
             <h1 class="resource__title">Project Name</h1>
             <p class="resource__summary">description</p>
             <div class="recommended">
             <h4><i class="pe-7s-tools" style="font-weight: 900"></i></h4>
             </div>
+         </a>
+      </li>
+
+      <?php 
+        $i = rand(0, count($co)-1);
+        $selectedCo = "$co[$i]"; 
+    ?>
+      <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+              <a href="" class="resource__link">
+            <h1 class="resource__title">Project Name</h1>
+            <p class="resource__summary">description</p>
+          
+         </a>
+      </li>
+
+      <?php 
+        $i = rand(0, count($co)-1);
+        $selectedCo = "$co[$i]"; 
+        ?>
+
+      <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+              <a href="" class="resource__link">
+            <h1 class="resource__title">Project Name</h1>
+            <p class="resource__summary">description</p>
+           
          </a>
       </li>
    </ul>
