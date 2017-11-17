@@ -186,7 +186,7 @@ class TaskController extends ControllerBase
         
                 $test = Stakeholders::Find(array($condition));
         
-                $this->view->test = $test;
+                $this->view->stake = $test;
                
     }
     
