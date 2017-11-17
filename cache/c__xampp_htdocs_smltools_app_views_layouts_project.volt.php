@@ -4,6 +4,7 @@
 <?= $this->tag->stylesheetLink('Semantic/components/dropdown.min.css') ?>
 <?= $this->tag->stylesheetLink('Semantic/components/segment.css') ?>
 <?= $this->tag->stylesheetLink('Semantic/components/segment.min.css') ?>
+
 <!-- <?= $this->tag->stylesheetLink('bootstrap-4/css/bootstrap.min.css') ?> -->
 <!-- <?= $this->tag->stylesheetLink('pro2/css/font-awesome.min.css') ?>  -->
 <?= $this->tag->stylesheetLink('pro2/css/normalize.css') ?> 
@@ -69,7 +70,10 @@
    <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.js') ?>
    <?= $this->tag->javascriptInclude('jslif/bootstrap-tagsinput.min.js') ?>
    <?= $this->tag->javascriptInclude('jslif/sb-admin.min.js') ?>
+   <?= $this->tag->javascriptInclude('jquery/jquery.redirect.js') ?>
    <?= $this->tag->javascriptInclude('jslif/tagProject.js') ?>
+    <?= $this->tag->javascriptInclude('jquery/projectRedirect.js') ?>
+ 
    <!-- <script>
       window.onload = function () {
           var chart1 = document.getElementById("line-chart").getContext("2d");

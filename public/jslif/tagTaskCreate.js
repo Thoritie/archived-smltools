@@ -183,7 +183,7 @@ $(document).ready(function() {
                    
                         $.ajax({
                             type:'POST',
-                            url: "http://localhost/smltools/task/save",
+                            url: "save",
                             data:{
                                 taskname : taskname,
                                 isA : isA,
@@ -203,7 +203,7 @@ $(document).ready(function() {
                                 idProject : idProject
                             },
                             success:function(data){
-                                window.location.href="http://localhost/smltools/task";
+                                window.location.href="index";
                             }
                         })    
                 });
@@ -251,7 +251,7 @@ $(document).ready(function() {
            
                 $.ajax({
                     type:'POST',
-                    url: "http://localhost/smltools/task/save",
+                    url: "save",
                     data:{
                         taskname : taskname,
                         isA : isA,
@@ -272,7 +272,7 @@ $(document).ready(function() {
                         idTask : idTask
                     },
                     success:function(data){
-                        window.location.href="http://localhost/smltools/task";
+                        window.location.href="index";
                     }
                 })    
         });

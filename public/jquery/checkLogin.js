@@ -16,14 +16,19 @@ $(document).ready(function () {
     $.validator.addMethod("nowhitespace", function (value, element) {
         return this.optional(element) || /^\S+$/i.test(value);
     }, "No space please")
+    $.validator.addMethod("loginRegex", function (value, element) {
+        return this.optional(element) || /^[a-z0-9\-]+$/i.test(value);
+    }, "Username must contain only letters, numbers, or dashes.");
 
     $("#signup-form").validate({
         rules: {
             username:{
                 required: true,
                 nowhitespace: true,
+                minlength: 4,
+                loginRegex:true,
                 remote: {
-                    url: "http://localhost/smltools/auth/checkDup",
+                    url: "checkDup",
                     type: "post",
                     data: {
                         username: function () {
@@ -68,15 +73,17 @@ $(document).ready(function () {
         }
     })
     $('#signup').click(function () {
+        var x = $(location).attr('host');
         if ($('#signup-form').valid()) {
             var username = $("#username").val()
             var name = $("#name").val()
             var sirname = $("#sirname").val()
             var email = $("#email").val()
             var password = $("#password").val()
+           
             $.ajax({
                 type: 'POST',
-                url: "http://localhost/smltools/auth/signup",
+                url: "signup",
                 data: {
                     username: username,
                     name: name,
@@ -85,7 +92,7 @@ $(document).ready(function () {
                     password: password
                 },
                 success: function (data) {
-                    window.location.href ="http://localhost/smltools/auth/login";
+                    window.location.href = "login";
                 }
             })    
         }

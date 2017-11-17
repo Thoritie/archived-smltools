@@ -30,3 +30,69 @@
    </div>
 </div>
 </form>
+
+<script>
+                  
+  var user = '<?php echo json_encode($user); ?>';
+  user = JSON.parse(user);
+  user = createJSON(user);
+  user = JSON.stringify(user);
+ 
+ 
+  var data_permission = '<?php echo json_encode($permission); ?>';
+ 
+  
+  
+
+  $(document).ready(function(){
+
+     var users = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(user)
+        });
+
+        users.initialize();
+
+        var permission = $('#permission');
+        permission.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                username: 'username',
+                displayKey: 'text',
+                source: users.ttAdapter(),
+                templates: {
+                    empty: '<div class="empty-message text-info"> No matches.</div>'
+                }
+            }
+        });
+      //   add(permission, data_permission);
+      $permission.tagsinput('add', { "value": "5a0dc35c6e0588281d00002a, "text": "poon", "continent": "" });
+        
+      });
+      function add($elt, data){
+            $.each(JSON.parse(data), function(index ,data){   
+            $elt.tagsinput('add', { "value": data._id, "text": data.username, "continent": "" ,"index": data._id});
+            });
+            }
+
+
+      function createJSON(data) {
+        jsonObj = [];
+        var i = 2;
+        $.each(data, function(index ,data){
+
+            item = {};
+            item ["value"] = data.value;
+            item ["text"] = data.usename;
+            item ["continent"] = "";
+            item ["index"] = data._id.$id;
+            i++;
+            jsonObj.push(item);
+        });
+       
+        return jsonObj;
+      }
+
+</script>

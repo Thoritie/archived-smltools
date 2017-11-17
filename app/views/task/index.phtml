@@ -30,7 +30,7 @@
                         <i class="add icon"></i>
                         edit
                     </a>
-                    <a class="ui bottom attached button" onclick="deleteTask('<?=$tk->_id?>','<?=$tk->name?>')">
+                    <a class="ui bottom attached button" onclick="confirm('Are you sure?') ? deleteTask() : false;">
                         <i class="add icon"></i>
                     delete
                     </a>
@@ -98,23 +98,10 @@
     </div>
 
 <script>
-        function deleteTask(id,name){
-            var idTask =  id;
-            var name =  name;
-            
-            console.log(idTask);
-            console.log(name);
-            /* $.post("task/deleteTask", {
-                idTask: idTask,
-            }, function () {
-            }, "json");
+       
 
-            // window.location="task/index"; */
+        function deleteTask(id){
+            console.log("delete success");
         }
 
-        function test(){
-            $('.tiny.modal')
-                .modal('show')
-                ;
-        }
 </script>

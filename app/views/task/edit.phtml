@@ -136,16 +136,15 @@
       </div>
 
       <?php echo $this->tag->endForm(); ?>
-      <?php 
-         echo $this->tag->submitButton(["saveTask", "size" => 30, 
-         "class" => "btn btn-primary", "id" => "editTask"]) 
-         ?>
+      
+         <button type="submit" class="btn btn-primary" id="editTask">Save</button>
+         
    </div>
 </div>
 
 <script>
                   
-  var js_test = '<?php echo json_encode($test); ?>';
+  var js_test = '<?php echo json_encode($stake); ?>';
   js_test = JSON.parse(js_test);
   js_test = createJSON(js_test);
   js_test = JSON.stringify(js_test);
@@ -238,7 +237,7 @@
 
   function add($elt, data){
       $.each(JSON.parse(data), function(index ,data){   
-        $elt.tagsinput('add', { "value": data.value, "text": data.name, "continent": "" ,"index": data._id.$id});
+        $elt.tagsinput('add', { "value": data._id.$id, "text": data.name, "continent": "" ,"index": data._id.$id});
       });
   }
 
