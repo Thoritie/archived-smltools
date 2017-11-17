@@ -22,20 +22,23 @@ class ProjectController extends ControllerBase
         //         array('permission' => $session)
         //     )
         // ));
-        $create = Project::Find(
-            [
-                [
-                    'createrId' => $session,
-                ]
-            ]
-        );
-        $permis = Project::Find(
-            [
-                [
-                    'permission' => $session,
-                ]
-            ]
-        );
+
+        // $create = Project::Find(
+        //     [
+        //         [
+        //             'createrId' => $session,
+        //         ]
+        //     ]
+        // );
+        // $permis = Project::Find(
+        //     [
+        //         [
+        //             'permission' => $session,
+        //         ]
+        //     ]
+        // );
+
+
         // $project = Project::Find(
         // [
         // 'conditions' => [

@@ -4,6 +4,7 @@
 {{stylesheet_link('Semantic/components/dropdown.min.css') }}
 {{stylesheet_link('Semantic/components/segment.css') }}
 {{stylesheet_link('Semantic/components/segment.min.css') }}
+
 <!-- {{ stylesheet_link('bootstrap-4/css/bootstrap.min.css') }} -->
 <!-- {{ stylesheet_link('pro2/css/font-awesome.min.css') }}  -->
 {{ stylesheet_link('pro2/css/normalize.css') }} 
