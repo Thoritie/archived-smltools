@@ -1,6 +1,17 @@
 <div class="ui grid">
     <div class="ten wide column">
         <div class="ui cards">
+        <div class="ui raised link card">
+                <div class="content">
+                <div class="header">Create new Project</div>
+                
+                </div>
+                <a class="ui bottom attached button" href="<?=$this->url->get("project/create"); ?>">
+                    <i class="add icon"></i>
+                    create
+                </a>
+               
+            </div>
             <?php
             foreach ($create as $key => $pro) {
         ?>
