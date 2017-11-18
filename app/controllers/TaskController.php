@@ -111,8 +111,10 @@ class TaskController extends ControllerBase
         return json_encode($test);
     }
 
-    public function editAction($id)
+    public function editAction()
     {
+                // $this->view->disable();
+                $id = $this->request->getPost('id');
                 $task = Tasks::findById($id);
                 
                 if (!$task) {

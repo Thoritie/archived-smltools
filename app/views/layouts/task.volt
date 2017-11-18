@@ -51,7 +51,7 @@
 
     
     {{ javascript_include('jquery/jquery.redirect.js') }}
-+    {{ javascript_include('jquery/taskRedirect.js') }}
++   {{ javascript_include('jquery/taskRedirect.js') }}
 </head>
 <body>
    <div class="">

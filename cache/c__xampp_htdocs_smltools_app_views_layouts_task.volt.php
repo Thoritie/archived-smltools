@@ -51,7 +51,7 @@
 
     
     <?= $this->tag->javascriptInclude('jquery/jquery.redirect.js') ?>
-+    <?= $this->tag->javascriptInclude('jquery/taskRedirect.js') ?>
++   <?= $this->tag->javascriptInclude('jquery/taskRedirect.js') ?>
 </head>
 <body>
    <div class="">
