@@ -48,7 +48,10 @@
 <!--Modal -->
     {{ stylesheet_link('Semantic/modal.css') }}
     {{ javascript_include('Semantic/modal.js') }}
-     
+
+    
+    {{ javascript_include('jquery/jquery.redirect.js') }}
++    {{ javascript_include('jquery/taskRedirect.js') }}
 </head>
 <body>
    <div class="">

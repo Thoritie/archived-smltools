@@ -48,7 +48,10 @@
 <!--Modal -->
     <?= $this->tag->stylesheetLink('Semantic/modal.css') ?>
     <?= $this->tag->javascriptInclude('Semantic/modal.js') ?>
-     
+
+    
+    <?= $this->tag->javascriptInclude('jquery/jquery.redirect.js') ?>
++    <?= $this->tag->javascriptInclude('jquery/taskRedirect.js') ?>
 </head>
 <body>
    <div class="">
