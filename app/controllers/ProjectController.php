@@ -1,10 +1,8 @@
 <?php
 
 class ProjectController extends ControllerBase
-{
-
-    public function indexAction()
-    {
+{   
+    public function onConstruct(){
         $this->assets->addCss('assetsThor/css/bootstrap.min.css');
         $this->assets->addCss('assetsThor/css/animate.min.css');
         $this->assets->addCss('assetsThor/css/light-bootstrap-dashboard.css');
@@ -31,6 +29,36 @@ class ProjectController extends ControllerBase
         $this->assets->addJs('assetsThor/js/demo.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
         $this->assets->addJs('projectCard/proCard.js');
+    }
+
+    public function indexAction()
+    {
+        // $this->assets->addCss('assetsThor/css/bootstrap.min.css');
+        // $this->assets->addCss('assetsThor/css/animate.min.css');
+        // $this->assets->addCss('assetsThor/css/light-bootstrap-dashboard.css');
+        // $this->assets->addCss('assetsThor/css/demo.css');
+        // $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
+        // $this->assets->addCss('assetsThor/css/navbar.css');
+
+        // $this->assets->addCss('jslif/bootstrap-tagsinput.css');
+        // $this->assets->addCss('jslif/app.css');
+        // $this->assets->addCss('jslif/sb-admin.css');
+        // $this->assets->addCss('jslif/sb-admin-override.css');
+        // $this->assets->addCss('projectCard/proCard.css');
+        
+        
+        // $this->assets->addJs('popper/popper.min.js');
+        // $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
+        // $this->assets->addJs('jslif/sb-admin.js');
+        // $this->assets->addJs('jslif/jquery.easing.min.js');
+        // $this->assets->addJs('jslif/bootstrap-tagsinput.js');
+        // $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
+        // $this->assets->addJs('jslif/sb-admin.min.js');
+        // $this->assets->addJs('jslif/tagProject.js');
+        // $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
+        // $this->assets->addJs('assetsThor/js/demo.js');
+        // $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+        // $this->assets->addJs('projectCard/proCard.js');
         
         
         
@@ -52,20 +80,20 @@ class ProjectController extends ControllerBase
         //     )
         // ));
 
-        $create = Project::Find(
-            [
-                [
-                    'createrId' => $session,
-                ]
-            ]
-        );
-        $permis = Project::Find(
-            [
-                [
-                    'permission' => $session,
-                ]
-            ]
-        );
+        // $create = Project::Find(
+        //     [
+        //         [
+        //             'createrId' => $session,
+        //         ]
+        //     ]
+        // );
+        // $permis = Project::Find(
+        //     [
+        //         [
+        //             'permission' => $session,
+        //         ]
+        //     ]
+        // );
 
 
         // $project = Project::Find(
@@ -84,56 +112,12 @@ class ProjectController extends ControllerBase
 
     public function createAction()
     {
-        $this->assets->addCss('assetsThor/css/bootstrap.min.css');
-        $this->assets->addCss('assetsThor/css/animate.min.css');
-        $this->assets->addCss('assetsThor/css/light-bootstrap-dashboard.css');
-        $this->assets->addCss('assetsThor/css/demo.css');
-        $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
-        $this->assets->addCss('assetsThor/css/navbar.css');
-        $this->assets->addCss('jslif/bootstrap-tagsinput.css');
-        $this->assets->addCss('jslif/app.css');
-        $this->assets->addCss('jslif/sb-admin.css');
-        $this->assets->addCss('jslif/sb-admin-override.css');
-        
-        $this->assets->addJs('popper/popper.min.js');
-        $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
-        $this->assets->addJs('jslif/sb-admin.js');
-        $this->assets->addJs('jslif/jquery.easing.min.js');
-        $this->assets->addJs('jslif/bootstrap-tagsinput.js');
-        $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
-        $this->assets->addJs('jslif/sb-admin.min.js');
-        $this->assets->addJs('jslif/tagProject.js');
-        $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
-        $this->assets->addJs('assetsThor/js/demo.js');
-        $this->assets->addJs('assetsThor/js/bootstrap.min.js');
-        
-        // $this->view->setTemplateBefore('project');
+       
     }
 
     public function editAction($id)
     {
-        $this->assets->addCss('assetsThor/css/bootstrap.min.css');
-        $this->assets->addCss('assetsThor/css/animate.min.css');
-        $this->assets->addCss('assetsThor/css/light-bootstrap-dashboard.css');
-        $this->assets->addCss('assetsThor/css/demo.css');
-        $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
-        $this->assets->addCss('assetsThor/css/navbar.css');
-        $this->assets->addCss('jslif/bootstrap-tagsinput.css');
-        $this->assets->addCss('jslif/app.css');
-        $this->assets->addCss('jslif/sb-admin.css');
-        $this->assets->addCss('jslif/sb-admin-override.css');
-        
-        $this->assets->addJs('popper/popper.min.js');
-        $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
-        $this->assets->addJs('jslif/sb-admin.js');
-        $this->assets->addJs('jslif/jquery.easing.min.js');
-        $this->assets->addJs('jslif/bootstrap-tagsinput.js');
-        $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
-        $this->assets->addJs('jslif/sb-admin.min.js');
-        $this->assets->addJs('jslif/tagProject.js');
-        $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
-        $this->assets->addJs('assetsThor/js/demo.js');
-        $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+       
         
         $pro = Project::findById($id);
         $permission = array();
