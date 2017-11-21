@@ -67,10 +67,8 @@
                 }
             }
         });
-      //   add(permission, data_permission);
-      $permission.tagsinput('add', { "value": "5a0dc35c6e0588281d00002a, "text": "poon", "continent": "" });
+        add(permission, data_permission);
         
-      });
       function add($elt, data){
             $.each(JSON.parse(data), function(index ,data){   
             $elt.tagsinput('add', { "value": data._id, "text": data.username, "continent": "" ,"index": data._id});

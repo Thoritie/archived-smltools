@@ -16,7 +16,7 @@
         <?= $this->assets->outputJs() ?>
 
         <?= $script ?>
-
+        
     </body>
    
 </html>
