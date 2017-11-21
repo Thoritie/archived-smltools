@@ -75,25 +75,27 @@ $(document).ready(function () {
     }, "json");
 
     $('#saveproject').click(function () {
-        var projectname = $("#projectname").val();
-        var description = $("#description").val();
-        var permission = $("#permission").tagsinput('items')
-        item1 = {};
-        $.each(permission, function (index, input) {
-            item1[index] = input.index
-        });
-        $.ajax({
-            type: 'POST',
-            url: "save",
-            data: {
-                projectname: projectname,
-                description: description,
-                permission: item1,
-            },
-            success: function (data) {
-                window.location.href = "index";
-            }
-        })    
+    	if($("#createProject-form").valid()){
+    		var projectname = $("#projectname").val();
+            var description = $("#description").val();
+            var permission = $("#permission").tagsinput('items')
+            item1 = {};
+            $.each(permission, function (index, input) {
+                item1[index] = input.index
+            });
+            $.ajax({
+                type: 'POST',
+                url: "save",
+                data: {
+                    projectname: projectname,
+                    description: description,
+                    permission: item1,
+                },
+                success: function (data) {
+                    window.location.href = "index";
+                }
+            })
+    	}
     });
 
 });
