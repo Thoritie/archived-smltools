@@ -14,30 +14,61 @@
                     <!-- <p class="category">All Project is here</p> -->
                 </div>
                 <div class="content books">
-                    <!-- <section class="books">
-                        <!-- <h2 class="section__title">Projects</h2>
-                        <p class="section__summary">All Project is here</p> --
-
-                    </section> -->
-                    <ul class="resources">
-                            <li class="resource--add">
-                                <a href="<?=$this->url->get("project/create "); ?>">
-
-                                    <div class="resource__add-icon">
-                                        <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
-                                            <circle cx="30" cy="30" r="30" />
-                                            <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "
-                                            />
-                                        </svg>
-                                    </div>
+                    <!-- card -->
+                    <ul class="row resources">
+                        <li class="col-md-4 resource--add well">
+                            <div class="resource__add-icon">
+                                <a href="<?= $this->url->get("project/create"); ?>">
+                                    <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+                                        <circle cx="30" cy="30" r="30" />
+                                        <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "
+                                        />
+                                    </svg>
                                 </a>
-                            </li>
+                            </div>
+                        </li>
+                        <?php
+                        foreach ($create as $key => $pro) {
+                    ?>
+                    <?php echo "<li class='col-md-4 resource--talks well ".$selectedCo."' >"; ?>
+                            <div class="header">
+                                <h4 class="title">
+                                    <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link"><?=$pro->name?></a></h4>
+                            </div>
+                            <div class="content">
+                                <p>
+                                    <?=$pro->description?>
+                                </p>
+                                <div class="footer">
+                                    <hr>
+                                    <div class="pull-right">
+                                        <a href="#" data-id="<?=$pro->_id?>" class="projectedit" rel="tooltip" title="" class="btn btn-info btn-simple btn-sm" data-original-title="Edit">
+                                                <i class="pe-7s-edit"></i>
+                                        </a>
+                                        <a href="#" rel="tooltip" title="" class="btn btn-danger btn-simple btn-sm" data-original-title="Remove">
+                                                <i class="pe-7s-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                            <?php 
+                                 $i = rand(0, count($co)-1);
+                                 $selectedCo = "$co[$i]"; 
+                                 ?>
+                            <?php } ?>
+                            <!-- permis -->
+                            <?php 
+                                 $i = rand(0, count($co)-1);
+                                 $selectedCo = "$co[$i]"; 
+                                 ?>
                             <?php
-                                     foreach ($create as $key => $pro) {
-                                     ?>
+                                 foreach ($permis as $key => $per) {
+                                 ?>
                                 <!-- <li class="resource--book"> -->
                                 <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                                <a href="<?=$this->url->get("project/task/ ".$pro->_id); ?>" class="resource__link">
+                                <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link">
                                     <h1 class="resource__title">
                                         <?=$pro->name?>
                                     </h1>
@@ -45,53 +76,16 @@
                                         <?=$pro->description?>
                                     </p>
                                 </a>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="pe-7s-tools" style="font-weight: 900"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#" data-id="<?=$pro->_id?>" class="projectedit">
-                                                <i class="pe-7s-pen"></i> Edit</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="pe-7s-trash"></i> Delete</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
                                 </li>
-                                <?php 
-                                     $i = rand(0, count($co)-1);
-                                     $selectedCo = "$co[$i]"; 
-                                     ?>
                                 <?php } ?>
-                                <!-- permis -->
-                                <?php 
-                                     $i = rand(0, count($co)-1);
-                                     $selectedCo = "$co[$i]"; 
-                                     ?>
-                                <?php
-                                     foreach ($permis as $key => $per) {
-                                     ?>
-                                    <!-- <li class="resource--book"> -->
-                                    <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                                    <a href="<?=$this->url->get("project/task/ ".$pro->_id); ?>" class="resource__link">
-                                        <h1 class="resource__title">
-                                            <?=$pro->name?>
-                                        </h1>
-                                        <p class="resource__summary">
-                                            <?=$pro->description?>
-                                        </p>
-                                    </a>
-                                    </li>
-                                    <?php } ?>
-                        </ul>
+                    </ul>
                     <?php 
-                        $i = rand(0, count($co)-1);
-                        $selectedCo = "$co[$i]"; 
-                    ?>
+                    $i = rand(0, count($co)-1);
+                    $selectedCo = "$co[$i]"; 
+                ?>
+                    </ul>
+
+
                 </div>
             </div>
 
@@ -134,3 +128,19 @@
         </div>
     </div>
 </div>
+
+<!-- blockJS -->
+<script>
+    $(document).ready(function () {
+        $('.projectedit').click(function () {
+            var projectid = $(this).data('id');
+            // $(this).attr('data-id');
+            $.redirect("edit", {
+                id: projectid
+            });
+        });
+    });
+
+    console.log(true);
+</script>
+<!-- /.blockJS -->
