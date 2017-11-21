@@ -240,9 +240,9 @@ class TaskController extends ControllerBase
                     $condition["project"] = $input;
                 }
         
-                $test = Stakeholders::Find(array($condition));
+                $stake = Stakeholders::Find(array($condition));
         
-                $this->view->stake = $test;
+                $this->view->stake = $stake;
 
                 $id = $this->session->get('idProject');
                 $project = Project::findById($id);
