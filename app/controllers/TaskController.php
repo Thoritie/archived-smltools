@@ -9,7 +9,9 @@ class TaskController extends ControllerBase
         $this->assets->addCss('assetsThor/css/demo.css');
         $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
         $this->assets->addCss('assetsThor/css/navbar.css');
-      
+        $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
+       $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+       
         
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
@@ -60,7 +62,11 @@ class TaskController extends ControllerBase
         }else{
             $this->view->task = 0;
         }
+
+        $project = Project::findById($id);
+        $this->view->projectname = $project->name;
         $this->view->idProject = $id;
+       
         $this->view->task = $task;
         
     }
@@ -72,8 +78,12 @@ class TaskController extends ControllerBase
 
     public function createAction()
     {
+        
         $id = $this->session->get('idProject');
         $this->tag->setDefault("idProject", $id);
+
+        $project = Project::findById($id);
+        $this->view->projectname = $project->name;
         
     }
 
@@ -233,6 +243,10 @@ class TaskController extends ControllerBase
                 $test = Stakeholders::Find(array($condition));
         
                 $this->view->stake = $test;
+
+                $id = $this->session->get('idProject');
+                $project = Project::findById($id);
+                $this->view->projectname = $project->name;
                
     }
     
