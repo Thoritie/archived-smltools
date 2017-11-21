@@ -1,4 +1,6 @@
 
+<!-- <div class="formshow hero card-shadow reveal white">
+<h1 class="textCenter">Create Project</h1>
 <form>
 <div class="ui raised segment very padded">
    <div class="ui large form">
@@ -23,3 +25,60 @@
    </div>
 </div>
 </form>
+</div> -->
+
+
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Create Project</h4>
+                            </div>
+                            <div class="content">
+                                <form>
+                                  
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Project Name</label>
+                                                <input type="text" class="form-control" name="projectname" id="projectname" placeholder="Project Name">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea id="description" class="form-control" name="description" id="description" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Permission</label>
+                                                <div>
+                                                <?php 
+                                                echo $this->tag->textField(["permission", "size" => 30, 
+                                                "class" => "form-control", "id" => "permission" ]) 
+                                                ?> 
+                                                </div>                                                     
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-info btn-fill pull-right" id="saveproject">Save Project</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>

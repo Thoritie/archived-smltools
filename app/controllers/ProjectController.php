@@ -9,7 +9,9 @@ class ProjectController extends ControllerBase
         $this->assets->addCss('assetsThor/css/demo.css');
         $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
         $this->assets->addCss('assetsThor/css/navbar.css');
-
+      
+        
+        
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
         $this->assets->addCss('jslif/sb-admin.css');
@@ -80,20 +82,20 @@ class ProjectController extends ControllerBase
         //     )
         // ));
 
-        // $create = Project::Find(
-        //     [
-        //         [
-        //             'createrId' => $session,
-        //         ]
-        //     ]
-        // );
-        // $permis = Project::Find(
-        //     [
-        //         [
-        //             'permission' => $session,
-        //         ]
-        //     ]
-        // );
+        $create = Project::Find(
+            [
+                [
+                    'createrId' => $session,
+                ]
+            ]
+        );
+        $permis = Project::Find(
+            [
+                [
+                    'permission' => $session,
+                ]
+            ]
+        );
 
 
         // $project = Project::Find(
@@ -112,7 +114,8 @@ class ProjectController extends ControllerBase
 
     public function createAction()
     {
-       
+        // $this->assets->addCss('sml/regis.css');
+        // $this->assets->addCss('sml/navindex.css');
     }
 
     public function editAction($id)
