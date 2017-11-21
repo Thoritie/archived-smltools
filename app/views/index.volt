@@ -16,7 +16,7 @@
         {{ assets.outputJs() }}
 
         {{ script }}
-
+        
     </body>
    
 </html>

@@ -79,8 +79,17 @@
       </div>
    </nav>
    <div class="content">
-      <?php echo $this->getContent(); ?>
-      <!-- {{ content() }} -->
+        <!-- Use Strict -->
+        <?php 
+            //eco เนื้อหาของแต่ละหน้า
+            echo $this->render->getContent($this->getContent());
+                
+            //ตัวแปรเก็บค่า script นำไป eco ในไฟล์ index.phtml
+            $script = $this->render->getScript(
+                $this->getContent()
+            );
+        ?>
+      <?php //echo $this->getContent(); ?>
    </div>
 </div>
 </div>
