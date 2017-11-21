@@ -1,47 +1,75 @@
-<form>
-<div class="ui raised segment very padded">
-   <div class="ui large form">
-      <div class="field">
-         <label>Project Name</label>
-         
-         <?php 
-            echo $this->tag->textField(["projectname", "size" => 30, 
-            "class" => "form-control", "id" => "projectname" , "placeholder"=>"Project Name"]) 
-            ?>
-      </div>
-      <div class="field">
-         <label>Description</label>
-         
-         <?php 
-            echo $this->tag->textArea(["description", "rows" => 3, 
-            "class" => "form-control", "id" => "description" , "placeholder"=>"Project Name"]) 
-            ?>
-      </div>
-      <div class="field">
-         <label>Permission</label>
-         <div>                
-            <?php 
-               echo $this->tag->textField(["permission", "size" => 30, 
-               "class" => "form-control", "id" => "permission" ]) 
-               ?>                 
-         </div>
-      </div>
-      <button type="submit" class="btn btn-primary" id="saveproject">Save</button>
-   </div>
+<input type="hidden" name="idproject" id="idproject"
+   value="<?php echo $pro->_id ?>"/>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Edit Project</h4>
+                    </div>
+                    <div class="content">
+                        <form id="editProject-form">
+                            <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                    
+                                        <label>Project Name<span class="red-star" style="font-size: 14px"> *</span></label>
+
+                                        <?php 
+                                            echo $this->tag->textField(["projectname", "size" => 30, 
+                                            "class" => "form-control", "id" => "projectname" , "placeholder"=>"Project Name"]) 
+                                        ?>
+                                    </div>
+                                    </div>
+                                    </div>
+                                   <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                        <label>Description</label>
+
+                                        <?php 
+                                            echo $this->tag->textArea(["description", "rows" => 3, 
+                                            "class" => "form-control", "id" => "description" , "placeholder"=>"Description"]) 
+                                        ?>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                        <label>Permission</label>
+                                        
+                                            <?php 
+                                                echo $this->tag->textField(["permission", "size" => 30, 
+                                                "class" => "form-control", "id" => "permission" ]) 
+                                            ?>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <button type="button" class="btn btn-info btn-fill pull-right" id="editproject">Save</button>
+                                
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</form>
-
+<!-- blockJS -->
 <script>
-$(document).ready(function(){
-  var user = '<?php echo json_encode($user); ?>';
-  user = JSON.parse(user);
-  user = createJSON(user);
-  user = JSON.stringify(user);
- 
- 
-  var data_permission = '<?php echo json_encode($permission); ?>';
+    
+        var user = '<?php echo json_encode($user); ?>';
+        user = JSON.parse(user);
+        user = createJSON(user);
+        user = JSON.stringify(user);
 
-     var users = new Bloodhound({
+
+        var data_permission = '<?php echo json_encode($permission); ?>';
+
+    $(document).ready(function () {
+        var users = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(user)
@@ -63,30 +91,35 @@ $(document).ready(function(){
             }
         });
         add(permission, data_permission);
-        
-      function add($elt, data){
-            $.each(JSON.parse(data), function(index ,data){   
-            $elt.tagsinput('add', { "value": data._id, "text": data.username, "continent": "" ,"index": data._id});
+
+        function add($elt, data) {
+            $.each(JSON.parse(data), function (index, data) {
+                $elt.tagsinput('add', {
+                    "value": data._id,
+                    "text": data.username,
+                    "continent": "",
+                    "index": data._id
+                });
             });
-            }
+        }
 
 
-      function createJSON(data) {
-        jsonObj = [];
-        var i = 2;
-        $.each(data, function(index ,data){
+        function createJSON(data) {
+            jsonObj = [];
+            var i = 2;
+            $.each(data, function (index, data) {
 
-            item = {};
-            item ["value"] = data.value;
-            item ["text"] = data.usename;
-            item ["continent"] = "";
-            item ["index"] = data._id.$id;
-            i++;
-            jsonObj.push(item);
-        });
-       
-        return jsonObj;
-      }
-      });
+                item = {};
+                item["value"] = data.value;
+                item["text"] = data.usename;
+                item["continent"] = "";
+                item["index"] = data._id.$id;
+                i++;
+                jsonObj.push(item);
+            });
 
+            return jsonObj;
+        }
+    });
 </script>
+<!-- /.blockJS -->
