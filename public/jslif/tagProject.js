@@ -1,5 +1,27 @@
 $(document).ready(function () {
-
+    $("#createProject-form").validate({
+        rules: {
+            projectname: {
+                required: true,
+                remote: {
+                    url: "checkDup",
+                    type: "post",
+                    data: {
+                        projectname: function () {
+                            return $("#projectname").val()
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            projectname: {
+                required: "Project name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
+            }
+        }
+    });
+    
     function createJSON(data) {
         jsonObj = [];
         var i = 2;
@@ -60,13 +82,18 @@ $(document).ready(function () {
         $.each(permission, function (index, input) {
             item1[index] = input.index
         });
-        $.post("save", {
-            projectname: projectname,
-            description: description,
-            permission: item1,
-        }, function (data) {
-
-        }, "json");
+        $.ajax({
+            type: 'POST',
+            url: "save",
+            data: {
+                projectname: projectname,
+                description: description,
+                permission: item1,
+            },
+            success: function (data) {
+                window.location.href = "index";
+            }
+        })    
     });
 
 });
