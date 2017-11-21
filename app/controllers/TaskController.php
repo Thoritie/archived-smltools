@@ -11,22 +11,27 @@ class TaskController extends ControllerBase
         $this->assets->addCss('assetsThor/css/navbar.css');
       
         
-        
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
         $this->assets->addCss('jslif/sb-admin.css');
         $this->assets->addCss('jslif/sb-admin-override.css');
         $this->assets->addCss('projectCard/proCard.css');
-        
-        $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
-        $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+
+
+        $this->assets->addJs('jquery/jquery.js');
+        $this->assets->addJs('jquery/jquery.min.js');
         $this->assets->addJs('popper/popper.min.js');
-       
+        $this->assets->addJs('bootstrap-4/js/bootstrap.min.js');
+        $this->assets->addJs('scrollreveal/scrollreveal.min.js');
+        $this->assets->addJs('magnific-popup/jquery.magnific-popup.min.js');
         $this->assets->addJs('jslif/sb-admin.js');
+
         $this->assets->addJs('jslif/jquery.easing.min.js');
+        $this->assets->addJs('jslif/typeahead.bundle.min.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
         $this->assets->addJs('jslif/sb-admin.min.js');
+        $this->assets->addJs('jslif/tagTaskCreate.js');
        
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
