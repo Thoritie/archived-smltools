@@ -32,7 +32,7 @@
 </form>
 
 <script>
-                  
+$(document).ready(function(){
   var user = '<?php echo json_encode($user); ?>';
   user = JSON.parse(user);
   user = createJSON(user);
@@ -40,11 +40,6 @@
  
  
   var data_permission = '<?php echo json_encode($permission); ?>';
- 
-  
-  
-
-  $(document).ready(function(){
 
      var users = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
