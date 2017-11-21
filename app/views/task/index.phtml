@@ -40,48 +40,10 @@
         ?>
       </div>
       
-   </div>
-
-   <div class="five wide column">
-      <div class="ui raised segments">   
-         <div class="ui segment very padded">
-            <h2 class="ui header">
-        
-                <div class="content">
-                    Search Task
-                    <div class="sub header">Search your projects</div>
-                </div>
-            </h2>
-            <div class="ui search">
-               <div class="ui icon input">
-                  <input class="prompt" type="text" placeholder="project name...">
-                  <i class="search icon"></i>
-               </div>
-               <div class="results"></div>
-            </div>
-            
-         </div>
-        
-      <div class="ui segment very padded">
-            <h2 class="ui header">
-        
-                <div class="content">
-                    Search Stakeholder
-                    <div class="sub header">Search Stakeholder</div>
-                </div>  
-            </h2>
-            <div class="ui search">
-               <div class="ui icon input">
-                  <input class="prompt" type="text" placeholder="project name...">
-                  <i class="search icon"></i>
-               </div>
-               <div class="results"></div>
-            </div>
-            
-         </div>
-      </div>
-   </div>
+   </div>  
 </div>
+
+
 
 
     <div class="ui tiny test modal">
@@ -105,3 +67,197 @@
         }
 
 </script>
+
+
+<!-- random color just for fun -->
+<?php 
+   $co = array('blue', 'green', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow' );
+   $i = rand(0, count($co)-1);
+   $selectedCo = "$co[$i]"; 
+   ?>
+<!-- new project card -->
+<div class="content">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-8">
+            <section class="books">
+               <h2 class="section__title">Projects</h2>
+               <p class="section__summary">All Project is here</p>
+               <ul class="resources">
+                  <li class="resource--add">
+                  <a href="<?=$this->url->get("task/create"); ?>">
+                     <div class="resource__add-icon">
+                        <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+                           <circle cx="30" cy="30" r="30" />
+                           <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "/>
+                        </svg>
+                     </div>
+                </a>
+                  </li>
+                  <?php 
+           if($task!=0){
+                foreach ($task as $key => $tk) { ?>
+                <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>                    
+                <h1 class="resource__title"><?=$pro->name?></h1>
+                <p class="resource__summary"><?=$pro->description?></p>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="pe-7s-tools" style="font-weight: 900"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-id="<?=$tk->_id?>"><i class="pe-7s-pen" ></i> Edit</a></li>
+                        <li><a href="#"><i class="pe-7s-trash" ></i> Delete</a></li>
+   
+                    </ul>
+                  </div>
+                  </li>
+                  <?php 
+                     $i = rand(0, count($co)-1);
+                     $selectedCo = "$co[$i]"; 
+                     ?>
+                <?php  }
+            }
+        ?>
+                  <?php
+                     foreach ($create as $key => $pro) {
+                     ?>
+                  <!-- <li class="resource--book"> -->
+                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+                  <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link">
+                     <h1 class="resource__title"><?=$pro->name?></h1>
+                     <p class="resource__summary"><?=$pro->description?></p>
+                  </a>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="pe-7s-tools" style="font-weight: 900"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="pe-7s-pen" ></i> Edit</a></li>
+                        <li><a href="#"><i class="pe-7s-trash" ></i> Delete</a></li>
+   
+                    </ul>
+                  </div>
+                  </li>
+                  <?php 
+                     $i = rand(0, count($co)-1);
+                     $selectedCo = "$co[$i]"; 
+                     ?>
+                  <?php } ?>
+                  <!-- permis -->
+                  <?php 
+                     $i = rand(0, count($co)-1);
+                     $selectedCo = "$co[$i]"; 
+                     ?>
+                  <?php
+                     foreach ($permis as $key => $per) {
+                     ?>
+                  <!-- <li class="resource--book"> -->
+                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+                  <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link">
+                     <h1 class="resource__title"><?=$pro->name?></h1>
+                     <p class="resource__summary"><?=$pro->description?></p>
+                  </a>
+                  </li>
+                  <?php } ?>
+               </ul>
+            </section>
+            <?php 
+               $i = rand(0, count($co)-1);
+               $selectedCo = "$co[$i]"; 
+               ?>
+            <!-- Test card to show if query card error -->
+            <section class="talks">
+               <h2 class="section__title">Test Card</h2>
+               <p class="section__summary">Talks that have been given about SVG.</p>
+               <ul class="resources">
+                  <li class="resource--add">
+                     <!-- <h1 class="resource--add__title">Add Project</h1> -->
+                     <div class="resource__add-icon">
+                        <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+                           <circle cx="30" cy="30" r="30" />
+                           <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "/>
+                        </svg>
+                     </div>
+                     <div class="resource--add__card"></div>
+                  </li>
+                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+                  <a href="" class="resource__link">
+                     <h1 class="resource__title">Project Name</h1>
+                     <p class="resource__summary">description</p>
+                     <!-- <div class="recommended">
+                        <h4><i class="pe-7s-tools" style="font-weight: 900"></i></h4>
+                        <h4><i class="pe-7s-wallet" style="font-weight: 900"></i></h4>
+                     </div> -->
+                     
+                  </a>
+                  <!-- <h4><i class="pe-7s-wallet" style="font-weight: 900"></i></h4> -->
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="pe-7s-tools" style="font-weight: 900"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="pe-7s-pen" ></i> Edit</a></li>
+                        <li><a href="#"><i class="pe-7s-trash" ></i> Delete</a></li>
+   
+                    </ul>
+                  </div>
+                  
+                  </li>
+                  <?php 
+                     $i = rand(0, count($co)-1);
+                     $selectedCo = "$co[$i]"; 
+                     ?>
+                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+                  <a href="" class="resource__link">
+                     <h1 class="resource__title">Project Name</h1>
+                     <p class="resource__summary">description</p>
+                  </a>
+                  </li>
+                  <?php 
+                     $i = rand(0, count($co)-1);
+                     $selectedCo = "$co[$i]"; 
+                     ?>
+                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+                  <a href="" class="resource__link">
+                     <h1 class="resource__title">Project Name</h1>
+                     <p class="resource__summary">description</p>
+                  </a>
+                  </li>
+               </ul>
+            </section>
+
+            
+         </div>
+          <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="image">
+                                <!-- <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/> -->
+                            </div>
+                            <div class="content">
+                                <div class="author">
+                                     <a href="#">
+                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+
+                                      <h4 class="title">This for search<br />
+                                         <small></small>
+                                      </h4>
+                                    </a>
+                                </div>
+                                <p class="description text-center"> "Lamborghini Mercy <br>
+                                                    Your chick she so thirsty <br>
+                                                    I'm in that two seat Lambo"
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+
+      </div>
+   </div>
+</div>
