@@ -1036,6 +1036,7 @@ fieldset[disabled] .btn-neutral.active {
 
 .has-error .form-control {
     color: #FF4A55;
+    border-color: #FF4A55 !important;
 }
 
 .has-error .form-control:focus {
@@ -3866,4 +3867,18 @@ fieldset[disabled] .btn-neutral.active {
         -ms-overflow-style: -ms-autohiding-scrollbar;
         -webkit-overflow-scrolling: touch;
     }
+}
+
+.red-star {
+    color: #ff3b30;
+}
+
+.badge-danger {
+    color: #fff !important;
+    background-color: #dc3545;
+    margin-top: 8px; 
+}
+
+.custom-select.is-invalid, .form-control.is-invalid, .was-validated .custom-select:invalid, .was-validated .form-control:invalid {
+    border-color: #dc3545;
 }
