@@ -2,6 +2,8 @@ $(document).ready(function () {
     $('.taskedit').click(function () {
         var taskid = $(this).data('id');
         // $(this).attr('data-id');
-        $.redirect("edit", { id: taskid});
+        var url = $(location).attr('href');
+        url = url.concat("/edit");
+        $.redirect(url, { id: taskid});
     });
 });
