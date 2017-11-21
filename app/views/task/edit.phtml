@@ -144,10 +144,10 @@
 
 <script>
                   
-  var js_test = '<?php echo json_encode($stake); ?>';
-  js_test = JSON.parse(js_test);
-  js_test = createJSON(js_test);
-  js_test = JSON.stringify(js_test);
+  var stakeinput = '<?php echo json_encode($stake); ?>';
+  stakeinput = JSON.parse(stakeinput);
+  stakeinput = createJSON(stakeinput);
+  stakeinput = JSON.stringify(stakeinput);
  
  
   var data_owner = '<?php echo json_encode($owner); ?>';
@@ -164,7 +164,7 @@
     var Stakeholder = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: JSON.parse(js_test)
+      local: JSON.parse(stakeinput)
     });
 
     Stakeholder.initialize();

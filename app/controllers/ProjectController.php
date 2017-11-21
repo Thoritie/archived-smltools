@@ -23,7 +23,6 @@ class ProjectController extends ControllerBase
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('popper/popper.min.js');
       
-      
         $this->assets->addJs('jslif/jquery.easing.min.js');
         $this->assets->addJs('jslif/typeahead.bundle.min.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
@@ -32,6 +31,7 @@ class ProjectController extends ControllerBase
         $this->assets->addJs('jslif/sb-admin.js');
         $this->assets->addJs('jslif/sb-admin.min.js');
         $this->assets->addJs('jslif/tagProject.js');
+        $this->assets->addJs('jquery/projectRidirect.js');
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
        
@@ -123,9 +123,9 @@ class ProjectController extends ControllerBase
         // $this->assets->addCss('sml/navindex.css');
     }
 
-    public function editAction($id)
+    public function editAction()
     {
-       
+       $id = $this->request->getPost('id');
         
         $pro = Project::findById($id);
         $permission = array();
@@ -228,7 +228,7 @@ class ProjectController extends ControllerBase
         return $this->response->redirect("project");
     }
 
-    public function checkDup()
+    public function checkDupAction()
     {
         $result = true;
         $projectname = $this->request->getPost('projectname');
@@ -236,7 +236,7 @@ class ProjectController extends ControllerBase
         if($projectname){
             $condition["name"] = $projectname;
         }
-        $project = Users::Find(array($condition));
+        $project = Project::Find(array($condition));
         if($project){
             $result = false;
         }

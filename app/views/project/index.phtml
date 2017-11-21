@@ -5,116 +5,136 @@
    $selectedCo = "$co[$i]"; 
    ?>
 <!-- new project card -->
-<div class="content">
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-md-8">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
             <section class="books">
-               <h2 class="section__title">Projects</h2>
-               <p class="section__summary">All Project is here</p>
-               <ul class="resources">
-                  <li class="resource--add">
-                  <a href="<?=$this->url->get("project/create"); ?>">
+                <h2 class="section__title">Projects</h2>
+                <p class="section__summary">All Project is here</p>
+                <ul class="resources">
+                    <li class="resource--add">
+                        <a href="<?=$this->url->get(" project/create "); ?>">
 
-                     <div class="resource__add-icon">
-                        <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
-                           <circle cx="30" cy="30" r="30" />
-                           <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "/>
-                        </svg>
-                     </div>
-                    </a>
-                  </li>
-                  <?php
+                            <div class="resource__add-icon">
+                                <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+                                    <circle cx="30" cy="30" r="30" />
+                                    <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "
+                                    />
+                                </svg>
+                            </div>
+                        </a>
+                    </li>
+                    <?php
                      foreach ($create as $key => $pro) {
                      ?>
-                  <!-- <li class="resource--book"> -->
-                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                  <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link">
-                     <h1 class="resource__title"><?=$pro->name?></h1>
-                     <p class="resource__summary"><?=$pro->description?></p>
-                  </a>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="pe-7s-tools" style="font-weight: 900"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#"data-id="<?=$pro->_id?>"class="projectedit" ><i class="pe-7s-pen" ></i> Edit</a></li>
-                        <li><a href="#"><i class="pe-7s-trash" ></i> Delete</a></li>
-   
-                    </ul>
-                  </div>
-                  </li>
-                  <?php 
+                        <!-- <li class="resource--book"> -->
+                        <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+                        <a href="<?=$this->url->get(" project/task/ ".$pro->_id); ?>" class="resource__link">
+                            <h1 class="resource__title">
+                                <?=$pro->name?>
+                            </h1>
+                            <p class="resource__summary">
+                                <?=$pro->description?>
+                            </p>
+                        </a>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="pe-7s-tools" style="font-weight: 900"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" data-id="<?=$pro->_id?>" class="projectedit">
+                                        <i class="pe-7s-pen"></i> Edit</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="pe-7s-trash"></i> Delete</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        </li>
+                        <?php 
                      $i = rand(0, count($co)-1);
                      $selectedCo = "$co[$i]"; 
                      ?>
-                  <?php } ?>
-                  <!-- permis -->
-                  <?php 
+                        <?php } ?>
+                        <!-- permis -->
+                        <?php 
                      $i = rand(0, count($co)-1);
                      $selectedCo = "$co[$i]"; 
                      ?>
-                  <?php
+                        <?php
                      foreach ($permis as $key => $per) {
                      ?>
-                  <!-- <li class="resource--book"> -->
-                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                  <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link">
-                     <h1 class="resource__title"><?=$pro->name?></h1>
-                     <p class="resource__summary"><?=$pro->description?></p>
-                  </a>
-                  </li>
-                  <?php } ?>
-               </ul>
+                            <!-- <li class="resource--book"> -->
+                            <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+                            <a href="<?=$this->url->get(" project/task/ ".$pro->_id); ?>" class="resource__link">
+                                <h1 class="resource__title">
+                                    <?=$pro->name?>
+                                </h1>
+                                <p class="resource__summary">
+                                    <?=$pro->description?>
+                                </p>
+                            </a>
+                            </li>
+                            <?php } ?>
+                </ul>
             </section>
             <?php 
                $i = rand(0, count($co)-1);
                $selectedCo = "$co[$i]"; 
-               ?>
-          
-           
-
-            
-         </div>
-          <div class="col-md-4">
-                        <div class="card card-user">
-                            <div class="image">
-                                <!-- <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/> -->
-                            </div>
-                            <div class="content">
-                                <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
-
-                                      <h4 class="title">This for search<br />
-                                         <small></small>
-                                      </h4>
-                                    </a>
-                                </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
-                                </p>
-                            </div>
-                            <hr>
-                            <div class="text-center">
-                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
+            ?>
+        </div>
+        <div class="col-md-4">
+            <!-- Sort -->
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Sort</h4>
+                </div>
+                <div class="content">
+                    <div class="form-group">
+                        <!-- <label for="sel1">Select list (select one):</label> -->
+                        <select class="form-control" id="sel1">
+                            <option selected>List</option>
+                            <option>Title</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Filter -->
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Filter</h4>
+                </div>
+                <div class="content">
+                    <form action="#">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Project Name</label>
+                                <input type="text" class="form-control" placeholder="Project Name" value="">
                             </div>
                         </div>
-                    </div>
-
-      </div>
-   </div>
+                        <div class="footer">
+                            <button class="btn btn-default pull-right" type="submit">Filter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- blockJS -->
 <script>
-$(document).ready(function () {
-    $('.projectedit').click(function () {
-        var projectid = $(this).data('id');
-        // $(this).attr('data-id');
-        $.redirect("edit", { id: projectid});
+    $(document).ready(function () {
+        $('.projectedit').click(function () {
+            var projectid = $(this).data('id');
+            // $(this).attr('data-id');
+            $.redirect("edit", {
+                id: projectid
+            });
+        });
     });
-});
 </script>
+<!-- /.blockJS -->
