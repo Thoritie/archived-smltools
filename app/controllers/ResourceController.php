@@ -3,6 +3,8 @@
 class ResourceController extends ControllerBase
 {
     public function onConstruct(){
+        $this->assets->addCss('sml/regis.css');
+        
         $this->assets->addCss('assetsThor/css/bootstrap.min.css');
         $this->assets->addCss('assetsThor/css/animate.min.css');
         $this->assets->addCss('assetsThor/css/light-bootstrap-dashboard.css');
