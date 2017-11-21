@@ -55,9 +55,9 @@
                 return pageNumber + " rows visible";
             },
             icons: {
-                refresh: 'fa fa-refresh',
-                toggle: 'fa fa-th-list',
-                columns: 'fa fa-columns',
+                refresh: 'pe-7s-refresh',
+                toggle: 'pe-7s-menu',
+                columns: 'pe-7s-bookmarks',
                 detailOpen: 'fa fa-plus-circle',
                 detailClose: 'fa fa-minus-circle'
             }
@@ -97,14 +97,14 @@
 
     function operateFormatter(value, row, index) {
         return [
-            '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
-                '<i class="fa fa-heart"></i>',
-            '</a>',
+            // '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
+            //     '<i class="fa fa-heart"></i>',
+            // '</a>',
             '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
-                '<i class="fa fa-edit"></i>',
+                '<i class="pe-7s-config"></i>',
             '</a>',
             '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
-                '<i class="fa fa-remove"></i>',
+                '<i class="pe-7s-trash"></i>',
             '</a>'
         ].join('');
     }

@@ -48,7 +48,9 @@ class ResourceController extends ControllerBase
     {
         // $this->assets->addCss('dataTable/css/bootstrap.css');
         $this->assets->addCss('dataTable/css/fresh-bootstrap-table.css');
+        $this->assets->addCss('addResource/addRe.css');
         
+        $this->assets->addJs('addResource/addRe.js');
         $this->assets->addJs('dataTable/js/jquery-1.11.2.min.js');
         $this->assets->addJs('dataTable/js/js/bootstrap.js');
         $this->assets->addJs('dataTable/js/bootstrap-table.js');
