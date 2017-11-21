@@ -18,18 +18,20 @@ class ProjectController extends ControllerBase
         $this->assets->addCss('jslif/sb-admin-override.css');
         $this->assets->addCss('projectCard/proCard.css');
         
-        
-        $this->assets->addJs('popper/popper.min.js');
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
-        $this->assets->addJs('jslif/sb-admin.js');
+        $this->assets->addJs('popper/popper.min.js');
+      
+      
         $this->assets->addJs('jslif/jquery.easing.min.js');
+        $this->assets->addJs('assetsThor/js/bootstrap.min.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
+        $this->assets->addJs('jslif/sb-admin.js');
         $this->assets->addJs('jslif/sb-admin.min.js');
         $this->assets->addJs('jslif/tagProject.js');
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
-        $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+       
         $this->assets->addJs('projectCard/proCard.js');
     }
 
