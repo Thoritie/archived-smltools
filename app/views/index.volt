@@ -14,5 +14,8 @@
         {{content()}}
 
         {{ assets.outputJs() }}
+
+        {{ script }}
+
     </body>
 </html>

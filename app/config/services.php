@@ -146,3 +146,10 @@ $di->set(
 $di->set('collectionManager', function(){
     return new Phalcon\Mvc\Collection\Manager();
 }, true);
+
+$di->set(
+    'render',
+    function () { 
+        return new Render();
+    }
+);
