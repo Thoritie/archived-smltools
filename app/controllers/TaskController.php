@@ -18,9 +18,10 @@ class TaskController extends ControllerBase
         $this->assets->addCss('jslif/sb-admin-override.css');
         $this->assets->addCss('projectCard/proCard.css');
         
-        
-        $this->assets->addJs('popper/popper.min.js');
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
+        $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+        $this->assets->addJs('popper/popper.min.js');
+       
         $this->assets->addJs('jslif/sb-admin.js');
         $this->assets->addJs('jslif/jquery.easing.min.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.js');
@@ -29,25 +30,25 @@ class TaskController extends ControllerBase
         $this->assets->addJs('jslif/tagProject.js');
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
-        $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+       
         $this->assets->addJs('projectCard/proCard.js');
     }
 
     public function indexAction()
     {
         
-        // $id = $this->session->get('idProject');
-        // $condition = [];
-        // if($id){
+        $id = $this->session->get('idProject');
+        $condition = [];
+        if($id){
                 
-        //     $condition["idProject"] = $id;
-        //     $task = Tasks::Find(array($condition));
+            $condition["idProject"] = $id;
+            $task = Tasks::Find(array($condition));
             
-        // }else{
-        //     $this->view->task = 0;
-        // }
-        // $this->view->idProject = $id;
-        // $this->view->task = $task;
+        }else{
+            $this->view->task = 0;
+        }
+        $this->view->idProject = $id;
+        $this->view->task = $task;
         
     }
 

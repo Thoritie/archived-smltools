@@ -1,5 +1,5 @@
 
-<div class="ui grid">
+<!-- <div class="ui grid">
 
    <div class="ten wide column">
       <div class="ui cards">
@@ -41,32 +41,10 @@
       </div>
       
    </div>  
-</div>
+</div> -->
 
 
 
-
-    <div class="ui tiny test modal">
-        <div class="header">
-            Delete Your Project
-        </div>
-        <div class="content">
-            <p>Are you sure you want to delete your project</p>
-        </div>
-        <div class="footer">
-            <button type="button" class="ui grey button" data-dismiss="modal">Close</button>
-            <button type="button" class="negative ui button">Delete</button>
-        </div>
-    </div>
-
-<script>
-       
-
-        function deleteTask(id){
-            console.log("delete success");
-        }
-
-</script>
 
 
 <!-- random color just for fun -->
@@ -98,8 +76,8 @@
            if($task!=0){
                 foreach ($task as $key => $tk) { ?>
                 <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>                    
-                <h1 class="resource__title"><?=$pro->name?></h1>
-                <p class="resource__summary"><?=$pro->description?></p>
+                <h1 class="resource__title"><?=$tk->name?></h1>
+                <p class="resource__summary"><?=$tk->Description?></p>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="pe-7s-tools" style="font-weight: 900"></i>
@@ -118,61 +96,15 @@
                 <?php  }
             }
         ?>
-                  <?php
-                     foreach ($create as $key => $pro) {
-                     ?>
-                  <!-- <li class="resource--book"> -->
-                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                  <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link">
-                     <h1 class="resource__title"><?=$pro->name?></h1>
-                     <p class="resource__summary"><?=$pro->description?></p>
-                  </a>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="pe-7s-tools" style="font-weight: 900"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><i class="pe-7s-pen" ></i> Edit</a></li>
-                        <li><a href="#"><i class="pe-7s-trash" ></i> Delete</a></li>
-   
-                    </ul>
-                  </div>
-                  </li>
-                  <?php 
-                     $i = rand(0, count($co)-1);
-                     $selectedCo = "$co[$i]"; 
-                     ?>
-                  <?php } ?>
-                  <!-- permis -->
-                  <?php 
-                     $i = rand(0, count($co)-1);
-                     $selectedCo = "$co[$i]"; 
-                     ?>
-                  <?php
-                     foreach ($permis as $key => $per) {
-                     ?>
-                  <!-- <li class="resource--book"> -->
-                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                  <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link">
-                     <h1 class="resource__title"><?=$pro->name?></h1>
-                     <p class="resource__summary"><?=$pro->description?></p>
-                  </a>
-                  </li>
-                  <?php } ?>
-               </ul>
-            </section>
-            <?php 
-               $i = rand(0, count($co)-1);
-               $selectedCo = "$co[$i]"; 
-               ?>
+                 
             <!-- Test card to show if query card error -->
-            <section class="talks">
+            <!-- <section class="talks">
                <h2 class="section__title">Test Card</h2>
                <p class="section__summary">Talks that have been given about SVG.</p>
                <ul class="resources">
-                  <li class="resource--add">
+                  <li class="resource--add"> -->
                      <!-- <h1 class="resource--add__title">Add Project</h1> -->
-                     <div class="resource__add-icon">
+                     <!-- <div class="resource__add-icon">
                         <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
                            <circle cx="30" cy="30" r="30" />
                            <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "/>
@@ -183,15 +115,15 @@
                   <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
                   <a href="" class="resource__link">
                      <h1 class="resource__title">Project Name</h1>
-                     <p class="resource__summary">description</p>
+                     <p class="resource__summary">description</p> -->
                      <!-- <div class="recommended">
                         <h4><i class="pe-7s-tools" style="font-weight: 900"></i></h4>
                         <h4><i class="pe-7s-wallet" style="font-weight: 900"></i></h4>
                      </div> -->
                      
-                  </a>
+                  <!-- </a> -->
                   <!-- <h4><i class="pe-7s-wallet" style="font-weight: 900"></i></h4> -->
-                  <div class="btn-group">
+                  <!-- <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="pe-7s-tools" style="font-weight: 900"></i>
                     </button>
@@ -224,7 +156,7 @@
                   </a>
                   </li>
                </ul>
-            </section>
+            </section> -->
 
             
          </div>
