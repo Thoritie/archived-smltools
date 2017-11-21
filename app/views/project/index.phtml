@@ -18,7 +18,7 @@
                     <ul class="row resources">
                         <li class="col-md-4 resource--add well">
                             <div class="resource__add-icon">
-                                <a href="<?= $this->url->get(" project/create "); ?>">
+                                <a href="<?= $this->url->get("project/create"); ?>">
                                     <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
                                         <circle cx="30" cy="30" r="30" />
                                         <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "
@@ -30,9 +30,10 @@
                         <?php
                         foreach ($create as $key => $pro) {
                     ?>
-                            <?php echo "<li class='col-md-4 resource--talks well ".$selectedCo."' >"; ?>
+                    <?php echo "<li class='col-md-4 resource--talks well ".$selectedCo."' >"; ?>
                             <div class="header">
-                                <h4 class="title">Edit Profile</h4>
+                                <h4 class="title">
+                                    <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link"><?=$pro->name?></a></h4>
                             </div>
                             <div class="content">
                                 <p>
@@ -67,7 +68,7 @@
                                  ?>
                                 <!-- <li class="resource--book"> -->
                                 <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                                <a href="<?=$this->url->get(" project/task/ ".$pro->_id); ?>" class="resource__link">
+                                <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link">
                                     <h1 class="resource__title">
                                         <?=$pro->name?>
                                     </h1>
