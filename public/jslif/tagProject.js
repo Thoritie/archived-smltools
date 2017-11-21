@@ -1,5 +1,40 @@
 $(document).ready(function () {
-
+    $.validator.setDefaults({
+        errorClass: 'badge badge-danger',
+        highlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .addClass('has-error has-feedback')
+        },
+        unhighlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .removeClass('has-error has-feedback')
+        }
+    })
+    $("#createProject-form").validate({
+        rules: {
+            projectname: {
+                required: true,
+                remote: {
+                    url: "checkDup",
+                    type: "post",
+                    data: {
+                        projectname: function () {
+                            return $("#projectname").val()
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            projectname: {
+                required: "Project name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
+            }
+        }
+    });
+    
     function createJSON(data) {
         jsonObj = [];
         var i = 2;
@@ -53,20 +88,27 @@ $(document).ready(function () {
     }, "json");
 
     $('#saveproject').click(function () {
-        var projectname = $("#projectname").val();
-        var description = $("#description").val();
-        var permission = $("#permission").tagsinput('items')
-        item1 = {};
-        $.each(permission, function (index, input) {
-            item1[index] = input.index
-        });
-        $.post("save", {
-            projectname: projectname,
-            description: description,
-            permission: item1,
-        }, function (data) {
-
-        }, "json");
+    	if($("#createProject-form").valid()){
+    		var projectname = $("#projectname").val();
+            var description = $("#description").val();
+            var permission = $("#permission").tagsinput('items')
+            item1 = {};
+            $.each(permission, function (index, input) {
+                item1[index] = input.index
+            });
+            $.ajax({
+                type: 'POST',
+                url: "save",
+                data: {
+                    projectname: projectname,
+                    description: description,
+                    permission: item1,
+                },
+                success: function (data) {
+                    window.location.href = "index";
+                }
+            })
+    	}
     });
 
 });

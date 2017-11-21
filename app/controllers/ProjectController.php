@@ -19,10 +19,13 @@ class ProjectController extends ControllerBase
         $this->assets->addCss('projectCard/proCard.css');
         
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
+        $this->assets->addJs('dist/jquery.validate.js');
+        $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('popper/popper.min.js');
       
       
         $this->assets->addJs('jslif/jquery.easing.min.js');
+        $this->assets->addJs('jslif/typeahead.bundle.min.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
@@ -225,6 +228,20 @@ class ProjectController extends ControllerBase
         return $this->response->redirect("project");
     }
 
+    public function checkDup()
+    {
+        $result = true;
+        $projectname = $this->request->getPost('projectname');
+        $condition = [];
+        if($projectname){
+            $condition["name"] = $projectname;
+        }
+        $project = Users::Find(array($condition));
+        if($project){
+            $result = false;
+        }
+        return json_encode($result);
+    }
 
 }
 

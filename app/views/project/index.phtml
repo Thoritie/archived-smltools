@@ -38,7 +38,7 @@
                         <i class="pe-7s-tools" style="font-weight: 900"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="pe-7s-pen" ></i> Edit</a></li>
+                        <li><a href="#"data-id="<?=$pro->_id?>"class="projectedit" ><i class="pe-7s-pen" ></i> Edit</a></li>
                         <li><a href="#"><i class="pe-7s-trash" ></i> Delete</a></li>
    
                     </ul>
@@ -109,3 +109,12 @@
       </div>
    </div>
 </div>
+<script>
+$(document).ready(function () {
+    $('.projectedit').click(function () {
+        var projectid = $(this).data('id');
+        // $(this).attr('data-id');
+        $.redirect("edit", { id: projectid});
+    });
+});
+</script>
