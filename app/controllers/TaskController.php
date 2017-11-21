@@ -27,11 +27,19 @@ class TaskController extends ControllerBase
         $this->assets->addJs('jslif/bootstrap-tagsinput.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
         $this->assets->addJs('jslif/sb-admin.min.js');
-        $this->assets->addJs('jslif/tagProject.js');
+       
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
        
         $this->assets->addJs('projectCard/proCard.js');
+
+        $this->assets->addJs('dist/jquery.validate.js');
+        $this->assets->addJs('jquery/createTaskValidate.js');
+        $this->assets->addJs('jquery/editTaskValidate.js');
+        $this->assets->addJs('jquery/jquery.redirect.js');
+        $this->assets->addJs('jquery/taskRedirect.js');
+
+
     }
 
     public function indexAction()
