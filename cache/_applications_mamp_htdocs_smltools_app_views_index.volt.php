@@ -15,4 +15,5 @@
 
         <?= $this->assets->outputJs() ?>
     </body>
+   
 </html>

@@ -15,4 +15,5 @@
 
         {{ assets.outputJs() }}
     </body>
+   
 </html>
