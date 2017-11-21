@@ -15,8 +15,13 @@
 
         {{ assets.outputJs() }}
 
+<<<<<<< HEAD
         <!-- {{ script }} -->
 
+=======
+        {{ script }}
+        
+>>>>>>> 5c83f2a259ff210d7891f12e5b4bac2e50a6687d
     </body>
    
 </html>
