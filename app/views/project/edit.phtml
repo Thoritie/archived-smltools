@@ -64,8 +64,7 @@
         
         user = JSON.parse(user);
         user = createJSON(user);
-        user = JSON.stringify(user);
-        console.log(user);       
+        user = JSON.stringify(user);    
         var data_permission = '<?php echo json_encode($permission); ?>';
     $(document).ready(function () {
             var users = new Bloodhound({
@@ -108,7 +107,6 @@
                 item["value"] = data._id.$id;
                 item["text"] = data.username;
                 item["continent"] = "";
-                
                 i++;
                 jsonObj.push(item);
             });

@@ -1,21 +1,19 @@
-
 <!-- new -->
-<h2 class="headform textCenter">Create Task</h2>
 <?php
    echo $this->tag->form(
        [
          
            "autocomplete" => "off",
-           "class" => "form-horizontal",
+           "class" => "",
            "id" => "createTask-form"
        ]
    );
    ?>
-            <?php 
-            echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
-            ?>
 
-<div class="ui raised segment very padded">
+<?php 
+   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
+   ?>
+<!-- <div class="ui raised segment very padded">
    <div class="ui large form">
       <div class="field">
          <label>Task</label>
@@ -125,7 +123,6 @@
             echo $this->tag->textField(["toUse", "size" => 30, 
             "class" => "form-control", "id" => "toUse"]) 
             ?>
-         
       </div>
       <div class="field">
          <label>toProduce</label>
@@ -134,9 +131,209 @@
             "class" => "form-control", "id" => "toProduce" , "placeholder"=>"toProduce"]) 
             ?>
       </div>
-     
       <?php echo $this->tag->endForm(); ?>
-     
-          <button type="submit" class="btn btn-primary" id="saveTask">Save</button>
+      <button type="submit" class="btn btn-primary" id="saveTask">Save</button>
+   </div>
+</div> -->
+<div class="content">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-9">
+            <div class="card">
+               <div class="header">
+                  <h4 class="title">Create Task</h4>
+               </div>
+               <div class="content">
+                  <form>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
+                              <?php 
+                                 echo $this->tag->textField(["taskname", "size" => 30, 
+                                 "class" => "form-control", "id" => "taskname" , "placeholder"=>"task name"]) 
+                                 ?>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>IsA</label>
+                              <?php 
+                                 echo $this->tag->textField(["isA", "size" => 30, 
+                                 "class" => "form-control", "id" => "isA" , "placeholder"=>"isA"]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <label>Description</label>
+                              <?php 
+                                 echo $this->tag->textArea(["Description", "class" => "form-control", 
+                                  "id" => "Description" , "placeholder"=>"Description","rows" => 3,]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-8">
+                           <div class="form-group">
+                              <label>Includes</label>
+                              <?php 
+                                 echo $this->tag->textField(["includes", "size" => 30, 
+                                  "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
+                                  ?>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label>as IsState</label>
+                              <?php 
+                                 echo $this->tag->selectStatic(["asIsState", "class" => "form-control", 
+                                 "id" => "asIsState" 
+                                 ,[
+                                     "E" => "EXIST",
+                                     "N" => "NEXIST",
+                                 ]
+                                 ]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label>Owner</label>
+                              <?php 
+                                 echo $this->tag->textField(["owner", "size" => 30, 
+                                 "class" => "form-control", "id" => "owner" ]) 
+                                 ?>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label>Collaburator</label>
+                              <?php 
+                                 echo $this->tag->textField(["collaburator", "size" => 30, 
+                                 "class" => "form-control", "id" => "collaburator" ]) 
+                                 ?>  
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label>Regulator</label>
+                              <?php 
+                                 echo $this->tag->textField(["regulator", "size" => 30, 
+                                 "class" => "form-control", "id" => "regulator"]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-8">
+                           <div class="form-group">
+                              <label>Uses</label>
+                              <?php 
+                                 echo $this->tag->textField(["uses", "size" => 30, 
+                                 "class" => "form-control", "id" => "uses" , "placeholder"=>"uses"]) 
+                                 ?>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="form-group">
+                              <label>to Be State</label>
+                              <?php 
+                                 echo $this->tag->selectStatic(["toBeState", "class" => "form-control", 
+                                 "id" => "toBeState" 
+                                 ,[
+                                     "E" => "EXIST",
+                                     "N" => "NEXIST",
+                                     "A" => "ADEPTED",
+                                 ]
+                                 ]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <label>Produces</label>
+                              <?php 
+                                 echo $this->tag->textField(["produces", "size" => 30, 
+                                 "class" => "form-control", "id" => "produces" , "placeholder"=>"produces"]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>owner To Be</label>
+                              <?php 
+                                 echo $this->tag->textField(["ownerToBe", "size" => 30, 
+                                 "class" => "form-control", "id" => "ownerToBe"]) 
+                                 ?>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>collaborator To Be</label>
+                              <?php 
+                                 echo $this->tag->textField(["collaboratorToBe", "size" => 30, 
+                                 "class" => "form-control", "id" => "collaboratorToBe" ]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>owner To Be</label>
+                              <?php 
+                                 echo $this->tag->textField(["ownerToBe", "size" => 30, 
+                                 "class" => "form-control", "id" => "ownerToBe"]) 
+                                 ?>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>collaborator To Be</label>
+                              <?php 
+                                 echo $this->tag->textField(["collaboratorToBe", "size" => 30, 
+                                 "class" => "form-control", "id" => "collaboratorToBe" ]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>toUse</label>
+                              <?php 
+                                 echo $this->tag->textField(["toUse", "size" => 30, 
+                                 "class" => "form-control", "id" => "toUse"]) 
+                                 ?>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>toProduce</label>
+                              <?php 
+                                 echo $this->tag->textField(["toProduce", "size" => 30, 
+                                 "class" => "form-control", "id" => "toProduce" , "placeholder"=>"toProduce"]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+                     <?php echo $this->tag->endForm(); ?>
+                     <button type="submit" class="btn btn-info btn-fill pull-right" d="saveTask">Save</button>
+                     <div class="clearfix"></div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
 </div>
