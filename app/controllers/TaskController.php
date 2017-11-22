@@ -253,7 +253,7 @@ class TaskController extends ControllerBase
                 $this->view->projectname = $project->name;
                 
                 $owner = Users::findById($project->createrId);
-                $this->view->owner = $owner->name;
+                $this->view->ownerLayout = $owner->name;
     }
     
     public function deleteTaskAction()
