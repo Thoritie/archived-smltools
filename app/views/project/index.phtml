@@ -8,7 +8,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <div class="">
+            
+            <div class="card s-navShadow">
                 <div class="header">
                     <!-- <h4 class="title">Projects</h4> -->
                     <!-- <p class="category">All Project is here</p> -->
@@ -16,7 +17,7 @@
                 <div class="content books">
                     <!-- card -->
                     <ul class="row resources">
-                        <li class="col-md-4 resource--add">
+                        <li class="col-md-4 resource--add well">
                             <div class="resource__add-icon">
                                 <a href="<?= $this->url->get("project/create"); ?>">
                                     <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
@@ -30,7 +31,7 @@
                         <?php
                         foreach ($create as $key => $pro) {
                     ?>
-                    <?php echo "<li class='col-md-4 resource--talks".$selectedCo."' >"; ?>
+                    <?php echo "<li class='col-md-4 resource--talks well".$selectedCo."' >"; ?>
                             <div class="header">
                                 <h4 class="title">
                                     <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link"><?=$pro->name?></a></h4>
@@ -85,7 +86,7 @@
                     $i = rand(0, count($co)-1);
                     $selectedCo = "$co[$i]"; 
                 ?>
-                    </ul>
+                   
 
 
                 </div>
