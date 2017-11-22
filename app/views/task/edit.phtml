@@ -239,7 +239,7 @@
 
   function add($elt, data){
       $.each(JSON.parse(data), function(index ,data){   
-        $elt.tagsinput('add', { "value": data._id.$id, "text": data.name, "continent": "" ,"index": data._id.$id});
+        $elt.tagsinput('add', { "value": data.value, "text": data.name, "continent": "" ,"index": data._id.$id});
       });
   }
 
@@ -249,7 +249,7 @@
 
   function createJSON(data) {
         jsonObj = [];
-        var i = 2;
+        
         $.each(data, function(index ,data){
 
             item = {};
@@ -257,7 +257,7 @@
             item ["text"] = data.name;
             item ["continent"] = "";
             item ["index"] = data._id.$id;
-            i++;
+           
             jsonObj.push(item);
         });
 
