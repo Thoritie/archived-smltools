@@ -42,6 +42,7 @@
             echo $this->tag->textField(["includes", "size" => 30, 
             "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
             ?>
+            
       </div>
       <div class="field">
          <label>asIsState</label>
@@ -180,10 +181,14 @@
                         <div class="col-md-8">
                            <div class="form-group">
                               <label>Includes</label>
-                              <?php 
-                                 echo $this->tag->textField(["includes", "size" => 30, 
-                                  "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
+                             
+                              <div class="input-group">
+                                    <?php 
+                                          echo $this->tag->textField(["includes", "size" => 30, 
+                                          "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
                                   ?>
+                                  <div class="btn input-group-addon" style="border: 1px solid #9a9a9a;">+</div> 
+                              </div>
                            </div>
                         </div>
                         <div class="col-md-4">
