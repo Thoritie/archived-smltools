@@ -65,9 +65,7 @@
         user = createJSON(user);
         user = JSON.stringify(user);
 
-
         var data_permission = '<?php echo json_encode($permission); ?>';
-
     $(document).ready(function () {
         var users = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
@@ -91,17 +89,12 @@
             }
         });
         add(permission, data_permission);
-
-        function add($elt, data) {
-            $.each(JSON.parse(data), function (index, data) {
-                $elt.tagsinput('add', {
-                    "value": data._id,
-                    "text": data.username,
-                    "continent": "",
-                    "index": data._id
-                });
-            });
-        }
+    });
+        function add($elt, data){
+        $.each(JSON.parse(data), function(index ,data){   
+        $elt.tagsinput('add', { "value": data._id.$id, "text": data.username, "continent": "" ,"index": data._id.$id});
+        });
+        } 
 
 
         function createJSON(data) {
@@ -120,6 +113,6 @@
 
             return jsonObj;
         }
-    });
+    
 </script>
 <!-- /.blockJS -->
