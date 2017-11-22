@@ -1,4 +1,4 @@
-<!-- random color just for fun -->
+    <!-- random color just for fun -->
 <?php 
    $co = array('blue', 'green', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow' );
    $i = rand(0, count($co)-1);
@@ -8,9 +8,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <div class="card">
+            
+            <div class="card s-navShadow">
                 <div class="header">
-                    <h4 class="title">Projects</h4>
+                    <!-- <h4 class="title">Projects</h4> -->
                     <!-- <p class="category">All Project is here</p> -->
                 </div>
                 <div class="content books">
@@ -30,7 +31,7 @@
                         <?php
                         foreach ($create as $key => $pro) {
                     ?>
-                    <?php echo "<li class='col-md-4 resource--talks well ".$selectedCo."' >"; ?>
+                    <?php echo "<li class='col-md-4 resource--talks well".$selectedCo."' >"; ?>
                             <div class="header">
                                 <h4 class="title">
                                     <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link"><?=$pro->name?></a></h4>
@@ -78,12 +79,14 @@
                                 </a>
                                 </li>
                                 <?php } ?>
+
+                                
                     </ul>
                     <?php 
                     $i = rand(0, count($co)-1);
                     $selectedCo = "$co[$i]"; 
                 ?>
-                    </ul>
+                   
 
 
                 </div>
@@ -92,7 +95,7 @@
         </div>
         <div class="col-md-3">
             <!-- Sort -->
-            <div class="card">
+            <div class="card s-navShadow">
                 <div class="header">
                     <h4 class="title">Sort</h4>
                 </div>
@@ -107,7 +110,7 @@
                 </div>
             </div>
             <!-- Filter -->
-            <div class="card">
+            <div class="card s-navShadow">
                 <div class="header">
                     <h4 class="title">Filter</h4>
                 </div>
