@@ -142,10 +142,12 @@ class ProjectController extends ControllerBase
                 
                 $session = $this->session->get('login');
                 
-                $user = Users::find([
-                "conditions" => [
-                '_id' => ['$ne'=>$session]
-                ]
+                $user = Users::find(
+                [
+                    "conditions" => 
+                    [
+                        '_id' => ['$ne'=>$session]
+                    ]
                 ]);
 
                 $this->view->user = $user;

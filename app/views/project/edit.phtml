@@ -59,35 +59,38 @@
 </div>
 <!-- blockJS -->
 <script>
-    
+
         var user = '<?php echo json_encode($user); ?>';
+        
         user = JSON.parse(user);
         user = createJSON(user);
         user = JSON.stringify(user);
+       
         var data_permission = '<?php echo json_encode($permission); ?>';
     $(document).ready(function () {
-        var users = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(user)
-        });
+            var users = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: JSON.parse(user)
+            });
 
-        users.initialize();
+            
+            users.initialize();
 
-        var permission = $('#edpermission');
-            permission.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                username: 'username',
-                displayKey: 'text',
-                source: users.ttAdapter(),
-                templates: {
-                    empty: '<div class="empty-message text-info"> No matches.</div>'
+            var Edpermission = $('#edpermission');
+                Edpermission.tagsinput({
+                itemValue: 'value',
+                itemText: 'text',
+                typeaheadjs: {
+                    username: 'username',
+                    displayKey: 'text',
+                    source: users.ttAdapter(),
+                    templates: {
+                        empty: '<div class="empty-message text-info"> No matches.</div>'
+                    }
                 }
-            }
-        });
-        add(permission, data_permission);
+            });
+            add(Edpermission, data_permission);
     });
         function add($elt, data){
         $.each(JSON.parse(data), function(index ,data){   
@@ -102,7 +105,7 @@
             $.each(data, function (index, data) {
 
                 item = {};
-                item["text"] = data.usename;
+                item["text"] = data.username;
                 item["continent"] = "";
                 item["index"] = data._id.$id;
                 i++;

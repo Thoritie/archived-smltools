@@ -82,7 +82,7 @@ $(document).ready(function () {
         session : session
     }, function (data) {
         var auto = createJSON(data);
-        console.log(auto);
+       
         var n = createString(auto);
         tagPermission(n);
     }, "json");

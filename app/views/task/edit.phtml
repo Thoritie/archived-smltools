@@ -146,11 +146,11 @@
 <script>
     
     var stakeinput = '<?php echo json_encode($stake); ?>';
-
+    
     stakeinput = JSON.parse(stakeinput);
     stakeinput = createJSON(stakeinput);
     stakeinput = JSON.stringify(stakeinput);
- 
+    
  
   var data_owner = '<?php echo json_encode($owner); ?>';
  
@@ -159,7 +159,7 @@
   var data_ownerTobe = '<?php echo json_encode($ownerTobe); ?>';
   var data_collaboratorTobe = '<?php echo json_encode($collaboratorTobe); ?>';
   
-  console.log(stakeinput);
+  
 
   $(document).ready(function(){
 
@@ -168,7 +168,7 @@
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: JSON.parse(stakeinput)
     });
-
+  
     Stakeholder.initialize();
 
     var EdownerToBe = $('#EdownerToBe');
