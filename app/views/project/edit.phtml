@@ -65,7 +65,7 @@
         user = JSON.parse(user);
         user = createJSON(user);
         user = JSON.stringify(user);
-       
+        console.log(user);       
         var data_permission = '<?php echo json_encode($permission); ?>';
     $(document).ready(function () {
             var users = new Bloodhound({
@@ -94,7 +94,7 @@
     });
         function add($elt, data){
         $.each(JSON.parse(data), function(index ,data){   
-        $elt.tagsinput('add', { "value": data._id.$id, "text": data.username, "continent": "" ,"index": data._id.$id});
+        $elt.tagsinput('add', { "value": data._id.$id, "text": data.username, "continent": ""});
         });
         } 
 
@@ -105,9 +105,10 @@
             $.each(data, function (index, data) {
 
                 item = {};
+                item["value"] = data._id.$id;
                 item["text"] = data.username;
                 item["continent"] = "";
-                item["index"] = data._id.$id;
+                
                 i++;
                 jsonObj.push(item);
             });
