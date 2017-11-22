@@ -14,14 +14,14 @@ $(document).ready(function () {
     })
     $("#editProject-form").validate({
         rules: {
-            projectname: {
+            edprojectname: {
                 required: true,
                 remote: {
                     url: "checkDuptoEdit",
                     type: "post",
                     data: {
                         projectname: function () {
-                            return $("#projectname").val()
+                            return $("#edprojectname").val()
                         },
                         id: function(){
                             return $("#idproject").val()
@@ -41,12 +41,12 @@ $(document).ready(function () {
     $('#editproject').click(function () {
         if ($("#editProject-form").valid()) {
             var id = $("#idproject").val();
-            var projectname = $("#projectname").val();
-            var description = $("#description").val();
-            var permission = $("#permission").tagsinput('items')
+            var projectname = $("#edprojectname").val();
+            var description = $("#eddescription").val();
+            var permission = $("#edpermission").tagsinput('items')
             item1 = {};
             $.each(permission, function (index, input) {
-                item1[index] = input.index
+                item1[index] = input.value
             });
             $.ajax({
                 type: 'post',

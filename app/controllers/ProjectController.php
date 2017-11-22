@@ -176,7 +176,7 @@ class ProjectController extends ControllerBase
             $project = new Project;
             $project->createrId =(String)$id;
         }else{
-            $project = Project::findById(new MongoId($projectid));
+            $project = Project::findById($projectid);
         }
         
         $project->name =$this->request->getPost("projectname");
