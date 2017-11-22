@@ -69,6 +69,8 @@ class TaskController extends ControllerBase
        
         $this->view->task = $task;
         
+        $owner = Users::findById($project->createrId);
+        $this->view->owner = $owner->name;
     }
 
     public function indextestAction($id)
@@ -85,6 +87,8 @@ class TaskController extends ControllerBase
         $project = Project::findById($id);
         $this->view->projectname = $project->name;
         
+        $owner = Users::findById($project->createrId);
+        $this->view->owner = $owner->name;
     }
 
     public function saveAction()
@@ -247,7 +251,9 @@ class TaskController extends ControllerBase
                 $id = $this->session->get('idProject');
                 $project = Project::findById($id);
                 $this->view->projectname = $project->name;
-               
+                
+                $owner = Users::findById($project->createrId);
+                $this->view->owner = $owner->name;
     }
     
     public function deleteTaskAction()
