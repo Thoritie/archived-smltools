@@ -31,7 +31,8 @@ class ProjectController extends ControllerBase
         $this->assets->addJs('jslif/sb-admin.js');
         $this->assets->addJs('jslif/sb-admin.min.js');
         $this->assets->addJs('jslif/tagProject.js');
-        $this->assets->addJs('jquery/projectRidirect.js');
+        $this->assets->addJs('jquery/projectRedirect.js');
+        $this->assets->addJs('jquery/editProject.js');
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
        
@@ -136,15 +137,17 @@ class ProjectController extends ControllerBase
                 $this->view->permission = $permission;
 
                 $this->view->pro  = $pro;
-                $this->tag->setDefault("projectname", $pro->name);
-                $this->tag->setDefault("description", $pro->description);
+                $this->tag->setDefault("edprojectname", $pro->name);
+                $this->tag->setDefault("eddescription", $pro->description);
                 
                 $session = $this->session->get('login');
                 
-                $user = Users::find([
-                "conditions" => [
-                '_id' => ['$ne'=>$session]
-                ]
+                $user = Users::find(
+                [
+                    "conditions" => 
+                    [
+                        '_id' => ['$ne'=>$session]
+                    ]
                 ]);
 
                 $this->view->user = $user;
@@ -168,23 +171,20 @@ class ProjectController extends ControllerBase
     public function saveAction()
     {
         $id=$this->session->get('login');
-        $project = new Project;
+        $projectid = $this->request->getPost("projectid");
+        if(!$projectid){
+            $project = new Project;
+            $project->createrId =(String)$id;
+        }else{
+            $project = Project::findById($projectid);
+        }
+        
         $project->name =$this->request->getPost("projectname");
         $project->description =$this->request->getPost("description");
-        $project->createrId =(String)$id;
         $project->permission =$this->request->getPost("permission");
-        
-        if($project->save())
-        {
-            $this->flashSession->success("Successful Create Project");
-            return $this->response->redirect("project");
-        }
-        else
-        {
-            $this->flashSession->success("Not Successful Create Project");
-            return $this->response->redirect("project");
-        }
+        $project->save();
     }
+
 
     public function testAction()
     {
@@ -240,6 +240,27 @@ class ProjectController extends ControllerBase
         if($project){
             $result = false;
         }
+        return json_encode($result);
+    }
+    
+    public function checkDuptoEditAction()
+    {
+        $result = true;
+        $projectname = $this->request->getPost('projectname');
+        $idproject = $this->request->getPost('id');
+        $project = Project::find([
+        "conditions" => [
+            '_id' => ['$ne'=> new MongoId($idproject)]
+        ]
+        ]);
+        foreach($project as $key => $pro)
+        {
+            if($pro->name==$projectname)
+            {
+                $result = false;
+            }
+        }
+        
         return json_encode($result);
     }
 

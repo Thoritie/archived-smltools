@@ -41,7 +41,7 @@ $(document).ready(function () {
         $.each(data, function (index, data) {
 
             item = {}
-            item["value"] = i;
+            item["value"] = data._id.$id;
             item["text"] = data.username;
             item["continent"] = "";
             item["index"] = data._id.$id;
@@ -82,7 +82,7 @@ $(document).ready(function () {
         session : session
     }, function (data) {
         var auto = createJSON(data);
-        console.log(auto);
+       
         var n = createString(auto);
         tagPermission(n);
     }, "json");
