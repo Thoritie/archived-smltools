@@ -137,8 +137,8 @@ class ProjectController extends ControllerBase
                 $this->view->permission = $permission;
 
                 $this->view->pro  = $pro;
-                $this->tag->setDefault("projectname", $pro->name);
-                $this->tag->setDefault("description", $pro->description);
+                $this->tag->setDefault("edprojectname", $pro->name);
+                $this->tag->setDefault("eddescription", $pro->description);
                 
                 $session = $this->session->get('login');
                 

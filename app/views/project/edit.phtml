@@ -18,8 +18,8 @@
                                         <label>Project Name<span class="red-star" style="font-size: 14px"> *</span></label>
 
                                         <?php 
-                                            echo $this->tag->textField(["projectname", "size" => 30, 
-                                            "class" => "form-control", "id" => "projectname" , "placeholder"=>"Project Name"]) 
+                                            echo $this->tag->textField(["edprojectname", "size" => 30, 
+                                            "class" => "form-control", "id" => "edprojectname" , "placeholder"=>"Project Name"]) 
                                         ?>
                                     </div>
                                     </div>
@@ -30,8 +30,8 @@
                                         <label>Description</label>
 
                                         <?php 
-                                            echo $this->tag->textArea(["description", "rows" => 3, 
-                                            "class" => "form-control", "id" => "description" , "placeholder"=>"Description"]) 
+                                            echo $this->tag->textArea(["eddescription", "rows" => 3, 
+                                            "class" => "form-control", "id" => "eddescription" , "placeholder"=>"Description"]) 
                                         ?>
                                     </div>
                                     </div>
@@ -42,8 +42,8 @@
                                         <label>Permission</label>
                                         
                                             <?php 
-                                                echo $this->tag->textField(["permission", "size" => 30, 
-                                                "class" => "form-control", "id" => "permission" ]) 
+                                                echo $this->tag->textField(["edpermission", "size" => 30, 
+                                                "class" => "form-control", "id" => "edpermission" ]) 
                                             ?>
                                         </div>
                                     </div>
@@ -64,7 +64,6 @@
         user = JSON.parse(user);
         user = createJSON(user);
         user = JSON.stringify(user);
-
         var data_permission = '<?php echo json_encode($permission); ?>';
     $(document).ready(function () {
         var users = new Bloodhound({
@@ -75,8 +74,8 @@
 
         users.initialize();
 
-        var permission = $('#permission');
-        permission.tagsinput({
+        var permission = $('#edpermission');
+            permission.tagsinput({
             itemValue: 'value',
             itemText: 'text',
             typeaheadjs: {
@@ -103,7 +102,6 @@
             $.each(data, function (index, data) {
 
                 item = {};
-                item["value"] = data.value;
                 item["text"] = data.usename;
                 item["continent"] = "";
                 item["index"] = data._id.$id;
