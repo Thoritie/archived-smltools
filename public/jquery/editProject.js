@@ -31,7 +31,7 @@ $(document).ready(function () {
             },
         },
         messages: {
-            projectname: {
+            edprojectname: {
                 required: "Project name is required",
                 remote: jQuery.validator.format("{0} is already taken.")
             }
