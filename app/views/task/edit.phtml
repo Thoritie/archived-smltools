@@ -158,7 +158,7 @@
   
   var data_ownerTobe = '<?php echo json_encode($ownerTobe); ?>';
   var data_collaboratorTobe = '<?php echo json_encode($collaboratorTobe); ?>';
-  
+  console.log(data_owner);
   
 
   $(document).ready(function(){
@@ -239,7 +239,7 @@
 
   function add($elt, data){
       $.each(JSON.parse(data), function(index ,data){   
-        $elt.tagsinput('add', { "value": data.value, "text": data.name, "continent": "" ,"index": data._id.$id});
+        $elt.tagsinput('add', { "value": data._id.$id, "text": data.name, "continent": "" });
       });
   }
 
@@ -253,10 +253,9 @@
         $.each(data, function(index ,data){
 
             item = {};
-            item ["value"] = data.value;
+            item ["value"] = data._id.$id;
             item ["text"] = data.name;
             item ["continent"] = "";
-            item ["index"] = data._id.$id;
            
             jsonObj.push(item);
         });
