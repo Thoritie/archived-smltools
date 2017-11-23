@@ -1,0 +1,90 @@
+[
+{
+    "_id" : ObjectId("5a1668085418048434000029"),
+    "name" : "qqqq",
+    "isA" : "qqqq",
+    "Description" : "qqqq",
+    "includes" : "qqqq",
+    "asIsState" : "E",
+    "owner" : [ 
+        "59fdb4e2f158e3c6c287e0fc"
+    ],
+    "collaburator" : [ 
+        "5a146ab22f637faa0ca3b848"
+    ],
+    "regulator" : "qqqq",
+    "uses" : "qqqq",
+    "produces" : "qqqq",
+    "toBeState" : "E",
+    "ownerToBe" : [ 
+        "5a146ab22f637faa0ca3b848"
+    ],
+    "collaboratorToBe" : [ 
+        "59fdb4e2f158e3c6c287e0fe"
+    ],
+    "toUse" : "qqqq",
+    "toProduce" : "qqqq",
+    "idProject" : "5a146630541804b819000029"
+},
+
+
+{
+    "_id" : ObjectId("5a1668c15418040c26000029"),
+    "name" : "testCreate",
+    "isA" : "testCreate",
+    "Description" : "testCreate",
+    "includes" : "testCreate",
+    "asIsState" : "E",
+    "owner" : [ 
+        "59fdb4e2f158e3c6c287e0fc", 
+        "59fdb4e2f158e3c6c287e0fe", 
+        "59fdb4e2f158e3c6c287e100"
+    ],
+    "collaburator" : [ 
+        "59fdb4e2f158e3c6c287e0fc", 
+        "5a146ab22f637faa0ca3b848"
+    ],
+    "regulator" : "testCreate",
+    "uses" : "testCreate",
+    "produces" : "testCreate",
+    "toBeState" : "E",
+    "ownerToBe" : [ 
+        "59fdb4e2f158e3c6c287e0fc"
+    ],
+    "collaboratorToBe" : [ 
+        "5a146ab22f637faa0ca3b848"
+    ],
+    "toUse" : "testCreate",
+    "toProduce" : "testCreate",
+    "idProject" : "5a146630541804b819000029"
+},
+{
+    "_id" : ObjectId("5a16925e5418049012000029"),
+    "name" : "firstTask",
+    "isA" : "firstTask",
+    "Description" : "firstTask",
+    "includes" : "firstTask",
+    "asIsState" : "E",
+    "owner" : [ 
+        "59fdb4e2f158e3c6c287e0fc", 
+        "5a146ab22f637faa0ca3b848"
+    ],
+    "collaburator" : [ 
+        "59fdb4e2f158e3c6c287e0fc", 
+        "59fdb4e2f158e3c6c287e100"
+    ],
+    "regulator" : "firstTask",
+    "uses" : "firstTask",
+    "produces" : "firstTask",
+    "toBeState" : "E",
+    "ownerToBe" : [ 
+        "5a146ab22f637faa0ca3b848"
+    ],
+    "collaboratorToBe" : [ 
+        "5a146ab22f637faa0ca3b848", 
+        "59fdb4e2f158e3c6c287e100"
+    ],
+    "toUse" : "firstTask",
+    "toProduce" : "firstTask",
+    "idProject" : "5a169229541804843400002b"
+}]
