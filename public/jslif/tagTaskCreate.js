@@ -6,10 +6,9 @@ $(document).ready(function() {
         $.each(data, function(index ,data){
 
             item = {}
-            item ["value"] = data.value;
+            item ["value"] = data._id.$id;
             item ["text"] = data.name;
             item ["continent"] = "";
-            item ["index"] = data._id.$id;
             
             jsonObj.push(item);
         });
@@ -154,13 +153,13 @@ $(document).ready(function() {
                     var owner = $("#owner").tagsinput('items')
                     item1 = {};
                     $.each(owner, function(index ,input){   
-                        item1 [index] = input.index
+                        item1 [index] = input.value
                     });
         
                     var collaburator = $("#collaburator").tagsinput('items')
                     item2 = {};
                     $.each(collaburator, function(index ,input){   
-                        item2 [index] = input.index
+                        item2 [index] = input.value
                     });
                     var regulator = $("#regulator").val();
                     var uses = $("#uses").val();
@@ -170,12 +169,12 @@ $(document).ready(function() {
                     var ownerToBe = $("#ownerToBe").tagsinput('items')
                     item3 = {};
                     $.each(ownerToBe, function(index ,input){   
-                        item3 [index] = input.index
+                        item3 [index] = input.value
                     });
                     var collaboratorToBe = $("#collaboratorToBe").tagsinput('items')
                     item4 = {};
                     $.each(collaboratorToBe, function(index ,input){   
-                        item4 [index] = input.index
+                        item4 [index] = input.value
                     });
                     var toUse = $("#toUse").val();
                     var toProduce = $("#toProduce").val();
@@ -221,13 +220,13 @@ $(document).ready(function() {
             var owner = $("#Edowner").tagsinput('items')
             item1 = {};
             $.each(owner, function(index ,input){   
-                item1 [index] = input.index
+                item1 [index] = input.value
             });
 
             var collaburator = $("#Edcollaburator").tagsinput('items')
             item2 = {};
             $.each(collaburator, function(index ,input){   
-                item2 [index] = input.index
+                item2 [index] = input.value
             });
             var regulator = $("#Edregulator").val();
             var uses = $("#Eduses").val();
@@ -237,12 +236,12 @@ $(document).ready(function() {
             var ownerToBe = $("#EdownerToBe").tagsinput('items')
             item3 = {};
             $.each(ownerToBe, function(index ,input){   
-                item3 [index] = input.index
+                item3 [index] = input.value
             });
             var collaboratorToBe = $("#EdcollaboratorToBe").tagsinput('items')
             item4 = {};
             $.each(collaboratorToBe, function(index ,input){   
-                item4 [index] = input.index
+                item4 [index] = input.value
             });
             var toUse = $("#EdtoUse").val();
             var toProduce = $("#EdtoProduce").val();

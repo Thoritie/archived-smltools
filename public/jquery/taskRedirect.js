@@ -3,6 +3,6 @@ $(document).ready(function () {
         var taskid = $(this).data('id');
         // $(this).attr('data-id');
        
-        $.redirect("task/edit", { id: taskid});
+        $.redirect("edit", { id: taskid});
     });
 });
