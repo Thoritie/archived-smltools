@@ -9,6 +9,8 @@ class ProjectController extends ControllerBase
         $this->assets->addCss('assetsThor/css/demo.css');
         $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
         $this->assets->addCss('assetsThor/css/navbar.css');
+        $this->assets->addCss('font-awesome/css/font-awesome.css');
+        
       
         
         
@@ -16,7 +18,9 @@ class ProjectController extends ControllerBase
         $this->assets->addCss('jslif/app.css');
         $this->assets->addCss('jslif/sb-admin.css');
         $this->assets->addCss('jslif/sb-admin-override.css');
-        $this->assets->addCss('projectCard/proCard.css');
+        // $this->assets->addCss('projectCard/proCard.css');
+       
+
         
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
         $this->assets->addJs('dist/jquery.validate.js');
@@ -36,7 +40,7 @@ class ProjectController extends ControllerBase
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
        
-        $this->assets->addJs('projectCard/proCard.js');
+        // $this->assets->addJs('projectCard/proCard.js');
     }
 
     public function indexAction()
