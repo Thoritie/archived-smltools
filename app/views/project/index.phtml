@@ -9,90 +9,74 @@
     <div class="row">
         <div class="col-md-9">
             
-            <div class="card s-navShadow">
-                <div class="header">
-                    <!-- <h4 class="title">Projects</h4> -->
-                    <!-- <p class="category">All Project is here</p> -->
-                </div>
-                <div class="content books">
-                    <!-- card -->
-                    <ul class="row resources">
-                        <li class="col-md-4 resource--add well">
-                            <div class="resource__add-icon">
-                                <a href="<?= $this->url->get("project/create"); ?>">
-                                    <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
-                                        <circle cx="30" cy="30" r="30" />
-                                        <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "
-                                        />
-                                    </svg>
-                                </a>
-                            </div>
-                        </li>
-                        <?php
+            
+            <?php
                         foreach ($create as $key => $pro) {
                     ?>
-                    <?php echo "<li class='col-md-4 resource--talks well".$selectedCo."' >"; ?>
-                            <div class="header">
-                                <h4 class="title">
-                                    <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link"><?=$pro->name?></a></h4>
-                            </div>
-                            <div class="content">
-                                <p>
-                                    <?=$pro->description?>
-                                </p>
-                                <div class="footer">
-                                    <hr>
-                                    <div class="pull-right">
-                                        <a href="#" data-id="<?=$pro->_id?>" class="projectedit" rel="tooltip" title="" class="btn btn-info btn-simple btn-sm" data-original-title="Edit">
-                                                <i class="pe-7s-edit"></i>
-                                        </a>
-                                        <a href="#" rel="tooltip" title="" class="btn btn-danger btn-simple btn-sm" data-original-title="Remove">
-                                                <i class="pe-7s-trash"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+        <div class="col-md-4">
+          <div class="cardHover s-navShadow">
+            <div class="header">
+            </div>
+              <div class="caption">
+                <h5><?=$pro->name?></h5>
+                <p></p>
+                <hr>
+                <div class="footer">
+                <span class="labelCo labelPrimary" rel="tooltip" data-original-title="<?=$pro->description?>" >Detail</span>
 
-                            <?php 
-                                 $i = rand(0, count($co)-1);
-                                 $selectedCo = "$co[$i]"; 
-                                 ?>
-                            <?php } ?>
-                            <!-- permis -->
-                            <?php 
-                                 $i = rand(0, count($co)-1);
-                                 $selectedCo = "$co[$i]"; 
-                                 ?>
-                            <?php
+                <div class="pull-right">
+                    <a href="#" data-id="<?=$pro->_id?>" class="projectedit labelCo labelInfo iconCard" rel="tooltip" title="" data-original-title="Edit">
+                    <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    <a href="#" rel="tooltip" title="" class="labelCo labelDanger iconCard" data-original-title="Remove">
+                    <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+        <?php } ?>
+
+        <?php
                                  foreach ($permis as $key => $per) {
                                  ?>
-                                <!-- <li class="resource--book"> -->
-                                <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                                <a href="<?=$this->url->get("project/task/".$per->_id); ?>" class="resource__link">
-                                    <h1 class="resource__title">
-                                        <?=$per->name?>
-                                    </h1>
-                                    <p class="resource__summary">
-                                        <?=$per->description?>
-                                    </p>
-                                </a>
-                                </li>
-                                <?php } ?>
-
-                                
-                    </ul>
-                    <?php 
-                    $i = rand(0, count($co)-1);
-                    $selectedCo = "$co[$i]"; 
-                ?>
-                   
-
-
-                </div>
+        <div class="col-md-4">
+          <div class="cardHover s-navShadow">
+            <div class="header">
             </div>
+              <div class="caption">
+                <h4><?=$pre->name?></h4>
+                <p></p>
+                <hr>
+                <div class="footer">
+                <span class="labelCo labelPrimary" rel="tooltip" data-original-title="<?=$pre->description?>" >Detail</span>
 
+                <div class="pull-right">
+                    <a href="#" data-id="<?=$pro->_id?>" class="projectedit labelCo labelInfo iconCard" rel="tooltip" title="" data-original-title="Edit">
+                    <i class="fa fa-pencil-square-o"></i>
+                    </a>
+                    <a href="#" rel="tooltip" title="" class="labelCo labelDanger iconCard" data-original-title="Remove">
+                    <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+                </div>
+                
+            </div>
+          </div>
         </div>
+        <?php } ?>
+
+
+
+       
+   
+        </div>
+
+  
+     
+
         <div class="col-md-3">
             <!-- Sort -->
             <div class="card s-navShadow">
