@@ -70,7 +70,7 @@ class TaskController extends ControllerBase
         $this->view->task = $task;
         
         $owner = Users::findById($project->createrId);
-        $this->view->owner = $owner->name;
+        $this->view->ownerLayout = $owner->name;
     }
 
     public function indextestAction($id)
@@ -88,7 +88,7 @@ class TaskController extends ControllerBase
         $this->view->projectname = $project->name;
         
         $owner = Users::findById($project->createrId);
-        $this->view->owner = $owner->name;
+        $this->view->ownerLayout = $owner->name;
     }
 
     public function saveAction()
@@ -260,9 +260,9 @@ class TaskController extends ControllerBase
     {
         $id = $this->request->getPost('idTask');
         $task = Tasks::findById($id);
-
+        
         $task->delete();
-        return;
+        return json_encode('true');
     }
 
    

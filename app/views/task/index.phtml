@@ -1,48 +1,4 @@
 
-<!-- <div class="ui grid">
-
-   <div class="ten wide column">
-      <div class="ui cards">
-
-            <div class="ui raised link card">
-                <div class="content">
-                <div class="header">Create new Task</div>
-                
-                </div>
-                <a class="ui bottom attached button" href="<?=$this->url->get("task/create"); ?>">
-                    <i class="add icon"></i>
-                    create
-                </a>
-               
-            </div>
-        
-        <?php 
-           if($task!=0){
-                foreach ($task as $key => $tk) { ?>
-                <div class="ui raised link card">
-                    <div class="content">
-                    <div class="header"><?=$tk->name?></div>
-                    <div class="description">
-                        Task detailed
-                    </div>
-                    </div>
-                    <a href="#" data-id="<?=$tk->_id?>" class="item taskedit">
-                        <i class="add icon"></i>
-                        edit
-                    </a>
-                    <a class="ui bottom attached button" onclick="confirm('Are you sure?') ? deleteTask() : false;">
-                        <i class="add icon"></i>
-                    delete
-                    </a>
-                </div>
-                <?php  }
-            }
-        ?>
-      </div>
-      
-   </div>  
-</div> -->
-
 
 
 
@@ -84,7 +40,7 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a href="#" data-id="<?=$tk->_id?>" class="taskedit"><i class="pe-7s-pen" ></i> Edit</a></li>
-                        <li><a href="#"><i class="pe-7s-trash" ></i> Delete</a></li>
+                        <li><a  onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;"><i class="pe-7s-trash" ></i> Delete</a></li>
    
                     </ul>
                   </div>
@@ -201,3 +157,17 @@
       </div>
    </div>
 </div>
+<!-- blockJS -->
+<script>
+    function deleteTask(id){
+        var idtask = id;
+
+        $.post("deleteTask",{
+            idTask : idtask
+        }, function(data){
+            console.log(data);
+        },  "json");
+        $.redirect("index", {  });
+    }
+</script>
+<!-- /.blockJS -->
