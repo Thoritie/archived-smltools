@@ -1,118 +1,105 @@
-    <!-- random color just for fun -->
-<?php 
-   $co = array('blue', 'green', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow' );
-   $i = rand(0, count($co)-1);
-   $selectedCo = "$co[$i]"; 
-   ?>
 <!-- new project card -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-9" style="padding:0">
-            
-            
-            <?php
-                        foreach ($create as $key => $pro) {
-                    ?>
-        <div class="col-md-4" style="padding:0">
-          <div class="cardHover s-navShadow">
-            <div class="header">
-            </div>
-              <div class="caption">
-                <h5><?=$pro->name?></h5>
-                <p></p>
-                <hr>
-                <div class="footer">
-                <span class="labelCo labelPrimary" rel="tooltip" data-original-title="<?=$pro->description?>" >Detail</span>
-
-                <div class="pull-right">
-                    <a href="#" data-id="<?=$pro->_id?>" class="projectedit labelCo labelInfo iconCard" rel="tooltip" title="" data-original-title="Edit">
-                    <i class="fa fa-pencil-square-o"></i>
-                    </a>
-                    <a href="#" rel="tooltip" title="" class="labelCo labelDanger iconCard" data-original-title="Remove">
-                    <i class="fa fa-trash"></i>
-                    </a>
-                </div>
-                </div>
-                
-            </div>
-          </div>
-        </div>
-        <?php } ?>
-
-        <?php
-                                 foreach ($permis as $key => $per) {
-                                 ?>
-        <div class="col-md-4" style="padding:0">
-          <div class="cardHover s-navShadow">
-            <div class="header">
-            </div>
-              <div class="caption">
-                <h4><?=$pre->name?></h4>
-                <p></p>
-                <hr>
-                <div class="footer">
-                <span class="labelCo labelPrimary" rel="tooltip" data-original-title="<?=$pre->description?>" >Detail</span>
-
-                <div class="pull-right">
-                    <a href="#" data-id="<?=$pro->_id?>" class="projectedit labelCo labelInfo iconCard" rel="tooltip" title="" data-original-title="Edit">
-                    <i class="fa fa-pencil-square-o"></i>
-                    </a>
-                    <a href="#" rel="tooltip" title="" class="labelCo labelDanger iconCard" data-original-title="Remove">
-                    <i class="fa fa-trash"></i>
-                    </a>
-                </div>
-                </div>
-                
-            </div>
-          </div>
-        </div>
-        <?php } ?>
-
-
-
-       
-   
-        </div>
-
-  
-     
-
-        <div class="col-md-3">
-            <!-- Sort -->
-            <div class="card s-navShadow">
-                <div class="header">
-                    <h4 class="title">Sort</h4>
-                </div>
-                <div class="content">
-                    <div class="form-group">
-                        <!-- <label for="sel1">Select list (select one):</label> -->
-                        <select class="form-control" id="sel1">
-                            <option selected>List</option>
-                            <option>Title</option>
-                        </select>
+        <div class="row">
+           <div class="col-md-9" style="padding:0">
+              <div class="col-md-4">
+                 <a href="<?=$this->url->get("project/create/"); ?>">
+                    <div class="thumbnail s-navShadow" id="thumbnailProject">
+                            <i class="fa fa-5x fa-plus" style="
+                            color: #3d578a;
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                            height: 100%;
+                            margin-top: 40px;
+                        "></i>
                     </div>
-                </div>
-            </div>
-            <!-- Filter -->
-            <div class="card s-navShadow">
-                <div class="header">
+                 </a>
+              </div>
+              <?php
+                 foreach ($create as $key => $pro) {
+                 ?>
+              <div class="col-md-4">
+                 <div class="thumbnail s-navShadow">
+                    <div class="caption">
+                       <div class="header">
+                          <a href="<?=$this->url->get("project/task/".$pro->_id); ?>">
+                             <h4><?=$pro->name?></h4>
+                          </a>
+                       </div>
+                       <hr>
+                       <div class="footer">
+                          <a href="#" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
+                          <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary" data-id="<?=$pro->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                          <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$pro->description?>"><i class="fa fa-info"></i></a> 
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <?php } ?>
+              <?php
+                 foreach ($permis as $key => $per) {
+                 ?>
+              <div class="col-md-4">
+                 <div class="thumbnail s-navShadow">
+                    <div class="caption">
+                       <div class="header">
+                          <a href="<?=$this->url->get("project/task/".$per->_id); ?>">
+                             <h4><?=$per->name?></h4>
+                          </a>
+                       </div>
+                       <hr>
+                       <div class="footer">
+                          <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$per->description?>"><i class="fa fa-info"></i></a> 
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <?php } ?>
+           </div>
+           <div class="col-md-3">
+              <!-- Sort -->
+              <div class="card s-navShadow">
+                 <div class="header">
+                    <h4 class="title">Sort</h4>
+                 </div>
+                 <div class="content">
+                    <div class="form-group">
+                       <!-- <label for="sel1">Select list (select one):</label> -->
+                       <select class="form-control" id="sel1">
+                          <option selected>List</option>
+                          <option>Title</option>
+                       </select>
+                    </div>
+                 </div>
+              </div>
+              <!-- Filter -->
+              <div class="card s-navShadow">
+                 <div class="header">
                     <h4 class="title">Filter</h4>
-                </div>
-                <div class="content">
+                 </div>
+                 <div class="content">
                     <form action="#">
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label>Project Name</label>
-                                <input type="text" class="form-control" placeholder="Project Name" value="">
-                            </div>
-                        </div>
-                        <div class="footer">
-                            <button class="btn btn-default pull-right" type="submit">Filter</button>
-                        </div>
+                       <div class="form-group">
+                          <div class="form-group">
+                             <label>Project Name</label>
+                             <input type="text" class="form-control" placeholder="Project Name" value="">
+                          </div>
+                       </div>
+                       <div class="footer text-right">
+                          <button class="btn btn-default" type="submit">Filter</button>
+                       </div>
                     </form>
-                </div>
-            </div>
+                 </div>
+              </div>
+           </div>
         </div>
-    </div>
-</div>
+     </div>
 
+<!-- blockJS -->
+    <script>
+       $(document).ready(function(){
+
+       });
+    </script>
+    <!-- /.blockJS -->

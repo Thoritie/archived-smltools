@@ -114,6 +114,7 @@
 }
 
 .cardHover{
+    height: 125px;
     position: relative;
     background-color: #fff;
     width: 90%;
@@ -156,4 +157,27 @@
 
 div.hidden {
     overflow: hidden;
+}
+
+.thumbnail {
+    /* margin: 0; */
+    max-height: 150px;
+    min-height: 150px;
+
+}
+
+.thumbnail .caption .header h4 {
+    margin: 0;
+    max-height: 60px;
+    height: 60px;
+    overflow: hidden;
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+}
+
+
+
+.thumbnail:hover{
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
 }
