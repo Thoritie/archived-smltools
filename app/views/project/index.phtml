@@ -18,7 +18,11 @@
             <div class="header">
             </div>
               <div class="caption">
-                <h5><?=$pro->name?></h5>
+                <h5>
+                    <a href="<?=$this->url->get("project/task/".$pro->_id); ?>">
+                        <?=$pro->name?>
+                    </a>
+                </h5>
                 <p></p>
                 <hr>
                 <div class="footer">
