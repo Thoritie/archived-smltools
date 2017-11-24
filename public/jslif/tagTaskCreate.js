@@ -1,3 +1,6 @@
+function showModalNewStakeholder(){
+	$("div.createStakeholder").modal("show");
+};
 
 $(document).ready(function() {
     
@@ -44,13 +47,14 @@ $(document).ready(function() {
                 displayKey: 'text',
                 source: Stakeholder.ttAdapter(),
                 templates : {
-                    empty: '<div class="empty-message text-info"> No matches.</div>'
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
                 }
             }
         });
 
     }
-
+    
+    
     ///---------------input id collaburator
 
     function tagCollaburator(n){
@@ -63,18 +67,20 @@ $(document).ready(function() {
         Stakeholder.initialize();
     
         var collaburator = $('#collaburator');
-        collaburator.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div class="empty-message text-info"> No matches.</div>'
-                }
-            }
-        });
+	        collaburator.tagsinput({
+	            itemValue: 'value',
+	            itemText: 'text',
+	            typeaheadjs: {
+	                name: 'name',
+	                displayKey: 'text',
+	                source: Stakeholder.ttAdapter(),
+	                templates : {
+	                	highlight: true,
+	                    empty: '<div class="empty-message text-info add-stakeholder" onclick="showModalNewStakeholder()"> No matches.</div>'
+	                }
+	            }
+	        });
+	        
     }
 
      function tagOwnerToBe(n){
@@ -95,7 +101,7 @@ $(document).ready(function() {
                 displayKey: 'text',
                 source: Stakeholder.ttAdapter(),
                 templates : {
-                    empty: '<div class="empty-message text-info"> No matches.</div>'
+                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
                 }
             }
         });
@@ -119,7 +125,7 @@ $(document).ready(function() {
                 displayKey: 'text',
                 source: Stakeholder.ttAdapter(),
                 templates : {
-                    empty: '<div class="empty-message text-info"> No matches.</div>'
+                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
                 },
             }
         });
