@@ -17,8 +17,8 @@ class StakeholderController extends ControllerBase
         
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
-        $this->assets->addCss('jslif/sb-admin.css');
-        $this->assets->addCss('jslif/sb-admin-override.css');
+        // $this->assets->addCss('jslif/sb-admin.css');
+        // $this->assets->addCss('jslif/sb-admin-override.css');
         $this->assets->addCss('projectCard/proCard.css');
         
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
@@ -55,7 +55,7 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('dataTable/js/js/bootstrap.js');
         $this->assets->addJs('dataTable/js/bootstrap-table.js');
         
-        
+
         $stakeholders = Stakeholders::Find();
         return $stakeholders;
     }
@@ -100,5 +100,10 @@ class StakeholderController extends ControllerBase
 
 
 
+    }
+
+    public function createAction()
+    {
+        
     }
 }
