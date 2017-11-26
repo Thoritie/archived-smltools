@@ -57,7 +57,10 @@ class StakeholderController extends ControllerBase
         
 
         $stakeholders = Stakeholders::Find();
-        return $stakeholders;
+        $this->view->stakeholders =  $stakeholders;
+
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
     }
 
     public function creOrganAction()

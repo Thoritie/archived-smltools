@@ -79,6 +79,7 @@ class ProjectController extends ControllerBase
         );
 
         $userLogin = Users::findByID($session);
+        $this->session->set("userLogin", $userLogin->name);   
         $this->view->userLogin =$userLogin->name;
 
 
@@ -100,6 +101,8 @@ class ProjectController extends ControllerBase
     {
         // $this->assets->addCss('sml/regis.css');
         // $this->assets->addCss('sml/navindex.css');
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
     }
 
     public function editAction()
@@ -129,6 +132,9 @@ class ProjectController extends ControllerBase
                 ]);
 
                 $this->view->user = $user;
+                
+                $userLogin = $this->session->get('userLogin');
+                $this->view->userLogin = $userLogin;
     }
     public function findUserAction()
     {
