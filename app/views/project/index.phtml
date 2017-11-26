@@ -31,15 +31,13 @@
                         <?php
                         foreach ($create as $key => $pro) {
                     ?>
-                    <?php echo "<li class='col-md-4 resource--talks well".$selectedCo."' >"; ?>
+                    <?php echo "<li class='col-md-4 resource--talks well ".$selectedCo."' >"; ?>
                             <div class="header">
                                 <h4 class="title">
                                     <a href="<?=$this->url->get("project/task/".$pro->_id); ?>" class="resource__link"><?=$pro->name?></a></h4>
                             </div>
                             <div class="content">
-                                <p>
-                                    <?=$pro->description?>
-                                </p>
+                                
                                 <div class="footer">
                                     <hr>
                                     <div class="pull-right">
@@ -68,14 +66,12 @@
                                  foreach ($permis as $key => $per) {
                                  ?>
                                 <!-- <li class="resource--book"> -->
-                                <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
+                                <?php echo "<li class='resource--book well ".$selectedCo."' >"; ?>
                                 <a href="<?=$this->url->get("project/task/".$per->_id); ?>" class="resource__link">
                                     <h1 class="resource__title">
                                         <?=$per->name?>
                                     </h1>
-                                    <p class="resource__summary">
-                                        <?=$per->description?>
-                                    </p>
+                                    
                                 </a>
                                 </li>
                                 <?php } ?>
