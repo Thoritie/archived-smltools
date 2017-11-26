@@ -55,13 +55,30 @@ class ResourceController extends ControllerBase
         $this->assets->addJs('dataTable/js/js/bootstrap.js');
         $this->assets->addJs('dataTable/js/bootstrap-table.js');
         
+        //Layout
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
         
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
     }
 
     public function createAction()
     {
+
+
+
+        //Layout
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
     }

@@ -59,6 +59,13 @@ class StakeholderController extends ControllerBase
         $stakeholders = Stakeholders::Find();
         $this->view->stakeholders =  $stakeholders;
 
+        //Layout
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+        
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
     }

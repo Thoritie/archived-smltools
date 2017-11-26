@@ -72,11 +72,12 @@ class TaskController extends ControllerBase
         $project = Project::findById($id);
         $this->view->projectname = $project->name;
         $this->view->idProject = $id;
-       
+        $this->session->set("projectname", $project->name);
         
-        
+          
         $owner = Users::findById($project->createrId);
         $this->view->ownerLayout = $owner->name;
+        $this->session->set("ownerLayout", $owner->name);
 
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
@@ -93,11 +94,11 @@ class TaskController extends ControllerBase
         $id = $this->session->get('idProject');
         $this->tag->setDefault("idProject", $id);
 
-        $project = Project::findById($id);
-        $this->view->projectname = $project->name;
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
         
-        $owner = Users::findById($project->createrId);
-        $this->view->ownerLayout = $owner->name;
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
 
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
@@ -270,6 +271,12 @@ class TaskController extends ControllerBase
 
                 $userLogin = $this->session->get('userLogin');
                 $this->view->userLogin = $userLogin;
+
+                $projectname = $this->session->get('projectname');
+                $this->view->projectname = $projectname;
+                
+                $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+                $this->view->ownerLayout = $ownerLayout;
     }
     
     public function deleteTaskAction()
