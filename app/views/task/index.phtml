@@ -1,20 +1,7 @@
-
-
-
-
-
-<!-- random color just for fun -->
-<?php 
-   $co = array('blue', 'green', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow' );
-   $i = rand(0, count($co)-1);
-   $selectedCo = "$co[$i]"; 
-   ?>
-<!-- new project card -->
-<div class="content">
    <div class="container-fluid">
       <div class="row">
-         <div class="col-md-9">
-            <section class="books">
+         <div class="col-md-9" style="padding:0">
+            <!-- <section class="books">
                <h2 class="section__title">Projects</h2>
                <p class="section__summary">All Project is here</p>
                <ul class="resources">
@@ -52,70 +39,49 @@
                 <?php  }
             }
         ?>
-        </section>
+        </section> -->
                  
-            <!-- Test card to show if query card error -->
-            <!-- <section class="talks">
-               <h2 class="section__title">Test Card</h2>
-               <p class="section__summary">Talks that have been given about SVG.</p>
-               <ul class="resources">
-                  <li class="resource--add"> -->
-                     <!-- <h1 class="resource--add__title">Add Project</h1> -->
-                     <!-- <div class="resource__add-icon">
-                        <svg class="add" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
-                           <circle cx="30" cy="30" r="30" />
-                           <polygon fill="#FFFFFF" points="44.677,27.404 44.677,33.404 32.677,33.404 32.677,45.404 26.677,45.404 26.677,33.404 14.677,33.404 14.677,27.404 26.677,27.404 26.677,15.404 32.677,15.404 32.677,27.404 "/>
-                        </svg>
-                     </div>
-                     <div class="resource--add__card"></div>
-                  </li>
-                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                  <a href="" class="resource__link">
-                     <h1 class="resource__title">Project Name</h1>
-                     <p class="resource__summary">description</p> -->
-                     <!-- <div class="recommended">
-                        <h4><i class="pe-7s-tools" style="font-weight: 900"></i></h4>
-                        <h4><i class="pe-7s-wallet" style="font-weight: 900"></i></h4>
-                     </div> -->
-                     
-                  <!-- </a> -->
-                  <!-- <h4><i class="pe-7s-wallet" style="font-weight: 900"></i></h4> -->
-                  <!-- <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="pe-7s-tools" style="font-weight: 900"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><i class="pe-7s-pen" ></i> Edit</a></li>
-                        <li><a href="#"><i class="pe-7s-trash" ></i> Delete</a></li>
-   
-                    </ul>
-                  </div>
-                  
-                  </li>
-                  <?php 
-                     $i = rand(0, count($co)-1);
-                     $selectedCo = "$co[$i]"; 
-                     ?>
-                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                  <a href="" class="resource__link">
-                     <h1 class="resource__title">Project Name</h1>
-                     <p class="resource__summary">description</p>
-                  </a>
-                  </li>
-                  <?php 
-                     $i = rand(0, count($co)-1);
-                     $selectedCo = "$co[$i]"; 
-                     ?>
-                  <?php echo "<li class='resource--book ".$selectedCo."' >"; ?>
-                  <a href="" class="resource__link">
-                     <h1 class="resource__title">Project Name</h1>
-                     <p class="resource__summary">description</p>
-                  </a>
-                  </li>
-               </ul>
-            </section> -->
+        <!-- new complete card  -->
+        <div class="col-md-4">
+                 <a href="<?=$this->url->get("task/create/"); ?>">
+                    <div class="thumbnail s-navShadow" id="thumbnailProject">
+                            <i class="fa fa-5x fa-plus" style="
+                            color: #3d578a;
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                            height: 100%;
+                            margin-top: 40px;
+                        "></i>
+                    </div>
+                 </a>
+        </div>
 
-            
+    
+        <?php 
+           if($task!=0){
+                foreach ($task as $key => $tk) { ?>
+
+         <div class="col-md-4">
+                 <div class="thumbnail s-navShadow">
+                    <div class="caption">
+                       <div class="header">
+                             <h4><?=$tk->name?></h4>
+                       </div>
+                       <hr>
+                       <div class="footer">
+                          <a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
+                          <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                          <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$tk->Description?>"><i class="fa fa-info"></i></a> 
+                       </div>
+                    </div>
+                 </div>
+         </div>
+                <?php } }?>
+
+
+        
+            <!-- end new -->
          </div>
          <div class="col-md-3">
          <!-- Sort -->
@@ -156,7 +122,7 @@
 
       </div>
    </div>
-</div>
+
 <!-- blockJS -->
 <script>
     function deleteTask(id){

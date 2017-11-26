@@ -58,4 +58,9 @@ class ResourceController extends ControllerBase
         
 
     }
+
+    public function createAction()
+    {
+
+    }
 }

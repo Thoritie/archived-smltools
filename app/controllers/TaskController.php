@@ -4,21 +4,25 @@ class TaskController extends ControllerBase
 {
     public function onConstruct(){
         $this->assets->addCss('assetsThor/css/bootstrap.min.css');
+        $this->assets->addCss('font-awesome/css/font-awesome.css');        
         $this->assets->addCss('assetsThor/css/animate.min.css');
         $this->assets->addCss('assetsThor/css/light-bootstrap-dashboard.css');
+        $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');        
         $this->assets->addCss('assetsThor/css/demo.css');
-        $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
         $this->assets->addCss('assetsThor/css/navbar.css');
-        $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
-       $this->assets->addJs('assetsThor/js/bootstrap.min.js');
-       
-        
+
+         
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
         $this->assets->addCss('jslif/sb-admin.css');
         $this->assets->addCss('jslif/sb-admin-override.css');
         $this->assets->addCss('projectCard/proCard.css');
 
+    
+        $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
+       $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+       
+       
 
         $this->assets->addJs('jquery/jquery.js');
         $this->assets->addJs('jquery/jquery.min.js');
