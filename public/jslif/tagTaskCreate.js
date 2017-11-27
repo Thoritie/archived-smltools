@@ -148,7 +148,129 @@ $(document).ready(function() {
         },  "json");
 
 
-        //save task
+
+
+        /* resourceeeeeeeeeeeeeeeeeeeeeeeeee*/ 
+
+        function tagUses(n){
+            var Resource = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: JSON.parse(n)
+            });
+            
+            Resource.initialize();
+        
+            var uses = $('#uses');
+            uses.tagsinput({
+                itemValue: 'value',
+                itemText: 'text',
+                typeaheadjs: {
+                    name: 'name',
+                    displayKey: 'text',
+                    source: Resource.ttAdapter(),
+                    templates : {
+                        empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                    },
+                }
+            });
+            
+        }
+
+
+        function tagproduce(n){
+            var Resource = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: JSON.parse(n)
+            });
+            
+            Resource.initialize();
+        
+            var produces = $('#produces');
+            produces.tagsinput({
+                itemValue: 'value',
+                itemText: 'text',
+                typeaheadjs: {
+                    name: 'name',
+                    displayKey: 'text',
+                    source: Resource.ttAdapter(),
+                    templates : {
+                        empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                    },
+                }
+            });
+            
+        }
+
+        function tagToUses(n){
+            var Resource = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: JSON.parse(n)
+            });
+            
+            Resource.initialize();
+        
+            var toUse = $('#toUse');
+            toUse.tagsinput({
+                itemValue: 'value',
+                itemText: 'text',
+                typeaheadjs: {
+                    name: 'name',
+                    displayKey: 'text',
+                    source: Resource.ttAdapter(),
+                    templates : {
+                        empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                    },
+                }
+            });
+            
+        }
+
+        function tagToproduce(n){
+            var Resource = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: JSON.parse(n)
+            });
+            
+            Resource.initialize();
+        
+            var toProduce = $('#toProduce');
+            toProduce.tagsinput({
+                itemValue: 'value',
+                itemText: 'text',
+                typeaheadjs: {
+                    name: 'name',
+                    displayKey: 'text',
+                    source: Resource.ttAdapter(),
+                    templates : {
+                        empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                    },
+                }
+            });
+            
+        }
+
+
+        $.post("findResource",{
+            project : project
+        }, function(data){
+                var auto = createJSON(data);
+                var n = createString(auto);
+               
+                tagUses(n);
+                tagproduce(n);
+                tagToUses(n);
+                tagToproduce(n);
+        },  "json");
+
+
+
+
+
+        //save task ///////////////////////////////////////////////////////
                 $('#saveTask').click(function () {
                     var taskname = $("#taskname").val();
                     var isA = $("#isA").val();
@@ -168,8 +290,18 @@ $(document).ready(function() {
                         item2 [index] = input.value
                     });
                     var regulator = $("#regulator").val();
-                    var uses = $("#uses").val();
-                    var produces = $("#produces").val();
+                    var uses = $("#uses").tagsinput('items')
+                    itemUses = {};
+                    $.each(collaburator, function(index ,input){   
+                        itemUses [index] = input.value
+                    });
+
+                    var produces = $("#produces").tagsinput('items')
+                    itemProduces = {};
+                    $.each(collaburator, function(index ,input){   
+                        itemProduces [index] = input.value
+                    });
+
                     var toBeState = $("#toBeState").val();
         
                     var ownerToBe = $("#ownerToBe").tagsinput('items')
@@ -182,8 +314,18 @@ $(document).ready(function() {
                     $.each(collaboratorToBe, function(index ,input){   
                         item4 [index] = input.value
                     });
-                    var toUse = $("#toUse").val();
-                    var toProduce = $("#toProduce").val();
+                    var toUse = $("#toUse").tagsinput('items')
+                    itemToUse = {};
+                    $.each(collaburator, function(index ,input){   
+                        itemToUse [index] = input.value
+                    });
+
+                    var toProduce = $("#toProduce").tagsinput('items')
+                    itemToProduces = {};
+                    $.each(collaburator, function(index ,input){   
+                        itemToProduces [index] = input.value
+                    });
+
                     var idProject = $("#idProject").val();
                    
                         $.ajax({
@@ -198,13 +340,13 @@ $(document).ready(function() {
                                 owner : item1,
                                 collaburator : item2,
                                 regulator : regulator,
-                                uses : uses,
-                                produces : produces,
+                                uses : itemUses,
+                                produces : itemProduces,
                                 toBeState : toBeState,
                                 ownerToBe : item3,
                                 collaboratorToBe : item4,
-                                toUse : toUse,
-                                toProduce : toProduce,
+                                toUse : itemToUse,
+                                toProduce : itemToProduces,
                                 idProject : idProject
                             },
                             success:function(data){
