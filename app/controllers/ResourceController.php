@@ -90,6 +90,8 @@ class ResourceController extends ControllerBase
 
         // $id = $this->request->getPost("idResource");
         $res = new Resource();
+        
+        
 
         $res->name = $this->request->getPost("resourcename");
         $res->description = $this->request->getPost("Description");
@@ -97,7 +99,7 @@ class ResourceController extends ControllerBase
         $res->rOwner = $this->request->getPost("rOwner");
         $res->pOwner = $this->request->getPost("pOwner");
         $res->maintainer = $this->request->getPost("maintainer");
-               
+        $res->save();
 
 
         
