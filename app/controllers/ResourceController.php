@@ -40,6 +40,8 @@ class ResourceController extends ControllerBase
         $this->assets->addJs('jquery/editTaskValidate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('jquery/taskRedirect.js');
+        $this->assets->addJs('jslif/tagResource.js');
+        
 
 
     }
@@ -70,8 +72,6 @@ class ResourceController extends ControllerBase
     public function createAction()
     {
 
-
-
         //Layout
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
@@ -81,5 +81,25 @@ class ResourceController extends ControllerBase
 
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
+
+
+        
+    }
+
+    public function saveAction(){
+
+        // $id = $this->request->getPost("idResource");
+        $res = new Resource();
+
+        $res->name = $this->request->getPost("resourcename");
+        $res->description = $this->request->getPost("Description");
+        $res->includes = $this->request->getPost("includes");
+        $res->rOwner = $this->request->getPost("rOwner");
+        $res->pOwner = $this->request->getPost("pOwner");
+        $res->maintainer = $this->request->getPost("maintainer");
+               
+
+
+        
     }
 }
