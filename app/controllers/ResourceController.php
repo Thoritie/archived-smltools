@@ -104,4 +104,20 @@ class ResourceController extends ControllerBase
 
         
     }
+
+    public function findStakeAction(){
+        $this->view->disable();
+        $input = $this->request->getPost('project');
+        
+        $condition = [];
+        
+        if($input){
+            $condition["project"] = $input;
+        }
+
+        $test = Stakeholders::Find(array($condition));
+
+        return json_encode($test);
+    }
+
 }

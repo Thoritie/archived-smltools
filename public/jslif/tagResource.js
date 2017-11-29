@@ -1,5 +1,68 @@
 $(document).ready(function() {
 
+    function createJSON(data) {
+        jsonObj = [];
+        $.each(data, function(index ,data){
+
+            item = {}
+            item ["value"] = data._id.$id;
+            item ["text"] = data.name;
+            item ["continent"] = "";
+            
+            jsonObj.push(item);
+        });
+
+        item = {}
+        item ["value"] = 0;
+        item ["text"] = "?";
+        item ["continent"] = "";
+        jsonObj.push(item);
+       
+        return jsonObj;
+    }
+
+    function createString(auto) {
+        return JSON.stringify(auto)
+    }
+
+    function tagrOwner(n){
+        var Stakeholder = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+
+        Stakeholder.initialize();
+
+        var rOwner = $('#rOwner');
+        rOwner.taginput({
+            itemValue: 'value',
+            itemText:'text',
+            typeaheadjs : {
+                name :'name',
+                displayKey:'text',
+                source : Stakeholder.ttAdapter(),
+                templates :{
+                    empty:'<div class="empty-message text-info"> No matches.</div>'
+                }
+            }
+        });
+    }
+
+    var project = "1";  //input project id later
+
+    $.post("findStake"),{
+        project : project
+    }, function(data){
+
+        var auto = createJSON(data);
+        var n = createString(auto);
+
+        tagrOwner(n);
+
+    }
+
+
     // save resource
     $('#saveResource').click(function (){
         var resourcename = $("#resourcename").val();
@@ -7,9 +70,16 @@ $(document).ready(function() {
         var includes = $("#includes").val();
 
         // edit this into tag input later 
-        var rOwner = $("#rOwner").val();
+
+        //var rOwner = $("#rOwner").val();
         var pOwner = $("#pOwner").val();
         var maintainer = $("#maintainer").val();
+
+        var rOwner =$("#rOwner").taginput('items')
+        item1 = {};
+        $each(rOwner, function(index, input){
+            item1 [index] = input.value
+        });
 
 
         // sent data to controller
@@ -21,7 +91,7 @@ $(document).ready(function() {
                 resourcename: resourcename,
                 Description: Description,
                 includes: includes,
-                rOwner : rOwner,
+                rOwner : item1,
                 pOwner : pOwner,
                 maintainer: maintainer
             },
