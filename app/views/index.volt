@@ -11,8 +11,13 @@
     
     </head>
     <body>
+    
         {{content()}}
-
+		
+		<script>
+			var baseUrl = '<?=$this->url->get(); ?>';
+		</script>
+		
         {{ assets.outputJs() }}
 
         {{ script }}

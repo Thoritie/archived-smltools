@@ -20,14 +20,14 @@ $di->setShared('config', function () {
 /**
  * The URL component is used to generate all kind of urls in the application
  */
-$di->setShared('url', function () {
-    $config = $this->getConfig();
+// $di->setShared('url', function () {
+//     $config = $this->getConfig();
 
-    $url = new UrlResolver();
-    $url->setBaseUri($config->application->baseUri);
+//     $url = new UrlResolver();
+//     $url->setBaseUri($config->application->baseUri);
 
-    return $url;
-});
+//     return $url;
+// });
 
 /**
  * Setting up the view component
@@ -155,9 +155,11 @@ $di->set(
     }
 );
 
-$di->set('url', function() {
-    $url = new \Phalcon\Mvc\Url();
-    $url->setBaseUrl('/smltools/');
-
-    return $url;
-}, true);
+$di->set(
+	'url', 
+	function() {
+	    $url = new UrlResolver();
+	    $url->setBaseUri('/smltools/');
+	    return $url;
+	}
+);

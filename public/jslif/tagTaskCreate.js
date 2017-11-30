@@ -134,7 +134,7 @@ $(document).ready(function() {
 
         var project = "1";     //input project id .val()
 
-        $.post("findStake",{
+        $.post(baseUrl+"task/findStake",{
             project : project
         }, function(data){
            
