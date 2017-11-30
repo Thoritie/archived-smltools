@@ -154,3 +154,10 @@ $di->set(
         return new Render();
     }
 );
+
+$di->set('url', function() {
+    $url = new \Phalcon\Mvc\Url();
+    $url->setBaseUrl('/smltools/');
+
+    return $url;
+}, true);
