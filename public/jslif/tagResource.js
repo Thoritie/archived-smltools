@@ -1,5 +1,43 @@
 $(document).ready(function() {
+    //createResource
     
+    $.validator.setDefaults({
+        errorClass: 'badge badge-danger',
+        highlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .addClass('has-error has-feedback')
+        },
+        unhighlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .removeClass('has-error has-feedback')
+        }
+    })
+    $("#createResource").validate({
+        rules: {
+            resourcename: {
+                required: true,
+                remote: {
+                    url: "checkDup",
+                    type: "post",
+                    data: {
+                        resourcename: function () {
+                            return $("#resourcename").val()
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            projectname: {
+                required: "Resource name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
+            }
+        }
+    });
+
+
     function createJSON(data) {
         jsonObj = [];
         $.each(data, function(index ,data){
