@@ -1,6 +1,14 @@
+
+//modal 
+
 function showModalNewStakeholder(){
 	$("div.createStakeholder").modal("show");
 };
+
+function showModalNewResource(){
+	$("div.createResource").modal("show");
+};
+///////////////////// -- Validate -- ///////////////////////////
 
 $(document).ready(function() {
 
@@ -208,7 +216,7 @@ $(document).ready(function() {
                     displayKey: 'text',
                     source: Resource.ttAdapter(),
                     templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
                     },
                 }
             });
@@ -234,7 +242,7 @@ $(document).ready(function() {
                     displayKey: 'text',
                     source: Resource.ttAdapter(),
                     templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
                     },
                 }
             });
@@ -259,7 +267,7 @@ $(document).ready(function() {
                     displayKey: 'text',
                     source: Resource.ttAdapter(),
                     templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
                     },
                 }
             });
@@ -284,7 +292,7 @@ $(document).ready(function() {
                     displayKey: 'text',
                     source: Resource.ttAdapter(),
                     templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
                     },
                 }
             });

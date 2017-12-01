@@ -209,7 +209,7 @@
    </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Stakeholder-->
   <div class="modal createStakeholder" role="dialog">
     <div class="modal-dialog">
     
@@ -249,3 +249,99 @@
       
     </div>
   </div>
+
+
+
+<!-- Modal Resource-->
+<div class="modal createResource" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">New Resource</h4>
+            <button class="btn btn-info" onclick="showModalNewStakeholder()">+</button>
+          </div>
+          <div class="modal-body">
+            <div class="content">
+                  <form>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <label>Resource Name</label>
+                              <?php 
+                                 echo $this->tag->textField(["resourcename", "size" => 30, 
+                                 "class" => "form-control", "id" => "Modalresourcename" , "placeholder"=>"Resource Name..."]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <label>description</label>
+                              <?php 
+                                 echo $this->tag->textArea(["Description", "class" => "form-control", 
+                                  "id" => "ModalDesResource" ,"rows" => 3,]) 
+                                 ?>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <label>includes</label>
+                              <?php 
+                                    echo $this->tag->textField(["includes", "size" => 30, 
+                                    "class" => "form-control", "id" => "ModalincludesResource" , "placeholder"=>"Resource Name..."]) 
+                              ?>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>r Owner</label>
+                              <?php 
+                                 echo $this->tag->textField(["rOwner", "size" => 30, 
+                                 "class" => "form-control", "id" => "ModalrOwnerResource"]) 
+                              ?>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>p Owner</label>
+                              <?php 
+                                 echo $this->tag->textField(["pOwner", "size" => 30, 
+                                 "class" => "form-control", "id" => "ModalpOwnerResource", "placeholder"=>"Stakeholder Name..."]) 
+                              ?>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="form-group">
+                              <label>Maintainer</label>
+                              <?php 
+                                 echo $this->tag->textField(["maintainer", "size" => 30, 
+                                 "class" => "form-control", "id" => "ModalmaintainerResource", "placeholder"=>"Stakeholder Name..."]) 
+                              ?>    
+                           </div>
+                        </div>
+                     </div>
+                     
+                     <div class="clearfix"></div>
+                  </form>
+               </div>
+          </div>
+          <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
