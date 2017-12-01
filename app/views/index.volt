@@ -20,7 +20,9 @@
 		
         {{ assets.outputJs() }}
 
+        {% if script is not empty %}
         {{ script }}
+        {% endif %}
 
         <script>
             $(document).ready(function(){
