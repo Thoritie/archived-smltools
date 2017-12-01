@@ -3,6 +3,27 @@ function showModalNewStakeholder(){
 };
 
 $(document).ready(function() {
+
+    $.validator.setDefaults({
+        errorClass: 'badge badge-danger',
+        highlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .addClass('has-error has-feedback')
+        },
+        unhighlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .removeClass('has-error has-feedback')
+        }
+    })
+    $("#createTask-form").validate({
+        rules: {
+            taskname: "required",
+        }
+    });
+
+
     
     function createJSON(data) {
         jsonObj = [];
@@ -272,87 +293,89 @@ $(document).ready(function() {
 
         //save task ///////////////////////////////////////////////////////
                 $('#saveTask').click(function () {
-                    var taskname = $("#taskname").val();
-                    var isA = $("#isA").val();
-                    var Description = $("#Description").val();
-                    var includes = $("#includes").val();
-                    var asIsState = $("#asIsState").val();
-                   
-                    var owner = $("#owner").tagsinput('items')
-                    item1 = {};
-                    $.each(owner, function(index ,input){   
-                        item1 [index] = input.value
-                    });
-        
-                    var collaburator = $("#collaburator").tagsinput('items')
-                    item2 = {};
-                    $.each(collaburator, function(index ,input){   
-                        item2 [index] = input.value
-                    });
-                    var regulator = $("#regulator").val();
-                    var uses = $("#uses").tagsinput('items')
-                    itemUses = {};
-                    $.each(collaburator, function(index ,input){   
-                        itemUses [index] = input.value
-                    });
+                    if($("#createTask-form").valid()){
+                        var taskname = $("#taskname").val();
+                        var isA = $("#isA").val();
+                        var Description = $("#Description").val();
+                        var includes = $("#includes").val();
+                        var asIsState = $("#asIsState").val();
+                    
+                        var owner = $("#owner").tagsinput('items')
+                        item1 = {};
+                        $.each(owner, function(index ,input){   
+                            item1 [index] = input.value
+                        });
+            
+                        var collaburator = $("#collaburator").tagsinput('items')
+                        item2 = {};
+                        $.each(collaburator, function(index ,input){   
+                            item2 [index] = input.value
+                        });
+                        var regulator = $("#regulator").val();
+                        var uses = $("#uses").tagsinput('items')
+                        itemUses = {};
+                        $.each(collaburator, function(index ,input){   
+                            itemUses [index] = input.value
+                        });
 
-                    var produces = $("#produces").tagsinput('items')
-                    itemProduces = {};
-                    $.each(collaburator, function(index ,input){   
-                        itemProduces [index] = input.value
-                    });
+                        var produces = $("#produces").tagsinput('items')
+                        itemProduces = {};
+                        $.each(collaburator, function(index ,input){   
+                            itemProduces [index] = input.value
+                        });
 
-                    var toBeState = $("#toBeState").val();
-        
-                    var ownerToBe = $("#ownerToBe").tagsinput('items')
-                    item3 = {};
-                    $.each(ownerToBe, function(index ,input){   
-                        item3 [index] = input.value
-                    });
-                    var collaboratorToBe = $("#collaboratorToBe").tagsinput('items')
-                    item4 = {};
-                    $.each(collaboratorToBe, function(index ,input){   
-                        item4 [index] = input.value
-                    });
-                    var toUse = $("#toUse").tagsinput('items')
-                    itemToUse = {};
-                    $.each(collaburator, function(index ,input){   
-                        itemToUse [index] = input.value
-                    });
+                        var toBeState = $("#toBeState").val();
+            
+                        var ownerToBe = $("#ownerToBe").tagsinput('items')
+                        item3 = {};
+                        $.each(ownerToBe, function(index ,input){   
+                            item3 [index] = input.value
+                        });
+                        var collaboratorToBe = $("#collaboratorToBe").tagsinput('items')
+                        item4 = {};
+                        $.each(collaboratorToBe, function(index ,input){   
+                            item4 [index] = input.value
+                        });
+                        var toUse = $("#toUse").tagsinput('items')
+                        itemToUse = {};
+                        $.each(collaburator, function(index ,input){   
+                            itemToUse [index] = input.value
+                        });
 
-                    var toProduce = $("#toProduce").tagsinput('items')
-                    itemToProduces = {};
-                    $.each(collaburator, function(index ,input){   
-                        itemToProduces [index] = input.value
-                    });
+                        var toProduce = $("#toProduce").tagsinput('items')
+                        itemToProduces = {};
+                        $.each(collaburator, function(index ,input){   
+                            itemToProduces [index] = input.value
+                        });
 
-                    var idProject = $("#idProject").val();
-                   
-                        $.ajax({
-                            type:'POST',
-                            url: "save",
-                            data:{
-                                taskname : taskname,
-                                isA : isA,
-                                Description : Description,
-                                includes : includes,
-                                asIsState : asIsState,
-                                owner : item1,
-                                collaburator : item2,
-                                regulator : regulator,
-                                uses : itemUses,
-                                produces : itemProduces,
-                                toBeState : toBeState,
-                                ownerToBe : item3,
-                                collaboratorToBe : item4,
-                                toUse : itemToUse,
-                                toProduce : itemToProduces,
-                                idProject : idProject
-                            },
-                            success:function(data){
-                                window.location.href="index";
-                            }
-                        })    
+                        var idProject = $("#idProject").val();
+                    
+                            $.ajax({
+                                type:'POST',
+                                url: "save",
+                                data:{
+                                    taskname : taskname,
+                                    isA : isA,
+                                    Description : Description,
+                                    includes : includes,
+                                    asIsState : asIsState,
+                                    owner : item1,
+                                    collaburator : item2,
+                                    regulator : regulator,
+                                    uses : itemUses,
+                                    produces : itemProduces,
+                                    toBeState : toBeState,
+                                    ownerToBe : item3,
+                                    collaboratorToBe : item4,
+                                    toUse : itemToUse,
+                                    toProduce : itemToProduces,
+                                    idProject : idProject
+                                },
+                                success:function(data){
+                                    window.location.href="index";
+                                }
+                            })    
+                    }
                 });
 
 

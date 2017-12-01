@@ -11,8 +11,13 @@
     
     </head>
     <body>
+    
         <?= $this->getContent() ?>
-
+		
+		<script>
+			var baseUrl = '<?=$this->url->get(); ?>';
+		</script>
+		
         <?= $this->assets->outputJs() ?>
 
         <?= $script ?>
