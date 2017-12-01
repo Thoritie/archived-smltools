@@ -510,7 +510,7 @@ input:focus {
 
 .main-panel {
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
     float: right;
     width: calc(100% - 260px);
 }
@@ -3882,4 +3882,9 @@ fieldset[disabled] .btn-neutral.active {
 
 .custom-select.is-invalid, .form-control.is-invalid, .was-validated .custom-select:invalid, .was-validated .form-control:invalid {
     border-color: #dc3545;
+}
+
+.modal-backdrop {
+    filter: alpha(opacity=50);
+    opacity: .5;
 }
