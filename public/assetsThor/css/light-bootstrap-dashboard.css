@@ -2462,6 +2462,7 @@ fieldset[disabled] .form-control {
     background-color: #FFFFFF;
     margin-bottom: 30px;
     padding: 30px;
+    padding-bottom: 45px;
 }
 
 .card .image {
@@ -4202,6 +4203,7 @@ fieldset[disabled] .form-control {
     color: #fff !important;
     background-color: #dc3545;
     margin-top: 8px;
+    
 }
 
 .custom-select.is-invalid,
