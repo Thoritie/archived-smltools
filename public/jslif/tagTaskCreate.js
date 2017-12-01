@@ -19,7 +19,24 @@ $(document).ready(function() {
     })
     $("#createTask-form").validate({
         rules: {
-            taskname: "required",
+            taskname: {
+                required: true,
+                remote: {
+                    url: "checkDupTaskName",
+                    type: "post",
+                    data: {
+                        taskname: function () {
+                            return $("#taskname").val()
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            projectname: {
+                required: "Task name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
+            }
         }
     });
 

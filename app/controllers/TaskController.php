@@ -288,6 +288,20 @@ class TaskController extends ControllerBase
         return json_encode('true');
     }
 
+    public function checkDupTaskNameAction()
+    {
+        $result = true;
+        $taskname = $this->request->getPost('taskname');
+        $condition = [];
+        if($taskname){
+            $condition["name"] = $taskname;
+        }
+        $task = Tasks::Find(array($condition));
+        if($task){
+            $result = false;
+        }
+        return json_encode($result);
+    }
    
 }
 
