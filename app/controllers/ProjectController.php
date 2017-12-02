@@ -1,5 +1,6 @@
 <?php
 
+use Library\Enum\Enum;
 class ProjectController extends ControllerBase
 {   
     public function onConstruct(){
@@ -93,6 +94,10 @@ class ProjectController extends ControllerBase
         //     ],
         // ]
         // );
+        // ใช้เรียก array ของ enum เพื่อแสดงเป็นคำที่  set ไว้ 
+        $this->view->arrStatus = Enum::$arrStatus;
+        // ใช้เรียกค่าของ enum มาใช้ เช่น status = 1 เราจะไม่ใส่ค่า 1 แต่จะใส่แบบนี้แทน 1 ซึ่งเป็นของ status
+        $this->view->status = Enum::STATUS_ACTIVE;
         $this->view->create = $create;
         $this->view->permis = $permis;
     }

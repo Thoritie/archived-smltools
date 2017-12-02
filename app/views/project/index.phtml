@@ -96,6 +96,18 @@
         </div>
      </div>
 
+     <h1>Example Enum</h1>
+     <?php 
+	     echo $this->tag->selectStatic(
+	     		[
+	     				'status',
+	     				$arrStatus
+	     		]
+	     );
+	     
+	     echo "<br><br>ค่าที่มาจาก ENUM::STATUS_ACTIVE=" . $status;
+     ?>
+     
 <!-- blockJS -->
     <script>
        $(document).ready(function(){
