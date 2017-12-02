@@ -45,9 +45,11 @@ $(document).ready(function () {
             var description = $("#eddescription").val();
             var permission = $("#edpermission").tagsinput('items')
             item1 = {};
-            $.each(permission, function (index, input) {
-                item1[index] = input.value
-            });
+            if(permission != undefined && permission.length > 0){
+            	$.each(permission, function (index, input) {
+                    item1[index] = input.value
+                });
+            }
             $.ajax({
                 type: 'post',
                 url: "save",

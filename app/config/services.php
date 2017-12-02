@@ -6,7 +6,8 @@ use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
-use Phalcon\Flash\Direct as Flash;
+use Phalcon\Flash\Direct as FlashDirect;
+use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Security;
 use Library\Render\Render;
 
@@ -94,14 +95,39 @@ $di->setShared('modelsMetadata', function () {
 /**
  * Register the session flash service with the Twitter Bootstrap classes
  */
-$di->set('flash', function () {
-    return new Flash([
-        'error'   => 'alert alert-danger',
-        'success' => 'alert alert-success',
-        'notice'  => 'alert alert-info',
-        'warning' => 'alert alert-warning'
-    ]);
-});
+$di->set(
+    'flash',
+    function () {
+        $flash = new FlashDirect(
+            [
+                'error'   => 'alert alert-danger',
+                'success' => 'alert alert-success',
+                'notice'  => 'alert alert-info',
+                'warning' => 'alert alert-warning',
+            ]
+        );
+
+        return $flash;
+    }
+);
+
+// Set up the flash session service
+$di->set(
+		'flashSession',
+		function () {
+			$flash = new FlashSession(
+				[
+					'error'   => 'alert alert-danger',
+					'success' => 'alert alert-success',
+					'notice'  => 'alert alert-info',
+					'warning' => 'alert alert-warning',
+				]
+			);
+			
+			$flash->setAutoescape(false);
+			return $flash;
+		}
+);
 
 /**
  * Start the session the first time some component request the session service

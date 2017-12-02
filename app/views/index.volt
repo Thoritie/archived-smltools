@@ -28,6 +28,11 @@
             $(document).ready(function(){
                 $('[data-toggle="tooltip"]').tooltip();
                 $('[data-toggle="popover"]').popover();
+                
+			    setTimeout(function(){
+			        $("div.alert").fadeOut(2000);
+			    }, 5000 );
+
             });
         
         </script>

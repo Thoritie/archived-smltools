@@ -93,9 +93,11 @@ $(document).ready(function () {
             var description = $("#description").val();
             var permission = $("#permission").tagsinput('items')
             item1 = {};
-            $.each(permission, function (index, input) {
-                item1[index] = input.index
-            });
+            if(permission != undefined && permission.length > 0){
+	            $.each(permission, function (index, input) {
+	                item1[index] = input.index
+	            });
+            }
             $.ajax({
                 type: 'POST',
                 url: "save",
@@ -105,7 +107,8 @@ $(document).ready(function () {
                     permission: item1,
                 },
                 success: function (data) {
-                    window.location.href = "index";
+//                	$.redirect(baseUrl+"project", {});
+                    window.location.href = baseUrl+"project";
                 }
             })
     	}

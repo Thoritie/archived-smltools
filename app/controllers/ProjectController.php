@@ -171,7 +171,14 @@ class ProjectController extends ControllerBase
         $project->name =$this->request->getPost("projectname");
         $project->description =$this->request->getPost("description");
         $project->permission =$this->request->getPost("permission");
-        $project->save();
+        
+        try {
+        	$project->save();
+        	$this->flashSession->success('Your information was stored correctly!');
+        } catch (Exception $e) {
+        	$this->flashSession->error($e->getMessage());
+        }
+        
     }
 
 
