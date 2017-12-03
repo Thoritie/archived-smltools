@@ -75,184 +75,7 @@ $(document).ready(function() {
         return JSON.stringify(auto)
     }
 
-    function tagOwner(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-        
-        Stakeholder.initialize();
-    
-        var owner = $('#owner');
-        owner.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div id="nomatch" class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
-                }
-            }
-        });
 
-    }
-    
-    
-    ///---------------input id collaburator
-
-    function tagCollaburator(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-        
-        Stakeholder.initialize();
-    
-        var collaburator = $('#collaburator');
-	        collaburator.tagsinput({
-	            itemValue: 'value',
-	            itemText: 'text',
-	            typeaheadjs: {
-	                name: 'name',
-	                displayKey: 'text',
-	                source: Stakeholder.ttAdapter(),
-	                templates : {
-	                	highlight: true,
-	                    empty: '<div class="empty-message text-info add-stakeholder" onclick="showModalNewStakeholder()"> No matches.</div>'
-	                }
-	            }
-	        });
-	        
-    }
-
-     function tagOwnerToBe(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-        
-        Stakeholder.initialize();
-    
-        var ownerToBe = $('#ownerToBe');
-        ownerToBe.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
-                }
-            }
-        });
-    }
-
-    function tagcollaboratorToBe(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-        
-        Stakeholder.initialize();
-    
-        var collaboratorToBe = $('#collaboratorToBe');
-        collaboratorToBe.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
-                },
-            }
-        });
-        
-    }
-
-
-    function tagModalrOwnerResource(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-        
-        Stakeholder.initialize();
-    
-        var ModalrOwnerResource = $('#ModalrOwnerResource');
-        ModalrOwnerResource.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
-                },
-            }
-        });
-        
-    }
-
-    function tagModalpOwnerResource(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-        
-        Stakeholder.initialize();
-    
-        var ModalpOwnerResource = $('#ModalpOwnerResource');
-        ModalpOwnerResource.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
-                },
-            }
-        });
-        
-    }
-
-    function tagModalmaintainerResource(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-        
-        Stakeholder.initialize();
-    
-        var ModalmaintainerResource = $('#ModalmaintainerResource');
-        ModalmaintainerResource.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates : {
-                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
-                },
-            }
-        });
-        
-    }
 
 
         var project = "1";     //input project id .val()
@@ -263,14 +86,117 @@ $(document).ready(function() {
            
                 var auto = createJSON(data);
                 var n = createString(auto);
+                var Stakeholder = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: JSON.parse(n)
+                });
+                Stakeholder.initialize();
+
+                var owner = $('#owner');
+                owner.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates : {
+                            empty: '<div id="nomatch" class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        }
+                    }
+                });
+
+                var collaburator = $('#collaburator');
+                collaburator.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates : {
+                            highlight: true,
+                            empty: '<div class="empty-message text-info add-stakeholder" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        }
+                    }
+                });
+
+
+                var ownerToBe = $('#ownerToBe');
+                ownerToBe.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates : {
+                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        }
+                    }
+                });
+
+
                 
-                tagOwner(n);
-                tagCollaburator(n);
-                tagOwnerToBe(n);
-                tagcollaboratorToBe(n);
-                tagModalrOwnerResource(n);
-                tagModalpOwnerResource(n);
-                tagModalmaintainerResource(n)
+                var collaboratorToBe = $('#collaboratorToBe');
+                collaboratorToBe.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates : {
+                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        },
+                    }
+                });
+
+                var ModalrOwnerResource = $('#ModalrOwnerResource');
+                ModalrOwnerResource.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates : {
+                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        },
+                    }
+                });
+
+                var ModalpOwnerResource = $('#ModalpOwnerResource');
+                ModalpOwnerResource.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates : {
+                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        },
+                    }
+                });
+
+
+                var ModalmaintainerResource = $('#ModalmaintainerResource');
+                ModalmaintainerResource.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates : {
+                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                        },
+                    }
+                });
+              
+              
         },  "json");
 
 
