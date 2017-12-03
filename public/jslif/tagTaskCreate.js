@@ -178,6 +178,83 @@ $(document).ready(function() {
         
     }
 
+
+    function tagModalrOwnerResource(n){
+        var Stakeholder = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        
+        Stakeholder.initialize();
+    
+        var ModalrOwnerResource = $('#ModalrOwnerResource');
+        ModalrOwnerResource.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates : {
+                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                },
+            }
+        });
+        
+    }
+
+    function tagModalpOwnerResource(n){
+        var Stakeholder = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        
+        Stakeholder.initialize();
+    
+        var ModalpOwnerResource = $('#ModalpOwnerResource');
+        ModalpOwnerResource.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates : {
+                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                },
+            }
+        });
+        
+    }
+
+    function tagModalmaintainerResource(n){
+        var Stakeholder = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        
+        Stakeholder.initialize();
+    
+        var ModalmaintainerResource = $('#ModalmaintainerResource');
+        ModalmaintainerResource.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates : {
+                    empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                },
+            }
+        });
+        
+    }
+
+
         var project = "1";     //input project id .val()
 
         $.post(baseUrl+"task/findStake",{
@@ -191,6 +268,9 @@ $(document).ready(function() {
                 tagCollaburator(n);
                 tagOwnerToBe(n);
                 tagcollaboratorToBe(n);
+                tagModalrOwnerResource(n);
+                tagModalpOwnerResource(n);
+                tagModalmaintainerResource(n)
         },  "json");
 
 
@@ -300,6 +380,9 @@ $(document).ready(function() {
         }
 
 
+        
+
+
         $.post("findResource",{
             project : project
         }, function(data){
@@ -312,6 +395,8 @@ $(document).ready(function() {
                 tagToproduce(n);
         },  "json");
 
+
+        
 
 
 
@@ -472,5 +557,8 @@ $(document).ready(function() {
                 })    
         });
 
+
+
+        
 
 });
