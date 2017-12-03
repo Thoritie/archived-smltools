@@ -60,13 +60,12 @@
                            <div class="form-group">
                               <label>Includes</label>
                              
-                              <div class="input-group">
+                            
                                     <?php 
                                           echo $this->tag->textField(["includes", "size" => 30, 
                                           "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
                                   ?>
-                                  <div class="btn input-group-addon" style="border: 1px solid #9a9a9a;">+</div> 
-                              </div>
+                           
                            </div>
                         </div>
                         <div class="col-md-4">
@@ -572,7 +571,7 @@
                               <label>Resource Name</label>
                               <?php 
                                  echo $this->tag->textField(["resourcename", "size" => 30, 
-                                 "class" => "form-control", "id" => "Modalresourcename" , "placeholder"=>"Resource Name..."]) 
+                                 "class" => "form-control", "id" => "Modalresourcename"]) 
                                  ?>
                            </div>
                         </div>
@@ -596,7 +595,7 @@
                               <label>includes</label>
                               <?php 
                                     echo $this->tag->textField(["includes", "size" => 30, 
-                                    "class" => "form-control", "id" => "ModalincludesResource" , "placeholder"=>"Resource Name..."]) 
+                                    "class" => "form-control", "id" => "ModalincludesResource"]) 
                               ?>
                            </div>
                         </div>
@@ -617,7 +616,7 @@
                               <label>p Owner</label>
                               <?php 
                                  echo $this->tag->textField(["pOwner", "size" => 30, 
-                                 "class" => "form-control", "id" => "ModalpOwnerResource", "placeholder"=>"Stakeholder Name..."]) 
+                                 "class" => "form-control", "id" => "ModalpOwnerResource"]) 
                               ?>
                            </div>
                         </div>
@@ -628,7 +627,7 @@
                               <label>Maintainer</label>
                               <?php 
                                  echo $this->tag->textField(["maintainer", "size" => 30, 
-                                 "class" => "form-control", "id" => "ModalmaintainerResource", "placeholder"=>"Stakeholder Name..."]) 
+                                 "class" => "form-control", "id" => "ModalmaintainerResource"]) 
                               ?>    
                            </div>
                         </div>
@@ -640,7 +639,7 @@
           </div>
           <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
