@@ -69,7 +69,17 @@ class CollaborationsettingController extends ControllerBase
 
     public function createAction()
     {
+        $id = $this->session->get('idProject');
+        $this->tag->setDefault("idProject", $id);
+
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
         
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
     }
 
     public function editAction()
@@ -79,7 +89,36 @@ class CollaborationsettingController extends ControllerBase
 
     public function deleteAction()
     {
+        $id = $this->request->getPost('idCollaboration');
+        $task = Tasks::findById($id);
         
+        $task->delete();
+        return json_encode('true');
+    }
+
+    public function saveAction(){
+        $id = $this->request->getPost("idCollaboration");
+        if(!$id){
+            $Collaborationsetting = new Collaborationsetting();
+        }else{
+            $Collaborationsetting = Collaborationsetting::findById($id);
+        }
+
+       
+        $task->name = $this->request->getPost("CollaborationsettingName");
+        $task->isA = $this->request->getPost("idTask");
+        $task->Description = $this->request->getPost("Description");
+        $task->idProject = $this->request->getPost("idProject");
+
+        if (!$task->save()) {
+            foreach ($teacher->getMessages() as $message) {
+                $this->flash->error($message);
+               
+            }
+        }
+       
+         return;
+            
     }
 
 }
