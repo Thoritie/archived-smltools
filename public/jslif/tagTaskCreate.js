@@ -6,7 +6,7 @@ function showModalNewStakeholder(){
 };
 
 function showModalNewResource(){
-	$("div.createResource").modal("show");
+	$("#createResource").modal("show");
 };
 ///////////////////// -- Validate -- ///////////////////////////
 

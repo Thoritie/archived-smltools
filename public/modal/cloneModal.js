@@ -15,10 +15,16 @@ function cloneModal($modal) {
 
     //append to modal
     $modal.after(newModal);
-
+    
     //show modal
-    $("#" + idModal).modal("show");
-
+    var modalId = "#" + idModal;
+    $(modalId).modal("show");
+    
     //add id to list for using after
-    listModal.push(idModal);
+//    listModal.push(idModal);
 }
+
+$(document).on('hide.bs.modal', "div.createResource", function() {
+	var vm = $(this);
+	var id = vm.prop('id');
+});
