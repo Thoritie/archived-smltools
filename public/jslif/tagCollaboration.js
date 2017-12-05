@@ -70,8 +70,9 @@ $(document).ready(function() {
     $("#saveColla").click(function (){
 
         var Name = $("#CollaborationSettingName").val();
-        var Description = $("#description").val();
+        var Description = $("#DescriptionColla").val();
         var idProject = $("#idProject").val();
+
         var include =$("#includeColla").tagsinput('items')
         item1 = {};
         $.each(include, function(index, input){
@@ -88,12 +89,9 @@ $(document).ready(function() {
                 include : item1,
             },
             success:function(data){
-                window.location.href = baseUrl+"project";
-            },
-            error:function(data){
-                window.location.href = baseUrl+"task";
+                window.location.href = baseUrl+"collaborationsetting";
             }
         })
-
+       
     });
 });

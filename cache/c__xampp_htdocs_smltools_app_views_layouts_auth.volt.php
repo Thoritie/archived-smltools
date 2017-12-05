@@ -14,7 +14,7 @@
 
         <?= $this->tag->stylesheetLink('sml/regis.css') ?>
         <?= $this->tag->stylesheetLink('sml/navindex.css') ?>
-       
+        <?= $this->tag->stylesheetLink('font-awesome/font-awesome.min.css') ?>
         
         
           <!-- auto tag css edit lif -->

@@ -25,7 +25,10 @@
                               <div class="col-md-12">
                                  <div class="form-group">
                                     <label>Description</label>
-                                    <textarea id="descriptionColla" class="form-control" name="descriptionColla" id="description" rows="3"></textarea>
+                                    <?php 
+                                        echo $this->tag->textArea(["DescriptionColla", "rows" => 3, 
+                                        "class" => "form-control", "id" => "DescriptionColla"]) 
+                                    ?>
                                  </div>
                               </div>
                            </div>

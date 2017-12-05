@@ -29,7 +29,9 @@ class CollaborationsettingController extends ControllerBase
         $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
         $this->assets->addJs('jslif/typeahead.bundle.min.js');
         $this->assets->addJs('popper/popper.min.js');
-        //  
+
+
+        $this->assets->addJs('jquery/collaburationEditRedirect.js');  
 
         $this->assets->addJs('jslif/tagCollaboration.js');
         
@@ -82,7 +84,52 @@ class CollaborationsettingController extends ControllerBase
 
     public function editAction()
     {
+
+        $id = $this->request->getPost('id');
+        $collaboration = Collaboration::findById($id);
+       
         
+         $include = array();
+         foreach($collaboration->include as $data){
+            $item = Tasks::findById($data);
+            array_push($include,$item);
+        }
+        $this->view->include = $include;
+
+
+        $idProject = $this->session->get('idProject');
+
+       
+        $this->tag->setDefault("EdIdProject", $idProject);
+        $this->tag->setDefault("EdId",$id);
+        $this->tag->setDefault("EdCollaborationSettingName",$collaboration->name);
+        $this->tag->setDefault("EdDescription",$collaboration->Description);
+        
+           
+        
+
+       
+        $condition = [];
+        $condition["idProject"] = $idProject;
+      
+
+        $task = Tasks::Find(array($condition));
+
+        $this->view->task = $task;
+
+
+
+
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+        
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+      
     }
 
     public function deleteCollaburationAction()

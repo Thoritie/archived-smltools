@@ -47,7 +47,7 @@ class TaskController extends ControllerBase
         $this->assets->addJs('jquery/createTaskValidate.js');
         $this->assets->addJs('jquery/editTaskValidate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
-        $this->assets->addJs('jquery/taskRedirect.js');
+        $this->assets->addJs('jquery/taskEditRedirect.js');
 
         $this->assets->addJs('jslif/tagTaskCreate.js');
 
@@ -264,12 +264,7 @@ class TaskController extends ControllerBase
         
                 $this->view->stake = $stake;
 
-                $id = $this->session->get('idProject');
-                $project = Project::findById($id);
-                $this->view->projectname = $project->name;
                 
-                $owner = Users::findById($project->createrId);
-                $this->view->ownerLayout = $owner->name;
 
 
                 $userLogin = $this->session->get('userLogin');
