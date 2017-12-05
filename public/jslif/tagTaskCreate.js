@@ -11,6 +11,7 @@ function showModalNewResource(){
 ///////////////////// -- Validate -- ///////////////////////////
 
 $(document).ready(function() {
+    tagResource();
 
     $.validator.setDefaults({
         errorClass: 'badge badge-danger',
@@ -330,22 +331,24 @@ $(document).ready(function() {
         }
 
 
-        
+        function tagResource(){
+            var projectid = $("#idProject").val();
+            $.post("findResource",{
+                project : projectid
+            }, function(data){
+                console.log(data);
+                    var auto = createJSON(data);
+                    var n = createString(auto);
+                
+                    tagUses(n);
+                    tagproduce(n);
+                    tagToUses(n);
+                    tagToProduce(n);
+                    tagInclude(n);
+            },  "json");
 
-
-        $.post("findResource",{
-            project : project
-        }, function(data){
-                var auto = createJSON(data);
-                var n = createString(auto);
-               
-                tagUses(n);
-                tagproduce(n);
-                tagToUses(n);
-                tagToProduce(n);
-                tagInclude(n);
-        },  "json");
-
+           
+        }
 
         
 
@@ -513,8 +516,9 @@ $(document).ready(function() {
 
 
 
-    //save modal resource 
+    //save resource from  modal 
     //====================================================================================================
+
         $('#saveResourceformModal').click(function (){
             var resourcename = $("#Modalresourcename").val();
             var Description = $("#ModalDesResource").val();
@@ -557,6 +561,7 @@ $(document).ready(function() {
                     idProject : idProject
                 },
                 success:function(data){
+                    tagResource();
                     $('#createResource').modal('hide');
                 }
             })
