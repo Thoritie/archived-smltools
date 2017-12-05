@@ -1,4 +1,5 @@
-
+var  Resource;
+var projectid = $("#idProject").val();
 //modal 
 
 function showModalNewStakeholder(){
@@ -205,134 +206,10 @@ $(document).ready(function() {
 
         /* resourceeeeeeeeeeeeeeeeeeeeeeeeee*/ 
 
-        function tagUses(n){
-            var Resource = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                local: JSON.parse(n)
-            });
-            
-            Resource.initialize();
-        
-            var uses = $('#uses');
-            uses.tagsinput({
-                itemValue: 'value',
-                itemText: 'text',
-                typeaheadjs: {
-                    name: 'name',
-                    displayKey: 'text',
-                    source: Resource.ttAdapter(),
-                    templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
-                    },
-                }
-            });
-            
-        }
-
-
-        function tagproduce(n){
-            var Resource = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                local: JSON.parse(n)
-            });
-            
-            Resource.initialize();
-        
-            var produces = $('#produces');
-            produces.tagsinput({
-                itemValue: 'value',
-                itemText: 'text',
-                typeaheadjs: {
-                    name: 'name',
-                    displayKey: 'text',
-                    source: Resource.ttAdapter(),
-                    templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
-                    },
-                }
-            });
-            
-        }
-
-        function tagToUses(n){
-            var Resource = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                local: JSON.parse(n)
-            });
-            
-            Resource.initialize();
-        
-            var toUse = $('#toUse');
-            toUse.tagsinput({
-                itemValue: 'value',
-                itemText: 'text',
-                typeaheadjs: {
-                    name: 'name',
-                    displayKey: 'text',
-                    source: Resource.ttAdapter(),
-                    templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
-                    },
-                }
-            });
-            
-        }
-
-        function tagToProduce(n){
-            var Resource = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                local: JSON.parse(n)
-            });
-            
-            Resource.initialize();
-        
-            var toProduce = $('#toProduce');
-            toProduce.tagsinput({
-                itemValue: 'value',
-                itemText: 'text',
-                typeaheadjs: {
-                    name: 'name',
-                    displayKey: 'text',
-                    source: Resource.ttAdapter(),
-                    templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
-                    },
-                }
-            });
-            
-        }
-
-        function tagInclude(n){
-            var Resource = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                local: JSON.parse(n)
-            });
-            
-            Resource.initialize();
-        
-            var ModalincludesResource = $('#ModalincludesResource');
-            ModalincludesResource.tagsinput({
-                itemValue: 'value',
-                itemText: 'text',
-                typeaheadjs: {
-                    name: 'name',
-                    displayKey: 'text',
-                    source: Resource.ttAdapter(),
-                    templates : {
-                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
-                    },
-                }
-            }); 
-        }
-
+      
 
         function tagResource(){
-            var projectid = $("#idProject").val();
+            
             $.post("findResource",{
                 project : projectid
             }, function(data){
@@ -340,11 +217,84 @@ $(document).ready(function() {
                     var auto = createJSON(data);
                     var n = createString(auto);
                 
-                    tagUses(n);
-                    tagproduce(n);
-                    tagToUses(n);
-                    tagToProduce(n);
-                    tagInclude(n);
+                    Resource = new Bloodhound({
+                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                        queryTokenizer: Bloodhound.tokenizers.whitespace,
+                        local: JSON.parse(n)
+                    });
+
+                    Resource.initialize();
+                   
+                    var uses = $('#uses');
+                    uses.tagsinput({
+                        itemValue: 'value',
+                        itemText: 'text',
+                        typeaheadjs: {
+                            name: 'name',
+                            displayKey: 'text',
+                            source: Resource.ttAdapter(),
+                            templates : {
+                                empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
+                            },
+                        }
+                    });
+
+                    var produces = $('#produces');    
+                    produces.tagsinput({
+                        itemValue: 'value',
+                        itemText: 'text',
+                        typeaheadjs: {
+                            name: 'name',
+                            displayKey: 'text',
+                            source: Resource.ttAdapter(),
+                            templates : {
+                                empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
+                            },
+                        }
+                    });
+
+                    var toUse = $('#toUse');
+                    toUse.tagsinput({
+                        itemValue: 'value',
+                        itemText: 'text',
+                        typeaheadjs: {
+                            name: 'name',
+                            displayKey: 'text',
+                            source: Resource.ttAdapter(),
+                            templates : {
+                                empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
+                            },
+                        }
+                    });
+
+                    var toProduce = $('#toProduce');
+                    toProduce.tagsinput({
+                        itemValue: 'value',
+                        itemText: 'text',
+                        typeaheadjs: {
+                            name: 'name',
+                            displayKey: 'text',
+                            source: Resource.ttAdapter(),
+                            templates : {
+                                empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
+                            },
+                        }
+                    });
+
+                    var ModalincludesResource = $('#ModalincludesResource');
+                    ModalincludesResource.tagsinput({
+                        itemValue: 'value',
+                        itemText: 'text',
+                        typeaheadjs: {
+                            name: 'name',
+                            displayKey: 'text',
+                            source: Resource.ttAdapter(),
+                            templates : {
+                                empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
+                            },
+                        }
+                    }); 
+
             },  "json");
 
            
@@ -561,7 +511,18 @@ $(document).ready(function() {
                     idProject : idProject
                 },
                 success:function(data){
-                    tagResource();
+                    Resource.clear();
+                    $.post("findResource",{
+                            project : projectid
+                            }, function(data){
+                              console.log(data);
+                                var auto = createJSON(data);
+                                var n = createString(auto);
+                                
+                                Resource.local = JSON.parse(n);
+                                Resource.initialize(true);
+                            },  "json");
+                    
                     $('#createResource').modal('hide');
                 }
             })
