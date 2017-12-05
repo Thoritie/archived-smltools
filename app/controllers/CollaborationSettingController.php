@@ -85,12 +85,12 @@ class CollaborationsettingController extends ControllerBase
         
     }
 
-    public function deleteAction()
+    public function deleteCollaburationAction()
     {
         $id = $this->request->getPost('idCollaboration');
-        $task = Tasks::findById($id);
-        
-        $task->delete();
+        $collaboration = Collaboration::findById($id);
+
+         $collaboration->delete();
         return json_encode('true');
     }
 
