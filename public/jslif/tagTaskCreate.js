@@ -11,6 +11,7 @@ function showModalNewResource(){
 ///////////////////// -- Validate -- ///////////////////////////
 
 $(document).ready(function() {
+    tagResource();
 
     $.validator.setDefaults({
         errorClass: 'badge badge-danger',
@@ -280,7 +281,7 @@ $(document).ready(function() {
             
         }
 
-        function tagToproduce(n){
+        function tagToProduce(n){
             var Resource = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -305,22 +306,49 @@ $(document).ready(function() {
             
         }
 
-
+        function tagInclude(n){
+            var Resource = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: JSON.parse(n)
+            });
+            
+            Resource.initialize();
         
+            var ModalincludesResource = $('#ModalincludesResource');
+            ModalincludesResource.tagsinput({
+                itemValue: 'value',
+                itemText: 'text',
+                typeaheadjs: {
+                    name: 'name',
+                    displayKey: 'text',
+                    source: Resource.ttAdapter(),
+                    templates : {
+                        empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
+                    },
+                }
+            }); 
+        }
 
 
-        $.post("findResource",{
-            project : project
-        }, function(data){
-                var auto = createJSON(data);
-                var n = createString(auto);
-               
-                tagUses(n);
-                tagproduce(n);
-                tagToUses(n);
-                tagToproduce(n);
-        },  "json");
+        function tagResource(){
+            var projectid = $("#idProject").val();
+            $.post("findResource",{
+                project : projectid
+            }, function(data){
+                console.log(data);
+                    var auto = createJSON(data);
+                    var n = createString(auto);
+                
+                    tagUses(n);
+                    tagproduce(n);
+                    tagToUses(n);
+                    tagToProduce(n);
+                    tagInclude(n);
+            },  "json");
 
+           
+        }
 
         
 
@@ -485,6 +513,58 @@ $(document).ready(function() {
 
 
 
-        
+
+
+
+    //save resource from  modal 
+    //====================================================================================================
+
+        $('#saveResourceformModal').click(function (){
+            var resourcename = $("#Modalresourcename").val();
+            var Description = $("#ModalDesResource").val();
+            var includes = $("#ModalincludesResource").tagsinput('items')
+            item4 = {};
+            $.each(includes, function(index, input){
+                item4 [index] = input.value
+            });
+
+            var rOwner =$("#ModalrOwnerResource").tagsinput('items')
+            item1 = {};
+            $.each(rOwner, function(index, input){
+                item1 [index] = input.value
+            });
+
+            var pOwner = $("#ModalpOwnerResource").tagsinput('items')
+            item2 = {};
+            $.each(rOwner, function(index, input){
+                item2 [index] = input.value
+            });
+
+            var maintainer = $("#ModalmaintainerResource").tagsinput('items')
+            item3 = {};
+            $.each(rOwner, function(index, input){
+                item3 [index] = input.value
+            });
+
+            var idProject = $("#idProjectmodalResource").val();
+
+            $.ajax({
+                type:'POST',
+                url: "saveResourceFormModal",
+                data:{
+                    resourcename: resourcename,
+                    Description: Description,
+                    includes: item4,
+                    rOwner : item1,
+                    pOwner : item2,
+                    maintainer: item3,
+                    idProject : idProject
+                },
+                success:function(data){
+                    tagResource();
+                    $('#createResource').modal('hide');
+                }
+            })
+        });
 
 });
