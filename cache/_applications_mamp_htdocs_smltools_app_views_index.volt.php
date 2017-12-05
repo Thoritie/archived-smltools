@@ -11,16 +11,28 @@
     
     </head>
     <body>
+    
         <?= $this->getContent() ?>
-
+		
+		<script>
+			var baseUrl = '<?=$this->url->get(); ?>';
+		</script>
+		
         <?= $this->assets->outputJs() ?>
 
+        <?php if (!empty($script)) { ?>
         <?= $script ?>
+        <?php } ?>
 
         <script>
             $(document).ready(function(){
                 $('[data-toggle="tooltip"]').tooltip();
                 $('[data-toggle="popover"]').popover();
+                
+			    setTimeout(function(){
+			        $("div.alert").fadeOut(2000);
+			    }, 5000 );
+
             });
         
         </script>

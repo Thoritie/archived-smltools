@@ -161,15 +161,28 @@ $(document).ready(function() {
         // edit this into tag input later 
 
         //var rOwner = $("#rOwner").val();
-        var pOwner = $("#pOwner").val();
-        var maintainer = $("#maintainer").val();
+      //  var pOwner = $("#pOwner").val();
+       // var maintainer = $("#maintainer").val();
 
-        var rOwner =$("#rOwner").taginput('items')
+        var rOwner =$("#rOwner").tagsinput('items')
         item1 = {};
-        $each(rOwner, function(index, input){
+        $.each(rOwner, function(index, input){
             item1 [index] = input.value
         });
 
+
+        var pOwner =$("#pOwner").tagsinput('items')
+        item2 = {};
+        $.each(pOwner, function(index, input){
+            item2 [index] = input.value
+        });
+
+
+        var maintainer =$("#maintainer").tagsinput('items')
+        item3 = {};
+        $.each(maintainer, function(index, input){
+            item3 [index] = input.value
+        });
 
         // sent data to controller
 
