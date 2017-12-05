@@ -94,6 +94,8 @@ class TaskController extends ControllerBase
         
         $id = $this->session->get('idProject');
         $this->tag->setDefault("idProject", $id);
+        $this->view->idproject = $id;
+        
 
         $projectname = $this->session->get('projectname');
         $this->view->projectname = $projectname;
@@ -161,9 +163,9 @@ class TaskController extends ControllerBase
             $condition["project"] = $input;
         }
 
-        $test = Stakeholders::Find(array($condition));
+        $stakeholders = Stakeholders::Find(array($condition));
 
-        return json_encode($test);
+        return json_encode($stakeholders);
     }
 
 
@@ -178,9 +180,9 @@ class TaskController extends ControllerBase
             $condition["project"] = $input;
         }
 
-        $test = Resource::Find(array($condition));
+        $resource = Resource::Find(array($condition));
 
-        return json_encode($test);
+        return json_encode($resource);
     }
 
     public function editAction()
@@ -303,6 +305,22 @@ class TaskController extends ControllerBase
         }
         return json_encode($result);
     }
+
+    public function saveResourceFormModalAction()
+    {
+        $res = new Resource();
+
+        $res->name = $this->request->getPost("resourcename");
+        $res->description = $this->request->getPost("Description");
+        $res->includes = $this->request->getPost("includes");
+        $res->rOwner = $this->request->getPost("rOwner");
+        $res->pOwner = $this->request->getPost("pOwner");
+        $res->maintainer = $this->request->getPost("maintainer");
+        $res->project = $this->request->getPost("idProject");
+        $res->save();
+    }
    
 }
+
+    
 

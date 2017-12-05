@@ -568,6 +568,7 @@
                      <div class="row">
                         <div class="col-md-12">
                            <div class="form-group">
+                           <input type="hidden" name="idProjectmodalResource" value="<?=$idproject?>" id="idProjectmodalResource">
                               <label>Resource Name</label>
                               <?php 
                                  echo $this->tag->textField(["resourcename", "size" => 30, 
@@ -638,7 +639,7 @@
                </div>
           </div>
           <div class="modal-footer">
-                <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-info" id="saveResourceformModal">Save</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
