@@ -14,7 +14,7 @@
 
         {{ stylesheet_link('sml/regis.css') }}
         {{ stylesheet_link('sml/navindex.css') }}
-       
+        {{ stylesheet_link('font-awesome/font-awesome.min.css') }}
         
         
           <!-- auto tag css edit lif -->
