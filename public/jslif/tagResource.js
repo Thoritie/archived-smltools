@@ -181,13 +181,7 @@ $(document).ready(function() {
     $('#saveResource').click(function (){
         var resourcename = $("#resourcename").val();
         var Description = $("#Description").val();
-       // var includes = $("#includes").val();
-
-        // edit this into tag input later 
-
-        //var rOwner = $("#rOwner").val();
-      //  var pOwner = $("#pOwner").val();
-       // var maintainer = $("#maintainer").val();
+       
 
        var includes =$("#includes").tagsinput('items')
        item4 = {};
