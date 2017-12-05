@@ -61,7 +61,6 @@ class ResourceController extends ControllerBase
 
     public function indexAction()
     {
-        // $this->assets->addCss('dataTable/css/bootstrap.css');
         $this->assets->addCss('dataTable/css/fresh-bootstrap-table.css');
         $this->assets->addCss('addResource/addRe.css');
         

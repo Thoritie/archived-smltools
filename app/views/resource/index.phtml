@@ -29,9 +29,7 @@
                         Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
                 -->
                 
-                    <div class="toolbar">
-                        <button id="alertBtn" class="btn btn-default">Alert</button>
-                    </div>
+                   
                     
                     <table id="fresh-table" class="table">
                         <thead>
@@ -39,95 +37,19 @@
                         	<th data-field="name" data-sortable="true">Name</th>
                         	<!-- <th data-field="salary" data-sortable="true">Salary</th> -->
                         	<th data-field="country" data-sortable="true">Def</th>
-                        	<th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+                        	<th data-field="actions" data-formatter="" data-events="operateEvents">Manage Actions</th>
 						</thead>
 						<tbody>
-							<tr>
+						<tr>
                             	<td>1</td>
                             	<td>aConCorde</td>
                             	<td>aConcorde is a multi-lingual concordance tool. Originally developed for native Arabic concordance, it posses basic concordance functionality, as well as English and Arabic interfaces. Written in Java, so will run on any platform that has the Java Runtime Environment installed.</td>
-                            	<td></td>
+                            	<td>
+									<a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
+                          			<a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                          
+								</td>
 							</tr>
-							<tr>
-                            	<td>2</td>
-								<td>AHRQ</td>
-								<td>The Technology Assessment (TA) Program at the Agency for Healthcare Research and Quality</td>
-                            	<td></td>
-							</tr>
-							
-							<tr>
-                            	<td>3</td>
-								<td>AMA Manual of Style	</td>
-								<td>-</td>
-                            	<td></td>
-							</tr>
-
-								
-							<tr>
-                            	<td>4</td>
-								<td>BIOSIS Citation Index	</td>
-								<td>-</td>
-                            	<td></td>
-							</tr>
-								
-							<tr>
-                            	<td>5</td>
-								<td>DiaTech</td>
-								<td>DiaTech is a web tool for analyzing and visualysing linguistic variation.</td>
-                            	<td></td>
-							</tr>
-								
-							<tr>
-                            	<td>6</td>
-								<td>DictMaker</td>
-								<td>Lets you create dictionaries. For Mac OS X.</td>
-                            	<td></td>
-							</tr>
-								
-							<tr>
-                            	<td>7</td>
-								<td>IntelliWebSearch</td>
-								<td>elliWebSearch is a freeware tool designed to save translators and terminologists time when searching the web.</td>
-                            	<td></td>
-							</tr>
-								
-							<tr>
-                            	<td>8</td>
-								<td>Linguist's Assistant</td>
-								<td>Linguist's Assistant (LA) is a multilingual natural language generator based on linguistic universals, typologies, and primitives.</td>
-                            	<td></td>
-							</tr>
-								
-							<tr>
-                            	<td>9</td>
-								<td>Nursing Library</td>
-								<td>if you are logging on to a Shimberg Library database or e-book from off campus or through wireless access, you will be prompted for your USF/Healthnet user ID and password.</td>
-                            	<td></td>
-							</tr>
-								
-							<tr>
-                            	<td>10</td>
-								<td>QuickCount 1.0</td>
-								<td>Quickcount is a word and line counting for freelance translators, translation and localization agencies, transcription agencies, writers, project managers and other professionals who base their quotations and invoices on document text count (word count, line count, gross line count, character count, page count.).</td>
-                            	<td></td>
-							</tr>
-								
-							<tr>
-                            	<td>11</td>
-								<td>ThetaCircle</td>
-								<td>ThetaCircle is an easy to use typing and scripting tool. Use it to type, copy and then pipe or paste your script to your favorite word processor.</td>
-                            	<td></td>
-							</tr>
-								
-							<tr>
-                            	<td>12</td>
-								<td>xlit</td>
-								<td>xlit is a program for transliterating text. It allows the user to define a transliteration simply by typing the input strings in one window and the strings to which they are to be mapped in another. It understands Unicode and provides a number of character entry tools.</td>
-                            	<td></td>
-							</tr>
-								
-						
-							
 						</tbody>
                        
                     </table>
