@@ -29,11 +29,10 @@ class CollaborationsettingController extends ControllerBase
         $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
         $this->assets->addJs('jslif/typeahead.bundle.min.js');
         $this->assets->addJs('popper/popper.min.js');
-        $this->assets->addJs('addResource/addRe.js');
+        //  
 
-        $this->assets->addJs('jslif/tagProject.js');
-        $this->assets->addJs('jquery/projectRedirect.js');
-        $this->assets->addJs('jquery/editProject.js');
+        $this->assets->addJs('jslif/tagCollaboration.js');
+        
 
     }
     public function indexAction()
@@ -41,15 +40,14 @@ class CollaborationsettingController extends ControllerBase
         $id = $this->session->get('idProject');
         $condition = [];
         if($id){
-                
             $condition["idProject"] = $id;
-            $collaborationSetting = CollaborationSetting::Find(array($condition));
+            $collaboration = Collaboration::Find(array($condition));
             
         }else{
             $this->view->task = 0;
         }
 
-        $this->view->collaborationSetting = $collaborationSetting;
+        $this->view->collaboration = $collaboration;
 
 
 
@@ -99,26 +97,39 @@ class CollaborationsettingController extends ControllerBase
     public function saveAction(){
         $id = $this->request->getPost("idCollaboration");
         if(!$id){
-            $Collaborationsetting = new Collaborationsetting();
+            $collaboration = new Collaboration();
         }else{
-            $Collaborationsetting = Collaborationsetting::findById($id);
+            $collaboration = Collaboration::findById($id);
         }
 
        
-        $task->name = $this->request->getPost("CollaborationsettingName");
-        $task->isA = $this->request->getPost("idTask");
-        $task->Description = $this->request->getPost("Description");
-        $task->idProject = $this->request->getPost("idProject");
+        $collaboration->name = $this->request->getPost("Name");
+        $collaboration->Description = $this->request->getPost("Description");
+        $collaboration->include = $this->request->getPost("include");
+        $collaboration->idProject = $this->request->getPost("idProject");
 
-        if (!$task->save()) {
-            foreach ($teacher->getMessages() as $message) {
-                $this->flash->error($message);
-               
-            }
+        if($collaboration->save()){
+            return json_encode('true');
         }
-       
-         return;
+        return json_encode('false');
+         
             
+    }
+
+    public function findTaskAction()
+    {
+        $this->view->disable();
+        $input = $this->request->getPost('project');
+        
+        $condition = [];
+        
+        if($input){
+            $condition["idProject"] = $input;
+        }
+
+        $tasks = Tasks::Find(array($condition));
+
+        return json_encode($tasks);
     }
 
 }
