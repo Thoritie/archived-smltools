@@ -135,6 +135,30 @@ $(document).ready(function() {
         });
     }
 
+    function tagincludes(n){
+        var Stakeholder = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+
+        Stakeholder.initialize();
+
+        var includes = $('#includes');
+        includes.tagsinput({
+            itemValue: 'value',
+            itemText:'text',
+            typeaheadjs : {
+                name :'name',
+                displayKey:'text',
+                source : Stakeholder.ttAdapter(),
+                templates :{
+                    empty:'<div class="empty-message text-info"> No matches.</div>'
+                }
+            }
+        });
+    }
+
 
     var project = "1";  //input project id later
     
@@ -149,6 +173,7 @@ $(document).ready(function() {
         tagrOwner(n);
         tagpOwner(n);
         tagmaintainer(n);
+        tagincludes(n);
 
     },  "json");
 
@@ -156,13 +181,19 @@ $(document).ready(function() {
     $('#saveResource').click(function (){
         var resourcename = $("#resourcename").val();
         var Description = $("#Description").val();
-        var includes = $("#includes").val();
+       // var includes = $("#includes").val();
 
         // edit this into tag input later 
 
         //var rOwner = $("#rOwner").val();
       //  var pOwner = $("#pOwner").val();
        // var maintainer = $("#maintainer").val();
+
+       var includes =$("#includes").tagsinput('items')
+       item4 = {};
+       $.each(includes, function(index, input){
+           item4 [index] = input.value
+       });
 
         var rOwner =$("#rOwner").tagsinput('items')
         item1 = {};
