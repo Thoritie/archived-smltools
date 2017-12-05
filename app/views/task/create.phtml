@@ -9,643 +9,625 @@
        ]
    );
    ?>
-
 <?php 
    echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
    ?>
-   
 <div class="content">
    <div class="container-fluid">
       <div class="row">
-         <div class="col-md-9">
+         <div class="col-md-12">
             <div class="card s-navShadow">
-               <div class="header">
-                  <h4 class="title">Create Task</h4>
-               </div>
-               <div class="content">
-                  <form>
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
-                              <?php 
-                                 echo $this->tag->textField(["taskname", "size" => 30, 
-                                 "class" => "form-control", "id" => "taskname" , "placeholder"=>"task name"]) 
-                                 ?>
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label>IsA</label>
-                              <?php 
-                                 echo $this->tag->textField(["isA", "size" => 30, 
-                                 "class" => "form-control", "id" => "isA" , "placeholder"=>"isA"]) 
-                                 ?>
-                           </div>
-                        </div>
+               <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                     <div class="header">
+                        <h4 class="title">Create Task</h4>
                      </div>
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="form-group">
-                              <label>Description</label>
-                              <?php 
-                                 echo $this->tag->textArea(["Description", "class" => "form-control", 
-                                  "id" => "Description" , "placeholder"=>"Description","rows" => 3,]) 
-                                 ?>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-8">
-                           <div class="form-group">
-                              <label>Includes</label>
-                             
-                            
+                     <div class="content">
+                        <form>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
                                     <?php 
-                                          echo $this->tag->textField(["includes", "size" => 30, 
-                                          "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
-                                  ?>
-                           
+                                       echo $this->tag->textField(["taskname", "size" => 30, 
+                                       "class" => "form-control", "id" => "taskname" , "placeholder"=>"task name"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>IsA</label>
+                                    <?php 
+                                       echo $this->tag->textField(["isA", "size" => 30, 
+                                       "class" => "form-control", "id" => "isA" , "placeholder"=>"isA"]) 
+                                       ?>
+                                 </div>
+                              </div>
                            </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="form-group">
-                              <label>as IsState</label>
-                              <?php 
-                                 echo $this->tag->selectStatic(["asIsState", "class" => "form-control", 
-                                 "id" => "asIsState" 
-                                 ,[
-                                     "E" => "EXIST",
-                                     "N" => "NEXIST",
-                                 ]
-                                 ]) 
-                                 ?>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Description</label>
+                                    <?php 
+                                       echo $this->tag->textArea(["Description", "class" => "form-control", 
+                                        "id" => "Description" , "placeholder"=>"Description","rows" => 3,]) 
+                                       ?>
+                                 </div>
+                              </div>
                            </div>
-                        </div>
+                           <div class="row">
+                              <div class="col-md-8">
+                                 <div class="form-group">
+                                    <label>Includes</label>
+                                    <?php 
+                                       echo $this->tag->textField(["includes", "size" => 30, 
+                                       "class" => "form-control", "id" => "includes" , "placeholder"=>"includes"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <label>as IsState</label>
+                                    <?php 
+                                       echo $this->tag->selectStatic(["asIsState", "class" => "form-control", 
+                                       "id" => "asIsState" 
+                                       ,[
+                                           "E" => "EXIST",
+                                           "N" => "NEXIST",
+                                       ]
+                                       ]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <label>Owner</label>
+                                    <?php 
+                                       echo $this->tag->textField(["owner", "size" => 30, 
+                                       "class" => "form-control", "id" => "owner" ]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <label>Collaburator</label>
+                                    <?php 
+                                       echo $this->tag->textField(["collaburator", "size" => 30, 
+                                       "class" => "form-control", "id" => "collaburator" ]) 
+                                       ?>  
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <label>Regulator</label>
+                                    <?php 
+                                       echo $this->tag->textField(["regulator", "size" => 30, 
+                                       "class" => "form-control", "id" => "regulator"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-8">
+                                 <div class="form-group">
+                                    <label>Uses</label>
+                                    <?php 
+                                       echo $this->tag->textField(["uses", "size" => 30, 
+                                       "class" => "form-control", "id" => "uses" ]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group">
+                                    <label>to Be State</label>
+                                    <?php 
+                                       echo $this->tag->selectStatic(["toBeState", "class" => "form-control", 
+                                       "id" => "toBeState" 
+                                       ,[
+                                           "E" => "EXIST",
+                                           "N" => "NEXIST",
+                                           "A" => "ADEPTED",
+                                       ]
+                                       ]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Produces</label>
+                                    <?php 
+                                       echo $this->tag->textField(["produces", "size" => 30, 
+                                       "class" => "form-control", "id" => "produces" ]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>owner To Be</label>
+                                    <?php 
+                                       echo $this->tag->textField(["ownerToBe", "size" => 30, 
+                                       "class" => "form-control", "id" => "ownerToBe"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>collaborator To Be</label>
+                                    <?php 
+                                       echo $this->tag->textField(["collaboratorToBe", "size" => 30, 
+                                       "class" => "form-control", "id" => "collaboratorToBe" ]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>toUse</label>
+                                    <?php 
+                                       echo $this->tag->textField(["toUse", "size" => 30, 
+                                       "class" => "form-control", "id" => "toUse"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>toProduce</label>
+                                    <?php 
+                                       echo $this->tag->textField(["toProduce", "size" => 30, 
+                                       "class" => "form-control", "id" => "toProduce"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <?php echo $this->tag->endForm(); ?>
+                           <button type="submit" class="btn btn-info btn-fill pull-right" id="saveTask">Save</button>
+                           <div class="clearfix"></div>
+                        </form>
                      </div>
-                     <div class="row">
-                        <div class="col-md-4">
-                           <div class="form-group">
-                              <label>Owner</label>
-                              <?php 
-                                 echo $this->tag->textField(["owner", "size" => 30, 
-                                 "class" => "form-control", "id" => "owner" ]) 
-                                 ?>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="form-group">
-                              <label>Collaburator</label>
-                              <?php 
-                                 echo $this->tag->textField(["collaburator", "size" => 30, 
-                                 "class" => "form-control", "id" => "collaburator" ]) 
-                                 ?>  
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="form-group">
-                              <label>Regulator</label>
-                              <?php 
-                                 echo $this->tag->textField(["regulator", "size" => 30, 
-                                 "class" => "form-control", "id" => "regulator"]) 
-                                 ?>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-8">
-                           <div class="form-group">
-                              <label>Uses</label>
-                              <?php 
-                                 echo $this->tag->textField(["uses", "size" => 30, 
-                                 "class" => "form-control", "id" => "uses" ]) 
-                                 ?>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="form-group">
-                              <label>to Be State</label>
-                              <?php 
-                                 echo $this->tag->selectStatic(["toBeState", "class" => "form-control", 
-                                 "id" => "toBeState" 
-                                 ,[
-                                     "E" => "EXIST",
-                                     "N" => "NEXIST",
-                                     "A" => "ADEPTED",
-                                 ]
-                                 ]) 
-                                 ?>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="form-group">
-                              <label>Produces</label>
-                              <?php 
-                                 echo $this->tag->textField(["produces", "size" => 30, 
-                                 "class" => "form-control", "id" => "produces" ]) 
-                                 ?>
-                           </div>
-                        </div>
-                     </div>
-                    
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label>owner To Be</label>
-                              <?php 
-                                 echo $this->tag->textField(["ownerToBe", "size" => 30, 
-                                 "class" => "form-control", "id" => "ownerToBe"]) 
-                                 ?>
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label>collaborator To Be</label>
-                              <?php 
-                                 echo $this->tag->textField(["collaboratorToBe", "size" => 30, 
-                                 "class" => "form-control", "id" => "collaboratorToBe" ]) 
-                                 ?>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label>toUse</label>
-                              <?php 
-                                 echo $this->tag->textField(["toUse", "size" => 30, 
-                                 "class" => "form-control", "id" => "toUse"]) 
-                                 ?>
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label>toProduce</label>
-                              <?php 
-                                 echo $this->tag->textField(["toProduce", "size" => 30, 
-                                 "class" => "form-control", "id" => "toProduce"]) 
-                                 ?>
-                           </div>
-                        </div>
-                     </div>
-                     <?php echo $this->tag->endForm(); ?>
-                     <button type="submit" class="btn btn-info btn-fill pull-right" id="saveTask">Save</button>
-                     
-                     <div class="clearfix"></div>
-                  </form>
+                  </div>
                </div>
             </div>
          </div>
       </div>
    </div>
 </div>
-
 <!-- Modal Stakeholder-->
-  <div class="modal createStakeholder" id="createStakeholder" role="dialog">
-    <div class="modal-dialog">
-    
+<div class="modal createStakeholder" id="createStakeholder" role="dialog">
+   <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Stakeholder</h4>
-          <button class="btn btn-info" onclick="cloneModal($('#createStakeholder'))">+</button>
-        </div>
-        <div class="modal-body">
-        	<ul class="nav nav-tabs">
-			    <li class="active"><a data-toggle="tab" href="#Organisation">Organisation</a></li>
-			    <li><a data-toggle="tab" href="#Individual">Individual</a></li>
-			    <li><a data-toggle="tab" href="#Role">Role</a></li>
-			</ul>
-			<div class="tab-content">
-  				<div id="Organisation" class="tab-pane fade in active">
-                              <h3>Organisation</h3>
-                              <div class="content">
-                                    <form>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder Name...">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>Organisation</label>
-                                                <input type="text" class="form-control" placeholder="Organisation name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>aka</label>
-                                                <input type="text" class="form-control" placeholder="it's alias me">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>description</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>concern</label>
-                                                <input type="text" class="form-control" placeholder="it's concern...">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>representative</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>reports</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>consults</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>liaises</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>delegate</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder Name...">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>dTask</label>
-                                                <input type="text" class="form-control" placeholder="Task name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>wishes</label>
-                                                <input type="text" class="form-control" placeholder="goal name">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="clearfix"></div>
-                                    </form>
-                                 </div>
-  				</div>
-  				<div id="Individual" class="tab-pane fade">
-                              <h3>Individual</h3>
-                              <div class="content">
-                                    <form>
-                                    <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>aka</label>
-                                                <input type="text" class="form-control" placeholder="it's alias me..">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>description</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>concern</label>
-                                                <input type="text" class="form-control" placeholder="it's concern...">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>attitude</label>
-                                                <select class="form-control" name="category">
-                                                  <option>select</option>
-                                                  <option>positive</option>
-                                                  <option>neutral</option>
-                                                  <option>negative</option>
-                                                  <option>?</option>
-                                                </select>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>domain Knowledge</label>
-                                                <select class="form-control" name="category">
-                                                  <option>select</option>
-                                                  <option>novice</option>
-                                                  <option>intermediate</option>
-                                                  <option>expert</option>
-                                                  <option>?</option>
-                                                </select>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>reports</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>consults</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>liaises</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>delegate</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                       <div class="col-md-6">
-                                          <div class="form-group">
-                                             <label>dTask</label>
-                                             <input type="text" class="form-control" placeholder="Task name">
-                                          </div>
-                                       </div>
-                                       <div class="col-md-6">
-                                          <div class="form-group">
-                                             <label>wishes</label>
-                                             <input type="text" class="form-control" placeholder="goal name">
-                                          </div>
-                                       </div>
-                                    </div>
-                                      
-                                       <div class="clearfix"></div>
-                                    </form>
-                                 </div>
-  				</div>
-  				<div id="Role" class="tab-pane fade">
-                              <h3>Role</h3>
-                              <div class="content">
-                                    <form>
-                                    <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>aka</label>
-                                                <input type="text" class="form-control" placeholder="it's alias me..">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>is A</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>description</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-12">
-                                             <div class="form-group">
-                                                <label>concern</label>
-                                                <input type="text" class="form-control" placeholder="it's concern...">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>PlayerType</label>
-                                                <select class="form-control" name="category">
-                                                  <option>select</option>
-                                                  <option>Only one</option>
-                                                  <option>One</option>
-                                                  <option>Any</option>
-                                                  <option>Group</option>
-                                                </select>
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>RolePlayer</label>
-                                                <select class="form-control" name="category">
-                                                  <option>select</option>
-                                                  <option>All</option>
-                                                  <option>Some</option>
-                                                  <option>Any</option>
-                                                  
-                                                </select>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>reports</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>consults</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>liaises</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                             <div class="form-group">
-                                                <label>delegate</label>
-                                                <input type="text" class="form-control" placeholder="Stakeholder name">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row">
-                                       <div class="col-md-6">
-                                          <div class="form-group">
-                                             <label>dTask</label>
-                                             <input type="text" class="form-control" placeholder="Task name">
-                                          </div>
-                                       </div>
-                                       <div class="col-md-6">
-                                          <div class="form-group">
-                                             <label>wishes</label>
-                                             <input type="text" class="form-control" placeholder="goal name">
-                                          </div>
-                                       </div>
-                                    </div>
-                                       
-                                       <div class="clearfix"></div>
-                                    </form>
-                                 </div>
-  				</div>
-			</div>
-        </div>
-        <div class="modal-footer">
-        	<button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
-          	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">New Stakeholder</h4>
+            <button class="btn btn-info" onclick="cloneModal($('#createStakeholder'))">+</button>
+         </div>
+         <div class="modal-body">
+            <ul class="nav nav-tabs">
+               <li class="active"><a data-toggle="tab" href="#Organisation">Organisation</a></li>
+               <li><a data-toggle="tab" href="#Individual">Individual</a></li>
+               <li><a data-toggle="tab" href="#Role">Role</a></li>
+            </ul>
+            <div class="tab-content">
+               <div id="Organisation" class="tab-pane fade in active">
+                  <h3>Organisation</h3>
+                  <div class="content">
+                     <form>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>Name</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder Name...">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>Organisation</label>
+                                 <input type="text" class="form-control" placeholder="Organisation name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>aka</label>
+                                 <input type="text" class="form-control" placeholder="it's alias me">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>description</label>
+                                 <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>concern</label>
+                                 <input type="text" class="form-control" placeholder="it's concern...">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>representative</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>reports</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>consults</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>liaises</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>delegate</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder Name...">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>dTask</label>
+                                 <input type="text" class="form-control" placeholder="Task name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>wishes</label>
+                                 <input type="text" class="form-control" placeholder="goal name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </form>
+                  </div>
+               </div>
+               <div id="Individual" class="tab-pane fade">
+                  <h3>Individual</h3>
+                  <div class="content">
+                     <form>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>Name</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>aka</label>
+                                 <input type="text" class="form-control" placeholder="it's alias me..">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>description</label>
+                                 <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>concern</label>
+                                 <input type="text" class="form-control" placeholder="it's concern...">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>attitude</label>
+                                 <select class="form-control" name="category">
+                                    <option>select</option>
+                                    <option>positive</option>
+                                    <option>neutral</option>
+                                    <option>negative</option>
+                                    <option>?</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>domain Knowledge</label>
+                                 <select class="form-control" name="category">
+                                    <option>select</option>
+                                    <option>novice</option>
+                                    <option>intermediate</option>
+                                    <option>expert</option>
+                                    <option>?</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>reports</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>consults</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>liaises</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>delegate</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>dTask</label>
+                                 <input type="text" class="form-control" placeholder="Task name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>wishes</label>
+                                 <input type="text" class="form-control" placeholder="goal name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </form>
+                  </div>
+               </div>
+               <div id="Role" class="tab-pane fade">
+                  <h3>Role</h3>
+                  <div class="content">
+                     <form>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>Name</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>aka</label>
+                                 <input type="text" class="form-control" placeholder="it's alias me..">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>is A</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>description</label>
+                                 <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>concern</label>
+                                 <input type="text" class="form-control" placeholder="it's concern...">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>PlayerType</label>
+                                 <select class="form-control" name="category">
+                                    <option>select</option>
+                                    <option>Only one</option>
+                                    <option>One</option>
+                                    <option>Any</option>
+                                    <option>Group</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>RolePlayer</label>
+                                 <select class="form-control" name="category">
+                                    <option>select</option>
+                                    <option>All</option>
+                                    <option>Some</option>
+                                    <option>Any</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>reports</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>consults</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>liaises</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>delegate</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>dTask</label>
+                                 <input type="text" class="form-control" placeholder="Task name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>wishes</label>
+                                 <input type="text" class="form-control" placeholder="goal name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
       </div>
-      
-    </div>
-  </div>
-
-
-
+   </div>
+</div>
 <!-- Modal Resource-->
 <div class="modal createResource" id="createResource" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">New Resource</h4>
             <button class="btn btn-info" onclick="cloneModal($('#createResource'))">+</button>
-          </div>
-          <div class="modal-body">
+         </div>
+         <div class="modal-body">
             <div class="content">
-                  <form>
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="form-group">
+               <form>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="form-group">
                            <input type="hidden" name="idProjectmodalResource" value="<?=$idproject?>" id="idProjectmodalResource">
-                              <label>Resource Name</label>
-                              <?php 
-                                 echo $this->tag->textField(["resourcename", "size" => 30, 
-                                 "class" => "form-control", "id" => "Modalresourcename"]) 
-                                 ?>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="form-group">
-                              <label>description</label>
-                              <?php 
-                                 echo $this->tag->textArea(["Description", "class" => "form-control", 
-                                  "id" => "ModalDesResource" ,"rows" => 3,]) 
-                                 ?>
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="form-group">
-                              <label>includes</label>
-                              <?php 
-                                    echo $this->tag->textField(["includes", "size" => 30, 
-                                    "class" => "form-control", "id" => "ModalincludesResource"]) 
+                           <label>Resource Name</label>
+                           <?php 
+                              echo $this->tag->textField(["resourcename", "size" => 30, 
+                              "class" => "form-control", "id" => "Modalresourcename"]) 
                               ?>
-                           </div>
                         </div>
                      </div>
-
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label>r Owner</label>
-                              <?php 
-                                 echo $this->tag->textField(["rOwner", "size" => 30, 
-                                 "class" => "form-control", "id" => "ModalrOwnerResource"]) 
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="form-group">
+                           <label>description</label>
+                           <?php 
+                              echo $this->tag->textArea(["Description", "class" => "form-control", 
+                               "id" => "ModalDesResource" ,"rows" => 3,]) 
                               ?>
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="form-group">
-                              <label>p Owner</label>
-                              <?php 
-                                 echo $this->tag->textField(["pOwner", "size" => 30, 
-                                 "class" => "form-control", "id" => "ModalpOwnerResource"]) 
-                              ?>
-                           </div>
                         </div>
                      </div>
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="form-group">
-                              <label>Maintainer</label>
-                              <?php 
-                                 echo $this->tag->textField(["maintainer", "size" => 30, 
-                                 "class" => "form-control", "id" => "ModalmaintainerResource"]) 
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="form-group">
+                           <label>includes</label>
+                           <?php 
+                              echo $this->tag->textField(["includes", "size" => 30, 
+                              "class" => "form-control", "id" => "ModalincludesResource"]) 
+                              ?>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label>r Owner</label>
+                           <?php 
+                              echo $this->tag->textField(["rOwner", "size" => 30, 
+                              "class" => "form-control", "id" => "ModalrOwnerResource"]) 
+                              ?>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group">
+                           <label>p Owner</label>
+                           <?php 
+                              echo $this->tag->textField(["pOwner", "size" => 30, 
+                              "class" => "form-control", "id" => "ModalpOwnerResource"]) 
+                              ?>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="form-group">
+                           <label>Maintainer</label>
+                           <?php 
+                              echo $this->tag->textField(["maintainer", "size" => 30, 
+                              "class" => "form-control", "id" => "ModalmaintainerResource"]) 
                               ?>    
-                           </div>
                         </div>
                      </div>
-                     
-                     <div class="clearfix"></div>
-                  </form>
-               </div>
-          </div>
-          <div class="modal-footer">
-                <button type="button" class="btn btn-info" id="saveResourceformModal">Save</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
+                  </div>
+                  <div class="clearfix"></div>
+               </form>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-info" id="saveResourceformModal">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
       </div>
-    </div>
-   
-  <!-- blockJS -->
-  <script src="<?php echo $this->url->get('/public/modal/cloneModal.js');?>"></script>
-  <!-- /.blockJS -->
+   </div>
+</div>
+<!-- blockJS -->
+<script src="<?php echo $this->url->get('/public/modal/cloneModal.js');?>"></script>
+<!-- /.blockJS -->

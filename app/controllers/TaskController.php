@@ -9,7 +9,7 @@ class TaskController extends ControllerBase
         $this->assets->addCss('assetsThor/css/light-bootstrap-dashboard.css');
         $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');        
         $this->assets->addCss('assetsThor/css/demo.css');
-        ////$this->assets->addCss('assetsThor/css/navbar.css');
+        $this->assets->addCss('assetsThor/css/navbar.css');
 
          
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
