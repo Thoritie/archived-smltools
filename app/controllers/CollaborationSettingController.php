@@ -105,9 +105,6 @@ class CollaborationsettingController extends ControllerBase
         $this->tag->setDefault("EdCollaborationSettingName",$collaboration->name);
         $this->tag->setDefault("EdDescription",$collaboration->Description);
         
-           
-        
-
        
         $condition = [];
         $condition["idProject"] = $idProject;
@@ -116,8 +113,6 @@ class CollaborationsettingController extends ControllerBase
         $task = Tasks::Find(array($condition));
 
         $this->view->task = $task;
-
-
 
 
         $userLogin = $this->session->get('userLogin');
@@ -142,7 +137,7 @@ class CollaborationsettingController extends ControllerBase
     }
 
     public function saveAction(){
-        $id = $this->request->getPost("idCollaboration");
+        $id = $this->request->getPost("id");
         if(!$id){
             $collaboration = new Collaboration();
         }else{

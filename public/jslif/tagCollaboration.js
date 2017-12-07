@@ -94,4 +94,35 @@ $(document).ready(function() {
         })
        
     });
+
+
+    $("#EditColla").click(function (){
+        
+                var id = $("#EdId").val();
+                var Name = $("#EdCollaborationSettingName").val();
+                var Description = $("#EdDescription").val();
+                var idProject = $("#EdIdProject").val();
+        
+                var include =$("#EdInclude").tagsinput('items')
+                item1 = {};
+                $.each(include, function(index, input){
+                    item1 [index] = input.value
+                });
+        
+                $.ajax({
+                    type:'POST',
+                    url: "save",
+                    data:{
+                        id : id,
+                        Name: Name,
+                        Description: Description,
+                        idProject : idProject,
+                        include : item1,
+                    },
+                    success:function(data){
+                        window.location.href = baseUrl+"collaborationsetting";
+                    }
+                })
+               
+            });
 });
