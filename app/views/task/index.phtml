@@ -128,12 +128,12 @@
     function deleteTask(id){
         var idtask = id;
 
-        $.post("deleteTask",{
+        $.post(baseUrl+"task/deleteTask",{
             idTask : idtask
         }, function(data){
             console.log(data);
         },  "json");
-        $.redirect("index", {  });
+        $.redirect(baseUrl+"task/index", {  });
     }
 </script>
 <!-- /.blockJS -->

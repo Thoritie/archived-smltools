@@ -83,13 +83,13 @@
     function deleteCollaburation(id){
         var idCollaboration = id;
        
-        $.post("deleteCollaburation",{
+        $.post(baseUrl+"collaborationsetting/deleteCollaburation",{
             idCollaboration : idCollaboration
         }, function(data){
             console.log(data);
         },  "json");
 
-         $.redirect("index", {  }); 
+         $.redirect(baseUrl+"collaborationsetting/index", {  }); 
     }
 </script>
 <!-- /.blockJS -->
