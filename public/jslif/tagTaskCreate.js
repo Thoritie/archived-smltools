@@ -32,7 +32,7 @@ $(document).ready(function() {
             taskname: {
                 required: true,
                 remote: {
-                    url: "checkDupTaskName",
+                    url: baseUrl+"task/checkDupTaskName",
                     type: "post",
                     data: {
                         taskname: function () {
@@ -366,7 +366,7 @@ $(document).ready(function() {
                     
                             $.ajax({
                                 type:'POST',
-                                url: "save",
+                                url: baseUrl+"task/save",
                                 data:{
                                     taskname : taskname,
                                     isA : isA,
@@ -435,7 +435,7 @@ $(document).ready(function() {
            
                 $.ajax({
                     type:'POST',
-                    url: "save",
+                    url: baseUrl+"task/save",
                     data:{
                         taskname : taskname,
                         isA : isA,
@@ -500,7 +500,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type:'POST',
-                url: "saveResourceFormModal",
+                url: baseUrl+"task/saveResourceFormModal",
                 data:{
                     resourcename: resourcename,
                     Description: Description,
