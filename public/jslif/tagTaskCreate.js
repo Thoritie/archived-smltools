@@ -210,7 +210,7 @@ $(document).ready(function() {
 
         function tagResource(){
             
-            $.post("findResource",{
+            $.post(baseUrl+"task/findResource",{
                 project : projectid
             }, function(data){
                 console.log(data);
@@ -512,7 +512,7 @@ $(document).ready(function() {
                 },
                 success:function(data){
                     Resource.clear();
-                    $.post("findResource",{
+                    $.post(baseUrl+"task/findResource",{
                             project : projectid
                             }, function(data){
                               console.log(data);

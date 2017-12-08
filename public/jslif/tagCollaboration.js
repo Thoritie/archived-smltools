@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     var idproject = $("#idProject").val();
     
-    $.post("findTask",{
+    $.post(baseUrl+"collaborationsetting/findTask",{
 
         project : idproject
     }, function(data){
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
         $.ajax({
             type:'POST',
-            url: "save",
+            url: baseUrl+"collaborationsetting/save",
             data:{
                 Name: Name,
                 Description: Description,
@@ -111,7 +111,7 @@ $(document).ready(function() {
         
                 $.ajax({
                     type:'POST',
-                    url: "save",
+                    url: baseUrl+"collaborationsetting/save",
                     data:{
                         id : id,
                         Name: Name,
