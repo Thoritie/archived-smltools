@@ -5,12 +5,22 @@ $(document).ready(function () {
         highlight: function (element) {
             $(element)
                 .closest('.form-control')
-                .addClass('is-invalid')
+                .addClass('is-invalid');
+            console.log(element);
         },
         unhighlight: function (element) {
             $(element)
                 .closest('.form-control')
                 .removeClass('is-invalid')
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
         }
     })
     $.validator.addMethod("nowhitespace", function (value, element) {
