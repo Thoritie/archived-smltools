@@ -51,7 +51,36 @@ function initResourseData(idModal){
             displayKey: 'text',
             source: Stakeholder.ttAdapter(),
             templates : {
-                empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+            },
+        }
+    });
+
+    var ModalpOwnerResource = $('.ModalpOwnerResource-'+idModal);
+    ModalpOwnerResource.tagsinput({
+        itemValue: 'value',
+        itemText: 'text',
+        typeaheadjs: {
+            name: 'name',
+            displayKey: 'text',
+            source: Stakeholder.ttAdapter(),
+            templates : {
+                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+            },
+        }
+    });
+
+
+    var ModalmaintainerResource = $('.ModalmaintainerResource-'+idModal);
+    ModalmaintainerResource.tagsinput({
+        itemValue: 'value',
+        itemText: 'text',
+        typeaheadjs: {
+            name: 'name',
+            displayKey: 'text',
+            source: Stakeholder.ttAdapter(),
+            templates : {
+                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
             },
         }
     });
@@ -65,10 +94,14 @@ function setFormIdInModal(idModal, newModal){
 	newModal.find('#ModalDesResource').attr('id', 'ModalDesResource-'+idModal);
 	newModal.find('#ModalincludesResource').addClass(' ModalincludesResource-'+idModal);
     newModal.find('#ModalincludesResource').attr('id', 'ModalincludesResource-'+idModal);
-    
+
     newModal.find('#ModalrOwnerResource').addClass(' ModalrOwnerResource-'+idModal);
-	newModal.find('#ModalrOwnerResource').attr('id', 'ModalrOwnerResource-'+idModal);
-	newModal.find('#ModalpOwnerResource').attr('id', 'ModalpOwnerResource-'+idModal);
+    newModal.find('#ModalrOwnerResource').attr('id', 'ModalrOwnerResource-'+idModal);
+
+    newModal.find('#ModalpOwnerResource').addClass(' ModalpOwnerResource-'+idModal);
+    newModal.find('#ModalpOwnerResource').attr('id', 'ModalpOwnerResource-'+idModal);
+
+    newModal.find('#ModalmaintainerResource').addClass(' ModalmaintainerResource-'+idModal);
 	newModal.find('#ModalmaintainerResource').attr('id', 'ModalmaintainerResource-'+idModal);
 	
 	var onClickSave = "saveResourse('"+ idModal + "')";
@@ -92,17 +125,17 @@ function saveResourse(idModal){
         item1 [index] = input.value
     });
 
-    // var pOwner = $("#ModalpOwnerResource-"+idModal).tagsinput('items')
-    // item2 = {};
-    // $.each(pOwner, function(index, input){
-    //     item2 [index] = input.value
-    // });
+    var pOwner = $("#ModalpOwnerResource-"+idModal).tagsinput('items')
+    item2 = {};
+    $.each(pOwner, function(index, input){
+        item2 [index] = input.value
+    });
 
-    // var maintainer = $("#ModalmaintainerResource-"+idModal).tagsinput('items')
-    // item3 = {};
-    // $.each(maintainer, function(index, input){
-    //     item3 [index] = input.value
-    // });
+    var maintainer = $("#ModalmaintainerResource-"+idModal).tagsinput('items')
+    item3 = {};
+    $.each(maintainer, function(index, input){
+        item3 [index] = input.value
+    });
 
     var idProject = $("#idProjectmodalResource").val();
 

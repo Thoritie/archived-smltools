@@ -168,34 +168,34 @@ $(document).ready(function() {
                 //     }
                 // });
 
-                var ModalpOwnerResource = $('#ModalpOwnerResource');
-                ModalpOwnerResource.tagsinput({
-                    itemValue: 'value',
-                    itemText: 'text',
-                    typeaheadjs: {
-                        name: 'name',
-                        displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
-                        templates : {
-                            empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
-                        },
-                    }
-                });
+                // var ModalpOwnerResource = $('#ModalpOwnerResource');
+                // ModalpOwnerResource.tagsinput({
+                //     itemValue: 'value',
+                //     itemText: 'text',
+                //     typeaheadjs: {
+                //         name: 'name',
+                //         displayKey: 'text',
+                //         source: Stakeholder.ttAdapter(),
+                //         templates : {
+                //             empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                //         },
+                //     }
+                // });
 
 
-                var ModalmaintainerResource = $('#ModalmaintainerResource');
-                ModalmaintainerResource.tagsinput({
-                    itemValue: 'value',
-                    itemText: 'text',
-                    typeaheadjs: {
-                        name: 'name',
-                        displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
-                        templates : {
-                            empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
-                        },
-                    }
-                });
+                // var ModalmaintainerResource = $('#ModalmaintainerResource');
+                // ModalmaintainerResource.tagsinput({
+                //     itemValue: 'value',
+                //     itemText: 'text',
+                //     typeaheadjs: {
+                //         name: 'name',
+                //         displayKey: 'text',
+                //         source: Stakeholder.ttAdapter(),
+                //         templates : {
+                //             empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                //         },
+                //     }
+                // });
               
               
         },  "json");
@@ -212,7 +212,6 @@ $(document).ready(function() {
             $.post(baseUrl+"task/findResource",{
                 project : projectid
             }, function(data){
-                console.log(data);
                     var auto = createJSON(data);
                     var n = createString(auto);
                 
