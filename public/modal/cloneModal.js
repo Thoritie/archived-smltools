@@ -41,13 +41,32 @@ function initResourseData(idModal){
             },
         }
     });
+
+    var ModalrOwnerResource = $('.ModalrOwnerResource-'+idModal);
+    ModalrOwnerResource.tagsinput({
+        itemValue: 'value',
+        itemText: 'text',
+        typeaheadjs: {
+            name: 'name',
+            displayKey: 'text',
+            source: Stakeholder.ttAdapter(),
+            templates : {
+                empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+            },
+        }
+    });
+   
+
+
 }
 
 function setFormIdInModal(idModal, newModal){
 	newModal.find('#Modalresourcename').attr('id', 'Modalresourcename-'+idModal);
 	newModal.find('#ModalDesResource').attr('id', 'ModalDesResource-'+idModal);
 	newModal.find('#ModalincludesResource').addClass(' ModalincludesResource-'+idModal);
-	newModal.find('#ModalincludesResource').attr('id', 'ModalincludesResource-'+idModal);
+    newModal.find('#ModalincludesResource').attr('id', 'ModalincludesResource-'+idModal);
+    
+    newModal.find('#ModalrOwnerResource').addClass(' ModalrOwnerResource-'+idModal);
 	newModal.find('#ModalrOwnerResource').attr('id', 'ModalrOwnerResource-'+idModal);
 	newModal.find('#ModalpOwnerResource').attr('id', 'ModalpOwnerResource-'+idModal);
 	newModal.find('#ModalmaintainerResource').attr('id', 'ModalmaintainerResource-'+idModal);
@@ -60,30 +79,30 @@ function setFormIdInModal(idModal, newModal){
 
 function saveResourse(idModal){
 	var resourcename = $("#Modalresourcename-"+idModal).val();
-//    var Description = $("#ModalDesResource-"+idModal).val();
-//    var includes = $("#ModalincludesResource-"+idModal).tagsinput('items')
-//    item4 = {};
-//    $.each(includes, function(index, input){
-//        item4 [index] = input.value
-//    });
-//
-//    var rOwner =$("#ModalrOwnerResource-"+idModal).tagsinput('items')
-//    item1 = {};
-//    $.each(rOwner, function(index, input){
-//        item1 [index] = input.value
-//    });
-//
-//    var pOwner = $("#ModalpOwnerResource-"+idModal).tagsinput('items')
-//    item2 = {};
-//    $.each(rOwner, function(index, input){
-//        item2 [index] = input.value
-//    });
-//
-//    var maintainer = $("#ModalmaintainerResource-"+idModal).tagsinput('items')
-//    item3 = {};
-//    $.each(rOwner, function(index, input){
-//        item3 [index] = input.value
-//    });
+    var Description = $("#ModalDesResource-"+idModal).val();
+    var includes = $("#ModalincludesResource-"+idModal).tagsinput('items')
+    item4 = {};
+    $.each(includes, function(index, input){
+        item4 [index] = input.value
+    });
+
+    var rOwner =$("#ModalrOwnerResource-"+idModal).tagsinput('items')
+    item1 = {};
+    $.each(rOwner, function(index, input){
+        item1 [index] = input.value
+    });
+
+    // var pOwner = $("#ModalpOwnerResource-"+idModal).tagsinput('items')
+    // item2 = {};
+    // $.each(pOwner, function(index, input){
+    //     item2 [index] = input.value
+    // });
+
+    // var maintainer = $("#ModalmaintainerResource-"+idModal).tagsinput('items')
+    // item3 = {};
+    // $.each(maintainer, function(index, input){
+    //     item3 [index] = input.value
+    // });
 
     var idProject = $("#idProjectmodalResource").val();
 
@@ -92,11 +111,11 @@ function saveResourse(idModal){
         url: baseUrl+"task/saveResourceFormModal",
         data:{
             resourcename: resourcename,
-//            Description: Description,
-//            includes: item4,
-//            rOwner : item1,
-//            pOwner : item2,
-//            maintainer: item3,
+            Description: Description,
+            includes: item4,
+            rOwner : item1,
+            // pOwner : item2,
+            // maintainer: item3,
             idProject : idProject
         },
         success:function(data){

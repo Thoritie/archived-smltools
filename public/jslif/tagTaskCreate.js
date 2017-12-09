@@ -1,9 +1,10 @@
 var  Resource;
+var Stakeholder;
 var projectid = $("#idProject").val();
 //modal 
 
 function showModalNewStakeholder(){
-	$("div.createStakeholder").modal("show");
+	$("#createStakeholder").modal("show");
 };
 
 function showModalNewResource(){
@@ -86,7 +87,7 @@ $(document).ready(function() {
            
                 var auto = createJSON(data);
                 var n = createString(auto);
-                var Stakeholder = new Bloodhound({
+                Stakeholder = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                     queryTokenizer: Bloodhound.tokenizers.whitespace,
                     local: JSON.parse(n)
@@ -102,7 +103,7 @@ $(document).ready(function() {
                         displayKey: 'text',
                         source: Stakeholder.ttAdapter(),
                         templates : {
-                            empty: '<div id="nomatch" class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                            empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
                         }
                     }
                 });
@@ -117,7 +118,7 @@ $(document).ready(function() {
                         source: Stakeholder.ttAdapter(),
                         templates : {
                             highlight: true,
-                            empty: '<div class="empty-message text-info add-stakeholder" onclick="showModalNewStakeholder()"> No matches.</div>'
+                            empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
                         }
                     }
                 });
@@ -132,7 +133,7 @@ $(document).ready(function() {
                         displayKey: 'text',
                         source: Stakeholder.ttAdapter(),
                         templates : {
-                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                            empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
                         }
                     }
                 });
@@ -148,24 +149,24 @@ $(document).ready(function() {
                         displayKey: 'text',
                         source: Stakeholder.ttAdapter(),
                         templates : {
-                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                            empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
                         },
                     }
                 });
 
-                var ModalrOwnerResource = $('#ModalrOwnerResource');
-                ModalrOwnerResource.tagsinput({
-                    itemValue: 'value',
-                    itemText: 'text',
-                    typeaheadjs: {
-                        name: 'name',
-                        displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
-                        templates : {
-                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
-                        },
-                    }
-                });
+                // var ModalrOwnerResource = $('#ModalrOwnerResource');
+                // ModalrOwnerResource.tagsinput({
+                //     itemValue: 'value',
+                //     itemText: 'text',
+                //     typeaheadjs: {
+                //         name: 'name',
+                //         displayKey: 'text',
+                //         source: Stakeholder.ttAdapter(),
+                //         templates : {
+                //             empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                //         },
+                //     }
+                // });
 
                 var ModalpOwnerResource = $('#ModalpOwnerResource');
                 ModalpOwnerResource.tagsinput({
@@ -176,7 +177,7 @@ $(document).ready(function() {
                         displayKey: 'text',
                         source: Stakeholder.ttAdapter(),
                         templates : {
-                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                            empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
                         },
                     }
                 });
@@ -191,7 +192,7 @@ $(document).ready(function() {
                         displayKey: 'text',
                         source: Stakeholder.ttAdapter(),
                         templates : {
-                            empty: '<div class="empty-message text-info" onclick="showModalNewStakeholder()"> No matches.</div>'
+                            empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
                         },
                     }
                 });
