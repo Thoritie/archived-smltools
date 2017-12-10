@@ -289,14 +289,9 @@ class TaskController extends ControllerBase
     public function checkDupTaskNameAction()
     {
         $idProject = $this->request->getPost('idProject');
-        $result = true;
         $taskname = $this->request->getPost('taskname');
+        $result = true;
         $condition = [];
-            
-        // $condition["idProject"] = "5a146630541804b819000029";
-        // $condition["name"] = [
-        //     '$ne' => $taskname 
-        // ];   
             
         $condition["idProject"] = $idProject;
         $condition["name"] = $taskname;
@@ -323,21 +318,47 @@ class TaskController extends ControllerBase
         $res->project = $this->request->getPost("idProject");
         $res->save();
     }
+
+    public function checkDupEditTaskNameAction()
+    {
+        $idTask = $this->request->getPost('idTask');
+        $idProject = $this->request->getPost('idProject');
+        $taskname = $this->request->getPost('taskname');
+        $result = true;
+        $condition = [];
+            
+        $condition["idProject"] = $idProject;
+        $condition["name"] = $taskname;
+       
+
+        $taskCompare = Tasks::findById($idTask);
+        $task = Tasks::Find(array($condition));
+
+        if($task){
+            $result = false;
+            if($task[0]->name == $taskCompare->name){
+                $result = true;
+            }
+        }
+        return json_encode($result);
+       
+    }
    
     public function testAction(){
         $taskname = "firstTask";
         $condition = [];
         
-        $condition["idProject"] = "5a146630541804b819000029";
-             $condition["name"] = [
-                     '$ne' => $taskname 
-             ];   
+        $condition["name"] = "qwerty";
+            //  $condition["_id"] = [
+            //          '$ne' => 'ObjectId("5a2ca92c541804e42d000029")'
+            //  ];   
             
-         $task = Tasks::Find(array($condition));
-
-         
-        var_dump($task);
+             $task = Tasks::Find(array($condition));
+           $qwe = $task[0]->name;
+        var_dump($qwe);
     }
+
+
 }
 
     
