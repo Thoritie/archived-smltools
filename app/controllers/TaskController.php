@@ -288,13 +288,22 @@ class TaskController extends ControllerBase
 
     public function checkDupTaskNameAction()
     {
+        $idProject = $this->request->getPost('idProject');
         $result = true;
         $taskname = $this->request->getPost('taskname');
         $condition = [];
-        if($taskname){
-            $condition["name"] = $taskname;
-        }
+            
+        // $condition["idProject"] = "5a146630541804b819000029";
+        // $condition["name"] = [
+        //     '$ne' => $taskname 
+        // ];   
+            
+        $condition["idProject"] = $idProject;
+        $condition["name"] = $taskname;
+
+
         $task = Tasks::Find(array($condition));
+
         if($task){
             $result = false;
         }
@@ -315,6 +324,20 @@ class TaskController extends ControllerBase
         $res->save();
     }
    
+    public function testAction(){
+        $taskname = "firstTask";
+        $condition = [];
+        
+        $condition["idProject"] = "5a146630541804b819000029";
+             $condition["name"] = [
+                     '$ne' => $taskname 
+             ];   
+            
+         $task = Tasks::Find(array($condition));
+
+         
+        var_dump($task);
+    }
 }
 
     

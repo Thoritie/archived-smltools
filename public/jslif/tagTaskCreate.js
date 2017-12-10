@@ -38,13 +38,17 @@ $(document).ready(function() {
                     data: {
                         taskname: function () {
                             return $("#taskname").val()
+                        },
+                        idProject: function () {
+                            return $("#idProject").val()
                         }
+
                     }
                 }
             },
         },
         messages: {
-            projectname: {
+            taskname: {
                 required: "Task name is required",
                 remote: jQuery.validator.format("{0} is already taken.")
             }
