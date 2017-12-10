@@ -32,7 +32,7 @@ class CollaborationsettingController extends ControllerBase
 
 
         $this->assets->addJs('jquery/collaburationEditRedirect.js');  
-
+       
         $this->assets->addJs('jslif/tagCollaboration.js');
         
 
@@ -172,6 +172,49 @@ class CollaborationsettingController extends ControllerBase
         $tasks = Tasks::Find(array($condition));
 
         return json_encode($tasks);
+    }
+
+    public function checkDupNameAction()
+    {
+        $idProject = $this->request->getPost('idProject');
+        $collaburationName = $this->request->getPost('CollaburationName');
+        $result = true;
+        $condition = [];
+            
+        $condition["idProject"] = $idProject;
+        $condition["name"] = $collaburationName;
+
+
+        $collaboration = Collaboration::Find(array($condition));
+
+        if($collaboration){
+            $result = false;
+        }
+        return json_encode($result);
+    }
+
+    public function checkDupEditNameAction()
+    {
+        $idCollaburation = $this->request->getPost('idCollaburation');
+        $idProject = $this->request->getPost('idProject');
+        $collaburationName = $this->request->getPost('CollaburationName');
+        $result = true;
+        $condition = [];
+            
+        $condition["idProject"] = $idProject;
+        $condition["name"] = $collaburationName;
+       
+        $collaborationCompare = Collaboration::findById($idCollaburation);
+        $collaboration = Collaboration::Find(array($condition));
+
+        if($collaboration){
+            $result = false;
+            if($collaboration[0]->name == $collaborationCompare->name){
+                $result = true;
+            }
+        }
+        return json_encode($result);
+       
     }
 
 }
