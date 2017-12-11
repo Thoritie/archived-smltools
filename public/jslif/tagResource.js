@@ -181,7 +181,7 @@ $(document).ready(function() {
     $('#saveResource').click(function (){
         var resourcename = $("#resourcename").val();
         var Description = $("#Description").val();
-       
+        var idProject = $("#idProject").val();
 
        var includes =$("#includes").tagsinput('items')
        item4 = {};
@@ -220,7 +220,8 @@ $(document).ready(function() {
                 includes: includes,
                 rOwner : item1,
                 pOwner : pOwner,
-                maintainer: maintainer
+                maintainer: maintainer,
+                idProject:idProject
             },
             success:function(data){
                 window.location.href="index";

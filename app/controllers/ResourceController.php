@@ -79,6 +79,22 @@ class ResourceController extends ControllerBase
 
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
+
+        $id = $this->session->get('idProject');
+        $condition = [];
+        if($id){
+            $condition["idProject"] = $id;
+            $res = Resource::Find(array($condition));
+        
+        }else{
+            $this->view->res = 0;
+        }
+        
+        $this->view->res = $res;
+
+        
+
+        
     }
 
     public function createAction()
@@ -91,12 +107,12 @@ class ResourceController extends ControllerBase
         $projectname = $this->session->get('projectname');
         $this->view->projectname = $projectname;
 
-        $userLogin = $this->session->get('userLogin');
-        $this->view->userLogin = $userLogin;
-
+        $id = $this->session->get('idProject');
+        $this->tag->setDefault("idProject", $id);
+        $this->view->idproject = $id;
 
         
-    }
+    }   
 
     public function saveAction(){
 
@@ -111,6 +127,7 @@ class ResourceController extends ControllerBase
         $res->rOwner = $this->request->getPost("rOwner");
         $res->pOwner = $this->request->getPost("pOwner");
         $res->maintainer = $this->request->getPost("maintainer");
+        $res->idProject = $this->request->getPost("idProject");
         $res->save();
 
 

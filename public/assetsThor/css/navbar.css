@@ -188,3 +188,12 @@ div.hidden {
 .thumbnail:hover{
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
 }
+
+.iconInput {
+    float: right;
+    margin-right: 10px;
+    margin-top: -22px;
+    position: relative;
+    /* z-index: 2; */
+  
+}
