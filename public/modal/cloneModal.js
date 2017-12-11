@@ -1,9 +1,8 @@
 var zindex = 2000;
 var listModal = [];
 
-function cloneModal($modal) {
+function cloneModalResource($modal) {
     var newModal = $modal.clone();
-
     //gen id
     var idModal = new Date().getTime();
     newModal.attr("id", idModal);
@@ -11,13 +10,13 @@ function cloneModal($modal) {
     
     
     //set onclick in button
-    setFormIdInModal(idModal, newModal);
+    setFormIdInModalResource(idModal, newModal);
 //    var onClickText = "cloneModal($('#" + idModal + "'))";
 //    newModal.find('.btn.btn-info').attr('onclick',onClickText);
 
     //append to modal
     $modal.after(newModal);
-    initResourseData(idModal);
+    initData(idModal);
     
     //show modal
     var modalId = "#" + idModal;
@@ -27,9 +26,43 @@ function cloneModal($modal) {
 //    listModal.push(idModal);
 }
 
-function initResourseData(idModal){
-	var ModalincludesResource = $('.ModalincludesResource-'+idModal);
-    ModalincludesResource.tagsinput({
+function cloneModalTask($modal) {
+    var newModal = $modal.clone();
+   
+    var idModal = new Date().getTime();
+    newModal.attr("id", idModal);
+    newModal.attr("style", "z-index: " + zindex++);
+  
+    setFormIdInModalTask(idModal, newModal);
+
+    $modal.after(newModal);
+    initData(idModal);
+
+    var modalId = "#" + idModal;
+    $(modalId).modal("show");
+    
+}
+
+function cloneModalStakeholder($modal) {
+    var newModal = $modal.clone();
+   
+    var idModal = new Date().getTime();
+    newModal.attr("id", idModal);
+    newModal.attr("style", "z-index: " + zindex++);
+  
+    // setFormIdInModalStakeholder(idModal, newModal);
+
+    $modal.after(newModal);
+    // initkData(idModal);
+
+    var modalId = "#" + idModal;
+    $(modalId).modal("show");
+    
+}
+
+function initData(idModal){
+	var ModalAddResource = $('.ModalAddResource-'+idModal);
+    ModalAddResource.tagsinput({
         itemValue: 'value',
         itemText: 'text',
         typeaheadjs: {
@@ -37,13 +70,13 @@ function initResourseData(idModal){
             displayKey: 'text',
             source: Resource.ttAdapter(),
             templates : {
-                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createResource\'))"> No matches.</div>'
+                empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
             },
         }
     });
 
-    var ModalrOwnerResource = $('.ModalrOwnerResource-'+idModal);
-    ModalrOwnerResource.tagsinput({
+    var ModalAddStakeholder = $('.ModalAddStakeholder-'+idModal);
+    ModalAddStakeholder.tagsinput({
         itemValue: 'value',
         itemText: 'text',
         typeaheadjs: {
@@ -51,63 +84,96 @@ function initResourseData(idModal){
             displayKey: 'text',
             source: Stakeholder.ttAdapter(),
             templates : {
-                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createStakeholder\'))"> No matches.</div>'
             },
         }
     });
 
-    var ModalpOwnerResource = $('.ModalpOwnerResource-'+idModal);
-    ModalpOwnerResource.tagsinput({
+    var ModalAddTask = $('.ModalAddTask-'+idModal);
+    ModalAddTask.tagsinput({
         itemValue: 'value',
         itemText: 'text',
         typeaheadjs: {
             name: 'name',
             displayKey: 'text',
-            source: Stakeholder.ttAdapter(),
+            source: Resource.ttAdapter(),
             templates : {
-                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                empty: '<div class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
             },
         }
     });
-
-
-    var ModalmaintainerResource = $('.ModalmaintainerResource-'+idModal);
-    ModalmaintainerResource.tagsinput({
-        itemValue: 'value',
-        itemText: 'text',
-        typeaheadjs: {
-            name: 'name',
-            displayKey: 'text',
-            source: Stakeholder.ttAdapter(),
-            templates : {
-                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
-            },
-        }
-    });
-   
 
 
 }
 
-function setFormIdInModal(idModal, newModal){
+
+function setFormIdInModalResource(idModal, newModal){
 	newModal.find('#Modalresourcename').attr('id', 'Modalresourcename-'+idModal);
 	newModal.find('#ModalDesResource').attr('id', 'ModalDesResource-'+idModal);
-	newModal.find('#ModalincludesResource').addClass(' ModalincludesResource-'+idModal);
+	newModal.find('#ModalincludesResource').addClass(' ModalAddResource-'+idModal);
     newModal.find('#ModalincludesResource').attr('id', 'ModalincludesResource-'+idModal);
 
-    newModal.find('#ModalrOwnerResource').addClass(' ModalrOwnerResource-'+idModal);
+    newModal.find('#ModalrOwnerResource').addClass(' ModalAddStakeholder-'+idModal);
     newModal.find('#ModalrOwnerResource').attr('id', 'ModalrOwnerResource-'+idModal);
 
-    newModal.find('#ModalpOwnerResource').addClass(' ModalpOwnerResource-'+idModal);
+    newModal.find('#ModalpOwnerResource').addClass(' ModalAddStakeholder-'+idModal);
     newModal.find('#ModalpOwnerResource').attr('id', 'ModalpOwnerResource-'+idModal);
 
-    newModal.find('#ModalmaintainerResource').addClass(' ModalmaintainerResource-'+idModal);
+    newModal.find('#ModalmaintainerResource').addClass(' ModalAddStakeholder-'+idModal);
 	newModal.find('#ModalmaintainerResource').attr('id', 'ModalmaintainerResource-'+idModal);
 	
 	var onClickSave = "saveResourse('"+ idModal + "')";
 	var idSaveModal = 'saveResourceformModal-'+idModal;
 	newModal.find('#saveResourceformModal').attr('id', idSaveModal);
 	newModal.find('#'+idSaveModal).attr('onclick', onClickSave);
+}
+
+
+function setFormIdInModalTask(idModal, newModal){
+	newModal.find('#Modaltaskname').attr('id', 'Modaltaskname-'+idModal);
+    newModal.find('#ModalIsATask').attr('id', 'ModalIsATask-'+idModal);
+    newModal.find('#ModalDescriptionTask').attr('id', 'ModalDescriptionTask-'+idModal);
+
+    newModal.find('#ModalincludesTask').addClass(' ModalAddTask-'+idModal);
+    newModal.find('#ModalincludesTask').attr('id', 'ModalincludesTask-'+idModal);
+
+    newModal.find('#ModalasIsStateTask').attr('id', 'ModalasIsStateTask-'+idModal);
+
+    newModal.find('#ModalOwnerTask').addClass(' ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalOwnerTask').attr('id', 'ModalOwnerTask-'+idModal);
+
+    newModal.find('#ModalCollaburatorTask').addClass(' ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalCollaburatorTask').attr('id', 'ModalCollaburatorTask-'+idModal);
+
+    newModal.find('#ModalregulatorTask').addClass(' ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalregulatorTask').attr('id', 'ModalRegulatorTask-'+idModal);
+
+    newModal.find('#ModalUsesTask').addClass(' ModalAddResource-'+idModal);
+    newModal.find('#ModalUsesTask').attr('id', 'ModalUsesTask-'+idModal);
+
+    newModal.find('#ModalProducesTask').addClass(' ModalAddResource-'+idModal);
+    newModal.find('#ModalProducesTask').attr('id', 'ModalProducesTask-'+idModal);
+
+    newModal.find('#ModalToBeStateTask').attr('id', 'ModalToBeStateTask-'+idModal);
+    newModal.find('#ModalProducesTask').attr('id', 'ModalProducesTask-'+idModal);
+
+    newModal.find('#ModalOwnerToBeTask').addClass(' ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalOwnerToBeTask').attr('id', 'ModalOwnerToBeTask-'+idModal);
+
+    newModal.find('#ModalCollaboratorToBeTask').addClass(' ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalCollaboratorToBeTask').attr('id', 'ModalCollaboratorToBeTask-'+idModal);
+
+    newModal.find('#ModalToUseTask').addClass(' ModalAddResource-'+idModal);
+    newModal.find('#ModalToUseTask').attr('id', 'ModalToUseTask-'+idModal);
+
+    newModal.find('#ModalToProduceTask').addClass(' ModalAddResource-'+idModal);
+    newModal.find('#ModalToProduceTask').attr('id', 'ModalToProduceTask-'+idModal);
+
+	
+	var onClickSave = "saveTask('"+ idModal + "')";
+	var idSaveModal = 'saveTaskformModal-'+idModal;
+	newModal.find('#saveTaskformModal').attr('id', idSaveModal);
+    newModal.find('#'+idSaveModal).attr('onclick', onClickSave);
 }
 
 function saveResourse(idModal){
@@ -179,7 +245,6 @@ function createJSON(data) {
         item = {}
         item ["value"] = data._id.$id;
         item ["text"] = data.name;
-        item ["continent"] = "";
         
         jsonObj.push(item);
     });
@@ -187,7 +252,7 @@ function createJSON(data) {
     item = {}
     item ["value"] = 0;
     item ["text"] = "?";
-    item ["continent"] = "";
+  
     jsonObj.push(item);
    
     return jsonObj;

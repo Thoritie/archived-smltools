@@ -342,21 +342,23 @@ class TaskController extends ControllerBase
         return json_encode($result);
        
     }
-   
-    public function testAction(){
-        $taskname = "firstTask";
+
+    public function findTaskAction()
+    {
+        $this->view->disable();
+        $input = $this->request->getPost('project');
+        
         $condition = [];
         
-        $condition["name"] = "qwerty";
-            //  $condition["_id"] = [
-            //          '$ne' => 'ObjectId("5a2ca92c541804e42d000029")'
-            //  ];   
-            
-             $task = Tasks::Find(array($condition));
-           $qwe = $task[0]->name;
-        var_dump($qwe);
-    }
+        if($input){
+            $condition["idProject"] = $input;
+        }
 
+        $tasks = Tasks::Find(array($condition));
+
+        return json_encode($tasks);
+    }
+   
 
 }
 

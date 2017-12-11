@@ -1,5 +1,6 @@
 var  Resource;
 var Stakeholder;
+var Tasks;
 var projectid = $("#idProject").val();
 //modal 
 
@@ -9,6 +10,10 @@ function showModalNewStakeholder(){
 
 function showModalNewResource(){
 	$("#createResource").modal("show");
+};
+
+function showModalNewTask(){
+	$("#createTask").modal("show");
 };
 ///////////////////// -- Validate -- ///////////////////////////
 
@@ -95,7 +100,6 @@ $(document).ready(function() {
             item = {}
             item ["value"] = data._id.$id;
             item ["text"] = data.name;
-            item ["continent"] = "";
             
             jsonObj.push(item);
         });
@@ -103,7 +107,7 @@ $(document).ready(function() {
         item = {}
         item ["value"] = 0;
         item ["text"] = "?";
-        item ["continent"] = "";
+       
         jsonObj.push(item);
        
         return jsonObj;
@@ -138,7 +142,7 @@ $(document).ready(function() {
                         displayKey: 'text',
                         source: Stakeholder.ttAdapter(),
                         templates : {
-                            empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                            empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                         }
                     }
                 });
@@ -153,10 +157,26 @@ $(document).ready(function() {
                         source: Stakeholder.ttAdapter(),
                         templates : {
                             highlight: true,
-                            empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                            empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                         }
                     }
                 });
+
+                var regulator = $('#regulator');
+                regulator.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates : {
+                            highlight: true,
+                            empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                        }
+                    }
+                });
+
 
 
                 var ownerToBe = $('#ownerToBe');
@@ -168,7 +188,7 @@ $(document).ready(function() {
                         displayKey: 'text',
                         source: Stakeholder.ttAdapter(),
                         templates : {
-                            empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                            empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                         }
                     }
                 });
@@ -184,53 +204,10 @@ $(document).ready(function() {
                         displayKey: 'text',
                         source: Stakeholder.ttAdapter(),
                         templates : {
-                            empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
+                            empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                         },
                     }
                 });
-
-                // var ModalrOwnerResource = $('#ModalrOwnerResource');
-                // ModalrOwnerResource.tagsinput({
-                //     itemValue: 'value',
-                //     itemText: 'text',
-                //     typeaheadjs: {
-                //         name: 'name',
-                //         displayKey: 'text',
-                //         source: Stakeholder.ttAdapter(),
-                //         templates : {
-                //             empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
-                //         },
-                //     }
-                // });
-
-                // var ModalpOwnerResource = $('#ModalpOwnerResource');
-                // ModalpOwnerResource.tagsinput({
-                //     itemValue: 'value',
-                //     itemText: 'text',
-                //     typeaheadjs: {
-                //         name: 'name',
-                //         displayKey: 'text',
-                //         source: Stakeholder.ttAdapter(),
-                //         templates : {
-                //             empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
-                //         },
-                //     }
-                // });
-
-
-                // var ModalmaintainerResource = $('#ModalmaintainerResource');
-                // ModalmaintainerResource.tagsinput({
-                //     itemValue: 'value',
-                //     itemText: 'text',
-                //     typeaheadjs: {
-                //         name: 'name',
-                //         displayKey: 'text',
-                //         source: Stakeholder.ttAdapter(),
-                //         templates : {
-                //             empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createStakeholder\'))"> No matches.</div>'
-                //         },
-                //     }
-                // });
               
               
         },  "json");
@@ -267,7 +244,7 @@ $(document).ready(function() {
                             displayKey: 'text',
                             source: Resource.ttAdapter(),
                             templates : {
-                                empty: '<div class="empty-message text-info resourse-emptry" onclick="cloneModal($(\'#createResource\'))"> No matches.</div>'
+                                empty: '<div class="empty-message text-info resourse-emptry" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
                             },
                         }
                     });
@@ -281,7 +258,7 @@ $(document).ready(function() {
                             displayKey: 'text',
                             source: Resource.ttAdapter(),
                             templates : {
-                                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createResource\'))"> No matches.</div>'
+                                empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
                             },
                         }
                     });
@@ -295,7 +272,7 @@ $(document).ready(function() {
                             displayKey: 'text',
                             source: Resource.ttAdapter(),
                             templates : {
-                                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createResource\'))"> No matches.</div>'
+                                empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
                             },
                         }
                     });
@@ -309,24 +286,10 @@ $(document).ready(function() {
                             displayKey: 'text',
                             source: Resource.ttAdapter(),
                             templates : {
-                                empty: '<div class="empty-message text-info" onclick="cloneModal($(\'#createResource\'))"> No matches.</div>'
+                                empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
                             },
                         }
                     });
-
-//                    var ModalincludesResource = $('.ModalincludesResource');
-//                    ModalincludesResource.tagsinput({
-//                        itemValue: 'value',
-//                        itemText: 'text',
-//                        typeaheadjs: {
-//                            name: 'name',
-//                            displayKey: 'text',
-//                            source: Resource.ttAdapter(),
-//                            templates : {
-//                                empty: '<div class="empty-message text-info" onclick="showModalNewResource()"> No matches.</div>'
-//                            },
-//                        }
-//                    }); 
 
             },  "json");
 
@@ -334,9 +297,37 @@ $(document).ready(function() {
         }
 
         
+        //find Tasks 
 
+       
+        $.post(baseUrl+"task/findTask",{
+            project : projectid
+        }, function(data){
+            var auto = createJSON(data);
+            var n = createString(auto);
+        
+                Tasks = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: JSON.parse(n)
+            });
 
+            Tasks.initialize();
 
+            var includes = $('#includes');
+            includes.tagsinput({
+                itemValue: 'value',
+                itemText: 'text',
+                typeaheadjs: {
+                    name: 'name',
+                    displayKey: 'text',
+                    source: Tasks.ttAdapter(),
+                    templates : {
+                        empty: '<div class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
+                    },
+                }
+            });
+        },  "json");
 
         //save task ///////////////////////////////////////////////////////
                 $('#saveTask').click(function () {
@@ -496,13 +487,6 @@ $(document).ready(function() {
                 }
         });
 
-
-
-
-
-
-    //save resource from  modal 
-    //====================================================================================================
 
 
 });
