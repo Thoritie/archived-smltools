@@ -128,6 +128,67 @@ $(document).ready(function () {
             }
         });
 
+        var inreports = $('#inreports');
+        inreports.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    highlight: true,
+                    empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+        var inconsults = $('#inconsults');
+        inconsults.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    highlight: true,
+                    empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+
+
+        var inliaises = $('#inliaises');
+        inliaises.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+
+
+        var indelegate = $('#indelegate');
+        indelegate.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                },
+            }
+        });
 
     }, "json");
     ///saveOrganisation
@@ -180,6 +241,65 @@ $(document).ready(function () {
                 description: description,
                 concern: concern,
                 representative: itemrepresentative,
+                reports: itemreports,
+                consults: itemconsults,
+                liaises: itemliaises,
+                delegate: itemdelegate,
+                dTask: dTask,
+                wishes: wishes,
+                type: type,
+                idProject: idProject
+            },
+            success: function (data) {
+                $.redirect(baseUrl + "stakeholder/index", {});
+            }
+        })
+    });
+
+    ///saveIndividual
+    $('#savein').click(function () {
+        var name = $("#intakeName").val()
+        var aka = $("#inaka").val()
+        var description = $("#indescription").val()
+        var concern = $("#inconcern").val()
+
+        var attitude = $("#attitude").val();
+        var attitude = $("#domainKnowledge").val();
+
+        var reports = $("#inreports").tagsinput('items');
+        itemreports = {};
+        $.each(reports, function (index, input) {
+            itemreports[index] = input.value
+        });
+        var consults = $("#inconsults").tagsinput('items');
+        itemconsults = {};
+        $.each(consults, function (index, input) {
+            itemconsults[index] = input.value
+        });
+        var liaises = $("#inliaises").tagsinput('items');
+        itemliaises = {};
+        $.each(liaises, function (index, input) {
+            itemliaises[index] = input.value
+        });
+        var delegate = $("#indelegate").tagsinput('items');
+        itemdelegate = {};
+        $.each(delegate, function (index, input) {
+            itemdelegate[index] = input.value
+        });
+        var dTask = $("#indTask").val()
+        var wishes = $("#inwishes").val()
+        var idProject = $("#idProject").val();
+        var type=2;
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + "stakeholder/save",
+            data: {
+                name: name,
+                aka: aka,
+                description: description,
+                concern: concern,
+                attitude: attitude,
+                domainKnowledge: domainKnowledge,
                 reports: itemreports,
                 consults: itemconsults,
                 liaises: itemliaises,

@@ -107,6 +107,7 @@
           scrollRevelation('.reveal');
         });
       </script>
+    <!-- {{ javascript_include('assetsThor/css/light-bootstrap-dashboard.css')}} -->
     {{ javascript_include('homes/main.0cf8b554.js') }}
     {{ javascript_include('homes/word.js') }}
 
@@ -132,6 +133,7 @@
         {{ javascript_include('dist/jquery.validate.js')}}
         
         <!-- {{ javascript_include('nav/js/creative.js') }} -->
+        <!-- {{ javascript_include('assetsThor/js/light-bootstrap-dashboard.js') }} -->
         {{ javascript_include('jquery/checkLogin.js') }}
         {{ javascript_include('jquery/signinvalidate.js') }}
         <!-- {{ javascript_include('home/global.js') }} -->

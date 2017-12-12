@@ -92,7 +92,7 @@ class StakeholderController extends ControllerBase
         //3 == Role
         // data will be send from js like type=0 it mean Organisation
         $name = $this->request->getPost("name");
-        $Organisationname = $this->request->getPost("Organisationname");
+        $Organisationname = $this->request->getPost("Organisation");
         $aka = $this->request->getPost("aka");
         $description = $this->request->getPost("description");
         $concern = $this->request->getPost("concern");
@@ -109,24 +109,49 @@ class StakeholderController extends ControllerBase
         $id = $this->request->getPost("idStake");
         if(!$id){
             $stakeholders = new Stakeholders();
+            $stakeholders->idProject = $idProject;
         }else{
             $stakeholders = Stakeholders::findById($id);
         }
-        $stakeholders->idProject = $idProject;
-        $stakeholders->name = $name;
-        $stakeholders->OrganisationName = $Organisationname;
-        $stakeholders->aka = $aka;
-        $stakeholders->description = $description;
-        $stakeholders->concern = $concern;
-        $stakeholders->representative = $representative;
-        $stakeholders->reports = $reports;
-        $stakeholders->consults = $consults;
-        $stakeholders->liaises = $liaises;
-        $stakeholders->delegate = $delegate;
-        $stakeholders->dTask = $dTask;
-        $stakeholders->wishes = $wishes;
-        $stakeholders->type = $type;
-        
+
+        if($type==2){
+            $stakeholders->name = $name;
+            $stakeholders->aka = $aka;
+            $stakeholders->description = $description;
+            $stakeholders->concern = $concern;
+            $stakeholders->attitude = $attitude;
+            $stakeholders->domainKnowledge = $domainKnowledge;
+            $stakeholders->reports = $reports;
+            $stakeholders->consults = $consults;
+            $stakeholders->liaises = $liaises;
+            $stakeholders->delegate = $delegate;
+            $stakeholders->dTask = $dTask;
+            $stakeholders->wishes = $wishes;
+            $stakeholders->type = $type;
+        }else if($type==3){
+
+        }else{
+            $stakeholders->name = $name;
+            $stakeholders->OrganisationName = $Organisationname;
+            $stakeholders->aka = $aka;
+            $stakeholders->description = $description;
+            $stakeholders->concern = $concern;
+            $stakeholders->representative = $representative;
+            $stakeholders->reports = $reports;
+            $stakeholders->consults = $consults;
+            $stakeholders->liaises = $liaises;
+            $stakeholders->delegate = $delegate;
+            $stakeholders->dTask = $dTask;
+            $stakeholders->wishes = $wishes;
+            $stakeholders->type = $type;
+        }
+
+        try {
+        	$stakeholders->save();
+        	$this->flashSession->success('Your information was stored correctly!');
+        } catch (Exception $e) {
+        	$this->flashSession->error($e->getMessage());
+        }
 
 
 

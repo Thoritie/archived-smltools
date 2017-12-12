@@ -124,7 +124,7 @@ $di->set(
 				]
 			);
 			
-			$flash->setAutoescape(false);
+			$flash->setAutoescape(true);
 			return $flash;
 		}
 );
