@@ -70,6 +70,18 @@ class StakeholderController extends ControllerBase
 
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
+
+        $id = $this->session->get('idProject');
+        $condition = [];
+        if($id){
+            $condition["idProject"] = $id;
+            $stake = Stakeholders::Find(array($condition));
+        
+        }else{
+            $this->view->stake = 0;
+        }
+        
+        $this->view->stake = $stake;
     }
 
     public function saveAction()
