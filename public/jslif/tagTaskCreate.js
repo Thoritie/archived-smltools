@@ -420,7 +420,7 @@ $(document).ready(function() {
                                     idProject : idProject
                                 },
                                 success:function(data){
-                                    window.location.href="index";
+                                    $.redirect(baseUrl+"task/index", { });
                                 }
                             })    
                     }
@@ -459,8 +459,19 @@ $(document).ready(function() {
                 $.each(regulator, function(index ,input){   
                     itemRegulator [index] = input.value
                 });
-                var uses = $("#Eduses").val();
-                var produces = $("#Edproduces").val();
+
+                var uses = $("#Eduses").tagsinput('items')
+                itemUses = {};
+                $.each(uses, function(index ,input){   
+                    itemUses [index] = input.value
+                });
+
+                var produces = $("#Edproduces").tagsinput('items')
+                itemProduces = {};
+                $.each(produces, function(index ,input){   
+                    itemProduces [index] = input.value
+                });
+
                 var toBeState = $("#EdtoBeState").val();
 
                 var ownerToBe = $("#EdownerToBe").tagsinput('items')
@@ -473,8 +484,18 @@ $(document).ready(function() {
                 $.each(collaboratorToBe, function(index ,input){   
                     item4 [index] = input.value
                 });
-                var toUse = $("#EdtoUse").val();
-                var toProduce = $("#EdtoProduce").val();
+
+                var toUse = $("#EdtoUse").tagsinput('items')
+                itemtoUse = {};
+                $.each(toUse, function(index ,input){   
+                    itemtoUse [index] = input.value
+                });
+
+                var toProduce = $("#EdtoProduce").tagsinput('items')
+                itemtoProduce = {};
+                $.each(toProduce, function(index ,input){   
+                    itemtoProduce [index] = input.value
+                });
                 var idProject = $("#EdidProject").val();
                 var idTask = $("#EdidTask").val();
             
@@ -490,18 +511,18 @@ $(document).ready(function() {
                             owner : item1,
                             collaburator : item2,
                             regulator : itemRegulator,
-                            uses : uses,
-                            produces : produces,
+                            uses : itemUses,
+                            produces : itemProduces,
                             toBeState : toBeState,
                             ownerToBe : item3,
                             collaboratorToBe : item4,
-                            toUse : toUse,
-                            toProduce : toProduce,
+                            toUse : itemtoUse,
+                            toProduce : itemtoProduce,
                             idProject : idProject,
                             idTask : idTask
                         },
                         success:function(data){
-                            window.location.href="index";
+                            $.redirect(baseUrl+"task/index", { });
                         }
                     })    
                 }
