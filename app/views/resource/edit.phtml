@@ -1,0 +1,103 @@
+<?php
+   echo $this->tag->form(
+       [
+         
+           "autocomplete" => "off",
+           "class" => "",
+           "id" => "editResource"
+       ]
+   );
+   ?>
+
+    <?php 
+         echo $this->tag->hiddenField(["idProject", "id" => "idProjectEdit" ]);
+         echo $this->tag->hiddenField(["idResource", "id" => "idResourceEdit" ]);  
+   ?>
+<div class="content">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="card s-navShadow">
+               <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                     <div class="header">
+                        <h4 class="title">Create Resource</h4>
+                     </div>
+                     <div class="content">
+                        <form>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Resource Name</label>
+                                    <?php 
+                                       echo $this->tag->textField(["resourcename", "size" => 30, 
+                                       "class" => "form-control", "id" => "resourcename" , "placeholder"=>"Resource Name..."]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>description</label>
+                                    <?php 
+                                       echo $this->tag->textArea(["Description", "class" => "form-control", 
+                                        "id" => "Description" , "placeholder"=>"Here can be your description...","rows" => 3,]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>includes</label>
+                                    <?php 
+                                       echo $this->tag->textField(["includes", "size" => 30, 
+                                       "class" => "form-control", "id" => "includes"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>r Owner</label>
+                                    <?php 
+                                       echo $this->tag->textField(["rOwner", "size" => 30, 
+                                       "class" => "form-control", "id" => "rOwner"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>p Owner</label>
+                                    <?php 
+                                       echo $this->tag->textField(["pOwner", "size" => 30, 
+                                       "class" => "form-control", "id" => "pOwner"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Maintainer</label>
+                                    <?php 
+                                       echo $this->tag->textField(["maintainer", "size" => 30, 
+                                       "class" => "form-control", "id" => "maintainer"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <?php echo $this->tag->endForm(); ?>
+                           <button type="submit" class="btn btn-info btn-fill pull-right"  id="saveResource">Save Resource</button>
+                           <div class="clearfix"></div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
