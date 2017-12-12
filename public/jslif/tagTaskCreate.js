@@ -332,12 +332,16 @@ $(document).ready(function() {
         //save task ///////////////////////////////////////////////////////
                 $('#saveTask').click(function () {
                     if($("#createTask-form").valid()){
-                        var taskname = $("#taskname").val();
-                        var isA = $("#isA").val();
-                        var Description = $("#Description").val();
-                        var includes = $("#includes").val();
-                        var asIsState = $("#asIsState").val();
-                    
+                        var taskname = $("#taskname").val()
+                        var isA = $("#isA").val()
+                        var Description = $("#Description").val()
+                        var includes = $("#includes").tagsinput('items');
+                        itemInclude = {};
+                        $.each(includes, function(index ,input){   
+                            itemInclude [index] = input.value
+                        });
+
+                        var asIsState = $("#asIsState").val()
                         var owner = $("#owner").tagsinput('items')
                         item1 = {};
                         $.each(owner, function(index ,input){   
@@ -349,16 +353,22 @@ $(document).ready(function() {
                         $.each(collaburator, function(index ,input){   
                             item2 [index] = input.value
                         });
-                        var regulator = $("#regulator").val();
+
+                        var regulator = $("#regulator").tagsinput('items')
+                        itemRegulator = {};
+                        $.each(regulator, function(index ,input){   
+                            itemRegulator [index] = input.value
+                        });
+                        
                         var uses = $("#uses").tagsinput('items')
                         itemUses = {};
-                        $.each(collaburator, function(index ,input){   
+                        $.each(uses, function(index ,input){   
                             itemUses [index] = input.value
                         });
 
                         var produces = $("#produces").tagsinput('items')
                         itemProduces = {};
-                        $.each(collaburator, function(index ,input){   
+                        $.each(produces, function(index ,input){   
                             itemProduces [index] = input.value
                         });
 
@@ -376,13 +386,13 @@ $(document).ready(function() {
                         });
                         var toUse = $("#toUse").tagsinput('items')
                         itemToUse = {};
-                        $.each(collaburator, function(index ,input){   
+                        $.each(toUse, function(index ,input){   
                             itemToUse [index] = input.value
                         });
 
                         var toProduce = $("#toProduce").tagsinput('items')
                         itemToProduces = {};
-                        $.each(collaburator, function(index ,input){   
+                        $.each(toProduce, function(index ,input){   
                             itemToProduces [index] = input.value
                         });
 
@@ -395,11 +405,11 @@ $(document).ready(function() {
                                     taskname : taskname,
                                     isA : isA,
                                     Description : Description,
-                                    includes : includes,
+                                    includes : itemInclude,
                                     asIsState : asIsState,
                                     owner : item1,
                                     collaburator : item2,
-                                    regulator : regulator,
+                                    regulator : itemRegulator,
                                     uses : itemUses,
                                     produces : itemProduces,
                                     toBeState : toBeState,
@@ -424,7 +434,12 @@ $(document).ready(function() {
                 var taskname = $("#Edname").val();
                 var isA = $("#EdisA").val();
                 var Description = $("#EdDescription").val();
-                var includes = $("#Edincludes").val();
+                var includes = $("#Edincludes").tagsinput('items')
+                itemIncludes = {};
+                $.each(includes, function(index ,input){   
+                    itemIncludes [index] = input.value
+                });
+
                 var asIsState = $("#EdasIsState").val();
             
                 var owner = $("#Edowner").tagsinput('items')
@@ -438,7 +453,12 @@ $(document).ready(function() {
                 $.each(collaburator, function(index ,input){   
                     item2 [index] = input.value
                 });
-                var regulator = $("#Edregulator").val();
+
+                var regulator = $("#Edregulator").tagsinput('items')
+                itemRegulator = {};
+                $.each(regulator, function(index ,input){   
+                    itemRegulator [index] = input.value
+                });
                 var uses = $("#Eduses").val();
                 var produces = $("#Edproduces").val();
                 var toBeState = $("#EdtoBeState").val();
@@ -465,11 +485,11 @@ $(document).ready(function() {
                             taskname : taskname,
                             isA : isA,
                             Description : Description,
-                            includes : includes,
+                            includes : itemIncludes,
                             asIsState : asIsState,
                             owner : item1,
                             collaburator : item2,
-                            regulator : regulator,
+                            regulator : itemRegulator,
                             uses : uses,
                             produces : produces,
                             toBeState : toBeState,
