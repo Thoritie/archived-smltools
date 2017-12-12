@@ -1,3 +1,6 @@
+<?php 
+   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
+?>
 <div class="container-fluid">
    <ul class="nav nav-tabs" id="myTabs" role="tablist" style="
       border-bottom: 0px">
@@ -17,11 +20,14 @@
                         </div>
                         <div class="content">
                            <form>
+                            <label>
+                                <input type="checkbox" id="focal"> Focal Organisation
+                            </label>
                               <div class="row">
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>Name</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder Name...">
+                                       <input type="text" class="form-control" name="OStakeName" id="OStakeName" placeholder="Stakeholder Name...">
                                     </div>
                                  </div>
                               </div>
@@ -29,13 +35,13 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>Organisation</label>
-                                       <input type="text" class="form-control" placeholder="Organisation name">
+                                       <input type="text" class="form-control" name="OrganName" id="OrganName" placeholder="Organisation name">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>aka</label>
-                                       <input type="text" class="form-control" placeholder="it's alias me">
+                                       <input type="text" class="form-control" name="Oaka" id="Oaka" placeholder="it's alias me">
                                     </div>
                                  </div>
                               </div>
@@ -43,7 +49,7 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>description</label>
-                                       <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
+                                       <textarea rows="5" class="form-control" name="Odescription" id="Odescription" placeholder="Here can be your description"></textarea>
                                     </div>
                                  </div>
                               </div>
@@ -51,7 +57,7 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>concern</label>
-                                       <input type="text" class="form-control" placeholder="it's concern...">
+                                       <input type="text" class="form-control" name="Oconcern" id="Oconcern" placeholder="it's concern...">
                                     </div>
                                  </div>
                               </div>
@@ -59,13 +65,13 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>representative</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" class="form-control" name="Orepresentative" id="Orepresentative" placeholder="">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>reports</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" class="form-control" name="Oreports" id="Oreports" placeholder="">
                                     </div>
                                  </div>
                               </div>
@@ -73,13 +79,13 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>consults</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" class="form-control" name="Oconsults" id="Oconsults" placeholder="">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>liaises</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" class="form-control" name="Oliaises" id="Oliaises" placeholder="">
                                     </div>
                                  </div>
                               </div>
@@ -87,7 +93,7 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>delegate</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder Name...">
+                                       <input type="text" class="form-control" name="Odelegate" id="Odelegate" placeholder="">
                                     </div>
                                  </div>
                               </div>
@@ -95,17 +101,17 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>dTask</label>
-                                       <input type="text" class="form-control" placeholder="Task name">
+                                       <input type="text" class="form-control" name="OdTask" id="OdTask" placeholder="Task name">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>wishes</label>
-                                       <input type="text" class="form-control" placeholder="goal name">
+                                       <input type="text" class="form-control" name="Owishes" id="Owishes" placeholder="goal name">
                                     </div>
                                  </div>
                               </div>
-                              <button type="submit" class="btn btn-info btn-fill pull-right">Save Organisation</button>
+                              <button type="submit" class="btn btn-info btn-fill pull-right" id="SaveOr">Save Organisation</button>
                               <div class="clearfix"></div>
                            </form>
                         </div>
@@ -362,7 +368,349 @@
       </div>
    </div>
 </div>
+<!-- Modal Stakeholder-->
+<div class="modal createStakeholder" id="createStakeholder" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">New Stakeholder</h4>
+            <button class="btn btn-info" onclick="cloneModal($('#createStakeholder'))">+</button>
+         </div>
+         <div class="modal-body">
+            <ul class="nav nav-tabs">
+               <li class="active"><a data-toggle="tab" href="#Organisation">Organisation</a></li>
+               <li><a data-toggle="tab" href="#Individual">Individual</a></li>
+               <li><a data-toggle="tab" href="#Role">Role</a></li>
+            </ul>
+            <div class="tab-content">
+               <div id="Organisation" class="tab-pane fade in active">
+                  <h3>Organisation</h3>
+                  <div class="content">
+                     <form>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>Name</label>
+                                 <input type="text" class="form-control">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>Organisation</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>aka</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>description</label>
+                                 <textarea rows="5" class="form-control" ></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>concern</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>representative</label>
+                                 <input type="text" class="form-control">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>reports</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>consults</label>
+                                 <input type="text" class="form-control">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>liaises</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>delegate</label>
+                                 <input type="text" class="form-control">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>dTask</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>wishes</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </form>
+                  </div>
+               </div>
+               <div id="Individual" class="tab-pane fade">
+                  <h3>Individual</h3>
+                  <div class="content">
+                     <form>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>Name</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>aka</label>
+                                 <input type="text" class="form-control" >
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>description</label>
+                                 <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>concern</label>
+                                 <input type="text" class="form-control" placeholder="it's concern...">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>attitude</label>
+                                 <select class="form-control" name="category">
+                                    <option>select</option>
+                                    <option>positive</option>
+                                    <option>neutral</option>
+                                    <option>negative</option>
+                                    <option>?</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>domain Knowledge</label>
+                                 <select class="form-control" name="category">
+                                    <option>select</option>
+                                    <option>novice</option>
+                                    <option>intermediate</option>
+                                    <option>expert</option>
+                                    <option>?</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>reports</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>consults</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>liaises</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>delegate</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>dTask</label>
+                                 <input type="text" class="form-control" placeholder="Task name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>wishes</label>
+                                 <input type="text" class="form-control" placeholder="goal name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </form>
+                  </div>
+               </div>
+               <div id="Role" class="tab-pane fade">
+                  <h3>Role</h3>
+                  <div class="content">
+                     <form>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>Name</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>aka</label>
+                                 <input type="text" class="form-control" placeholder="it's alias me..">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>is A</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>description</label>
+                                 <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <label>concern</label>
+                                 <input type="text" class="form-control" placeholder="it's concern...">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>PlayerType</label>
+                                 <select class="form-control" name="category">
+                                    <option>select</option>
+                                    <option>Only one</option>
+                                    <option>One</option>
+                                    <option>Any</option>
+                                    <option>Group</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>RolePlayer</label>
+                                 <select class="form-control" name="category">
+                                    <option>select</option>
+                                    <option>All</option>
+                                    <option>Some</option>
+                                    <option>Any</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>reports</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>consults</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>liaises</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>delegate</label>
+                                 <input type="text" class="form-control" placeholder="Stakeholder name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>dTask</label>
+                                 <input type="text" class="form-control" placeholder="Task name">
+                              </div>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group">
+                                 <label>wishes</label>
+                                 <input type="text" class="form-control" placeholder="goal name">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
 <!-- blockJS -->
+<script src="<?php echo $this->url->get('/public/modal/cloneModal.js');?>"></script>
 <script>
    $(document).ready(function(){
         $('#myTabs a').click(function (e) {

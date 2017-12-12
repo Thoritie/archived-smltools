@@ -25,11 +25,12 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
         $this->assets->addJs('popper/popper.min.js');
        
-        $this->assets->addJs('jslif/sb-admin.js');
+        // $this->assets->addJs('jslif/sb-admin.js');
         $this->assets->addJs('jslif/jquery.easing.min.js');
+        $this->assets->addJs('jslif/typeahead.bundle.min.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.js');
-        $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
-        $this->assets->addJs('jslif/sb-admin.min.js');
+        // $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
+        // $this->assets->addJs('jslif/sb-admin.min.js');
        
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
@@ -41,6 +42,7 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('jquery/editTaskValidate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('jquery/taskRedirect.js');
+        $this->assets->addJs('jslif/stake.js');
 
 
     }
@@ -70,41 +72,48 @@ class StakeholderController extends ControllerBase
         $this->view->userLogin = $userLogin;
     }
 
-    public function creOrganAction()
+    public function saveAction()
     {
-        
-    }
+        //0 == Organisation
+        //1 == focal
+        //2 == individaul
+        //3 == Role
+        // data will be send from js like type=0 it mean Organisation
+        $name = $this->request->getPost("name");
+        $Organisationname = $this->request->getPost("Organisationname");
+        $aka = $this->request->getPost("aka");
+        $description = $this->request->getPost("description");
+        $concern = $this->request->getPost("concern");
+        $representative = $this->request->getPost("representative");
+        $reports = $this->request->getPost("reports");
+        $consults = $this->request->getPost("consults");
+        $liaises = $this->request->getPost("liaises");
+        $delegate = $this->request->getPost("delegate");
+        $dTask = $this->request->getPost("dTask");
+        $wishes = $this->request->getPost("wishes");
+        $type = $this->request->getPost("type");
+        $idProject = $this->request->getPost("idProject");
 
-    public function creIndivAction()
-    {
-        
-    }
-
-    public function creRoleAction()
-    {
-        
-    }
-    public function saveStaketAction()
-    {
         $id = $this->request->getPost("idStake");
         if(!$id){
             $stakeholders = new Stakeholders();
         }else{
             $stakeholders = Stakeholders::findById($id);
         }
-
-        //1 == Organisation
-        //2 ==
-        //3 ==
-        $stakeholders->idProject = $this->request->getPost("idProject");
-        $stakeholders->type = $this->request->getPost("type");
-        if($stakeholders->type==1){
-
-        }else if($stakeholders->type==2){
-
-        }else{
-
-        }
+        $stakeholders->idProject = $idProject;
+        $stakeholders->name = $name;
+        $stakeholders->OrganisationName = $Organisationname;
+        $stakeholders->aka = $aka;
+        $stakeholders->description = $description;
+        $stakeholders->concern = $concern;
+        $stakeholders->representative = $representative;
+        $stakeholders->reports = $reports;
+        $stakeholders->consults = $consults;
+        $stakeholders->liaises = $liaises;
+        $stakeholders->delegate = $delegate;
+        $stakeholders->dTask = $dTask;
+        $stakeholders->wishes = $wishes;
+        $stakeholders->type = $type;
         
 
 
@@ -114,6 +123,32 @@ class StakeholderController extends ControllerBase
 
     public function createAction()
     {
+        $id = $this->session->get('idProject');
+        $this->tag->setDefault("idProject", $id);
+        $this->view->idproject = $id;
+
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
         
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+    }
+    public function findStakeAction()
+    {
+        $this->view->disable();
+        $input = $this->request->getPost('project');
+        
+        $condition = [];
+        
+        if($input){
+            $condition["project"] = $input;
+        }
+
+        $stakeholders = Stakeholders::Find(array($condition));
+
+        return json_encode($stakeholders);
     }
 }
