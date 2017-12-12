@@ -149,4 +149,13 @@ class ResourceController extends ControllerBase
         return json_encode($test);
     }
 
+    public function deleteResourceAction()
+    {
+        $id = $this->request->getPost('idResource');
+        $res = Resource::findById($id);
+        
+        $res->delete();
+        return json_encode('true');
+    }
+
 }

@@ -8,30 +8,14 @@
 		<div class="col-md-12">
 		<a href="<?=$this->url->get("resource/create"); ?>" class="labelAdd btn btn-Primary pull-right"><i class="fa fa-plus"></i></a>
 
-		<!-- <div class="area">
-  			<div class="toggle">
-    		<a href="<?=$this->url->get("resource/create"); ?>">
-    			<div class="icon">
-      				<div class="horizontal"></div>
-      				<div class="vertical"></div>
-    			</div>
-    		</a>
-  			</div>
-			  <div class="bubble"></div>
-		</div> -->
 		</div>
 		</div>
         <div class="row" style="margin-top: 50px">
             <div class="col-md-9">
                                 
                 <div class="fresh-table s-navShadow">
-                <!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange                  
-                        Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
-                -->
-                
-                   
-                    
-                    <table id="fresh-table" class="table">
+            
+                  <table id="fresh-table" class="table">
                         <thead>
                             <th data-field="id">ID</th>
                         	<th data-field="name" data-sortable="true">Name</th>
@@ -48,8 +32,9 @@
                                 <td><?=$showRes->name ?></td>
                                 <td><?=$showRes->description ?></td>
                             	<td>
-									<a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
-                          			<a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+
+									<a onclick="confirm('Are you sure delete <?=$showRes->name?>?')?deleteResource('<?=$showRes->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
+                          			<a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$showRes->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
                           
 								</td>
                             </tr>
@@ -105,3 +90,19 @@
 </div>
 
 </div>
+
+
+<!-- blockJS -->
+<script>
+    function deleteResource(id){
+        var idresource = id;
+
+        $.post(baseUrl+"resource/deleteResource",{
+            idResource : idresource
+        }, function(data){
+            console.log(data);
+        },  "json");
+        $.redirect(baseUrl+"resource/index", {  });
+    }
+</script>
+<!-- /.blockJS -->
