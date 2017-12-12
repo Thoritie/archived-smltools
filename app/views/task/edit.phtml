@@ -31,7 +31,7 @@
                                <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
                                 <?php 
                                   echo $this->tag->textField(["taskname", "size" => 30, 
-                                  "class" => "form-control", "id" => "Edname" , "placeholder"=>"task name"]) 
+                                  "class" => "form-control", "id" => "Edname"]) 
                                 ?>
                             </div>
                          </div>
@@ -40,7 +40,7 @@
                                <label>IsA</label>
                                 <?php 
                                   echo $this->tag->textField(["isA", "size" => 30, 
-                                  "class" => "form-control", "id" => "EdisA" , "placeholder"=>"isA"]) 
+                                  "class" => "form-control", "id" => "EdisA" ]) 
                                 ?>
                             </div>
                          </div>
@@ -51,7 +51,7 @@
                                <label>Description</label>
                                <?php 
                                   echo $this->tag->textArea(["Description", "class" => "form-control", 
-                                  "id" => "EdDescription" , "placeholder"=>"Description","rows" => 3,]) 
+                                  "id" => "EdDescription","rows" => 3,]) 
                                 ?>
                             </div>
                          </div>
@@ -64,7 +64,7 @@
                                <div class="input-group">
                                   <?php 
                                     echo $this->tag->textField(["includes", "size" => 30, 
-                                    "class" => "form-control", "id" => "Edincludes" , "placeholder"=>"includes"]) 
+                                    "class" => "form-control", "id" => "Edincludes"]) 
                                   ?>
                                    <div class="btn input-group-addon" style="border: 1px solid #9a9a9a;">+</div> 
                                </div>
@@ -120,7 +120,7 @@
                                <label>Uses</label>
                                <?php 
                                   echo $this->tag->textField(["uses", "size" => 30, 
-                                  "class" => "form-control", "id" => "Eduses" , "placeholder"=>"uses"]) 
+                                  "class" => "form-control", "id" => "Eduses" ]) 
                                ?>
                             </div>
                          </div>
@@ -146,7 +146,7 @@
                                <label>Produces</label>
                                <?php 
                                     echo $this->tag->textField(["produces", "size" => 30, 
-                                    "class" => "form-control", "id" => "Edproduces" , "placeholder"=>"produces"]) 
+                                    "class" => "form-control", "id" => "Edproduces" ]) 
                                ?>
                             </div>
                          </div>
@@ -187,7 +187,7 @@
                                <label>toProduce</label>
                                <?php 
                                   echo $this->tag->textField(["toProduce", "size" => 30, 
-                                  "class" => "form-control", "id" => "EdtoProduce" , "placeholder"=>"toProduce"]) 
+                                  "class" => "form-control", "id" => "EdtoProduce"]) 
                                ?>
                             </div>
                          </div>
@@ -217,24 +217,61 @@
 
 <!-- blockJS -->
 <script>
-    
+    var taskinput = '<?php echo json_encode($taskTags); ?>';
+    taskinput = JSON.parse(taskinput);
+    taskinput = createJSON(taskinput);
+    taskinput = JSON.stringify(taskinput);
+
+    var data_includes = '<?php echo json_encode($includes); ?>';
+
+
     var stakeinput = '<?php echo json_encode($stake); ?>';
-    
     stakeinput = JSON.parse(stakeinput);
     stakeinput = createJSON(stakeinput);
     stakeinput = JSON.stringify(stakeinput);
-    
- 
-  var data_owner = '<?php echo json_encode($owner); ?>';
- 
-  var data_collaburator = '<?php echo json_encode($collaburator); ?>';
-  
-  var data_ownerTobe = '<?php echo json_encode($ownerTobe); ?>';
-  var data_collaboratorTobe = '<?php echo json_encode($collaboratorTobe); ?>';
-  console.log(data_owner);
-  
+
+    var data_owner = '<?php echo json_encode($owner); ?>';
+    var data_collaburator = '<?php echo json_encode($collaburator); ?>';
+    var data_regulator = '<?php echo json_encode($regulator); ?>';
+    var data_ownerTobe = '<?php echo json_encode($ownerTobe); ?>';
+    var data_collaboratorTobe = '<?php echo json_encode($collaboratorTobe); ?>';
+
+             
+    var resourceinput = '<?php echo json_encode($resourceTags); ?>';
+    resourceinput = JSON.parse(resourceinput);
+    resourceinput = createJSON(resourceinput);
+    resourceinput = JSON.stringify(resourceinput);
+
+    var data_uses = '<?php echo json_encode($uses); ?>';
+    var data_produces = '<?php echo json_encode($produces); ?>';
+    var data_toUse = '<?php echo json_encode($toUse); ?>';
+    var data_toProduces = '<?php echo json_encode($toProduce); ?>';
+   
 
   $(document).ready(function(){
+
+    var Tasks = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: JSON.parse(taskinput)
+    });
+    Tasks.initialize();
+    
+    var Edincludes = $('#Edincludes');
+    Edincludes.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Tasks.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(Edincludes, data_includes);
+
 
     var Stakeholder = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
@@ -290,6 +327,22 @@
       }
     });
     add(Edcollaburator, data_collaburator);
+
+
+    var Edregulator = $('#Edregulator');
+    Edregulator.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Stakeholder.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(Edregulator, data_regulator);
    
 
     var EdcollaboratorToBe = $('#EdcollaboratorToBe');
@@ -306,6 +359,79 @@
       }
     });
     add(EdcollaboratorToBe, data_collaboratorTobe);
+
+
+    var Resource = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: JSON.parse(resourceinput)
+    });
+  
+    Resource.initialize();
+    var Eduses = $('#Eduses');
+    Eduses.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Resource.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(Eduses, data_uses);
+
+
+    var Edproduces = $('#Edproduces');
+    Edproduces.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Resource.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(Edproduces, data_produces);
+
+
+    var EdtoUse = $('#EdtoUse');
+    EdtoUse.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Resource.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(EdtoUse, data_toUse);
+   
+
+    var EdtoProduce = $('#EdtoProduce');
+    EdtoProduce.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs: {
+        name: 'name',
+        displayKey: 'text',
+        source: Resource.ttAdapter(),
+        templates: {
+          empty: '<div class="empty-message text-info"> No matches.</div>'
+        },
+      }
+    });
+    add(EdtoProduce, data_toProduces);
+
+    
 
 });
 

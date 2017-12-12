@@ -201,6 +201,14 @@ class TaskController extends ControllerBase
                     return;
                 }
 
+                $includes = array();
+                foreach($task->includes as $data){
+                    $item = Tasks::findById($data);
+                    array_push($includes,$item);
+                }
+                $this->view->includes = $includes;
+
+
                 $owner = array();
                 foreach($task->owner as $data){
                     $item = Stakeholders::findById($data);
@@ -216,6 +224,14 @@ class TaskController extends ControllerBase
                 }
                 $this->view->collaburator = $collaburator;
 
+                $regulator = array();
+                foreach($task->regulator as $data){
+                    $item = Stakeholders::findById($data);
+                    array_push($regulator,$item);
+                }
+                $this->view->regulator = $regulator;
+
+
                 $ownerToBe = array();
                 foreach($task->ownerToBe as $data){
                     $item = Stakeholders::findById($data);
@@ -230,6 +246,37 @@ class TaskController extends ControllerBase
                 }
                 $this->view->collaboratorTobe = $collaboratorToBe;
 
+                $uses = array();
+                foreach($task->uses as $data){
+                    $item = Resource::findById($data);
+                    array_push($uses,$item);
+                }
+                $this->view->uses = $uses;
+
+                $produces = array();
+                foreach($task->produces as $data){
+                    $item = Resource::findById($data);
+                    array_push($produces,$item);
+                }
+                $this->view->produces = $produces;
+
+                $toUse = array();
+                foreach($task->toUse as $data){
+                    $item = Resource::findById($data);
+                    array_push($toUse,$item);
+                }
+                $this->view->toUse = $toUse;
+
+                $toProduce = array();
+                foreach($task->toProduce as $data){
+                    $item = Resource::findById($data);
+                    array_push($toProduce,$item);
+                }
+                $this->view->toProduce = $toProduce;
+
+
+
+
 
                 $idProject = $this->session->get('idProject');
 
@@ -239,31 +286,30 @@ class TaskController extends ControllerBase
                 $this->tag->setDefault("taskname", $task->name);
                 $this->tag->setDefault("isA", $task->isA);
                 $this->tag->setDefault("Description", $task->Description);
-                $this->tag->setDefault("includes", $task->includes);
                 $this->tag->setDefault("asIsState", $task->asIsState);
-               
-                $this->tag->setDefault("regulator", $task->regulator);
-                $this->tag->setDefault("uses", $task->uses);
-                $this->tag->setDefault("produces", $task->produces);
                 $this->tag->setDefault("toBeState", $task->toBeState);
                
-                $this->tag->setDefault("toUse", $task->toUse);
-                $this->tag->setDefault("toProduce", $task->toProduce);
-                   
-
-
+    
                 $input = "1";
-                $condition = [];
-                
+                $conditionStake = [];
                 if($input){
-                    $condition["project"] = $input;
+                    $conditionStake["project"] = $input;
                 }
-        
-                $stake = Stakeholders::Find(array($condition));
-        
+                $stake = Stakeholders::Find(array($conditionStake));
                 $this->view->stake = $stake;
 
-                
+
+                $conditionTask = [];
+                $conditionTask["idProject"] = $idProject;
+                $taskTags = Tasks::Find(array($conditionTask));
+                $this->view->taskTags = $taskTags;
+
+
+                $conditionResource = [];
+                $conditionResource["project"] = $idProject;
+                $resourceTags = Resource::Find(array($conditionResource));
+                $this->view->resourceTags = $resourceTags;
+ 
 
 
                 $userLogin = $this->session->get('userLogin');
