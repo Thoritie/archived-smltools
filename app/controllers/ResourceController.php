@@ -158,4 +158,9 @@ class ResourceController extends ControllerBase
         return json_encode('true');
     }
 
+    public function editAction()
+    {
+        
+    }
+
 }
