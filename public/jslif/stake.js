@@ -37,7 +37,7 @@ $(document).ready(function () {
     }
 
 
-    var project = "1";     //input project id .val()
+    var project = $("#idProject").val();;     //input project id .val()
 
     $.post(baseUrl + "stakeholder/findStake", {
         project: project

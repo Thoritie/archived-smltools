@@ -74,8 +74,6 @@ class StakeholderController extends ControllerBase
             $condition["idProject"] = $id;
             $stake = Stakeholders::Find(array($condition));
         
-        }else{
-            $this->view->stake = 0;
         }
         
         $this->view->stake = $stake;
