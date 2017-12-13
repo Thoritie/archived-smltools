@@ -9,7 +9,7 @@
       <li role="presentation" class=""><a href="#role" role="tab" id="role-tab" data-toggle="tab" aria-controls="role" aria-expanded="false">Role</a></li>
    </ul>
    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade active in" role="tabpanel" id="organisation" aria-labelledby="organisation-tab">
+      <div class="tab-pane fade  active in" role="tabpanel" id="organisation" aria-labelledby="organisation-tab">
          <div class="row">
             <div class="col-md-12">
                <div class="card">
@@ -111,7 +111,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <button type="submit" class="btn btn-info btn-fill pull-right" id="SaveOr">Save Organisation</button>
+                              <button type="button" class="btn btn-info btn-fill pull-right" id="SaveOr">Save Organisation</button>
                               <div class="clearfix"></div>
                            </form>
                         </div>
@@ -136,7 +136,7 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>Name</label>
-                                       <input type="text" name="inStakeName" id="intakeName" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" name="inStakeName" id="inStakeName" class="form-control" placeholder="Stakeholder name">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
@@ -230,7 +230,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <button type="submit" class="btn btn-info btn-fill pull-right" id="savein">Save Individual</button>
+                              <button  class="btn btn-info btn-fill pull-right" id="Savein">Save Individual</button>
                               <div class="clearfix"></div>
                            </form>
                         </div>
@@ -255,13 +255,13 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>Name</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" name="rStakeName" id="rStakeName" class="form-control" placeholder="Stakeholder name">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>aka</label>
-                                       <input type="text" class="form-control" placeholder="it's alias me..">
+                                       <input type="text" name="raka" id="raka" class="form-control" placeholder="it's alias me..">
                                     </div>
                                  </div>
                               </div>
@@ -269,7 +269,7 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>is A</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" name="isA" id="isA" class="form-control" placeholder="Stakeholder name">
                                     </div>
                                  </div>
                               </div>
@@ -277,7 +277,7 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>description</label>
-                                       <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
+                                       <textarea rows="5" name="rdescription" id="rdescription" class="form-control" placeholder="Here can be your description"></textarea>
                                     </div>
                                  </div>
                               </div>
@@ -285,7 +285,7 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>concern</label>
-                                       <input type="text" class="form-control" placeholder="it's concern...">
+                                       <input type="text" name="rconcern" id="rconcern" class="form-control" placeholder="it's concern...">
                                     </div>
                                  </div>
                               </div>
@@ -293,23 +293,23 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>PlayerType</label>
-                                       <select class="form-control" name="category">
+                                       <select class="form-control" name="PlayerType" id="PlayerType">
                                           <option>select</option>
-                                          <option>Only one</option>
-                                          <option>One</option>
-                                          <option>Any</option>
-                                          <option>Group</option>
+                                          <option value="Only one">Only one</option>
+                                          <option value="One">One</option>
+                                          <option value="Any">Any</option>
+                                          <option value="Group">Group</option>
                                        </select>
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>RolePlayer</label>
-                                       <select class="form-control" name="category">
+                                       <select class="form-control" name="RolePlayer" id="RolePlayer" >
                                           <option>select</option>
-                                          <option>All</option>
-                                          <option>Some</option>
-                                          <option>Any</option>
+                                          <option value="All">All</option>
+                                          <option value="Some">Some</option>
+                                          <option value="Any">Any</option>
                                        </select>
                                     </div>
                                  </div>
@@ -318,13 +318,13 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>reports</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" name="rreports" id="rreports" class="form-control">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>consults</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" name="rconsults" id="rconsults" class="form-control">
                                     </div>
                                  </div>
                               </div>
@@ -332,13 +332,13 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>liaises</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" name="rliaises" id="rliaises" class="form-control">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>delegate</label>
-                                       <input type="text" class="form-control" placeholder="Stakeholder name">
+                                       <input type="text" name="rdelegate" id="rdelegate" class="form-control" >
                                     </div>
                                  </div>
                               </div>
@@ -346,17 +346,17 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>dTask</label>
-                                       <input type="text" class="form-control" placeholder="Task name">
+                                       <input type="text" name="rdTask" id="rdTask" class="form-control" placeholder="Task name">
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>wishes</label>
-                                       <input type="text" class="form-control" placeholder="goal name">
+                                       <input type="text" name="rwishes" id="rwishes" class="form-control" placeholder="goal name">
                                     </div>
                                  </div>
                               </div>
-                              <button type="submit" class="btn btn-info btn-fill pull-right">Save Role</button>
+                              <button  class="btn btn-info btn-fill pull-right" id="saveR">Save Role</button>
                               <div class="clearfix"></div>
                            </form>
                         </div>
@@ -717,7 +717,7 @@
         e.preventDefault()
         $(this).tab('show')
         })
-        
+
    });
 </script>
 <!-- /.blockJS -->

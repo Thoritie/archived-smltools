@@ -190,6 +190,68 @@ $(document).ready(function () {
             }
         });
 
+        var rreports = $('#rreports');
+        rreports.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    highlight: true,
+                    empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+        var rconsults = $('#rconsults');
+        rconsults.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    highlight: true,
+                    empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+
+
+        var rliaises = $('#rliaises');
+        rliaises.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+
+
+        var rdelegate = $('#rdelegate');
+        rdelegate.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                },
+            }
+        });
+        
     }, "json");
     ///saveOrganisation
     $('#SaveOr').click(function () {
@@ -257,57 +319,119 @@ $(document).ready(function () {
     });
 
     ///saveIndividual
-    $('#savein').click(function () {
-        var name = $("#intakeName").val()
-        var aka = $("#inaka").val()
-        var description = $("#indescription").val()
-        var concern = $("#inconcern").val()
+    $('#Savein').click(function () {
+        var inname = $("#inStakeName").val()
+        var inaka = $("#inaka").val()
+        var indescription = $("#indescription").val()
+        var inconcern = $("#inconcern").val()
 
-        var attitude = $("#attitude").val();
-        var attitude = $("#domainKnowledge").val();
+        var inattitude = $("#attitude  option:selected").val();
+        var indomainKnowledge = $("#domainKnowledge  option:selected").val();
 
-        var reports = $("#inreports").tagsinput('items');
-        itemreports = {};
-        $.each(reports, function (index, input) {
-            itemreports[index] = input.value
+        var inreports = $("#inreports").tagsinput('items');
+        iteminreports = {};
+        $.each(inreports, function (index, input) {
+            iteminreports[index] = input.value
         });
-        var consults = $("#inconsults").tagsinput('items');
-        itemconsults = {};
-        $.each(consults, function (index, input) {
-            itemconsults[index] = input.value
+        var inconsults = $("#inconsults").tagsinput('items');
+        iteminconsults = {};
+        $.each(inconsults, function (index, input) {
+            iteminconsults[index] = input.value
         });
-        var liaises = $("#inliaises").tagsinput('items');
-        itemliaises = {};
-        $.each(liaises, function (index, input) {
-            itemliaises[index] = input.value
+        var inliaises = $("#inliaises").tagsinput('items');
+        iteminliaises = {};
+        $.each(inliaises, function (index, input) {
+            iteminliaises[index] = input.value
         });
-        var delegate = $("#indelegate").tagsinput('items');
-        itemdelegate = {};
-        $.each(delegate, function (index, input) {
-            itemdelegate[index] = input.value
+        var indelegate = $("#indelegate").tagsinput('items');
+        itemindelegate = {};
+        $.each(indelegate, function (index, input) {
+            itemindelegate[index] = input.value
         });
-        var dTask = $("#indTask").val()
-        var wishes = $("#inwishes").val()
-        var idProject = $("#idProject").val();
-        var type=2;
+        var indTask = $("#indTask").val()
+        var inwishes = $("#inwishes").val()
+        var inidProject = $("#idProject").val();
+        var intype=2;
         $.ajax({
             type: 'POST',
             url: baseUrl + "stakeholder/save",
             data: {
-                name: name,
-                aka: aka,
-                description: description,
-                concern: concern,
-                attitude: attitude,
-                domainKnowledge: domainKnowledge,
-                reports: itemreports,
-                consults: itemconsults,
-                liaises: itemliaises,
-                delegate: itemdelegate,
-                dTask: dTask,
-                wishes: wishes,
-                type: type,
-                idProject: idProject
+                name: inname,
+                aka: inaka,
+                description: indescription,
+                concern: inconcern,
+                attitude: inattitude,
+                domainKnowledge: indomainKnowledge,
+                reports: iteminreports,
+                consults: iteminconsults,
+                liaises: iteminliaises,
+                delegate: itemindelegate,
+                dTask: indTask,
+                wishes: inwishes,
+                type: intype,
+                idProject: inidProject
+            },
+            success: function (data) {
+                $.redirect(baseUrl + "stakeholder/index", {});
+            }
+        })
+    });
+
+    ///saveRole
+    $('#saveR').click(function () {
+        var rname = $("#rStakeName").val()
+        var raka = $("#raka").val()
+        var isA = $("#isA").val()
+        
+        var rdescription = $("#rdescription").val()
+        var rconcern = $("#rconcern").val()
+
+        var PlayerType = $("#PlayerType  option:selected").val();
+        var RolePlayer = $("#RolePlayer  option:selected").val();
+        
+        var rreports = $("#rreports").tagsinput('items');
+        itemrreports = {};
+        $.each(rreports, function (index, input) {
+            itemrreports[index] = input.value
+        });
+        var rconsults = $("#rconsults").tagsinput('items');
+        itemrconsults = {};
+        $.each(rconsults, function (index, input) {
+            itemrconsults[index] = input.value
+        });
+        var rliaises = $("#rliaises").tagsinput('items');
+        itemrliaises = {};
+        $.each(rliaises, function (index, input) {
+            itemrliaises[index] = input.value
+        });
+        var rdelegate = $("#rdelegate").tagsinput('items');
+        itemrdelegate = {};
+        $.each(rdelegate, function (index, input) {
+            itemrdelegate[index] = input.value
+        });
+        var rdTask = $("#rdTask").val()
+        var rwishes = $("#rwishes").val()
+        var ridProject = $("#idProject").val();
+        var rtype = 3;
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + "stakeholder/save",
+            data: {
+                name: rname,
+                aka: raka,
+                isA: isA,
+                description: rdescription,
+                concern: rconcern,
+                PlayerType: PlayerType,
+                RolePlayer: RolePlayer,
+                reports: itemrreports,
+                consults: itemrconsults,
+                liaises: itemrliaises,
+                delegate: itemrdelegate,
+                dTask: rdTask,
+                wishes: rwishes,
+                type: rtype,
+                idProject: ridProject
             },
             success: function (data) {
                 $.redirect(baseUrl + "stakeholder/index", {});

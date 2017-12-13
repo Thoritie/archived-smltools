@@ -38,10 +38,7 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('projectCard/proCard.js');
 
         $this->assets->addJs('dist/jquery.validate.js');
-        $this->assets->addJs('jquery/createTaskValidate.js');
-        $this->assets->addJs('jquery/editTaskValidate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
-        $this->assets->addJs('jquery/taskRedirect.js');
         $this->assets->addJs('jslif/stake.js');
 
 
@@ -105,6 +102,13 @@ class StakeholderController extends ControllerBase
         $wishes = $this->request->getPost("wishes");
         $type = $this->request->getPost("type");
         $idProject = $this->request->getPost("idProject");
+        $attitude = $this->request->getPost("attitude");
+        $domainKnowledge = $this->request->getPost("domainKnowledge");
+        $isA = $this->request->getPost("isA");
+        $PlayerType = $this->request->getPost("PlayerType");
+        $RolePlayer = $this->request->getPost("RolePlayer");
+        
+        
 
         $id = $this->request->getPost("idStake");
         if(!$id){
@@ -129,7 +133,20 @@ class StakeholderController extends ControllerBase
             $stakeholders->wishes = $wishes;
             $stakeholders->type = $type;
         }else if($type==3){
-
+            $stakeholders->name = $name;
+            $stakeholders->aka = $aka;
+            $stakeholders->isA = $isA;
+            $stakeholders->description = $description;
+            $stakeholders->concern = $concern;
+            $stakeholders->PlayerType = $PlayerType;
+            $stakeholders->RolePlayer = $RolePlayer;
+            $stakeholders->reports = $reports;
+            $stakeholders->consults = $consults;
+            $stakeholders->liaises = $liaises;
+            $stakeholders->delegate = $delegate;
+            $stakeholders->dTask = $dTask;
+            $stakeholders->wishes = $wishes;
+            $stakeholders->type = $type;
         }else{
             $stakeholders->name = $name;
             $stakeholders->OrganisationName = $Organisationname;
