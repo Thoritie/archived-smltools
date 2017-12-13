@@ -159,7 +159,7 @@ class TaskController extends ControllerBase
         $condition = [];
         
         if($input){
-            $condition["project"] = $input;
+            $condition["idProject"] = $input;
         }
 
         $stakeholders = Stakeholders::Find(array($condition));
@@ -176,7 +176,7 @@ class TaskController extends ControllerBase
         $condition = [];
         
         if($input){
-            $condition["project"] = $input;
+            $condition["idProject"] = $input;
         }
 
         $resource = Resource::Find(array($condition));
@@ -360,7 +360,7 @@ class TaskController extends ControllerBase
         $res->rOwner = $this->request->getPost("rOwner");
         $res->pOwner = $this->request->getPost("pOwner");
         $res->maintainer = $this->request->getPost("maintainer");
-        $res->project = $this->request->getPost("idProject");
+        $res->idProject = $this->request->getPost("idProject");
         $res->save();
     }
 
