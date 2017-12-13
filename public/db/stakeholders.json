@@ -3,24 +3,24 @@
     "_id" : ObjectId("59fdb4e2f158e3c6c287e0fc"),
     "name" : "first",
     "project" : "1",
-    "discription": "First"
+    "description": "First"
 },
 {
     "_id" : ObjectId("59fdb4e2f158e3c6c287e0fe"),
     "name" : "second",
     "project" : "1",
-    "discription" : "second"
+    "description" : "second"
 },
 {
     "_id" : ObjectId("59fdb4e2f158e3c6c287e100"),
     "name" : "third",
     "project" : "1",
-    "discription": "third"
+    "description": "third"
 },
 {
     "_id" : ObjectId("5a146ab22f637faa0ca3b848"),
     "name" : "fourth",
     "project" : "1",
-    "discription": "third"
+    "description": "third"
 }
 ]
