@@ -289,11 +289,12 @@ class TaskController extends ControllerBase
                 $this->tag->setDefault("asIsState", $task->asIsState);
                 $this->tag->setDefault("toBeState", $task->toBeState);
                
+                   
     
                 $input = "1";
                 $conditionStake = [];
                 if($input){
-                    $conditionStake["project"] = $input;
+                    $conditionStake["idProject"] = $input;
                 }
                 $stake = Stakeholders::Find(array($conditionStake));
                 $this->view->stake = $stake;
@@ -306,7 +307,7 @@ class TaskController extends ControllerBase
 
 
                 $conditionResource = [];
-                $conditionResource["project"] = $idProject;
+                $conditionResource["idProject"] = $idProject;
                 $resourceTags = Resource::Find(array($conditionResource));
                 $this->view->resourceTags = $resourceTags;
  
