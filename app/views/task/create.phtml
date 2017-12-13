@@ -63,7 +63,10 @@
                                        echo $this->tag->textField(["includes", "size" => 30, 
                                        "class" => "form-control", "id" => "includes"]) 
                                        ?>
-                                        <a href="<?=$this->url->get("task/create"); ?>"class="fa fa-plus iconInput"></a>
+                                                <i class="fa fa-plus iconInput" id="createTaskIcon"></i>
+
+                                        
+
                                  </div>
                               </div>
                               <div class="col-md-4">
@@ -818,5 +821,10 @@
    </div>
 <!-- blockJS -->
 <script src="<?php echo $this->url->get('/public/modal/cloneModal.js');?>"></script>
+<script>
+      $("#createTaskIcon").click(function(){
+            cloneModalTask($('#createTask'));
+      })
+</script>
 
 <!-- /.blockJS -->
