@@ -159,7 +159,7 @@ class TaskController extends ControllerBase
         $condition = [];
         
         if($input){
-            $condition["project"] = $input;
+            $condition["idProject"] = $input;
         }
 
         $stakeholders = Stakeholders::Find(array($condition));
@@ -176,7 +176,7 @@ class TaskController extends ControllerBase
         $condition = [];
         
         if($input){
-            $condition["project"] = $input;
+            $condition["idProject"] = $input;
         }
 
         $resource = Resource::Find(array($condition));
@@ -289,11 +289,12 @@ class TaskController extends ControllerBase
                 $this->tag->setDefault("asIsState", $task->asIsState);
                 $this->tag->setDefault("toBeState", $task->toBeState);
                
+                   
     
                 $input = "1";
                 $conditionStake = [];
                 if($input){
-                    $conditionStake["project"] = $input;
+                    $conditionStake["idProject"] = $input;
                 }
                 $stake = Stakeholders::Find(array($conditionStake));
                 $this->view->stake = $stake;
@@ -306,7 +307,7 @@ class TaskController extends ControllerBase
 
 
                 $conditionResource = [];
-                $conditionResource["project"] = $idProject;
+                $conditionResource["idProject"] = $idProject;
                 $resourceTags = Resource::Find(array($conditionResource));
                 $this->view->resourceTags = $resourceTags;
  
@@ -360,7 +361,7 @@ class TaskController extends ControllerBase
         $res->rOwner = $this->request->getPost("rOwner");
         $res->pOwner = $this->request->getPost("pOwner");
         $res->maintainer = $this->request->getPost("maintainer");
-        $res->project = $this->request->getPost("idProject");
+        $res->idProject = $this->request->getPost("idProject");
         $res->save();
     }
 
