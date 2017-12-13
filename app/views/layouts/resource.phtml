@@ -83,8 +83,16 @@
       </div>
    </nav>
    <div class="content">
-      <?php echo $this->getContent(); ?>
-      <!-- {{ content() }} -->
+      <?php echo $this->getContent();
+      
+      
+      $script = $this->render->getScript(
+        $this->getContent()
+    );
+      ?>
+      
+
+
    </div>
 </div>
 </div>

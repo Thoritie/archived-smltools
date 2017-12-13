@@ -99,10 +99,15 @@
 
      <!-- <h1>Example Enum</h1>
      <?php 
-	     echo $this->tag->selectStatic(
+	     echo $this->tag->select(
 	     		[
 	     				'status',
-	     				$arrStatus
+	     				$arrStatus,
+	     				'value' => 2,
+	     				'useEmpty' => true,
+	     				"emptyText"  => "Please, choose one...",
+        				"emptyValue" => 0,		
+	     				
 	     		]
 	     );
 	     

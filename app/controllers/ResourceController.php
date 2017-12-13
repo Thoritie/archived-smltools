@@ -47,15 +47,8 @@ class ResourceController extends ControllerBase
         // $this->assets->addJs('projectCard/proCard.js');
 
         $this->assets->addJs('dist/jquery.validate.js');
-        $this->assets->addJs('jquery/createTaskValidate.js');
-        $this->assets->addJs('jquery/editTaskValidate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
-        $this->assets->addJs('jquery/taskRedirect.js');
 
-
-
-
-        
 
     }
 
