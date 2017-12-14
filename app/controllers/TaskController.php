@@ -48,7 +48,6 @@ class TaskController extends ControllerBase
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('jquery/taskEditRedirect.js');
 
-        $this->assets->addJs('jslif/tagTaskCreate.js');
 
 
     }

@@ -1,5 +1,8 @@
 var zindex = 2000;
 var listModal = [];
+var Resource;
+var Stakeholder;
+var Tasks;
 
 function cloneModalResource($modal) {
     var newModal = $modal.clone();

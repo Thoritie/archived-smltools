@@ -1,6 +1,4 @@
-var  Resource;
-var Stakeholder;
-var Tasks;
+
 var projectid = $("#idProject").val();
 //modal 
 
@@ -18,7 +16,7 @@ function showModalNewTask(){
 ///////////////////// -- Validate -- ///////////////////////////
 
 $(document).ready(function() {
-    tagResource();
+   
 
     $.validator.setDefaults({
         errorClass: 'badge badge-danger',
@@ -89,34 +87,6 @@ $(document).ready(function() {
             }
         }
     })
-
-    
-
-
-    function createJSON(data) {
-        jsonObj = [];
-        $.each(data, function(index ,data){
-
-            item = {}
-            item ["value"] = data._id.$id;
-            item ["text"] = data.name;
-            
-            jsonObj.push(item);
-        });
-
-        item = {}
-        item ["value"] = 0;
-        item ["text"] = "?";
-       
-        jsonObj.push(item);
-       
-        return jsonObj;
-    }
-
-    function createString(auto){
-        return JSON.stringify(auto)
-    }
-
 
     var project = $("#idProject").val();;     //input project id .val()
 
@@ -219,7 +189,7 @@ $(document).ready(function() {
 
       
 
-        function tagResource(){
+      
             
             $.post(baseUrl+"task/findResource",{
                 project : projectid
@@ -294,7 +264,7 @@ $(document).ready(function() {
             },  "json");
 
            
-        }
+        
 
         
         //find Tasks 
