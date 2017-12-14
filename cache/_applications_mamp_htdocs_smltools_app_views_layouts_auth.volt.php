@@ -107,6 +107,7 @@
           scrollRevelation('.reveal');
         });
       </script>
+    <!-- <?= $this->tag->javascriptInclude('assetsThor/css/light-bootstrap-dashboard.css') ?> -->
     <?= $this->tag->javascriptInclude('homes/main.0cf8b554.js') ?>
     <?= $this->tag->javascriptInclude('homes/word.js') ?>
 
@@ -132,6 +133,7 @@
         <?= $this->tag->javascriptInclude('dist/jquery.validate.js') ?>
         
         <!-- <?= $this->tag->javascriptInclude('nav/js/creative.js') ?> -->
+        <!-- <?= $this->tag->javascriptInclude('assetsThor/js/light-bootstrap-dashboard.js') ?> -->
         <?= $this->tag->javascriptInclude('jquery/checkLogin.js') ?>
         <?= $this->tag->javascriptInclude('jquery/signinvalidate.js') ?>
         <!-- <?= $this->tag->javascriptInclude('home/global.js') ?> -->
