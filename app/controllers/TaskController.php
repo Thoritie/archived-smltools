@@ -137,18 +137,19 @@ class TaskController extends ControllerBase
         if (!$task->save()) {
             foreach ($teacher->getMessages() as $message) {
                 $this->flash->error($message);
-               
             }
         }
-        //     $this->dispatcher->forward([
-        //         'controller' => "task",
-        //         'action' => 'index'
-        //     ]);
+       
+        if($task->includes){
+            foreach($task->includes as $data){
+                $taskSon = Tasks::findById($data);
+                $taskSon->mom = (string)$task->_id;
+                $taskSon->save();
+            }
+        }
 
-        //     return;
-        // }
          return;
-            // return json_encode('true');
+            // return json_encode($task->_id);
     }
 
     public function findStakeAction()
@@ -275,9 +276,6 @@ class TaskController extends ControllerBase
                 $this->view->toProduce = $toProduce;
 
 
-
-
-
                 $idProject = $this->session->get('idProject');
 
                 $this->view->idTask  = $task->_id;
@@ -302,6 +300,8 @@ class TaskController extends ControllerBase
 
                 $conditionTask = [];
                 $conditionTask["idProject"] = $idProject;
+                $conditionTask["mom"] = null;
+                $conditionTask["name"] = ['$ne' => $task->name];
                 $taskTags = Tasks::Find(array($conditionTask));
                 $this->view->taskTags = $taskTags;
 
@@ -394,13 +394,12 @@ class TaskController extends ControllerBase
     {
         $this->view->disable();
         $input = $this->request->getPost('project');
+        $taskname = $this->request->getPost('taskname');
         
         $condition = [];
+        $condition["idProject"] = $input;   
+        $condition["mom"] = null;
         
-        if($input){
-            $condition["idProject"] = $input;
-        }
-
         $tasks = Tasks::Find(array($condition));
 
         return json_encode($tasks);
