@@ -33,7 +33,6 @@ class CollaborationsettingController extends ControllerBase
 
         $this->assets->addJs('jquery/collaburationEditRedirect.js');  
        
-        $this->assets->addJs('jslif/tagCollaboration.js');
         
 
     }
@@ -71,6 +70,10 @@ class CollaborationsettingController extends ControllerBase
     {
         $id = $this->session->get('idProject');
         $this->tag->setDefault("idProject", $id);
+
+        $this->view->idProject = $id;
+
+
 
         $projectname = $this->session->get('projectname');
         $this->view->projectname = $projectname;

@@ -81,43 +81,20 @@ $(document).ready(function() {
     })
 
 
-   
-    function createJSON(data) {
-        jsonObj = [];
-        $.each(data, function(index ,data){
+    var idproject = $("#idProject").val();
+    $.post(baseUrl+"collaborationsetting/findTask",{
+        project : idproject
+    }, function(data){
+        var auto = createJSON(data);
+        var n = createString(auto);
 
-            item = {}
-            item ["value"] = data._id.$id;
-            item ["text"] = data.name;
-            item ["continent"] = "";
-            
-            jsonObj.push(item);
-        });
-
-        item = {}
-        item ["value"] = 0;
-        item ["text"] = "?";
-        item ["continent"] = "";
-        jsonObj.push(item);
-       
-        return jsonObj;
-    }
-
-    function createString(auto) {
-        return JSON.stringify(auto)
-    }
-
-    
-
-    function taginclude(n){
-        var Stakeholder = new Bloodhound({
+            Tasks = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(n)
         });
-
-        Stakeholder.initialize();
-
+        Tasks.initialize();
+    
         var includeColla = $('#includeColla');
         includeColla.tagsinput({
             itemValue: 'value',
@@ -125,27 +102,40 @@ $(document).ready(function() {
             typeaheadjs : {
                 name :'name',
                 displayKey:'text',
-                source : Stakeholder.ttAdapter(),
+                source : Tasks.ttAdapter(),
                 templates :{
-                    empty:'<div class="empty-message text-info"> No matches.</div>'
+                    empty:'<div class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
                 }
             }
         });
-    }
+    },  "json");
 
-
-
-    var idproject = $("#idProject").val();
-    
-    $.post(baseUrl+"collaborationsetting/findTask",{
-
+    $.post(baseUrl+"task/findResource",{
         project : idproject
     }, function(data){
-      
         var auto = createJSON(data);
         var n = createString(auto);
+            Resource = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        Resource.initialize();
+    
+    },  "json");
 
-        taginclude(n);
+    $.post(baseUrl+"task/findStake",{
+        project : idproject
+    }, function(data){
+        var auto = createJSON(data);
+        var n = createString(auto);
+        Stakeholder = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        Stakeholder.initialize();
+    
     },  "json");
 
 

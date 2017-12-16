@@ -19,7 +19,8 @@ function cloneModalResource($modal) {
 
     //append to modal
     $modal.after(newModal);
-    initData(idModal);
+    initDataResource(idModal);
+    initDataStakeholder(idModal);
     
     //show modal
     var modalId = "#" + idModal;
@@ -39,8 +40,9 @@ function cloneModalTask($modal) {
     setFormIdInModalTask(idModal, newModal);
 
     $modal.after(newModal);
-    initData(idModal);
-
+    initDataResource(idModal);
+    initDataStakeholder(idModal);
+    initDataTask(idModal);
     var modalId = "#" + idModal;
     $(modalId).modal("show");
     
@@ -56,14 +58,14 @@ function cloneModalStakeholder($modal) {
     // setFormIdInModalStakeholder(idModal, newModal);
 
     $modal.after(newModal);
-    // initkData(idModal);
+    // initDataStakeholder(idModal);
 
     var modalId = "#" + idModal;
     $(modalId).modal("show");
     
 }
 
-function initData(idModal){
+function initDataResource(idModal){
 	var ModalAddResource = $('.ModalAddResource-'+idModal);
     ModalAddResource.tagsinput({
         itemValue: 'value',
@@ -77,7 +79,9 @@ function initData(idModal){
             },
         }
     });
+}
 
+function initDataStakeholder(idModal){
     var ModalAddStakeholder = $('.ModalAddStakeholder-'+idModal);
     ModalAddStakeholder.tagsinput({
         itemValue: 'value',
@@ -91,7 +95,11 @@ function initData(idModal){
             },
         }
     });
+}
 
+   
+
+function initDataTask(idModal){
     var ModalAddTask = $('.ModalAddTask-'+idModal);
     ModalAddTask.tagsinput({
         itemValue: 'value',
@@ -105,8 +113,6 @@ function initData(idModal){
             },
         }
     });
-
-
 }
 
 
@@ -137,8 +143,8 @@ function setFormIdInModalTask(idModal, newModal){
 	newModal.find('#Modaltaskname').attr('id', 'Modaltaskname-'+idModal);
     newModal.find('#ModalIsATask').attr('id', 'ModalIsATask-'+idModal);
     newModal.find('#ModalDescriptionTask').attr('id', 'ModalDescriptionTask-'+idModal);
-
-    newModal.find('#ModalincludesTask').addClass(' ModalAddTask-'+idModal);
+    
+    newModal.find('#ModalincludesTask').addClass('ModalAddTask-'+idModal);
     newModal.find('#ModalincludesTask').attr('id', 'ModalincludesTask-'+idModal);
 
     newModal.find('#ModalasIsStateTask').attr('id', 'ModalasIsStateTask-'+idModal);
@@ -224,7 +230,7 @@ function saveResourse(idModal){
         success:function(data){
             Resource.clear();
             $.post(baseUrl+"task/findResource",{
-                    project : projectid
+                    project : idProject
                     }, function(data){
                       console.log(data);
                         var auto = createJSON(data);
@@ -336,7 +342,7 @@ function saveResourse(idModal){
                         success:function(data){
                             Tasks.clear();
                             $.post(baseUrl+"task/findTask",{
-                                    project : projectid
+                                    project : idProject
                                     }, function(data){
                                         
                                         var auto = createJSON(data);
@@ -379,3 +385,13 @@ $(document).on('hide.bs.modal', "div.createResource", function() {
 	var vm = $(this);
 	var id = vm.prop('id');
 });
+
+$(document).on('hide.bs.modal', "div.createTask", function() {
+	var vm = $(this);
+	var id = vm.prop('id');
+});
+
+// $(document).on('hide.bs.modal', "div.createResource", function() {
+// 	var vm = $(this);
+// 	var id = vm.prop('id');
+// });

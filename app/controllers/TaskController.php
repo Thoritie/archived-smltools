@@ -288,13 +288,11 @@ class TaskController extends ControllerBase
                
                    
     
-                $input = "1";
+                
                 $conditionStake = [];
-                if($input){
-                    $conditionStake["idProject"] = $input;
-                }
-                $stake = Stakeholders::Find(array($conditionStake));
-                $this->view->stake = $stake;
+                $conditionStake["idProject"] = $idProject;
+                $tagsStake = Stakeholders::Find(array($conditionStake));
+                $this->view->tagsStake = $tagsStake;
 
 
                 $conditionTask = [];
