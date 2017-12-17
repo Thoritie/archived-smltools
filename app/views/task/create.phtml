@@ -827,36 +827,18 @@
             cloneModalTask($('#createTask'));
       })
 </script>
-<script>
-      var includes = questionMark($('#includes'));
-      var owner = questionMark($('#owner'));
-      var collaburator = questionMark($('#collaburator'));
-      var regulator = questionMark($('#regulator'));
-      var uses = questionMark($('#uses'));
-      var produces = questionMark($('#produces'));
-      var ownerToBe = questionMark($('#ownerToBe'));
-      var collaboratorToBe = questionMark($('#collaboratorToBe'));
-      var toUse = questionMark($('#toUse'));
-      var toProduce = questionMark($('#toProduce'));
 
-      function questionMark($textinput){
-            $textinput.on('itemAdded', function(event) {
-                  var tag = event.item;
-                  var data = $textinput.tagsinput('items');
-                  var item={};
-                  $.each(data, function(index ,input){   
-                        item [index] = input.value
-                  });
-                  if(item[0]==0){
-                        if(tag.value!=0){
-                              $textinput.tagsinput('remove', { value: tag.value, text: tag.text });
-                        }
-                  }else{
-                        if(tag.value==0){
-                              $textinput.tagsinput('remove', { value: tag.value, text: tag.text });
-                        }
-                  } 
-            });
-      }
+<script>
+      questionMark($('#includes'));
+       questionMark($('#owner'));
+       questionMark($('#collaburator'));
+       questionMark($('#regulator'));
+       questionMark($('#uses'));
+       questionMark($('#produces'));
+       questionMark($('#ownerToBe'));
+       questionMark($('#collaboratorToBe'));
+       questionMark($('#toUse'));
+       questionMark($('#toProduce'));
 </script>
+
 <!-- /.blockJS -->

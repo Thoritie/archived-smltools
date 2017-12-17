@@ -27,7 +27,14 @@ function cloneModalResource($modal) {
     $(modalId).modal("show");
     
     //add id to list for using after
-//    listModal.push(idModal);
+    //    listModal.push(idModal);
+ 
+    //check questionmark
+    questionMark($('#ModalincludesResource-'+idModal));
+    questionMark($('#ModalrOwnerResource-'+idModal));
+    questionMark($('#ModalpOwnerResource-'+idModal));
+    questionMark($('#ModalmaintainerResource-'+idModal));
+
 }
 
 function cloneModalTask($modal) {
@@ -46,6 +53,16 @@ function cloneModalTask($modal) {
     var modalId = "#" + idModal;
     $(modalId).modal("show");
     
+    questionMark($('#ModalincludesTask-'+idModal));
+    questionMark($('#ModalOwnerTask-'+idModal));
+    questionMark($('#ModalCollaburatorTask-'+idModal));
+    questionMark($('#ModalRegulatorTask-'+idModal));
+    questionMark($('#ModalUsesTask-'+idModal));
+    questionMark($('#ModalProducesTask-'+idModal));
+    questionMark($('#ModalOwnerToBeTask-'+idModal));
+    questionMark($('#ModalCollaboratorToBeTask-'+idModal));
+    questionMark($('#ModalToUseTask-'+idModal));
+    questionMark($('#ModalToProduceTask-'+idModal));
 }
 
 function cloneModalStakeholder($modal) {
@@ -130,7 +147,11 @@ function setFormIdInModalResource(idModal, newModal){
 
     newModal.find('#ModalmaintainerResource').addClass(' ModalAddStakeholder-'+idModal);
 	newModal.find('#ModalmaintainerResource').attr('id', 'ModalmaintainerResource-'+idModal);
-	
+    
+   
+   
+
+
 	var onClickSave = "saveResourse('"+ idModal + "')";
 	var idSaveModal = 'saveResourceformModal-'+idModal;
 	newModal.find('#saveResourceformModal').attr('id', idSaveModal);
@@ -165,8 +186,7 @@ function setFormIdInModalTask(idModal, newModal){
     newModal.find('#ModalProducesTask').attr('id', 'ModalProducesTask-'+idModal);
 
     newModal.find('#ModalToBeStateTask').attr('id', 'ModalToBeStateTask-'+idModal);
-    newModal.find('#ModalProducesTask').attr('id', 'ModalProducesTask-'+idModal);
-
+    
     newModal.find('#ModalOwnerToBeTask').addClass(' ModalAddStakeholder-'+idModal);
     newModal.find('#ModalOwnerToBeTask').attr('id', 'ModalOwnerToBeTask-'+idModal);
 
@@ -232,14 +252,12 @@ function saveResourse(idModal){
             $.post(baseUrl+"task/findResource",{
                     project : idProject
                     }, function(data){
-                      console.log(data);
+                     
                         var auto = createJSON(data);
                         var n = createString(auto);
                         
                         Resource.local = JSON.parse(n);
                         Resource.initialize(true);
-                        
-                        console.log(n);
                         
                         $('#'+idModal).modal('hide');
                         $('#'+idModal).remove();
@@ -395,3 +413,23 @@ $(document).on('hide.bs.modal', "div.createTask", function() {
 // 	var vm = $(this);
 // 	var id = vm.prop('id');
 // });
+
+function questionMark($textinput){
+    $textinput.on('itemAdded', function(event) {
+          var tag = event.item;
+          var data = $textinput.tagsinput('items');
+          var item={};
+          $.each(data, function(index ,input){   
+                item [index] = input.value
+          });
+          if(item[0]==0){
+                if(tag.value!=0){
+                      $textinput.tagsinput('remove', { value: tag.value, text: tag.text });
+                }
+          }else{
+                if(tag.value==0){
+                      $textinput.tagsinput('remove', { value: tag.value, text: tag.text });
+                }
+          } 
+    });
+}
