@@ -151,9 +151,43 @@ class ResourceController extends ControllerBase
         return json_encode('true');
     }
 
+    public function checkDupplicateResourceNameAction()
+    {
+        $result = true;
+        $resourcename = $this->request->getPost('resourcename');
+        $idProject = $this->request->getPost('idProject');
+        
+        $condition = [];
+        if($resourcename){
+            $condition["name"] = $projectname;
+            $condition["idProject"] = $idProject;
+        }
+        $res = Resource::Find(array($condition));
+        if($res){
+            $result = false;
+        }
+
+        return json_encode($result);
+
+    }
+
     public function editAction()
     {
+        $id = $this->request->getPost('id');
+        $res = Resource::findById($id);
         
+        $this->view->res = $res;
+        $this->tag->setDefault("editResName", $res->name);
+        $this->tag->setDefault("editResDesCription", $res->description);
+
+        $includes = array();
+        foreach($res->includes as $data){
+            $item = Resource::findById($data);
+            array_push($includes,$item);
+        }
+        $this->view->includes = $includes;
+
+
     }
 
 }

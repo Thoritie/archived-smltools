@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    //createResource
+    //validate
     
     $.validator.setDefaults({
         errorClass: 'badge badge-danger',
@@ -19,7 +19,7 @@ $(document).ready(function() {
             resourcename: {
                 required: true,
                 remote: {
-                    url: "checkDup",
+                    url: "checkDupplicateResourceName",
                     type: "post",
                     data: {
                         resourcename: function () {
