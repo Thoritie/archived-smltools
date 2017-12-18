@@ -101,7 +101,7 @@ class CollaborationsettingController extends ControllerBase
 
 
         $idProject = $this->session->get('idProject');
-
+        $this->view->idProject = $idProject;
        
         $this->tag->setDefault("EdIdProject", $idProject);
         $this->tag->setDefault("EdId",$id);

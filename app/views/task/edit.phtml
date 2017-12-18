@@ -1074,31 +1074,8 @@
       });
   }
 
-  function createOwner($elt){
-    $elt.tagsinput('add', { "value": 5555, "text": "new owner", "continent": "" });
-  }
 
-  function createJSON(data) {
-        jsonObj = [];
-        
-        $.each(data, function(index ,data){
 
-            item = {};
-            item ["value"] = data._id.$id;
-            item ["text"] = data.name;
-            item ["continent"] = "";
-           
-            jsonObj.push(item);
-        });
-
-        item = {};
-        item ["value"] = 0;
-        item ["text"] = "?";
-        item ["continent"] = "";
-        jsonObj.push(item);
-       
-        return jsonObj;
-  }
 </script>
 
 <!-- /.blockJS -->
