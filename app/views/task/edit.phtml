@@ -215,6 +215,24 @@
 
 
 <!-- blockJS -->
+<script src="<?php echo $this->url->get('/public/modal/cloneModal.js');?>"></script>
+<script>
+      $("#createTaskIcon").click(function(){
+            cloneModalTask($('#createTask'));
+      })
+</script>
+<script>
+       questionMark($('#Edincludes'));
+       questionMark($('#Edowner'));
+       questionMark($('#Edcollaburator'));
+       questionMark($('#Edregulator'));
+       questionMark($('#Eduses'));
+       questionMark($('#Edproduces'));
+       questionMark($('#EdownerToBe'));
+       questionMark($('#EdcollaboratorToBe'));
+       questionMark($('#EdtoUse'));
+       questionMark($('#EdtoProduce'));
+</script>
 <script>
     var taskinput = '<?php echo json_encode($taskTags); ?>';
     taskinput = JSON.parse(taskinput);
