@@ -92,7 +92,7 @@ class TaskController extends ControllerBase
         
         $id = $this->session->get('idProject');
         $this->tag->setDefault("idProject", $id);
-        $this->view->idproject = $id;
+        $this->view->idProject = $id;
         
 
         $projectname = $this->session->get('projectname');
@@ -276,6 +276,7 @@ class TaskController extends ControllerBase
 
 
                 $idProject = $this->session->get('idProject');
+                $this->view->idProject = $idProject;
 
                 $this->view->idTask  = $task->_id;
                 $this->tag->setDefault("idProject", $idProject);
