@@ -15,6 +15,7 @@ class CollaborationsettingController extends ControllerBase
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
         $this->assets->addCss('addResource/addRe.css');
+        $this->assets->addCss('jslif/sb-admin-override.css');
         
 
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');

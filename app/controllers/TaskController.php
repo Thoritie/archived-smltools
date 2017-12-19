@@ -15,7 +15,7 @@ class TaskController extends ControllerBase
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
         //// $this->assets->addCss('jslif/sb-admin.css');
-        //// $this->assets->addCss('jslif/sb-admin-override.css');
+        $this->assets->addCss('jslif/sb-admin-override.css');
         //// $this->assets->addCss('projectCard/proCard.css');
 
     
