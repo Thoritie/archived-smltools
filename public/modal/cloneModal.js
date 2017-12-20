@@ -25,7 +25,7 @@ function cloneModalResource($modal) {
     //show modal
     var modalId = "#" + idModal;
     $(modalId).modal("show");
-    
+    validateModalResource('#form-'+idModal,idModal);
     //add id to list for using after
     //    listModal.push(idModal);
  
@@ -52,7 +52,8 @@ function cloneModalTask($modal) {
     initDataTask(idModal);
     var modalId = "#" + idModal;
     $(modalId).modal("show");
-    
+    validateModalTask('#form-'+idModal,idModal);
+
     questionMark($('#ModalincludesTask-'+idModal));
     questionMark($('#ModalOwnerTask-'+idModal));
     questionMark($('#ModalCollaburatorTask-'+idModal));
@@ -134,6 +135,8 @@ function initDataTask(idModal){
 
 
 function setFormIdInModalResource(idModal, newModal){
+    newModal.find('#form').attr('id', 'form-'+idModal);
+    newModal.find('#idProjectmodalResource').attr('id', 'idProjectmodalResource-'+idModal);
 	newModal.find('#Modalresourcename').attr('id', 'Modalresourcename-'+idModal);
 	newModal.find('#ModalDesResource').attr('id', 'ModalDesResource-'+idModal);
 	newModal.find('#ModalincludesResource').addClass(' ModalAddResource-'+idModal);
@@ -148,10 +151,6 @@ function setFormIdInModalResource(idModal, newModal){
     newModal.find('#ModalmaintainerResource').addClass(' ModalAddStakeholder-'+idModal);
 	newModal.find('#ModalmaintainerResource').attr('id', 'ModalmaintainerResource-'+idModal);
     
-   
-   
-
-
 	var onClickSave = "saveResourse('"+ idModal + "')";
 	var idSaveModal = 'saveResourceformModal-'+idModal;
 	newModal.find('#saveResourceformModal').attr('id', idSaveModal);
@@ -160,6 +159,7 @@ function setFormIdInModalResource(idModal, newModal){
 
 
 function setFormIdInModalTask(idModal, newModal){
+    newModal.find('#form').attr('id', 'form-'+idModal);
     newModal.find('#idProjectmodalTask').attr('id', 'idProjectmodalTask-'+idModal);
 	newModal.find('#Modaltaskname').attr('id', 'Modaltaskname-'+idModal);
     newModal.find('#ModalIsATask').attr('id', 'ModalIsATask-'+idModal);
@@ -207,172 +207,172 @@ function setFormIdInModalTask(idModal, newModal){
 }
 
 function saveResourse(idModal){
-	var resourcename = $("#Modalresourcename-"+idModal).val();
-    var Description = $("#ModalDesResource-"+idModal).val();
-    var includes = $("#ModalincludesResource-"+idModal).tagsinput('items')
-    item4 = {};
-    $.each(includes, function(index, input){
-        item4 [index] = input.value
-    });
-
-    var rOwner =$("#ModalrOwnerResource-"+idModal).tagsinput('items')
-    item1 = {};
-    $.each(rOwner, function(index, input){
-        item1 [index] = input.value
-    });
-
-    var pOwner = $("#ModalpOwnerResource-"+idModal).tagsinput('items')
-    item2 = {};
-    $.each(pOwner, function(index, input){
-        item2 [index] = input.value
-    });
-
-    var maintainer = $("#ModalmaintainerResource-"+idModal).tagsinput('items')
-    item3 = {};
-    $.each(maintainer, function(index, input){
-        item3 [index] = input.value
-    });
-
-    var idProject = $("#idProjectmodalResource").val();
-
-    $.ajax({
-        type:'POST',
-        url: baseUrl+"task/saveResourceFormModal",
-        data:{
-            resourcename: resourcename,
-            Description: Description,
-            includes: item4,
-            rOwner : item1,
-            pOwner : item2,
-            maintainer: item3,
-            idProject : idProject
-        },
-        success:function(data){
-            Resource.clear();
-            $.post(baseUrl+"task/findResource",{
-                    project : idProject
-                    }, function(data){
-                     
-                        var auto = createJSON(data);
-                        var n = createString(auto);
-                        
-                        Resource.local = JSON.parse(n);
-                        Resource.initialize(true);
-                        
-                        $('#'+idModal).modal('hide');
-                        $('#'+idModal).remove();
-                    },  "json");
-        }
-    })
+            var result = $('#form-'+idModal).valid();
+            if(result){
+                var resourcename = $("#Modalresourcename-"+idModal).val();
+                var Description = $("#ModalDesResource-"+idModal).val();
+                var includes = $("#ModalincludesResource-"+idModal).tagsinput('items')
+                item4 = {};
+                $.each(includes, function(index, input){
+                    item4 [index] = input.value
+                });
+                var rOwner =$("#ModalrOwnerResource-"+idModal).tagsinput('items')
+                item1 = {};
+                $.each(rOwner, function(index, input){
+                    item1 [index] = input.value
+                });
+                var pOwner = $("#ModalpOwnerResource-"+idModal).tagsinput('items')
+                item2 = {};
+                $.each(pOwner, function(index, input){
+                    item2 [index] = input.value
+                });
+                var maintainer = $("#ModalmaintainerResource-"+idModal).tagsinput('items')
+                item3 = {};
+                $.each(maintainer, function(index, input){
+                    item3 [index] = input.value
+                });
+                var idProject = $("#idProjectmodalResource").val();
+                $.ajax({
+                    type:'POST',
+                    url: baseUrl+"task/saveResourceFormModal",
+                    data:{
+                        resourcename: resourcename,
+                        Description: Description,
+                        includes: item4,
+                        rOwner : item1,
+                        pOwner : item2,
+                        maintainer: item3,
+                        idProject : idProject
+                    },
+                    success:function(data){
+                        Resource.clear();
+                        $.post(baseUrl+"task/findResource",{
+                                project : idProject
+                                }, function(data){
+                                
+                                    var auto = createJSON(data);
+                                    var n = createString(auto);
+                                    
+                                    Resource.local = JSON.parse(n);
+                                    Resource.initialize(true);
+                                    
+                                    $('#'+idModal).modal('hide');
+                                    $('#'+idModal).remove();
+                                },  "json");
+                    }
+                })
+            }
 }
 
 
     function saveTask(idModal){
+                var result = $('#form-'+idModal).valid();
+                if(result){
+                    var taskname = $("#Modaltaskname-"+idModal).val();
+                    var isA = $("#ModalIsATask-"+idModal).val();
+                    var Description = $("#ModalDescriptionTask-"+idModal).val();
 
-                var taskname = $("#Modaltaskname-"+idModal).val();
-                var isA = $("#ModalIsATask-"+idModal).val();
-                var Description = $("#ModalDescriptionTask-"+idModal).val();
+                    var includes = $("#ModalincludesTask-"+idModal).tagsinput('items')
+                    itemIncludes = {};
+                    $.each(includes, function(index ,input){   
+                        itemIncludes [index] = input.value
+                    });
 
-                var includes = $("#ModalincludesTask-"+idModal).tagsinput('items')
-                itemIncludes = {};
-                $.each(includes, function(index ,input){   
-                    itemIncludes [index] = input.value
-                });
+                    var asIsState = $("#ModalasIsStateTask-"+idModal).val();
+                
+                    var owner = $("#ModalOwnerTask-"+idModal).tagsinput('items')
+                    item1 = {};
+                    $.each(owner, function(index ,input){   
+                        item1 [index] = input.value
+                    });
 
-                var asIsState = $("#ModalasIsStateTask-"+idModal).val();
-            
-                var owner = $("#ModalOwnerTask-"+idModal).tagsinput('items')
-                item1 = {};
-                $.each(owner, function(index ,input){   
-                    item1 [index] = input.value
-                });
+                    var collaburator = $("#ModalCollaburatorTask-"+idModal).tagsinput('items')
+                    item2 = {};
+                    $.each(collaburator, function(index ,input){   
+                        item2 [index] = input.value
+                    });
+                    var regulator = $("#ModalregulatorTask-"+idModal).tagsinput('items')
+                    itemRegulator = {};
+                    $.each(regulator, function(index ,input){   
+                        itemRegulator [index] = input.value
+                    });
 
-                var collaburator = $("#ModalCollaburatorTask-"+idModal).tagsinput('items')
-                item2 = {};
-                $.each(collaburator, function(index ,input){   
-                    item2 [index] = input.value
-                });
-                var regulator = $("#ModalregulatorTask-"+idModal).tagsinput('items')
-                itemRegulator = {};
-                $.each(regulator, function(index ,input){   
-                    itemRegulator [index] = input.value
-                });
+                    var uses = $("#ModalUsesTask-"+idModal).tagsinput('items')
+                    itemUses = {};
+                    $.each(collaburator, function(index ,input){   
+                        itemUses [index] = input.value
+                    });
 
-                var uses = $("#ModalUsesTask-"+idModal).tagsinput('items')
-                itemUses = {};
-                $.each(collaburator, function(index ,input){   
-                    itemUses [index] = input.value
-                });
+                    var produces = $("#ModalProducesTask-"+idModal).tagsinput('items')
+                    itemProduces = {};
+                    $.each(collaburator, function(index ,input){   
+                        itemProduces [index] = input.value
+                    });
 
-                var produces = $("#ModalProducesTask-"+idModal).tagsinput('items')
-                itemProduces = {};
-                $.each(collaburator, function(index ,input){   
-                    itemProduces [index] = input.value
-                });
+                    var toBeState = $("#ModalToBeStateTask-"+idModal).val();
 
-                var toBeState = $("#ModalToBeStateTask-"+idModal).val();
+                    var ownerToBe = $("#ModalOwnerToBeTask-"+idModal).tagsinput('items')
+                    item3 = {};
+                    $.each(ownerToBe, function(index ,input){   
+                        item3 [index] = input.value
+                    });
+                    var collaboratorToBe = $("#ModalCollaboratorToBeTask-"+idModal).tagsinput('items')
+                    item4 = {};
+                    $.each(collaboratorToBe, function(index ,input){   
+                        item4 [index] = input.value
+                    });
+                    var toUse = $("#ModalToUseTask-"+idModal).tagsinput('items')
+                    itemToUse = {};
+                    $.each(collaburator, function(index ,input){   
+                        itemToUse [index] = input.value
+                    });
 
-                var ownerToBe = $("#ModalOwnerToBeTask-"+idModal).tagsinput('items')
-                item3 = {};
-                $.each(ownerToBe, function(index ,input){   
-                    item3 [index] = input.value
-                });
-                var collaboratorToBe = $("#ModalCollaboratorToBeTask-"+idModal).tagsinput('items')
-                item4 = {};
-                $.each(collaboratorToBe, function(index ,input){   
-                    item4 [index] = input.value
-                });
-                var toUse = $("#ModalToUseTask-"+idModal).tagsinput('items')
-                itemToUse = {};
-                $.each(collaburator, function(index ,input){   
-                    itemToUse [index] = input.value
-                });
+                    var toProduce = $("#ModalToProduceTask-"+idModal).tagsinput('items')
+                    itemToProduces = {};
+                    $.each(collaburator, function(index ,input){   
+                        itemToProduces [index] = input.value
+                    });
 
-                var toProduce = $("#ModalToProduceTask-"+idModal).tagsinput('items')
-                itemToProduces = {};
-                $.each(collaburator, function(index ,input){   
-                    itemToProduces [index] = input.value
-                });
-
-                var idProject = $("#idProjectmodalTask-"+idModal).val();
-            
-                    $.ajax({
-                        type:'POST',
-                        url: baseUrl+"task/save",
-                        data:{
-                            taskname : taskname,
-                            isA : isA,
-                            Description : Description,
-                            includes : itemIncludes,
-                            asIsState : asIsState,
-                            owner : item1,
-                            collaburator : item2,
-                            regulator : itemRegulator,
-                            uses : itemUses,
-                            produces : itemProduces,
-                            toBeState : toBeState,
-                            ownerToBe : item3,
-                            collaboratorToBe : item4,
-                            toUse : itemToUse,
-                            toProduce : itemToProduces,
-                            idProject : idProject
-                        },
-                        success:function(data){
-                            Tasks.clear();
-                            $.post(baseUrl+"task/findTask",{
-                                    project : idProject
-                                    }, function(data){
+                    var idProject = $("#idProjectmodalTask-"+idModal).val();
+                
+                        $.ajax({
+                            type:'POST',
+                            url: baseUrl+"task/save",
+                            data:{
+                                taskname : taskname,
+                                isA : isA,
+                                Description : Description,
+                                includes : itemIncludes,
+                                asIsState : asIsState,
+                                owner : item1,
+                                collaburator : item2,
+                                regulator : itemRegulator,
+                                uses : itemUses,
+                                produces : itemProduces,
+                                toBeState : toBeState,
+                                ownerToBe : item3,
+                                collaboratorToBe : item4,
+                                toUse : itemToUse,
+                                toProduce : itemToProduces,
+                                idProject : idProject
+                            },
+                            success:function(data){
+                                Tasks.clear();
+                                $.post(baseUrl+"task/findTask",{
+                                        project : idProject
+                                        }, function(data){
+                                            
+                                            var auto = createJSON(data);
+                                            var n = createString(auto);
+                                            Tasks.local = JSON.parse(n);
+                                            Tasks.initialize(true);
                                         
-                                        var auto = createJSON(data);
-                                        var n = createString(auto);
-                                        Tasks.local = JSON.parse(n);
-                                        Tasks.initialize(true);
-                                       
-                                        $('#'+idModal).modal('hide');
-                                        $('#'+idModal).remove();
-                                    },  "json");
-                        }
-                    })    
+                                            $('#'+idModal).modal('hide');
+                                            $('#'+idModal).remove();
+                                        },  "json");
+                            }
+                        })    
+                }
     }
 
 function createJSON(data) {
@@ -432,4 +432,64 @@ function questionMark($textinput){
                 }
           } 
     });
+}
+
+function validateModalTask(formId,idModal){
+    var form = $(formId).validate({
+        rules: {
+            Modaltaskname: {
+                required: true,
+                remote: {
+                    url: baseUrl+"task/checkDupTaskName",
+                    type: "post",
+                    data: {
+                        taskname: function () {
+                            return $("#Modaltaskname-"+idModal).val()
+                        },
+                        idProject: function () {
+                            return $("#idProjectmodalTask-"+idModal).val()
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            Modaltaskname: {
+                required: "Task name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
+            }
+        }
+    })
+
+    return form;
+}
+
+function validateModalResource(formId,idModal){
+    var form = $(formId).validate({
+        rules: {
+            resourcename: {
+                required: true,
+                remote: {
+                    url: baseUrl+"resource/checkDupplicateResourceName",
+                    type: "post",
+                    data: {
+                        resourcename: function () {
+                            return $("#Modalresourcename-"+idModal).val()
+                        },
+                        idProject: function (){
+                            return $("#idProjectmodalResource-"+idModal).val()
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            resourcename: {
+                required: "Resource name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
+            }
+        }
+    });
+
+    return form;
 }

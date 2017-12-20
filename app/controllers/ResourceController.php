@@ -158,10 +158,10 @@ class ResourceController extends ControllerBase
         $idProject = $this->request->getPost('idProject');
         
         $condition = [];
-        if($resourcename){
-            $condition["name"] = $projectname;
-            $condition["idProject"] = $idProject;
-        }
+        
+        $condition["name"] = $resourcename;
+        $condition["idProject"] = $idProject;
+        
         $res = Resource::Find(array($condition));
         if($res){
             $result = false;
