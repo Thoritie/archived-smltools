@@ -16,38 +16,39 @@ class ResourceController extends ControllerBase
          
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
-        $this->assets->addCss('jslif/sb-admin.css');
+       // $this->assets->addCss('jslif/sb-admin.css');
         $this->assets->addCss('jslif/sb-admin-override.css');
         // $this->assets->addCss('projectCard/proCard.css');
 
-        $this->assets->addJs('jquery/jquery.js');
-        $this->assets->addJs('jquery/jquery.min.js');
-       // $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
-       $this->assets->addJs('assetsThor/js/bootstrap.min.js');
+        $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
+        $this->assets->addJs('assetsThor/js/bootstrap.min.js');
        
        
 
-        
         $this->assets->addJs('popper/popper.min.js');
         $this->assets->addJs('bootstrap-4/js/bootstrap.min.js');
         $this->assets->addJs('scrollreveal/scrollreveal.min.js');
         $this->assets->addJs('magnific-popup/jquery.magnific-popup.min.js');
-        $this->assets->addJs('jslif/sb-admin.js');
+       // $this->assets->addJs('jslif/sb-admin.js');
 
         $this->assets->addJs('jslif/jquery.easing.min.js');
         $this->assets->addJs('jslif/typeahead.bundle.min.js');
         $this->assets->addJs('jslif/bootstrap-tagsinput.js');
-        $this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
-        $this->assets->addJs('jslif/sb-admin.min.js');
-        $this->assets->addJs('jslif/tagResource.js');
-       
+
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
        
+        //$this->assets->addJs('jslif/bootstrap-tagsinput.min.js');
+        //$this->assets->addJs('jslif/sb-admin.min.js');
+        $this->assets->addJs('jquery/jquery.redirect.js');
+        $this->assets->addJs('dist/jquery.validate.js');
+        $this->assets->addJs('jslif/tagResource.js');
+       
+       
         // $this->assets->addJs('projectCard/proCard.js');
 
-        $this->assets->addJs('dist/jquery.validate.js');
-        $this->assets->addJs('jquery/jquery.redirect.js');
+       
+       
 
 
     }
@@ -55,12 +56,10 @@ class ResourceController extends ControllerBase
     public function indexAction()
     {
         $this->assets->addCss('dataTable/css/fresh-bootstrap-table.css');
-        $this->assets->addCss('addResource/addRe.css');
-        
-        $this->assets->addJs('addResource/addRe.js');
-        $this->assets->addJs('dataTable/js/jquery-1.11.2.min.js');
-        $this->assets->addJs('dataTable/js/js/bootstrap.js');
-        $this->assets->addJs('dataTable/js/bootstrap-table.js');
+       
+        // $this->assets->addJs('dataTable/js/jquery-1.11.2.min.js');
+         $this->assets->addJs('dataTable/js/js/bootstrap.js');
+         $this->assets->addJs('dataTable/js/bootstrap-table.js');
         
         //Layout
         $projectname = $this->session->get('projectname');
