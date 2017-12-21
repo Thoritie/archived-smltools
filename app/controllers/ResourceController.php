@@ -110,10 +110,16 @@ class ResourceController extends ControllerBase
     public function saveAction(){
 
         // $id = $this->request->getPost("idResource");
-        $res = new Resource();
         
-        
+        $id=$this->session->get('login');
+        $resid = $this->request->getPost("resourseid");
+        if(!$resid){
+            $res = new Resource();
 
+        }else{
+            $res = Resource::findById($resourseid);
+        }
+        
         $res->name = $this->request->getPost("resourcename");
         $res->description = $this->request->getPost("Description");
         $res->includes = $this->request->getPost("includes");
@@ -121,7 +127,13 @@ class ResourceController extends ControllerBase
         $res->pOwner = $this->request->getPost("pOwner");
         $res->maintainer = $this->request->getPost("maintainer");
         $res->idProject = $this->request->getPost("idProject");
-        $res->save();
+        try{
+            $res->save();
+            $this->flashSession->success('Resource saved');
+        }catch (Exception $e) {
+        	$this->flashSession->error($e->getMessage());
+        }
+        
 
 
         
