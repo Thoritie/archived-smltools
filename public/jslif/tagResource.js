@@ -19,7 +19,7 @@ $(document).ready(function() {
             resourcename: {
                 required: true,
                 remote: {
-                    url: "checkDupplicateResourceName",
+                    url:  baseUrl+"resource/checkDupplicateResourceName",
                     type: "post",
                     data: {
                         resourcename: function () {
@@ -160,9 +160,10 @@ $(document).ready(function() {
     }
 
 
-    var project = "1";  //input project id later
+    //var project = "1";  
+    var project = $("#idProject").val();
     
-    $.post("findStake",{
+    $.post( baseUrl+"resource/findStake",{
 
         project : project
     }, function(data){
