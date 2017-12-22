@@ -214,17 +214,9 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <!-- blockJS -->
-<script src="<?php echo $this->url->get('/public/modal/cloneModal.js');?>"></script>
+<script src="<?php echo $this->url->get('public/modal/cloneModal.js');?>"></script>
+<script src="<?php echo $this->url->get('public/jslif/tagTaskCreate.js');?>"></script>
 <script>
       $("#createTaskIcon").click(function(){
             cloneModalTask($('#createTask'));
@@ -272,7 +264,6 @@
     var data_produces = '<?php echo json_encode($produces); ?>';
     var data_toUse = '<?php echo json_encode($toUse); ?>';
     var data_toProduces = '<?php echo json_encode($toProduce); ?>';
-   
 
   $(document).ready(function(){
 
@@ -457,18 +448,15 @@
     });
     add(EdtoProduce, data_toProduces);
 
-    
-
+   
 });
 
 
   function add($elt, data){
-      $.each(JSON.parse(data), function(index ,data){   
-        $elt.tagsinput('add', { "value": data._id.$id, "text": data.name, "continent": "" });
-      });
+          $.each(JSON.parse(data), function(index ,data){   
+            $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
+          });
   }
-
-
 
 </script>
 

@@ -22,7 +22,6 @@ class TaskController extends ControllerBase
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
        
-       
 
         //// $this->assets->addJs('jquery/jquery.js');
         //// $this->assets->addJs('jquery/jquery.min.js');
@@ -44,7 +43,6 @@ class TaskController extends ControllerBase
         //// $this->assets->addJs('projectCard/proCard.js');
 
         $this->assets->addJs('dist/jquery.validate.js');
-        $this->assets->addJs('jquery/createTaskValidate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('jquery/taskEditRedirect.js');
 
