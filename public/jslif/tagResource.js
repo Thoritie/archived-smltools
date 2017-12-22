@@ -19,7 +19,7 @@ $(document).ready(function() {
             resourcename: {
                 required: true,
                 remote: {
-                    url: "checkDupplicateResourceName",
+                    url:  baseUrl+"resource/checkDupplicateResourceName",
                     type: "post",
                     data: {
                         resourcename: function () {
@@ -160,9 +160,10 @@ $(document).ready(function() {
     }
 
 
-    var project = "1";  //input project id later
+    //var project = "1";  
+    var project = $("#idProject").val();
     
-    $.post("findStake",{
+    $.post( baseUrl+"resource/findStake",{
 
         project : project
     }, function(data){
@@ -179,35 +180,36 @@ $(document).ready(function() {
 
     // save resource
     $('#saveResource').click(function (){
-        var resourcename = $("#resourcename").val();
-        var Description = $("#Description").val();
-        var idProject = $("#idProject").val();
+        if($("#createResource").valid()){
+            var resourcename = $("#resourcename").val();
+            var Description = $("#Description").val();
+            var idProject = $("#idProject").val();
 
-       var includes =$("#includes").tagsinput('items')
-       item4 = {};
-       $.each(includes, function(index, input){
-           item4 [index] = input.value
-       });
+            var includes =$("#includes").tagsinput('items')
+            item4 = {};
+                $.each(includes, function(index, input){
+                item4 [index] = input.value
+                });
 
-        var rOwner =$("#rOwner").tagsinput('items')
-        item1 = {};
-        $.each(rOwner, function(index, input){
-            item1 [index] = input.value
-        });
-
-
-        var pOwner =$("#pOwner").tagsinput('items')
-        item2 = {};
-        $.each(pOwner, function(index, input){
-            item2 [index] = input.value
-        });
+            var rOwner =$("#rOwner").tagsinput('items')
+            item1 = {};
+                $.each(rOwner, function(index, input){
+                item1 [index] = input.value
+            });
 
 
-        var maintainer =$("#maintainer").tagsinput('items')
-        item3 = {};
-        $.each(maintainer, function(index, input){
-            item3 [index] = input.value
-        });
+            var pOwner =$("#pOwner").tagsinput('items')
+            item2 = {};
+                $.each(pOwner, function(index, input){
+                item2 [index] = input.value
+            });
+
+
+            var maintainer =$("#maintainer").tagsinput('items')
+            item3 = {};
+                $.each(maintainer, function(index, input){
+                item3 [index] = input.value
+            });
 
         // sent data to controller
 
@@ -224,11 +226,11 @@ $(document).ready(function() {
                 idProject:idProject
             },
             success:function(data){
-                window.location.href="index";
+                window.location.href=baseUrl+"resource";
             }
         })
 
-
+    }
 
     });
 });
