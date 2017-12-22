@@ -99,6 +99,9 @@ class ResourceController extends ControllerBase
         $projectname = $this->session->get('projectname');
         $this->view->projectname = $projectname;
 
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
         $id = $this->session->get('idProject');
         $this->tag->setDefault("idProject", $id);
         $this->view->idproject = $id;
@@ -138,20 +141,6 @@ class ResourceController extends ControllerBase
         
     }
 
-    public function findStakeAction(){
-        $this->view->disable();
-        $input = $this->request->getPost('project');
-        
-        $condition = [];
-        
-        if($input){
-            $condition["project"] = $input;
-        }
-
-        $test = Stakeholders::Find(array($condition));
-       
-        return json_encode($test);
-    }
 
     public function deleteResourceAction()
     {

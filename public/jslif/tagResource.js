@@ -38,38 +38,18 @@ $(document).ready(function() {
     });
 
 
-    function createJSON(data) {
-        jsonObj = [];
-        $.each(data, function(index ,data){
+    var project = $("#idProject").val();
+    $.post( baseUrl+"task/findStake",{
+        project : project
+    }, function(data){
+        var auto = createJSON(data);
+        var n = createString(auto);
 
-            item = {}
-            item ["value"] = data._id.$id;
-            item ["text"] = data.name;
-            item ["continent"] = "";
-            
-            jsonObj.push(item);
-        });
-
-        item = {}
-        item ["value"] = 0;
-        item ["text"] = "?";
-        item ["continent"] = "";
-        jsonObj.push(item);
-       
-        return jsonObj;
-    }
-
-    function createString(auto) {
-        return JSON.stringify(auto)
-    }
-
-    function tagrOwner(n){
-        var Stakeholder = new Bloodhound({
+        Stakeholder = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(n)
         });
-
         Stakeholder.initialize();
 
         var rOwner = $('#rOwner');
@@ -81,20 +61,10 @@ $(document).ready(function() {
                 displayKey:'text',
                 source : Stakeholder.ttAdapter(),
                 templates :{
-                    empty:'<div class="empty-message text-info"> No matches.</div>'
+                    empty:'<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                 }
             }
         });
-    }
-
-    function tagpOwner(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-
-        Stakeholder.initialize();
 
         var pOwner = $('#pOwner');
         pOwner.tagsinput({
@@ -105,20 +75,10 @@ $(document).ready(function() {
                 displayKey:'text',
                 source : Stakeholder.ttAdapter(),
                 templates :{
-                    empty:'<div class="empty-message text-info"> No matches.</div>'
+                    empty:'<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                 }
             }
         });
-    }
-
-    function tagmaintainer(n){
-        var Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-
-        Stakeholder.initialize();
 
         var maintainer = $('#maintainer');
         maintainer.tagsinput({
@@ -129,20 +89,24 @@ $(document).ready(function() {
                 displayKey:'text',
                 source : Stakeholder.ttAdapter(),
                 templates :{
-                    empty:'<div class="empty-message text-info"> No matches.</div>'
+                    empty:'<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                 }
             }
         });
-    }
+    },  "json");
 
-    function tagincludes(n){
-        var Stakeholder = new Bloodhound({
+    $.post( baseUrl+"task/findResource",{
+        project : project
+    }, function(data){
+        var auto = createJSON(data);
+        var n = createString(auto);
+
+        Resource = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: JSON.parse(n)
         });
-
-        Stakeholder.initialize();
+        Resource.initialize();
 
         var includes = $('#includes');
         includes.tagsinput({
@@ -151,30 +115,12 @@ $(document).ready(function() {
             typeaheadjs : {
                 name :'name',
                 displayKey:'text',
-                source : Stakeholder.ttAdapter(),
+                source : Resource.ttAdapter(),
                 templates :{
-                    empty:'<div class="empty-message text-info"> No matches.</div>'
+                    empty:'<div class="empty-message text-info resourse-emptry" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
                 }
             }
         });
-    }
-
-
-    //var project = "1";  
-    var project = $("#idProject").val();
-    
-    $.post( baseUrl+"resource/findStake",{
-
-        project : project
-    }, function(data){
-      console.log(data);
-        var auto = createJSON(data);
-        var n = createString(auto);
-
-        tagrOwner(n);
-        tagpOwner(n);
-        tagmaintainer(n);
-        tagincludes(n);
 
     },  "json");
 
@@ -187,31 +133,27 @@ $(document).ready(function() {
 
             var includes =$("#includes").tagsinput('items')
             item4 = {};
-                $.each(includes, function(index, input){
+            $.each(includes, function(index, input){
                 item4 [index] = input.value
-                });
+            });
 
             var rOwner =$("#rOwner").tagsinput('items')
             item1 = {};
-                $.each(rOwner, function(index, input){
+            $.each(rOwner, function(index, input){
                 item1 [index] = input.value
             });
 
-
             var pOwner =$("#pOwner").tagsinput('items')
             item2 = {};
-                $.each(pOwner, function(index, input){
+            $.each(pOwner, function(index, input){
                 item2 [index] = input.value
             });
 
-
             var maintainer =$("#maintainer").tagsinput('items')
             item3 = {};
-                $.each(maintainer, function(index, input){
+            $.each(maintainer, function(index, input){
                 item3 [index] = input.value
             });
-
-        // sent data to controller
 
         $.ajax({
             type:'POST',
@@ -219,11 +161,11 @@ $(document).ready(function() {
             data:{
                 resourcename: resourcename,
                 Description: Description,
-                includes: includes,
+                includes: item4,
                 rOwner : item1,
-                pOwner : pOwner,
-                maintainer: maintainer,
-                idProject:idProject
+                pOwner : item2,
+                maintainer: item3,
+                idProject : idProject
             },
             success:function(data){
                 window.location.href=baseUrl+"resource";
