@@ -11,7 +11,7 @@
 
     <?php 
          echo $this->tag->hiddenField(["idProject", "id" => "idProjectEdit" ]);
-        // echo $this->tag->hiddenField(["idResource", "id" => "idResourceEdit" ]);  
+         echo $this->tag->hiddenField(["idResource", "id" => "idResourceEdit" ]);  
    ?>
 <div class="content">
    <div class="container-fluid">
@@ -41,7 +41,7 @@
                                  <div class="form-group">
                                     <label>description</label>
                                     <?php 
-                                       echo $this->tag->textArea(["Description", "class" => "form-control", 
+                                       echo $this->tag->textArea(["editResDesCription", "class" => "form-control", 
                                         "id" => "Description" , "placeholder"=>"Here can be your description...","rows" => 3,]) 
                                        ?>
                                  </div>
