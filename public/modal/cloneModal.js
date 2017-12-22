@@ -399,6 +399,19 @@ function createString(auto){
     return JSON.stringify(auto)
 }
 
+$(document).on('hidden.bs.modal', function () {
+    var modalShow = $('.modal.show').length;
+    var modalIn = $('.modal.in').length;
+    console.log(modalIn);
+    if(modalShow > 0 || modalIn>0){
+          $('body').attr('class','modal-open');
+         
+    }
+    else{
+          $('body').attr('class','');
+    }
+});
+
 $(document).on('hide.bs.modal', "div.createResource", function() {
 	var vm = $(this);
 	var id = vm.prop('id');
