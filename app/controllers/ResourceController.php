@@ -41,7 +41,7 @@ class ResourceController extends ControllerBase
 
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('dist/jquery.validate.js');
-        $this->assets->addJs('jslif/tagResource.js');
+       
         $this->assets->addJs('jquery/resourceRedirect.js');
        
        
