@@ -24,13 +24,45 @@ $(document).ready(function() {
                     data: {
                         resourcename: function () {
                             return $("#resourcename").val()
+                        },
+                        idProject: function () {
+                            return $("#idProject").val()
                         }
                     }
                 }
             },
         },
         messages: {
-            projectname: {
+            resourcename: {
+                required: "Resource name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
+            }
+        }
+    });
+
+    $("#editResource").validate({
+        rules: {
+            editResName: {
+                required: true,
+                remote: {
+                    url:  baseUrl+"resource/checkDupplicateResourceEditName",
+                    type: "post",
+                    data: {
+                        resourcename: function () {
+                            return $("#editResName").val()
+                        },
+                        idProject: function () {
+                            return $("#idProjectEdit").val()
+                        },
+                        idResource: function () {
+                            return $("#idResourceEdit").val()
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            editResName: {
                 required: "Resource name is required",
                 remote: jQuery.validator.format("{0} is already taken.")
             }
@@ -155,24 +187,76 @@ $(document).ready(function() {
                 item3 [index] = input.value
             });
 
-        $.ajax({
-            type:'POST',
-            url: "save",
-            data:{
-                resourcename: resourcename,
-                Description: Description,
-                includes: item4,
-                rOwner : item1,
-                pOwner : item2,
-                maintainer: item3,
-                idProject : idProject
-            },
-            success:function(data){
-                window.location.href=baseUrl+"resource";
-            }
-        })
+            $.ajax({
+                type:'POST',
+                url: baseUrl+"resource/save",
+                data:{
+                    resourcename: resourcename,
+                    Description: Description,
+                    includes: item4,
+                    rOwner : item1,
+                    pOwner : item2,
+                    maintainer: item3,
+                    idProject : idProject
+                },
+                success:function(data){
+                    window.location.href=baseUrl+"resource";
+                }
+            })
 
-    }
+        }
+
+    });
+
+
+    $('#saveEditResource').click(function (){
+        if($("#editResource").valid()){
+            var resourcename = $("#editResName").val();
+            var Description = $("#editResDesCription").val();
+            var idProject = $("#idProjectEdit").val();
+            var idResource = $("#idResourceEdit").val();
+            var includes =$("#Editincludes").tagsinput('items')
+            item4 = {};
+            $.each(includes, function(index, input){
+                item4 [index] = input.value
+            });
+
+            var rOwner =$("#EditrOwner").tagsinput('items')
+            item1 = {};
+            $.each(rOwner, function(index, input){
+                item1 [index] = input.value
+            });
+
+            var pOwner =$("#EditpOwner").tagsinput('items')
+            item2 = {};
+            $.each(pOwner, function(index, input){
+                item2 [index] = input.value
+            });
+
+            var maintainer =$("#Editmaintainer").tagsinput('items')
+            item3 = {};
+            $.each(maintainer, function(index, input){
+                item3 [index] = input.value
+            });
+
+            $.ajax({
+                type:'POST',
+                url:  baseUrl+"resource/save",
+                data:{
+                    resourcename: resourcename,
+                    Description: Description,
+                    includes: item4,
+                    rOwner : item1,
+                    pOwner : item2,
+                    maintainer: item3,
+                    idProject : idProject,
+                    idResource : idResource
+                },
+                success:function(data){
+                    window.location.href=baseUrl+"resource";
+                }
+            })
+        }
 
     });
 });

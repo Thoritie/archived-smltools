@@ -102,19 +102,17 @@ class ResourceController extends ControllerBase
         
     }   
 
-    public function saveAction(){
-
-        // $id = $this->request->getPost("idResource");
-        
-        $id=$this->session->get('login');
-        $resid = $this->request->getPost("resourseid");
+    public function saveAction()
+    {    
+        $resid = $this->request->getPost("idResource");
         if(!$resid){
             $res = new Resource();
-
         }else{
-            $res = Resource::findById($resourseid);
+            $res = Resource::findById($resid);
         }
-        
+
+       
+
         $res->name = $this->request->getPost("resourcename");
         $res->description = $this->request->getPost("Description");
         $res->includes = $this->request->getPost("includes");
@@ -122,14 +120,9 @@ class ResourceController extends ControllerBase
         $res->pOwner = $this->request->getPost("pOwner");
         $res->maintainer = $this->request->getPost("maintainer");
         $res->idProject = $this->request->getPost("idProject");
-        try{
-            $res->save();
-            $this->flashSession->success('Resource saved');
-        }catch (Exception $e) {
-        	$this->flashSession->error($e->getMessage());
-        }
-        
-
+       
+        $res->save();
+       
 
         
     }
@@ -164,12 +157,52 @@ class ResourceController extends ControllerBase
 
     }
 
+    public function checkDupplicateResourceEditNameAction()
+    {
+        $resourcename = $this->request->getPost('resourcename');
+        $idProject = $this->request->getPost('idProject');
+        $idResource = $this->request->getPost('idResource');
+        $result = true;
+        $condition = [];
+            
+        $condition["idProject"] = $idProject;
+        $condition["name"] = $resourcename;
+       
+        $ResourceCompare = Resource::findById($idResource);
+        $resource = Resource::Find(array($condition));
+
+        if($resource){
+            $result = false;
+            if($resource[0]->name == $ResourceCompare->name){
+                $result = true;
+            }
+        }
+        return json_encode($result);
+       
+
+    }
+
     public function editAction()
     {
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+
+        $idProject = $this->session->get('idProject');
+        $this->view->idproject = $idProject;
+
         $id = $this->request->getPost('id');
         $res = Resource::findById($id);
         
         $this->view->res = $res;
+        $this->tag->setDefault("idProject", $res->idProject);
+        $this->tag->setDefault("idResource", $id);
         $this->tag->setDefault("editResName", $res->name);
         $this->tag->setDefault("editResDesCription", $res->description);
 
@@ -202,6 +235,7 @@ class ResourceController extends ControllerBase
         }
         $this->view->maintainer = $maintainer;
 
+
         $conditionStake = [];
         $conditionStake["idProject"] = $idProject;
         $tagsStake = Stakeholders::Find(array($conditionStake));
@@ -209,6 +243,7 @@ class ResourceController extends ControllerBase
 
         $conditionResource = [];
         $conditionResource["idProject"] = $idProject;
+        $conditionResource["name"] = ['$ne' => $res->name];
         $resourceTags = Resource::Find(array($conditionResource));
         $this->view->resourceTags = $resourceTags;
 
