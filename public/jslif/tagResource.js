@@ -14,7 +14,7 @@ $(document).ready(function() {
                 .removeClass('has-error has-feedback')
         }
     })
-    $("#createResource").validate({
+    $("#createResource-form").validate({
         rules: {
             resourcename: {
                 required: true,
@@ -158,7 +158,7 @@ $(document).ready(function() {
 
     // save resource
     $('#saveResource').click(function (){
-        if($("#createResource").valid()){
+        if($("#createResource-form").valid()){
             var resourcename = $("#resourcename").val();
             var Description = $("#Description").val();
             var idProject = $("#idProject").val();

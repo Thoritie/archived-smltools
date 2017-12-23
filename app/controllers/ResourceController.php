@@ -97,7 +97,7 @@ class ResourceController extends ControllerBase
 
         $id = $this->session->get('idProject');
         $this->tag->setDefault("idProject", $id);
-        $this->view->idproject = $id;
+        $this->view->idProject = $id;
 
         
     }   
@@ -195,7 +195,7 @@ class ResourceController extends ControllerBase
 
 
         $idProject = $this->session->get('idProject');
-        $this->view->idproject = $idProject;
+        $this->view->idProject = $idProject;
 
         $id = $this->request->getPost('id');
         $res = Resource::findById($id);

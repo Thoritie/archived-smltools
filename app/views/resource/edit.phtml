@@ -207,7 +207,7 @@
       });
 
       function add($elt, data){
-          $.each(JSON.parse(data), function(index ,data){   
+            $.each(JSON.parse(data), function(index ,data){   
             $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
           });
       }
