@@ -207,6 +207,13 @@ class ResourceController extends ControllerBase
         $tagsStake = Stakeholders::Find(array($conditionStake));
         $this->view->tagsStake = $tagsStake;
 
+        $conditionResource = [];
+        $conditionResource["idProject"] = $idProject;
+        $resourceTags = Resource::Find(array($conditionResource));
+        $this->view->resourceTags = $resourceTags;
+
+
+
 
     }
 

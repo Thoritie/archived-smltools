@@ -31,7 +31,7 @@
                                     <label>Resource Name</label>
                                     <?php 
                                        echo $this->tag->textField(["editResName", "size" => 30, 
-                                       "class" => "form-control", "id" => "resourcename" , "placeholder"=>"Resource Name..."]) 
+                                       "class" => "form-control", "id" => "editResName" , "placeholder"=>"Resource Name..."]) 
                                        ?>
                                  </div>
                               </div>
@@ -42,7 +42,7 @@
                                     <label>description</label>
                                     <?php 
                                        echo $this->tag->textArea(["editResDesCription", "class" => "form-control", 
-                                        "id" => "Description" , "placeholder"=>"Here can be your description...","rows" => 3,]) 
+                                        "id" => "editResDesCription" , "placeholder"=>"Here can be your description...","rows" => 3,]) 
                                        ?>
                                  </div>
                               </div>
@@ -53,7 +53,7 @@
                                     <label>includes</label>
                                     <?php 
                                        echo $this->tag->textField(["includes", "size" => 30, 
-                                       "class" => "form-control", "id" => "includes"]) 
+                                       "class" => "form-control", "id" => "Editincludes"]) 
                                        ?>
                                  </div>
                               </div>
@@ -64,7 +64,7 @@
                                     <label>r Owner</label>
                                     <?php 
                                        echo $this->tag->textField(["rOwner", "size" => 30, 
-                                       "class" => "form-control", "id" => "rOwner"]) 
+                                       "class" => "form-control", "id" => "EditrOwner"]) 
                                        ?>
                                  </div>
                               </div>
@@ -73,7 +73,7 @@
                                     <label>p Owner</label>
                                     <?php 
                                        echo $this->tag->textField(["pOwner", "size" => 30, 
-                                       "class" => "form-control", "id" => "pOwner"]) 
+                                       "class" => "form-control", "id" => "EditpOwner"]) 
                                        ?>
                                  </div>
                               </div>
@@ -84,13 +84,13 @@
                                     <label>Maintainer</label>
                                     <?php 
                                        echo $this->tag->textField(["maintainer", "size" => 30, 
-                                       "class" => "form-control", "id" => "maintainer"]) 
+                                       "class" => "form-control", "id" => "Editmaintainer"]) 
                                        ?>
                                  </div>
                               </div>
                            </div>
                            <?php echo $this->tag->endForm(); ?>
-                           <button type="submit" class="btn btn-info btn-fill pull-right"  id="saveResource">Save Resource</button>
+                           <button type="submit" class="btn btn-info btn-fill pull-right"  id="saveEditResource">Save Resource</button>
                            <div class="clearfix"></div>
                         </form>
                      </div>
@@ -101,3 +101,61 @@
       </div>
    </div>
 </div>
+
+<script>
+      var stakeinput = '<?php echo json_encode($tagsStake); ?>';
+      stakeinput = JSON.parse(stakeinput);
+      stakeinput = createJSON(stakeinput);
+      stakeinput = JSON.stringify(stakeinput);
+
+      var data_rOwner = '<?php echo json_encode($rOwner); ?>';
+      var data_pOwner = '<?php echo json_encode($pOwner); ?>';
+      var data_maintainer = '<?php echo json_encode($maintainer); ?>';
+
+
+      var resourceinput = '<?php echo json_encode($resourceTags); ?>';
+      resourceinput = JSON.parse(resourceinput);
+      resourceinput = createJSON(resourceinput);
+      resourceinput = JSON.stringify(resourceinput);
+
+
+      var data_includes = '<?php echo json_encode($includes); ?>';
+
+      $(document).ready(function() {
+
+            Stakeholder = new Bloodhound({
+                  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                  queryTokenizer: Bloodhound.tokenizers.whitespace,
+                  local: JSON.parse(stakeinput)
+            });
+
+            Stakeholder.initialize();
+
+            var EditrOwner = $('#EditrOwner');
+            EditrOwner.tagsinput({
+                  itemValue:'value',
+                  itemText: 'text',
+                  typeaheadjs:{
+                        name : 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates: {
+                              empty: '<div class="empty-message text-info"> No matches.</div>'
+
+                        },
+                  }
+
+            })
+            add(EditrOwner,data_rOwner);
+
+
+
+      });
+
+      function add($elt, data){
+          $.each(JSON.parse(data), function(index ,data){   
+            $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
+          });
+      }
+      
+</script>
