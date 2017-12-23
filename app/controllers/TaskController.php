@@ -1,5 +1,9 @@
 <?php
 
+use MongoDB\BSON\ObjectId;
+use Library\Enum\Enum;
+use Library\Common\Common;
+
 class TaskController extends ControllerBase
 {
     public function onConstruct(){
@@ -14,11 +18,10 @@ class TaskController extends ControllerBase
          
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
-        //// $this->assets->addCss('jslif/sb-admin.css');
         $this->assets->addCss('jslif/sb-admin-override.css');
-        //// $this->assets->addCss('projectCard/proCard.css');
 
-    
+        $this->assets->addCss('modal/scrollhidden.css');
+
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
        
@@ -80,11 +83,6 @@ class TaskController extends ControllerBase
         $this->view->userLogin = $userLogin;
     }
 
-    public function indextestAction($id)
-    {
-        
-    }
-
     public function createAction()
     {
         
@@ -101,6 +99,8 @@ class TaskController extends ControllerBase
 
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
+
+        $this->view->ToBeState = Enum::$ToBeState;
     }
 
     public function saveAction()
@@ -400,6 +400,89 @@ class TaskController extends ControllerBase
 
         return json_encode($tasks);
     }
+
+    public function showDetailTaskAction()
+    {
+        $id = $this->request->getPost('taskId');
+        $task = Tasks::findById($id);
+
+        $arrTask = [];
+        $arrTask['name'] = $task->name;
+        $arrTask['isA'] = $task->isA;
+        $arrTask['Description'] = $task->Description;
+        
+        $tempArray = [];
+        foreach($task->includes as $id){
+            $tempArray[] = Common::getTaskNameById(Tasks, $id);
+        };
+
+        $arrTask['includes'] = $tempArray;
+        $arrTask['asIsState'] =  Enum::$AsIsstate[$task->asIsState];
+        $arrTask['toBeState'] = Enum::$ToBeState[$task->toBeState];
+
+
+        // Details of Resouce
+        $model = Resource;
+        $tempArray = [];
+        foreach($task->uses as $id){
+            $tempArray[] = Common::getResourceNameById($model, $id);
+        };
+        $arrTask['uses'] = $tempArray;
+
+        $tempArray = [];
+        foreach($task->produces as $id){
+            $tempArray[] = Common::getResourceNameById($model, $id);
+        };
+        $arrTask['produces'] = $tempArray;
+        
+        $tempArray = [];
+        foreach($task->toUse as $id){
+            $tempArray[] = Common::getResourceNameById($model, $id);
+        };
+        $arrTask['toUse'] = $tempArray;
+
+        $tempArray = [];
+        foreach($task->toProduce as $id){
+            $tempArray[] = Common::getResourceNameById($model, $id);
+        };
+        $arrTask['toProduce'] = $tempArray;
+
+        
+        // Details of Stakeholder
+        $model = Stakeholders;
+        $tempArray = [];
+        foreach($task->owner as $id){
+            $tempArray[] = Common::getStakeholderNameById($model, $id);
+        };
+        $arrTask['owner'] = $tempArray;
+        
+        $tempArray = [];
+        foreach($task->collaburator as $id){
+            $tempArray[] = Common::getStakeholderNameById($model, $id);
+        };
+        $arrTask['collaburator'] = $tempArray;
+
+        $tempArray = [];
+        foreach($task->regulator as $id){
+            $tempArray[] = Common::getStakeholderNameById($model, $id);
+        };
+        $arrTask['regulator'] = $tempArray;
+
+        $tempArray = [];
+        foreach($task->ownerToBe as $id){
+            $tempArray[] = Common::getStakeholderNameById($model, $id);
+        };
+        $arrTask['ownerToBe'] = $tempArray;
+
+        $tempArray = [];
+        foreach($task->collaboratorToBe as $id){
+            $tempArray[] = Common::getStakeholderNameById($model, $id);
+        };
+        $arrTask['collaboratorToBe'] = $tempArray;
+        return json_encode($arrTask);
+
+    }
+
    
 
 }

@@ -1,110 +1,335 @@
-    <ol class="breadcrumb inline-flex">
-        <li class="breadcrumb-item">
-            <a href="<?=$this->url->get("project/index"); ?>">Project</a>
-        </li>
-        <li class="breadcrumb-item">
-              <a>Task</a>
-        </li>
-    </ol>
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-md-9" style="padding:0">
-          
-                 
-        <!-- new complete card  -->
-        <div class="col-md-4">
-                 <a href="<?=$this->url->get("task/create"); ?>">
-                    <div class="thumbnail s-navShadow" id="thumbnailProject">
-                            <i class="fa fa-5x fa-plus" style="
-                            color: #3d578a;
-                            display: flex;
-                            justify-content: center;
-                            width: 100%;
-                            height: 100%;
-                            margin-top: 40px;
-                        "></i>
-                    </div>
-                 </a>
-        </div>
-
-    
-        <?php 
-           if($task!=0){
-                foreach ($task as $key => $tk) { ?>
-
+<ol class="breadcrumb inline-flex">
+   <li class="breadcrumb-item">
+      <a href="<?=$this->url->get("project/index"); ?>">Project</a>
+   </li>
+   <li class="breadcrumb-item">
+      <a>Task</a>
+   </li>
+</ol>
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-md-9" style="padding:0">
+         <!-- new complete card  -->
          <div class="col-md-4">
-                 <div class="thumbnail s-navShadow">
-                    <div class="caption">
-                       <div class="header">
-                       <a href="#" class="labelCo labelSuccess pull-right"><i class="fa fa-th-large" aria-hidden="true"></i></a>
-                             <h4><?=$tk->name?></h4>
-                       </div>
-                       <hr>
-                       <div class="footer">
-                          <a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
-                          <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
-                          <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$tk->Description?>"><i class="fa fa-info"></i></a> 
-                       </div>
-                    </div>
-                 </div>
+            <a href="<?=$this->url->get("task/create"); ?>">
+               <div class="thumbnail s-navShadow" id="thumbnailProject">
+                  <i class="fa fa-5x fa-plus" style="
+                     color: #3d578a;
+                     display: flex;
+                     justify-content: center;
+                     width: 100%;
+                     height: 100%;
+                     margin-top: 40px;
+                     "></i>
+               </div>
+            </a>
          </div>
-                <?php } }?>
-
-
-        
-            <!-- end new -->
+         <?php 
+            if($task!=0){
+                 foreach ($task as $key => $tk) { ?>
+         <div class="col-md-4">
+            <div class="thumbnail s-navShadow">
+               <div class="caption">
+                  <div class="header">
+                     <a href="#" class="labelCo labelSuccess pull-right"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+                     <i class="showDetailTask" data-id="<?=$tk->_id?>">
+                        <h4><?=$tk->name?></h4>
+                     </i>
+                  </div>
+                  <hr>
+                  <div class="footer">
+                     <a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
+                     <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                     <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$tk->Description?>"><i class="fa fa-info"></i></a> 
+                  </div>
+               </div>
+            </div>
          </div>
-         <div class="col-md-3">
+         <?php } }?>
+         <!-- end new -->
+      </div>
+      <div class="col-md-3">
          <!-- Sort -->
          <div class="card s-navShadow">
-             <div class="header">
-                 <h4 class="title">Sort</h4>
-             </div>
-             <div class="content">
-                 <div class="form-group">
-                     <!-- <label for="sel1">Select list (select one):</label> -->
-                     <select class="form-control" id="sel1">
-                         <option selected>List</option>
-                         <option>Title</option>
-                     </select>
-                 </div>
-             </div>
+            <div class="header">
+               <h4 class="title">Sort</h4>
+            </div>
+            <div class="content">
+               <div class="form-group">
+                  <!-- <label for="sel1">Select list (select one):</label> -->
+                  <select class="form-control" id="sel1">
+                     <option selected>List</option>
+                     <option>Title</option>
+                  </select>
+               </div>
+            </div>
          </div>
          <!-- Filter -->
          <div class="card s-navShadow">
-             <div class="header">
-                 <h4 class="title">Filter</h4>
-             </div>
-             <div class="content">
-                 <form action="#">
+            <div class="header">
+               <h4 class="title">Filter</h4>
+            </div>
+            <div class="content">
+               <form action="#">
+                  <div class="form-group">
                      <div class="form-group">
-                         <div class="form-group">
-                             <label>Project Name</label>
-                             <input type="text" class="form-control" placeholder="Project Name" value="">
-                         </div>
+                        <label>Project Name</label>
+                        <input type="text" class="form-control" placeholder="Project Name" value="">
                      </div>
-                     <div class="footer">
-                         <button class="btn btn-default pull-right" type="submit">Filter</button>
-                     </div>
-                 </form>
-             </div>
+                  </div>
+                  <div class="footer">
+                     <button class="btn btn-default pull-right" type="submit">Filter</button>
+                  </div>
+               </form>
+            </div>
          </div>
-     </div>
-
       </div>
    </div>
-
+</div>
+<div class="modal showTask" id="showTask" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content card">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Task Details</h4>
+         </div>
+         <div class="modal-body">
+            <div class="content">
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Task name</label>
+                     <h5 id="showTaskName"></h5>
+                  </div>
+                  <div class="col-md-6">
+                     <label>IsA</label>
+                     <h5 id="showTaskIsA">IsA Type Task</h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Description</label>
+                     <h5 id="showTaskDescription">Description Task I just try to make this paragraph long as much as i can</h5>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Includes</label>
+                     <div id="showTaskInclude"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>as IsState</label>
+                     <h5 id="showTaskAsIsState"></h5>
+                  </div>
+                  <div class="col-md-6">
+                     <label>to Be State</label>
+                     <h5 id="showTaskToBeState"></h5>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Uses</label>
+                     <div id="showTaskUses"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Produces</label>
+                     <div id="showTaskProduces"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>ToUse</label>
+                     <div id="showTaskToUses"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>ToProduce</label>
+                     <div id="showTaskToProduce"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Owner</label>
+                     <div id="showTaskOwner"></div>
+                  </div>
+                  <div class="col-md-6">
+                     <label>Collaborator</label>
+                     <div id="showTaskCollaborator"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>owner To Be</label>
+                     <div id="showTaskOwnerToBe"></div>
+                  </div>
+                  <div class="col-md-6">
+                     <label>collaborator To Be</label>
+                     <div id="showTaskCollaboratorToBe"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Regulator</label>
+                     <div id="showTaskRegulator"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
 <!-- blockJS -->
+<script src="<?php echo $this->url->get('/public/modal/cloneModal.js');?>"></script>
+<script src="<?php echo $this->url->get('/public/jslif/tagTaskCreate.js');?>"></script>
 <script>
-    function deleteTask(id){
-        var idtask = id;
+   $(".showDetailTask").click(function(){
+         $('#showTask').modal('show');
+         var taskId = $(this).data('id');
+         $.post(baseUrl+"task/showDetailTask",{
+            taskId : taskId
 
-        $.post(baseUrl+"task/deleteTask",{
-            idTask : idtask
-        }, function(data){
-            console.log(data);
-        },  "json");
-        $.redirect(baseUrl+"task/index", {  });
-    }
+         }, function(data){
+            setTaskModalDetail(data);
+         },"json");
+
+         
+   });
+
+   function setTaskModalDetail(data){
+        var empty = '<label style="font-size: 10px; font-style : italic">This Field is Empty.</label>';
+        $('#showTaskName').html(data.name);
+        if(data.name == null || data.name == "") $('#showTaskName').html(empty);
+
+        $('#showTaskIsA').html(data.isA);
+        if(data.isA == null || data.isA == "") $('#showTaskIsA').html(empty);
+
+        $('#showTaskDescription').html(data.Description);
+        if(data.Description == null || data.Description == "") $('#showTaskDescription').html(empty);
+
+
+        var includes = data.includes;
+        var strIncludes = "";
+        $.each(includes, function( index, value ) {
+            strIncludes += '<a href="#" class="labelCo labelInfo info-task" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskInclude').html(strIncludes);
+        if(data.includes == null || data.includes== "") $('#showTaskInclude').html(empty);
+
+        $('#showTaskAsIsState').html(data.asIsState);
+        if(data.asIsState == null || data.asIsState== "") $('#showTaskAsIsState').html(empty);
+
+        $('#showTaskToBeState').html(data.toBeState);
+        if(data.toBeState == null || data.toBeState== "") $('#showTaskToBeState').html(empty);
+
+        
+        var uses = data.uses;
+        var strUses = "";
+        $.each(uses, function( index, value ) {
+            strUses += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskUses').html(strUses);
+        if(data.uses == null || data.uses== "") $('#showTaskUses').html(empty);
+
+        
+        var produces = data.produces;
+        var strProduces = "";
+        $.each(produces, function( index, value ) {
+            strProduces += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskProduces').html(strProduces);
+        if(data.produces == null || data.produces== "") $('#showTaskProduces').html(empty);
+
+
+        var toUses = data.toUse;
+        var strToUses  = "";
+        $.each(toUses, function( index, value ) {
+            strToUses += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskToUses').html(strToUses);
+        if(data.toUse == null || data.toUse== "") $('#showTaskToUses').html(empty);
+
+
+        var toProduces = data.toProduce;
+        var strToProduces = "";
+        $.each(toProduces, function( index, value ) {
+            strToProduces += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskToProduce').html(strToProduces);
+        if(data.toProduce == null || data.toProduce== "") $('#showTaskToProduce').html(empty);
+
+
+
+        var owner = data.owner;
+        var strOwner = "";
+        $.each(owner, function( index, value ) {
+            strOwner += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskOwner').html(strOwner);
+        if(data.owner == null || data.owner== "") $('#showTaskOwner').html(empty);
+
+
+        var collaburator = data.collaburator;
+        var strCollaburator = "";
+        $.each(collaburator, function( index, value ) {
+            strCollaburator += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskCollaborator').html(strCollaburator);
+        if(data.collaburator== null || data.collaburator== "") $('#showTaskCollaborator').html(empty);
+
+
+        var regulator = data.regulator;
+        var strRegulator = "";
+        $.each(regulator, function( index, value ) {
+            strRegulator += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskRegulator').html(strRegulator);
+        if(data.regulator== null || data.regulator== "") $('#showTaskRegulator').html(empty);
+
+
+        var ownerToBe = data.ownerToBe;
+        var strOwnerToBe = "";
+        $.each(ownerToBe, function( index, value ) {
+            strOwnerToBe += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskOwnerToBe').html(strOwnerToBe);
+        if(data.ownerToBe== null || data.ownerToBe== "") $('#showTaskOwnerToBe').html(empty);
+
+
+       var collaboratorToBe = data.collaboratorToBe;
+        var strCollaboratorToBe = "";
+        $.each(collaboratorToBe, function( index, value ) {
+            strCollaboratorToBe += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+        });
+        $('#showTaskCollaboratorToBe').html(strCollaboratorToBe);
+        if(data.collaboratorToBe== null || data.collaboratorToBe== "") $('#showTaskCollaboratorToBe').html(empty);
+
+       
+   };
+ 
+   function deleteTask(id){
+       var idtask = id;
+   
+       $.post(baseUrl+"task/deleteTask",{
+           idTask : idtask
+       }, function(data){
+           console.log(data);
+       },  "json");
+       $.redirect(baseUrl+"task/index", {  });
+   }
 </script>
 <!-- /.blockJS -->

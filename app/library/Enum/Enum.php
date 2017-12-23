@@ -19,7 +19,26 @@ class Enum
 	const Group = 3;
 
 	const All = 0;
-	const Some = 1;	
+	const Some = 1;
+
+	const Exist = 'E';
+	const Nexist = 'N';
+
+	const ExistTobe = 'E';
+	const NexistTobe = 'N';
+	const AdeptedTobe = 'A';
+
+
+	
+	public static $ToBeState = array(
+		self::ExistTobe => "EXIST",
+		self::NexistTobe =>"NEXIST",
+		self::AdeptedTobe =>"ADEPTED"
+	);
+	public static $AsIsstate = array(
+		self::Exist => "EXIST",
+		self::Nexist => "NEXIST"
+	);
 	
 	
 	public static $attitudeStatus = array(
