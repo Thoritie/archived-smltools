@@ -83,13 +83,13 @@
       </div>
    </nav>
    <div class="content">
-      <?php echo $this->getContent();
-      
-      
-      $script = $this->render->getScript(
-        $this->getContent()
-    );
-      ?>
+   <?php 
+   
+   echo $this->render->getContent($this->getContent());
+   $script = $this->render->getScript(
+       $this->getContent()
+   );
+?>
       
 
 
