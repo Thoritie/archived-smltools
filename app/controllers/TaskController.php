@@ -218,21 +218,11 @@ class TaskController extends ControllerBase
             
                     return;
                 }
+                
+                $model = new Tasks();
+                $this->view->includes = Common::addDataArray($model, $task->includes);
 
-                $includes = array();
-                foreach($task->includes as $data){
-                    $item = Tasks::findById($data);
-                    array_push($includes,$item);
-                }
-                $this->view->includes = $includes;
-
-
-                $owner = array();
-                foreach($task->owner as $data){
-                    $item = Stakeholders::findById($data);
-                    array_push($owner,$item);
-                }
-                $this->view->owner = $owner;
+                $this->view->owner = Common::addDataArray(new Stakeholders(), $task->owner);
                
 
                 $collaburator = array();
@@ -436,7 +426,9 @@ class TaskController extends ControllerBase
         $model = new Tasks();
         if($task->includes != null)
         foreach($task->includes as $id){
-            $tempArray[] = Common::getTaskNameById($model, $id);
+        	$value = Common::getTaskNameById($model, $id);
+        	if($value != null)
+            	$tempArray[] = $value;
         };
 
         $arrTask['includes'] = $tempArray;
