@@ -75,7 +75,7 @@
                                       echo $this->tag->textField(["includes", "size" => 30, 
                                       "class" => "form-control", "id" => "Edincludes"]) 
                                   ?>
-                                       <a href="<?=$this->url->get("task/create"); ?>"class="fa fa-plus iconInput"></a>
+                                       <i class="fa fa-plus iconInput" id="createTaskIcon"></i>
                                 </div>
                              </div>
                              <div class="col-md-4">
@@ -457,7 +457,6 @@
             $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
           });
   }
-
 </script>
 
 <!-- /.blockJS -->
