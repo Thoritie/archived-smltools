@@ -1,8 +1,9 @@
+<p><?php $this->flashSession->output() ?></p>
 <ol class="breadcrumb inline-flex">
    <li class="breadcrumb-item">
       <a href="<?=$this->url->get("project/index"); ?>">Project</a>
    </li>
-   <li class="breadcrumb-item">
+   <li class="breadcrumb-item active">
       <a>Task</a>
    </li>
 </ol>
@@ -204,9 +205,9 @@
        $.post(baseUrl+"task/deleteTask",{
            idTask : idtask
        }, function(data){
-           console.log(data);
+        $.redirect(baseUrl+"task/index", {  });
        },  "json");
-       $.redirect(baseUrl+"task/index", {  });
+      
    }
 </script>
 <!-- /.blockJS -->

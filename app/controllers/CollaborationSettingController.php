@@ -137,6 +137,7 @@ class CollaborationsettingController extends ControllerBase
         $collaboration = Collaboration::findById($id);
 
          $collaboration->delete();
+         $this->flashSession->success('Your Collaburation Setting was delete');
         return json_encode('true');
     }
 
@@ -155,7 +156,9 @@ class CollaborationsettingController extends ControllerBase
         $collaboration->idProject = $this->request->getPost("idProject");
 
         if($collaboration->save()){
+            $this->flashSession->success('Your Collaburation Setting was save');
             return json_encode('true');
+
         }
         return json_encode('false');
          

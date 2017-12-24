@@ -130,11 +130,10 @@ class TaskController extends ControllerBase
         $task->toUse = $this->request->getPost("toUse");
         $task->toProduce = $this->request->getPost("toProduce");
         $task->idProject = $this->request->getPost("idProject");
-
-        if (!$task->save()) {
-            foreach ($teacher->getMessages() as $message) {
-                $this->flash->error($message);
-            }
+       
+        $save=0;
+        if($task->save()) {
+            $save=1;
         }
 
         //delete task->mom
@@ -164,6 +163,9 @@ class TaskController extends ControllerBase
             }
         }
 
+        if($save==1){
+            $this->flashSession->success('Your Task was save');
+        }
         return json_encode($oldTask);
     }
 
@@ -343,6 +345,7 @@ class TaskController extends ControllerBase
         $task = Tasks::findById($id);
         
         $task->delete();
+        $this->flashSession->success('Your Task was delete');
         return json_encode('true');
     }
 
