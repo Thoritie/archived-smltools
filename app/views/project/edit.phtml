@@ -1,6 +1,14 @@
-<input type="hidden" name="idproject" id="idproject"
-   value="<?php echo $pro->_id ?>"/>
+<p></p>
+<ol class="breadcrumb inline-flex">
+   <li class="breadcrumb-item">
+      <a href="<?=$this->url->get("project/index"); ?>">Project</a>
+   </li>
+   <li class="breadcrumb-item active">
+      <a>Edit</a>
+   </li>
+</ol>
 
+<input type="hidden" name="idproject" id="idproject" value="<?php echo $pro->_id ?>"/>
 <div class="content">
     <div class="container-fluid">
         <div class="row">

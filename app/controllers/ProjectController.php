@@ -11,7 +11,7 @@ class ProjectController extends ControllerBase
         $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
         $this->assets->addCss('assetsThor/css/demo.css');
         $this->assets->addCss('assetsThor/css/navbar.css');
-
+        $this->assets->addCss('jslif/sb-admin-override.css');
         
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
