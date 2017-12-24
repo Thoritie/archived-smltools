@@ -412,8 +412,10 @@ class TaskController extends ControllerBase
         $arrTask['Description'] = $task->Description;
         
         $tempArray = [];
+        $model = new Tasks();
+        if($task->includes != null)
         foreach($task->includes as $id){
-            $tempArray[] = Common::getTaskNameById(Tasks, $id);
+            $tempArray[] = Common::getTaskNameById($model, $id);
         };
 
         $arrTask['includes'] = $tempArray;
@@ -422,26 +424,30 @@ class TaskController extends ControllerBase
 
 
         // Details of Resouce
-        $model = Resource;
+        $model = new Resource();
         $tempArray = [];
+        if($task->uses != null)
         foreach($task->uses as $id){
             $tempArray[] = Common::getResourceNameById($model, $id);
         };
         $arrTask['uses'] = $tempArray;
 
         $tempArray = [];
+        if($task->produces != null)
         foreach($task->produces as $id){
             $tempArray[] = Common::getResourceNameById($model, $id);
         };
         $arrTask['produces'] = $tempArray;
         
         $tempArray = [];
+        if($task->toUse != null)
         foreach($task->toUse as $id){
             $tempArray[] = Common::getResourceNameById($model, $id);
         };
         $arrTask['toUse'] = $tempArray;
 
         $tempArray = [];
+        if($task->toProduce != null)
         foreach($task->toProduce as $id){
             $tempArray[] = Common::getResourceNameById($model, $id);
         };
@@ -449,41 +455,45 @@ class TaskController extends ControllerBase
 
         
         // Details of Stakeholder
-        $model = Stakeholders;
+        $model = new Stakeholders();
         $tempArray = [];
+        if($task->owner != null)
         foreach($task->owner as $id){
             $tempArray[] = Common::getStakeholderNameById($model, $id);
         };
         $arrTask['owner'] = $tempArray;
         
         $tempArray = [];
+        if($task->collaburator != null)
         foreach($task->collaburator as $id){
             $tempArray[] = Common::getStakeholderNameById($model, $id);
         };
         $arrTask['collaburator'] = $tempArray;
 
         $tempArray = [];
+        if($task->regulator != null)
         foreach($task->regulator as $id){
             $tempArray[] = Common::getStakeholderNameById($model, $id);
         };
         $arrTask['regulator'] = $tempArray;
 
         $tempArray = [];
+        if($task->ownerToBe != null)
         foreach($task->ownerToBe as $id){
             $tempArray[] = Common::getStakeholderNameById($model, $id);
         };
         $arrTask['ownerToBe'] = $tempArray;
 
         $tempArray = [];
+        if($task->collaboratorToBe != null)
         foreach($task->collaboratorToBe as $id){
             $tempArray[] = Common::getStakeholderNameById($model, $id);
         };
         $arrTask['collaboratorToBe'] = $tempArray;
+        
         return json_encode($arrTask);
 
     }
-
-   
 
 }
 

@@ -506,3 +506,171 @@ function validateModalResource(formId,idModal){
 
     return form;
 }
+
+//-------------------------------- clone show detail modal ----------------------------------- //
+function cloneModalDetailTask(taskId) {
+	var modal = $('#showTask');
+	var newModal = modal.clone();
+    //gen id
+    var idModal = new Date().getTime();
+    newModal.attr("id", idModal);
+    newModal.attr("style", "z-index: " + zindex++);
+    
+    
+    //set input id
+    setFormIdInModalTaskDetail(idModal, newModal);
+
+    //append to modal
+    modal.after(newModal);
+    callDataTask(taskId, idModal);
+    
+    //show modal
+    var modalId = "#" + idModal;
+    $(modalId).modal("show");
+}
+
+function setFormIdInModalTaskDetail(idModal, newModal){
+	newModal.find('#showTaskName').attr('id', 'showTaskName-'+idModal);
+	newModal.find('#showTaskIsA').attr('id', 'showTaskIsA-'+idModal);
+	newModal.find('#showTaskDescription').attr('id', 'showTaskDescription-'+idModal);
+	newModal.find('#showTaskInclude').attr('id', 'showTaskInclude-'+idModal);
+	newModal.find('#showTaskAsIsState').attr('id', 'showTaskAsIsState-'+idModal);
+	newModal.find('#showTaskToBeState').attr('id', 'showTaskToBeState-'+idModal);
+	newModal.find('#showTaskUses').attr('id', 'showTaskUses-'+idModal);
+	newModal.find('#showTaskProduces').attr('id', 'showTaskProduces-'+idModal);
+	newModal.find('#showTaskToUses').attr('id', 'showTaskToUses-'+idModal);
+	newModal.find('#showTaskToProduce').attr('id', 'showTaskToProduce-'+idModal);
+	newModal.find('#showTaskOwner').attr('id', 'showTaskOwner-'+idModal);
+	newModal.find('#showTaskCollaborator').attr('id', 'showTaskCollaborator-'+idModal);
+	newModal.find('#showTaskRegulator').attr('id', 'showTaskRegulator-'+idModal);
+	newModal.find('#showTaskOwnerToBe').attr('id', 'showTaskOwnerToBe-'+idModal);
+	newModal.find('#showTaskCollaboratorToBe').attr('id', 'showTaskCollaboratorToBe-'+idModal);
+}
+
+function callDataTask(taskId, idModal){
+    $.post(baseUrl+"task/showDetailTask",{
+       taskId : taskId
+    }, function(data){
+       setTaskModalDetail(data, idModal);
+    },"json"); 
+}
+
+function setTaskModalDetail(data, idModal){
+   var empty = '<label style="font-size: 10px; font-style : italic">This Field is Empty.</label>';
+   $('#showTaskName-'+idModal).html(data.name);
+   if(data.name == null || data.name == "") $('#showTaskName-'+idModal).html(empty);
+
+   $('#showTaskIsA-'+idModal).html(data.isA);
+   if(data.isA == null || data.isA == "") $('#showTaskIsA-'+idModal).html(empty);
+
+   $('#showTaskDescription-'+idModal).html(data.Description);
+   if(data.Description == null || data.Description == "") $('#showTaskDescription-'+idModal).html(empty);
+
+
+   var includes = data.includes;
+   var strIncludes = "";
+   $.each(includes, function( index, value ) {
+       strIncludes += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask(\''+value.id+'\')">'+value.name+'</a>';
+   });
+   $('#showTaskInclude-'+idModal).html(strIncludes);
+   if(data.includes == null || data.includes== "") $('#showTaskInclude-'+idModal).html(empty);
+
+   $('#showTaskAsIsState-'+idModal).html(data.asIsState);
+   if(data.asIsState == null || data.asIsState== "") $('#showTaskAsIsState-'+idModal).html(empty);
+
+   $('#showTaskToBeState-'+idModal).html(data.toBeState);
+   if(data.toBeState == null || data.toBeState== "") $('#showTaskToBeState-'+idModal).html(empty);
+
+   
+   var uses = data.uses;
+   var strUses = "";
+   $.each(uses, function( index, value ) {
+       strUses += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskUses-'+idModal).html(strUses);
+   if(data.uses == null || data.uses== "") $('#showTaskUses-'+idModal).html(empty);
+
+   
+   var produces = data.produces;
+   var strProduces = "";
+   $.each(produces, function( index, value ) {
+       strProduces += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskProduces-'+idModal).html(strProduces);
+   if(data.produces == null || data.produces== "") $('#showTaskProduces-'+idModal).html(empty);
+
+
+   var toUses = data.toUse;
+   var strToUses  = "";
+   $.each(toUses, function( index, value ) {
+       strToUses += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskToUses-'+idModal).html(strToUses);
+   if(data.toUse == null || data.toUse== "") $('#showTaskToUses-'+idModal).html(empty);
+
+
+   var toProduces = data.toProduce;
+   var strToProduces = "";
+   $.each(toProduces, function( index, value ) {
+       strToProduces += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskToProduce-'+idModal).html(strToProduces);
+   if(data.toProduce == null || data.toProduce== "") $('#showTaskToProduce-'+idModal).html(empty);
+
+
+
+   var owner = data.owner;
+   var strOwner = "";
+   $.each(owner, function( index, value ) {
+       strOwner += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskOwner-'+idModal).html(strOwner);
+   if(data.owner == null || data.owner== "") $('#showTaskOwner-'+idModal).html(empty);
+
+
+   var collaburator = data.collaburator;
+   var strCollaburator = "";
+   $.each(collaburator, function( index, value ) {
+       strCollaburator += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskCollaborator-'+idModal).html(strCollaburator);
+   if(data.collaburator== null || data.collaburator== "") $('#showTaskCollaborator-'+idModal).html(empty);
+
+
+   var regulator = data.regulator;
+   var strRegulator = "";
+   $.each(regulator, function( index, value ) {
+       strRegulator += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskRegulator-'+idModal).html(strRegulator);
+   if(data.regulator== null || data.regulator== "") $('#showTaskRegulator-'+idModal).html(empty);
+
+
+   var ownerToBe = data.ownerToBe;
+   var strOwnerToBe = "";
+   $.each(ownerToBe, function( index, value ) {
+       strOwnerToBe += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskOwnerToBe-'+idModal).html(strOwnerToBe);
+   if(data.ownerToBe== null || data.ownerToBe== "") $('#showTaskOwnerToBe-'+idModal).html(empty);
+
+
+   var collaboratorToBe = data.collaboratorToBe;
+   var strCollaboratorToBe = "";
+   $.each(collaboratorToBe, function( index, value ) {
+       strCollaboratorToBe += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+   });
+   $('#showTaskCollaboratorToBe-'+idModal).html(strCollaboratorToBe);
+   if(data.collaboratorToBe== null || data.collaboratorToBe== "") $('#showTaskCollaboratorToBe-'+idModal).html(empty);
+   
+};
+
+$(document).on('hidden.bs.modal', "div.showTask", function() {
+	var vm = $(this);
+	var id = '#'+vm.prop('id');
+	$(id).remove();
+	var count = $('div.showTask').length;
+    if(count > 1){
+         $('body').attr('class','modal-open');
+    }
+});

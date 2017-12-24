@@ -31,7 +31,7 @@
             <div class="thumbnail s-navShadow">
                <div class="caption">
                   <div class="header">
-                     <a href="#" class="showDetailTask labelCo labelSuccess pull-right" data-id="<?=$tk->_id?>"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+                     <a href="#" class="showDetailTask labelCo labelSuccess pull-right" onclick="cloneModalDetailTask('<?=$tk->_id?>')"><i class="fa fa-th-large" aria-hidden="true"></i></a>
                      <!-- <i class="showDetailTask" data-id="<?=$tk->_id?>"> -->
                         <h4><?=$tk->name?></h4>
                      </i>
@@ -197,129 +197,6 @@
 <script src="<?php echo $this->url->get('/public/modal/cloneModal.js');?>"></script>
 <script src="<?php echo $this->url->get('/public/jslif/tagTaskCreate.js');?>"></script>
 <script>
-   $(".showDetailTask").click(function(){
-         $('#showTask').modal('show');
-         var taskId = $(this).data('id');
-         $.post(baseUrl+"task/showDetailTask",{
-            taskId : taskId
-
-         }, function(data){
-            setTaskModalDetail(data);
-         },"json");
-
-         
-   });
-
-   function setTaskModalDetail(data){
-        var empty = '<label style="font-size: 10px; font-style : italic">This Field is Empty.</label>';
-        $('#showTaskName').html(data.name);
-        if(data.name == null || data.name == "") $('#showTaskName').html(empty);
-
-        $('#showTaskIsA').html(data.isA);
-        if(data.isA == null || data.isA == "") $('#showTaskIsA').html(empty);
-
-        $('#showTaskDescription').html(data.Description);
-        if(data.Description == null || data.Description == "") $('#showTaskDescription').html(empty);
-
-
-        var includes = data.includes;
-        var strIncludes = "";
-        $.each(includes, function( index, value ) {
-            strIncludes += '<a href="#" class="labelCo labelInfo info-task" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskInclude').html(strIncludes);
-        if(data.includes == null || data.includes== "") $('#showTaskInclude').html(empty);
-
-        $('#showTaskAsIsState').html(data.asIsState);
-        if(data.asIsState == null || data.asIsState== "") $('#showTaskAsIsState').html(empty);
-
-        $('#showTaskToBeState').html(data.toBeState);
-        if(data.toBeState == null || data.toBeState== "") $('#showTaskToBeState').html(empty);
-
-        
-        var uses = data.uses;
-        var strUses = "";
-        $.each(uses, function( index, value ) {
-            strUses += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskUses').html(strUses);
-        if(data.uses == null || data.uses== "") $('#showTaskUses').html(empty);
-
-        
-        var produces = data.produces;
-        var strProduces = "";
-        $.each(produces, function( index, value ) {
-            strProduces += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskProduces').html(strProduces);
-        if(data.produces == null || data.produces== "") $('#showTaskProduces').html(empty);
-
-
-        var toUses = data.toUse;
-        var strToUses  = "";
-        $.each(toUses, function( index, value ) {
-            strToUses += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskToUses').html(strToUses);
-        if(data.toUse == null || data.toUse== "") $('#showTaskToUses').html(empty);
-
-
-        var toProduces = data.toProduce;
-        var strToProduces = "";
-        $.each(toProduces, function( index, value ) {
-            strToProduces += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskToProduce').html(strToProduces);
-        if(data.toProduce == null || data.toProduce== "") $('#showTaskToProduce').html(empty);
-
-
-
-        var owner = data.owner;
-        var strOwner = "";
-        $.each(owner, function( index, value ) {
-            strOwner += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskOwner').html(strOwner);
-        if(data.owner == null || data.owner== "") $('#showTaskOwner').html(empty);
-
-
-        var collaburator = data.collaburator;
-        var strCollaburator = "";
-        $.each(collaburator, function( index, value ) {
-            strCollaburator += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskCollaborator').html(strCollaburator);
-        if(data.collaburator== null || data.collaburator== "") $('#showTaskCollaborator').html(empty);
-
-
-        var regulator = data.regulator;
-        var strRegulator = "";
-        $.each(regulator, function( index, value ) {
-            strRegulator += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskRegulator').html(strRegulator);
-        if(data.regulator== null || data.regulator== "") $('#showTaskRegulator').html(empty);
-
-
-        var ownerToBe = data.ownerToBe;
-        var strOwnerToBe = "";
-        $.each(ownerToBe, function( index, value ) {
-            strOwnerToBe += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskOwnerToBe').html(strOwnerToBe);
-        if(data.ownerToBe== null || data.ownerToBe== "") $('#showTaskOwnerToBe').html(empty);
-
-
-       var collaboratorToBe = data.collaboratorToBe;
-        var strCollaboratorToBe = "";
-        $.each(collaboratorToBe, function( index, value ) {
-            strCollaboratorToBe += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
-        });
-        $('#showTaskCollaboratorToBe').html(strCollaboratorToBe);
-        if(data.collaboratorToBe== null || data.collaboratorToBe== "") $('#showTaskCollaboratorToBe').html(empty);
-
-       
-   };
  
    function deleteTask(id){
        var idtask = id;
