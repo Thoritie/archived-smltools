@@ -259,6 +259,26 @@ class ProjectController extends ControllerBase
         
         return json_encode($result);
     }
+    public function deleteProjectAction()
+    {
+        $id = $this->request->getPost('idProject');
+       
+        $condition = [];
+        $condition["idProject"] = $id;
+        $task = Tasks::find(array($condition));
+        $resource = Resource::find(array($condition));
+        $stakeholder = Stakeholders::find(array($condition));
+        $collaburation = Collaboration::find(array($condition));
+
+        if(!$task && !$resource && !$stakeholder && !$collaburation ){
+            $project= Project::findById($id);
+            $project->delete();
+            $this->flashSession->success('Your Project was delete');
+        }else{
+            $this->flashSession->error("Your Project can't delete please check data in Project");
+        }
+        return json_encode('true');
+    }
 
 }
 
