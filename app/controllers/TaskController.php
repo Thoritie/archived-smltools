@@ -105,15 +105,15 @@ class TaskController extends ControllerBase
 
     public function saveAction()
     {
-       
+        $oldTask = null;
         $id = $this->request->getPost("idTask");
         if(!$id){
             $task = new Tasks();
         }else{
             $task = Tasks::findById($id);
+            $oldTask = $task->includes;
         }
 
-       
         $task->name = $this->request->getPost("taskname");
         $task->isA = $this->request->getPost("isA");
         $task->Description = $this->request->getPost("Description");
@@ -136,7 +136,26 @@ class TaskController extends ControllerBase
                 $this->flash->error($message);
             }
         }
-       
+
+        //delete task->mom
+        $NewTask = $task->includes;
+
+        foreach($oldTask as $index => $old){
+            foreach($NewTask as $new){
+                if((string)$new == (string)$old){
+                    unset($oldTask[$index]);
+                    break;
+                }
+            }
+        }
+
+        foreach($oldTask as $oldId){
+            $task = Tasks::findById($oldId);
+            $task->mom = null;
+            $task->save();
+        }
+
+
         if($task->includes){
             foreach($task->includes as $data){
                 $taskSon = Tasks::findById($data);
@@ -145,8 +164,7 @@ class TaskController extends ControllerBase
             }
         }
 
-         return;
-            // return json_encode($task->_id);
+        return json_encode($oldTask);
     }
 
     public function findStakeAction()
