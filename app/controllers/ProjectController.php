@@ -1,6 +1,8 @@
 <?php
 
 use Library\Enum\Enum;
+use Library\Common\Pagination;
+
 class ProjectController extends ControllerBase
 {   
     public function onConstruct(){
@@ -48,52 +50,42 @@ class ProjectController extends ControllerBase
         
         $session = $this->session->get('login');
         $session =(String)$session;
-
-        // $project = Project::Find(array(
-        // array(  
-        //     '$or' => array(
-        //             array('createrId' => $session),
-        //             array('permission' => $session)
-        //         )
-        //     )
-        // ));
-        // $project = Project::find(array( 
-        // '$or' => array(
-        //         array('createrId' => $session),
-        //         array('permission' => $session)
-        //     )
-        // ));
-
-        $create = Project::Find(
-            [
-                [
-                    'createrId' => $session,
-                ]
-            ]
+        $currentPage = $this->request->get('page');
+        
+        $sortBy = "name";
+        $currentUser = $session;
+        
+        // config paginator
+        $model = new Project();
+        $query = array(
+	        '$or' => array(
+	            array('createrId' => $currentUser),
+	            array('permission' => $currentUser)
+	        ),
+	    );
+        
+        $paginator = new Pagination(
+        	array(
+        		"model" => $model,
+        		"limit" => 1,
+        		"page" => $currentPage,
+        		"query" => $query,
+        		"sort" => $sortBy,
+        		"baseUrl" => $this->url->get()
+        	)
         );
-        $permis = Project::Find(
-            [
-                [
-                    'permission' => $session,
-                ]
-            ]
-        );
+        
+		// Get the paginated results
+        $dataProvider = $paginator->getPaginate();
+        
+        $this->view->dataProvider = $dataProvider;
+        $this->view->currentUser = $currentUser;
+        
 
         $userLogin = Users::findByID($session);
         $this->session->set("userLogin", $userLogin->name);   
         $this->view->userLogin =$userLogin->name;
 
-
-        // $project = Project::Find(
-        // [
-        // 'conditions' => [
-        //     '$or' =>[
-        //         array('createrId' => $session),
-        //         array('permission' => $session)
-        //         ]
-        //     ],
-        // ]
-        // );
         // ใช้เรียก array ของ enum เพื่อแสดงเป็นคำที่  set ไว้ 
         $this->view->arrStatus = Enum::$attitudeStatus;
         // ใช้เรียกค่าของ enum มาใช้ เช่น status = 1 เราจะไม่ใส่ค่า 1 แต่จะใส่แบบนี้แทน 1 ซึ่งเป็นของ status
@@ -175,7 +167,7 @@ class ProjectController extends ControllerBase
         try {
         	$project->save();
         	$this->flashSession->success('Your information was stored correctly!');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
         	$this->flashSession->error($e->getMessage());
         }
         

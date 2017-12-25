@@ -23,41 +23,25 @@
                     </div>
                  </a>
               </div>
+              
               <?php
-                 foreach ($create as $key => $pro) {
+                 foreach ($dataProvider->items as $key => $data) {
                  ?>
               <div class="col-md-4">
                  <div class="thumbnail s-navShadow">
                     <div class="caption">
                        <div class="header">
-                          <a href="<?=$this->url->get("project/task/".$pro->_id); ?>">
-                             <h4><?=$pro->name?></h4>
+                          <a href="<?=$this->url->get("project/task/".$data->_id); ?>">
+                             <h4><?=$data->name?></h4>
                           </a>
                        </div>
                        <hr>
                        <div class="footer">
-                          <a onclick="confirm('Are you sure delete <?=$pro->name?>?')?deleteProject('<?=$pro->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
-                          <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary projectedit" data-id="<?=$pro->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                       	  <?php if($data->createrId == $currentUser){ ?>
+                          <a onclick="confirm('Are you sure delete <?=$data->name?>?')?deleteProject('<?=$data->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
+                          <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary projectedit" data-id="<?=$data->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                          <?php } ?>
                           <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$pro->description?>"><i class="fa fa-info"></i></a> 
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <?php } ?>
-              <?php
-                 foreach ($permis as $key => $per) {
-                 ?>
-              <div class="col-md-4">
-                 <div class="thumbnail s-navShadow">
-                    <div class="caption">
-                       <div class="header">
-                          <a href="<?=$this->url->get("project/task/".$per->_id); ?>">
-                             <h4><?=$per->name?></h4>
-                          </a>
-                       </div>
-                       <hr>
-                       <div class="footer">
-                          <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$per->description?>"><i class="fa fa-info"></i></a> 
                        </div>
                     </div>
                  </div>
@@ -101,6 +85,12 @@
               </div>
            </div>
         </div>
+        
+		<!-- Pagination -->
+		<div>
+			<?php echo $dataProvider->widgetPagination; ?>
+		</div>
+		<!-- /Pagination -->
      </div>
 
      <h1>Example Enum</h1>
