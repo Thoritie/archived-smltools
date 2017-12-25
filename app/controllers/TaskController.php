@@ -219,69 +219,25 @@ class TaskController extends ControllerBase
                     return;
                 }
                 
-                $model = new Tasks();
-                $this->view->includes = Common::addDataArray($model, $task->includes);
+                $this->view->includes = Common::addDataArray(new Tasks(), $task->includes);
 
                 $this->view->owner = Common::addDataArray(new Stakeholders(), $task->owner);
-               
+            
+                $this->view->collaburator = Common::addDataArray(new Stakeholders(), $task->collaburator);
 
-                $collaburator = array();
-                foreach($task->collaburator as $data){
-                    $item = Stakeholders::findById($data);
-                    array_push($collaburator,$item);
-                }
-                $this->view->collaburator = $collaburator;
+                $this->view->regulator = Common::addDataArray(new Stakeholders(), $task->regulator);
 
-                $regulator = array();
-                foreach($task->regulator as $data){
-                    $item = Stakeholders::findById($data);
-                    array_push($regulator,$item);
-                }
-                $this->view->regulator = $regulator;
+                $this->view->ownerTobe = Common::addDataArray(new Stakeholders(), $task->ownerToBe);
 
+                $this->view->collaboratorTobe = Common::addDataArray(new Stakeholders(), $task->collaboratorToBe);
 
-                $ownerToBe = array();
-                foreach($task->ownerToBe as $data){
-                    $item = Stakeholders::findById($data);
-                    array_push($ownerToBe,$item);
-                }
-                $this->view->ownerTobe = $ownerToBe;
+                $this->view->uses = Common::addDataArray(new Resource(), $task->uses);
 
-                $collaboratorToBe = array();
-                foreach($task->collaboratorToBe as $data){
-                    $item = Stakeholders::findById($data);
-                    array_push($collaboratorToBe,$item);
-                }
-                $this->view->collaboratorTobe = $collaboratorToBe;
+                $this->view->produces = Common::addDataArray(new Resource(), $task->produces);
 
-                $uses = array();
-                foreach($task->uses as $data){
-                    $item = Resource::findById($data);
-                    array_push($uses,$item);
-                }
-                $this->view->uses = $uses;
+                $this->view->toUse = Common::addDataArray(new Resource(), $task->toUse);
 
-                $produces = array();
-                foreach($task->produces as $data){
-                    $item = Resource::findById($data);
-                    array_push($produces,$item);
-                }
-                $this->view->produces = $produces;
-
-                $toUse = array();
-                foreach($task->toUse as $data){
-                    $item = Resource::findById($data);
-                    array_push($toUse,$item);
-                }
-                $this->view->toUse = $toUse;
-
-                $toProduce = array();
-                foreach($task->toProduce as $data){
-                    $item = Resource::findById($data);
-                    array_push($toProduce,$item);
-                }
-                $this->view->toProduce = $toProduce;
-
+                $this->view->toProduce = Common::addDataArray(new Resource(), $task->toProduce);
 
                 $idProject = $this->session->get('idProject');
                 $this->view->idProject = $idProject;

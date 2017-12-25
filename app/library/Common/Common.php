@@ -16,6 +16,9 @@ class Common {
 
     public static function getResourceNameById($model, $id){
         $res = $model::findByID($id);
+        if($res == null){
+        	return null;
+        }
         $arrRes = [];
         $arrRes['name'] = $res->name;
         $arrRes['id'] = (string)$res->_id;
@@ -25,6 +28,9 @@ class Common {
 
     public static function getStakeholderNameById($model, $id){
         $stake = $model::findByID($id);
+        if($stake == null){
+        	return null;
+        }
         $arrStake = [];
         $arrStake['name'] = $stake->name;
         $arrStake['id'] = (string)$stake->_id;
