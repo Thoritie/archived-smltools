@@ -11,6 +11,7 @@ class Pagination{
 	private $data;
 	private $sort;
 	private $baseUrl;
+	private $showNumberOfPage;
 	
 	public function __construct($config) {
 
@@ -36,18 +37,26 @@ class Pagination{
 		
 		if (isset($config['data'])) {
 			$this->data	= $config['data'];
+		}else{
+			$this->data = [];
 		}
 		
 		if (isset($config['sort'])) {
-			$this->sort	= array('sort' => array($config['sort'] => 1));
+			$this->sort	= $config['sort'];
 		}else{
-			$this->sort = array();
+			$this->sort = '_id';
 		}
 		
 		if (isset($config['baseUrl'])) {
 			$this->baseUrl = $config['baseUrl'];
 		}else{
 			$this->baseUrl = "";
+		}
+		
+		if (isset($config['showNumberOfPage'])) {
+			$this->showNumberOfPage = $config['showNumberOfPage'];
+		}else{
+			$this->showNumberOfPage = 5;
 		}
 
 	}
@@ -69,7 +78,7 @@ class Pagination{
 		$nLimit = intval($this->limitRows);
 		$pageNumber = intval($this->page);
 		
-		if ($pageNumber <= 0) {
+		if ($pageNumber <= 0 ) {
 			$pageNumber = 1;
 		}
 		
@@ -83,11 +92,15 @@ class Pagination{
 			$totalPages++;
 		}
 		
+		if($pageNumber > $totalPages){
+			$pageNumber = 1;
+		}
+		
 		$page = new \stdClass();
 		$page->items = $model::find(
 				array(
 					$this->query,
-					$this->sort,
+					'sort' => array($this->sort => 1),
 					'skip' => $nLimit * ($pageNumber - 1),
 					'limit' => $nLimit
 				)
@@ -114,70 +127,93 @@ class Pagination{
 		$page->last = $totalPages;
 		$page->total_pages = $totalPages;
 		$page->total_items = $number;
-		$page->widgetPagination = $this->WidgetPaginate($page);
+		$page->widgetPagination = $this->WidgetPaginate($page->current, $page->total_pages);
 		
 		return $page;
 	}
 	
-	function WidgetPaginate($page){
+	function WidgetPaginate($current, $total_pages){
+		$data = "";
+		foreach ($this->data as $index => $val){
+			$data .= "&".$index."=".$val;
+		}
 		$css = "<style>
-			.pagination {
-			    display: inline-block;
+			
+			
+			/* GENERAL STYLES */
+			
+			.pagination{
+			  padding: 30px 0;
+			  margin-top: 10px;
+    		  padding-top: 0px;
+			  margin-bottom: 10px;
+    		  padding-bottom: 0px;
 			}
 			
-			.pagination a {
-			    color: black;
-			    float: left;
-			    padding: 8px 16px;
-			    text-decoration: none;
+			.pagination ul{
+			  margin: 0;
+			  padding: 0;
+			  list-style-type: none;
 			}
 			
-			.pagination a.active {
-			    background-color: #4CAF50;
-			    color: white;
-			    border-radius: 5px;
+			.pagination a{
+			  display: inline-block;
+			  padding: 8px 15px;
+			  color: #222;
+			}
+			
+			.p12 a:first-of-type, .p12 a:last-of-type, .p12 .is-active{
+			  background-color: #2ecc71;
+			  color: #fff;
+			  font-weight: bold;
+			  margin: 3px;
+			}
+				
+			.p12 .is-active{
 				pointer-events: none;
 			}
-			
-			.pagination a:hover:not(.active) {
-			    background-color: #ddd;
-			    border-radius: 5px;
-			}
+				
 			</style>";
 		
-		$html = "<div class='pagination'>
-				<a href='".$this->baseUrl."project/index?page=1'>&laquo;</a>";
-		
-			if($page->current == 1){
-				for ($n=1; $n <= 6; $n++){
-					$html .= "<a href='".$this->baseUrl."project/index?page=".$n."' ";
-					if($n == $page->current){
-						$html .= "class='active'";
+		$html .= "<div class='text-center'>";
+		$html .= "<div class='pagination p12'>
+			  <ul>
+				<a href='".$this->baseUrl."project/index?page=1".$data."'><li><<</li></a>";
+			$showNumberPage = $this->showNumberOfPage;
+			if($current == 1){
+				for ($n=1; $n <= $showNumberPage && $n <= $total_pages; $n++){
+					$html .= "<a href='".$this->baseUrl."project/index?page=".$n.$data."' ";
+					if($n == $current){
+						$html .= "class='is-active'";
 					}
-					$html .= ">".$n."</a>";
+					$html .= "><li>".$n."</li></a>";
 				}
-			}else if($page->total_pages - $page->current >= 5){
-				for ($n=$page->current-1; $n < $page->current+5; $n++){
-					$html .= "<a href='".$this->baseUrl."project/index?page=".$n."' ";
-					if($n == $page->current){
-						$html .= "class='active'";
+			}else if($total_pages - $current >= $showNumberPage-1){
+				for ($n=$current-1; $n < $current+$showNumberPage-1; $n++){
+					$html .= "<a href='".$this->baseUrl."project/index?page=".$n.$data."' ";
+					if($n == $current){
+						$html .= "class='is-active'";
 					}
-					$html .= ">".$n."</a>";
+					$html .= "><li>".$n."</li></a>";
 				}
 			}else{
-				for ($n=$page->total_pages-5; $n <= $page->total_pages; $n++){
-					$html .= "<a href='".$this->baseUrl."project/index?page=".$n."' ";
-					if($n == $page->current){
-						$html .= "class='active'";
+				$start = 0;
+				if($n=$total_pages-$showNumberPage+1 <= 0){
+					$start = 1;
+				}else{
+					$start = $total_pages-$showNumberPage+1;
+				}
+				for ($n=$start; $n <= $total_pages; $n++){
+					$html .= "<a href='".$this->baseUrl."project/index?page=".$n.$data."' ";
+					if($n == $current){
+						$html .= "class='is-active'";
 					}
-					$html .= ">".$n."</a>";
+					$html .= "><li>".$n."</li></a>";
 				}
 			}
 
-			$html .= "<a href='".$this->baseUrl."project/index?page=".$page->total_pages."'>&raquo;</a></div>";
-		
-		$html .= "<br/>You are in page ".$page->current." of ".$page->total_pages;
-		
+			$html .= "<a href='".$this->baseUrl."project/index?page=".$total_pages.$data."'><li>>></li></a></ul></div>";
+			$html .= "<br/>Showing ".$current." of ".$total_pages." pages </div>";
 		return $css.$html;
 	}
 	

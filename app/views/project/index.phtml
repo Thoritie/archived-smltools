@@ -47,7 +47,9 @@
                  </div>
               </div>
               <?php } ?>
+              
            </div>
+           <form action="<?=$this->url->get("project/index"); ?>" method="POST">
            <div class="col-md-3">
               <!-- Sort -->
               <div class="card s-navShadow">
@@ -57,10 +59,22 @@
                  <div class="content">
                     <div class="form-group">
                        <!-- <label for="sel1">Select list (select one):</label> -->
-                       <select class="form-control" id="sel1">
-                          <option selected>List</option>
-                          <option>Title</option>
-                       </select>
+                       <?php 
+						     echo $this->tag->select(
+						     		[
+						     				'sortBy',
+						     				$arrSortBy,
+						     				'value' => $sortBy,
+						     				'class' => 'form-control',
+						     				'id' => 'sel1',
+						     				'onchange' => 'this.form.submit()'
+						     		]
+						     );
+					     ?>
+<!--                        <select class="form-control" id="sel1"> -->
+<!--                           <option selected value="name">Name</option> -->
+<!--                           <option value="createDate">Create Date</option> -->
+<!--                        </select> -->
                     </div>
                  </div>
               </div>
@@ -74,7 +88,7 @@
                        <div class="form-group">
                           <div class="form-group">
                              <label>Project Name</label>
-                             <input type="text" class="form-control" placeholder="Project Name" value="">
+                             <input type="text" class="form-control" name="filter" placeholder="Project Name" value="<?=$filter ?>">
                           </div>
                        </div>
                        <div class="footer text-right">
@@ -84,15 +98,14 @@
                  </div>
               </div>
            </div>
+           </form>
         </div>
-        
-		<!-- Pagination -->
-		<div>
-			<?php echo $dataProvider->widgetPagination; ?>
-		</div>
-		<!-- /Pagination -->
      </div>
-
+     
+    <!-- Pagination -->
+		<?php echo $dataProvider->widgetPagination; ?>
+	<!-- /Pagination -->
+     
      <h1>Example Enum</h1>
      <?php 
 	     echo $this->tag->select(

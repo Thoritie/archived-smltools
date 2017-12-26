@@ -51,27 +51,51 @@ class ProjectController extends ControllerBase
         $session = $this->session->get('login');
         $session =(String)$session;
         $currentPage = $this->request->get('page');
-        
-        $sortBy = "name";
         $currentUser = $session;
+        $sortBy = $this->request->getPost('sortBy');
+        $filter = $this->request->getPost('filter');
+  
+        // init
+        $arrSortBy = array(
+        	'name' => 'Name',
+        	'_id' => 'Create Date'
+        );
+        $this->view->arrSortBy = $arrSortBy;
+        if($sortBy == null) $sortBy = $this->request->get('sortBy');
+        if($sortBy == null) $sortBy = $arrSortBy['name'];
+        $this->view->sortBy = $sortBy;
+        if($filter == null) $filter = $this->request->get('filter');
+        if($filter == null) $filter = '';
+        $this->view->filter = $filter;
         
         // config paginator
         $model = new Project();
         $query = array(
-	        '$or' => array(
-	            array('createrId' => $currentUser),
-	            array('permission' => $currentUser)
-	        ),
-	    );
+        	'$and' => array(
+        		array('name' => new MongoRegex("/$filter/")),
+        		array(
+        			'$or' => array(
+        				array('createrId' => $currentUser),
+        				array('permission' => $currentUser)
+        			),
+        		)
+        	)
+        );
         
+        // option of pagination
         $paginator = new Pagination(
         	array(
-        		"model" => $model,
-        		"limit" => 1,
-        		"page" => $currentPage,
-        		"query" => $query,
-        		"sort" => $sortBy,
-        		"baseUrl" => $this->url->get()
+        		'model' => $model,
+        		'limit' => 8,
+        		'page' => $currentPage,
+        		'query' => $query,
+        		'sort' => $sortBy,
+        		'baseUrl' => $this->url->get(),
+        		'showNumberOfPage' => 6,
+        		'data' => array(
+        			'sortBy' => $sortBy,
+        			'filter' => $filter
+        		)
         	)
         );
         
