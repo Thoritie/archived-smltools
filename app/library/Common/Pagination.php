@@ -178,11 +178,11 @@ class Pagination{
 		$html .= "<div class='text-center'>";
 		$html .= "<div class='pagination p12'>
 			  <ul>
-				<a href='".$this->baseUrl."project/index?page=1".$data."'><li><<</li></a>";
+				<a href='".$this->baseUrl."?page=1".$data."'><li><<</li></a>";
 			$showNumberPage = $this->showNumberOfPage;
 			if($current == 1){
 				for ($n=1; $n <= $showNumberPage && $n <= $total_pages; $n++){
-					$html .= "<a href='".$this->baseUrl."project/index?page=".$n.$data."' ";
+					$html .= "<a href='".$this->baseUrl."?page=".$n.$data."' ";
 					if($n == $current){
 						$html .= "class='is-active'";
 					}
@@ -190,7 +190,7 @@ class Pagination{
 				}
 			}else if($total_pages - $current >= $showNumberPage-1){
 				for ($n=$current-1; $n < $current+$showNumberPage-1; $n++){
-					$html .= "<a href='".$this->baseUrl."project/index?page=".$n.$data."' ";
+					$html .= "<a href='".$this->baseUrl."?page=".$n.$data."' ";
 					if($n == $current){
 						$html .= "class='is-active'";
 					}
@@ -204,7 +204,7 @@ class Pagination{
 					$start = $total_pages-$showNumberPage+1;
 				}
 				for ($n=$start; $n <= $total_pages; $n++){
-					$html .= "<a href='".$this->baseUrl."project/index?page=".$n.$data."' ";
+					$html .= "<a href='".$this->baseUrl."?page=".$n.$data."' ";
 					if($n == $current){
 						$html .= "class='is-active'";
 					}
@@ -212,7 +212,7 @@ class Pagination{
 				}
 			}
 
-			$html .= "<a href='".$this->baseUrl."project/index?page=".$total_pages.$data."'><li>>></li></a></ul></div>";
+			$html .= "<a href='".$this->baseUrl."?page=".$total_pages.$data."'><li>>></li></a></ul></div>";
 			$html .= "<br/>Showing ".$current." of ".$total_pages." pages </div>";
 		return $css.$html;
 	}

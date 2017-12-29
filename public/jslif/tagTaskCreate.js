@@ -390,7 +390,7 @@ $(document).ready(function() {
                                     idProject : idProject
                                 },
                                 success:function(data){
-                                    $.redirect(baseUrl+"task/index", { });
+                                    $.redirect(baseUrl+"task", { });
                                 }
                             })    
                     }

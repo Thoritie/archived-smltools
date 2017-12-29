@@ -26,8 +26,8 @@
             </a>
          </div>
          <?php 
-            if($task!=0){
-                 foreach ($task as $key => $tk) { ?>
+           
+                 foreach ($task->items as $key => $tk) { ?>
          <div class="col-md-4">
             <div class="thumbnail s-navShadow">
                <div class="caption">
@@ -46,9 +46,10 @@
                </div>
             </div>
          </div>
-         <?php } }?>
+         <?php }?>
          <!-- end new -->
       </div>
+      <form action="<?=$this->url->get("task/index"); ?>" method="POST">
       <div class="col-md-3">
          <!-- Sort -->
          <div class="card s-navShadow">
@@ -58,10 +59,18 @@
             <div class="content">
                <div class="form-group">
                   <!-- <label for="sel1">Select list (select one):</label> -->
-                  <select class="form-control" id="sel1">
-                     <option selected>List</option>
-                     <option>Title</option>
-                  </select>
+                  <?php 
+                  echo $this->tag->select(
+                          [
+                                  'sortBy',
+                                  $arrSortBy,
+                                  'value' => $sortBy,
+                                  'class' => 'form-control',
+                                  'id' => 'sel1',
+                                  'onchange' => 'this.form.submit()'
+                          ]
+                  );
+              ?>
                </div>
             </div>
          </div>
@@ -71,22 +80,28 @@
                <h4 class="title">Filter</h4>
             </div>
             <div class="content">
-               <form action="#">
                   <div class="form-group">
                      <div class="form-group">
-                        <label>Project Name</label>
-                        <input type="text" class="form-control" placeholder="Project Name" value="">
+                        <label>Task Name</label>
+                        <input type="text" class="form-control" name="filter" placeholder="Task Name" value="<?=$filter ?>"
                      </div>
                   </div>
                   <div class="footer">
                      <button class="btn btn-default pull-right" type="submit">Filter</button>
                   </div>
-               </form>
             </div>
          </div>
       </div>
+      </form>
    </div>
 </div>
+
+
+<?php echo $task->widgetPagination; ?>
+
+
+
+
 <div class="modal showTask" id="showTask" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
