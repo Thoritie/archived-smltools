@@ -3,6 +3,7 @@
 use MongoDB\BSON\ObjectId;
 use Library\Enum\Enum;
 use Library\Common\Common;
+use Library\Common\Pagination;
 
 class TaskController extends ControllerBase
 {
@@ -57,24 +58,78 @@ class TaskController extends ControllerBase
     {
         
         $id = $this->session->get('idProject');
-        $condition = [];
-        if($id){
+        // var_dump($id);
+        // exit();
+        // $condition = [];
+        // if($id){
                 
-            $condition["idProject"] = $id;
-            $task = Tasks::Find(array($condition));
+        //     $condition["idProject"] = $id;
+        //     $task = Tasks::Find(array($condition));
             
-        }else{
-            $this->view->task = 0;
-        }
+        // }else{
+        //     $this->view->task = 0;
+        // }
+        // $this->view->task = $task;
 
+        $currentPage = $this->request->get('page');
+        $idProject = $this->session->get('idProject');
+        $sortBy = $this->request->getPost('sortBy');
+        $filter = $this->request->getPost('filter');
+
+        $arrSortBy = array(
+        	'name' => 'Name',
+        	'_id' => 'Create Date'
+        );
+
+        $this->view->arrSortBy = $arrSortBy;
+        if($sortBy == null) $sortBy = $this->request->get('sortBy');
+        if($sortBy == null) $sortBy = $arrSortBy['name'];
+        $this->view->sortBy = $sortBy;
+        if($filter == null) $filter = $this->request->get('filter');
+        if($filter == null) $filter = '';
+        $this->view->filter = $filter;
+        
+        // config paginator
+        $model = new Tasks();
+        $query = array(
+        	'$and' => array(
+        		array('name' => new MongoRegex("/$filter/")),
+        		array(
+        			'$or' => array(
+        				array('idProject' => $idProject)
+        			),
+        		)
+        	)
+        );
+
+        $paginator = new Pagination(
+        	array(
+        		'model' => $model,
+        		'limit' => 8,
+        		'page' => $currentPage,
+        		'query' => $query,
+        		'sort' => $sortBy,
+        		'baseUrl' => $this->url->get('task/index'),
+        		'showNumberOfPage' => 6,
+        		'data' => array(
+        			'sortBy' => $sortBy,
+        			'filter' => $filter
+        		)
+        	)
+        );
+        
+		// Get the paginated results
+        $task = $paginator->getPaginate();
+        
         $this->view->task = $task;
+        
+
 
         $project = Project::findById($id);
         $this->view->projectname = $project->name;
         $this->view->idProject = $id;
         $this->session->set("projectname", $project->name);
         
-          
         $owner = Users::findById($project->createrId);
         $this->view->ownerLayout = $owner->name;
         $this->session->set("ownerLayout", $owner->name);

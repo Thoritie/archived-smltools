@@ -90,7 +90,7 @@ class ProjectController extends ControllerBase
         		'page' => $currentPage,
         		'query' => $query,
         		'sort' => $sortBy,
-        		'baseUrl' => $this->url->get(),
+        		'baseUrl' => $this->url->get('project'),
         		'showNumberOfPage' => 6,
         		'data' => array(
         			'sortBy' => $sortBy,
@@ -230,7 +230,7 @@ class ProjectController extends ControllerBase
         $this->view->project = $project;
     }
 
-    public function taskAction($id)
+    public function goTaskAction($id)
     {
         if($id){
             $this->session->set("idProject", $id);   
