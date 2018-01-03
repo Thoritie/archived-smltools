@@ -390,7 +390,7 @@ $(document).ready(function() {
                                     idProject : idProject
                                 },
                                 success:function(data){
-                                    $.redirect(baseUrl+"task", { });
+                                    window.location.href = baseUrl+"task";
                                 }
                             })    
                     }
@@ -492,7 +492,7 @@ $(document).ready(function() {
                             idTask : idTask
                         },
                         success:function(data){
-                            $.redirect(baseUrl+"task/index", { });
+                            window.location.href = baseUrl+"task";
                         }
                     })    
                 }
