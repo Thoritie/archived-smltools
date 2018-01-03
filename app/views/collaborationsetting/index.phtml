@@ -94,7 +94,7 @@
         $.post(baseUrl+"collaborationsetting/deleteCollaburation",{
             idCollaboration : idCollaboration
         }, function(data){
-            $.redirect(baseUrl+"collaborationsetting/index", {  }); 
+            window.location.href = baseUrl+"collaborationsetting";
         },  "json");
 
          

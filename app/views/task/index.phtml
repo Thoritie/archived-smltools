@@ -220,7 +220,7 @@
        $.post(baseUrl+"task/deleteTask",{
            idTask : idtask
        }, function(data){
-        $.redirect(baseUrl+"task/index", {  });
+        window.location.href = baseUrl+"task";
        },  "json");
       
    }
