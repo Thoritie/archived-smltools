@@ -139,13 +139,7 @@ class CollaborationsettingController extends ControllerBase
         $id = $this->request->getPost('id');
         $collaboration = Collaboration::findById($id);
        
-        
-         $include = array();
-         foreach($collaboration->include as $data){
-            $item = Tasks::findById($data);
-            array_push($include,$item);
-        }
-        $this->view->include = $include;
+        $this->view->include = Common::addDataArray(new Tasks(), $collaboration->include);
 
 
         $idProject = $this->session->get('idProject');
