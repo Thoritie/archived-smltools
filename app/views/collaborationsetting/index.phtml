@@ -26,7 +26,7 @@
                  </a>
               </div>
               <?php
-                 foreach ($collaboration as $key => $card) {
+                 foreach ($collaboration->items as $key => $card) {
                  ?>
               <div class="col-md-4">
                  <div class="thumbnail s-navShadow">
@@ -84,7 +84,7 @@
            </div>
         </div>
      </div>
-
+     <?php echo $collaboration->widgetPagination; ?>
 <!-- blockJS -->
 <script>
     

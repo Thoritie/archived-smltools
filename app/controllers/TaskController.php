@@ -58,18 +58,6 @@ class TaskController extends ControllerBase
     {
         
         $id = $this->session->get('idProject');
-        // var_dump($id);
-        // exit();
-        // $condition = [];
-        // if($id){
-                
-        //     $condition["idProject"] = $id;
-        //     $task = Tasks::Find(array($condition));
-            
-        // }else{
-        //     $this->view->task = 0;
-        // }
-        // $this->view->task = $task;
 
         $currentPage = $this->request->get('page');
         $idProject = $this->session->get('idProject');
