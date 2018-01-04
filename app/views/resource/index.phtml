@@ -126,9 +126,8 @@
         $.post(baseUrl+"resource/deleteResource",{
             idResource : idresource
         }, function(data){
-            console.log(data);
+           window.location.href = baseUrl+"resource";
         },  "json");
-        $.redirect(baseUrl+"resource/index", {  });
        
     }
 </script>

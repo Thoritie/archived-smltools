@@ -151,7 +151,7 @@
             Stakeholder = new Bloodhound({
                   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                   queryTokenizer: Bloodhound.tokenizers.whitespace,
-                  local: JSON.parse(resourceinput)
+                  local: JSON.parse(stakeinput)
             });
 
             Stakeholder.initialize();

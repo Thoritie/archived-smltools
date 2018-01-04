@@ -1,4 +1,8 @@
 <?php
+use MongoDB\BSON\ObjectId;
+use Library\Enum\Enum;
+use Library\Common\Common;
+use Library\Common\Pagination;
 
 class ResourceController extends ControllerBase
 {
@@ -208,34 +212,13 @@ class ResourceController extends ControllerBase
         $this->tag->setDefault("editResName", $res->name);
         $this->tag->setDefault("editResDesCription", $res->description);
 
+        $this->view->includes = Common::addDataArray(new Resource(), $res->includes);
+       
+        $this->view->rOwner = Common::addDataArray(new Stakeholders(), $res->rOwner);
 
-        $includes = array();
-        foreach($res->includes as $data){
-            $item = Resource::findById($data);
-            array_push($includes,$item);
-        }
-        $this->view->includes = $includes;
-
-        $rOwner = array();
-        foreach($res->rOwner as $data){
-            $item = Stakeholders::findById($data);
-            array_push($rOwner,$item);
-        }
-        $this->view->rOwner = $rOwner;
-
-        $pOwner = array();
-        foreach($res->pOwner as $data){
-            $item = Stakeholders::findById($data);
-            array_push($pOwner,$item);
-        }
-        $this->view->pOwner = $pOwner;
-
-        $maintainer = array();
-        foreach($res->maintainer as $data){
-            $item = Stakeholders::findById($data);
-            array_push($maintainer,$item);
-        }
-        $this->view->maintainer = $maintainer;
+        $this->view->pOwner = Common::addDataArray(new Stakeholders(), $res->pOwner);
+    
+        $this->view->maintainer = Common::addDataArray(new Stakeholders(), $res->maintainer);
 
 
         $conditionStake = [];
