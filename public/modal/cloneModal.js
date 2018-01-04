@@ -665,19 +665,109 @@ function setTaskModalDetail(data, idModal){
    
 };
 
+// clone show modal resource
+function cloneModalDetailRes(resId) {
+	var modal = $('#showRes');
+	var newModal = modal.clone();
+    //gen id
+    var idModal = new Date().getTime();
+    newModal.attr("id", idModal);
+    newModal.attr("style", "z-index: " + zindex++);
+    
+    
+    //set input id
+    setFormIdInModalResDetail(idModal, newModal);
+
+    //append to modal
+    modal.after(newModal);
+    callDataRes(resId, idModal);
+    
+    //show modal
+    var modalId = "#" + idModal;
+    $(modalId).modal("show");
+}
+
+function setFormIdInModalResDetail(idModal, newModal){
+	newModal.find('#showResName').attr('id', 'showResName-'+idModal);
+	newModal.find('#showResDescription').attr('id', 'showResDescription-'+idModal);
+	newModal.find('#showResInclude').attr('id', 'showResInclude-'+idModal);
+	newModal.find('#showResRowner').attr('id', 'showResRowner-'+idModal);
+	newModal.find('#showResPowner').attr('id', 'showResPowner-'+idModal);
+	newModal.find('#showResMaintainer').attr('id', 'showResMaintainer-'+idModal);
+}
+
+
 function callDataRes(resId, idModal){
     $.post(baseUrl+"resource/showDetailRes",{
         resId : resId
     }, function(data){
-
+        setResModalDetail(data, idModal);
     },"json");
-
 }
+
+function setResModalDetail(data, idModal){
+   var empty = '<label style="font-size: 10px; font-style : italic">This Field is Empty.</label>';
+   $('#showResName-'+idModal).html(data.name);
+   if(data.name == null || data.name == "") $('#showResName-'+idModal).html(empty);
+
+   $('#showResDescription-'+idModal).html(data.Description);
+   if(data.description == null || data.description == "") $('#showResDescription-'+idModal).html(empty);
+
+
+   var includes = data.includes;
+   var strIncludes = "";
+   $.each(includes, function( index, value ) {
+       strIncludes += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
+   });
+   $('#showResInclude-'+idModal).html(strIncludes);
+   if(data.includes == null || data.includes== "") $('#showResInclude-'+idModal).html(empty);
+
+
+   var rOwner = data.rOwner;
+   var strROwner = "";
+   $.each(strROwner, function( index, value ) {
+    strROwner += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
+   });
+   $('#showResRowner-'+idModal).html(strROwner);
+   if(data.rOwner == null || data.rOwner== "") $('#showResRowner-'+idModal).html(empty);
+
+
+   var pOwner = data.pOwner;
+   var strPOwner = "";
+   $.each(strPOwner, function( index, value ) {
+    strPOwner += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
+   });
+   $('#showResPowner-'+idModal).html(strPOwner);
+   if(data.pOwner == null || data.pOwner== "") $('#showResPowner-'+idModal).html(empty);
+
+   var maintainer = data.maintainer;
+   var strMaintainer= "";
+   $.each(strMaintainer, function( index, value ) {
+    strMaintainer += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
+   });
+   $('#showResMaintainer-'+idModal).html(strMaintainer);
+   if(data.maintainer == null || data.maintainer== "") $('#showResMaintainer-'+idModal).html(empty);
+
+   
+
+    
+};
+
 $(document).on('hidden.bs.modal', "div.showTask", function() {
 	var vm = $(this);
 	var id = '#'+vm.prop('id');
 	$(id).remove();
 	var count = $('div.showTask').length;
+    if(count > 1){
+         $('body').attr('class','modal-open');
+    }
+});
+
+$(document).on('hidden.bs.modal', "div.showRes", function() {
+	var vm = $(this);
+	var id = '#'+vm.prop('id');
+	$(id).remove();
+	var count = $('div.showRes').length;
     if(count > 1){
          $('body').attr('class','modal-open');
     }

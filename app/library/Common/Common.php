@@ -49,9 +49,4 @@ class Common {
     	return $arrData;
     }
 
-
-
-
-
-    
 }

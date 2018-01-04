@@ -241,6 +241,44 @@ class ResourceController extends ControllerBase
     {
         $id = $this->request->getPost('resId');
         $res = Resource::findById($id);
+
+        $arrRes = [];
+        $arrRes['name'] = $res->name;
+        $arrRes['description'] = $res->description;
+       
+        $modal = new Resource();
+        $tempArray = [];
+        if($res->includes != null)
+        foreach($res->includes as $id){
+        	$value = Common::getResourceNameById($model, $id);
+        	if($value != null)
+            	$tempArray[] = $value;
+        };
+        $arrRes['includes'] = $tempArray;
+
+
+        $model = new Stakeholders();
+        $tempArray = [];
+        if($res->rOwner != null)
+        foreach($res->rOwner as $id){
+            $tempArray[] = Common::getStakeholderNameById($model, $id);
+        };
+        $arrRes['rOwner'] = $tempArray;
+
+        $tempArray = [];
+        if($res->pOwner != null)
+        foreach($res->pOwner as $id){
+            $tempArray[] = Common::getStakeholderNameById($model, $id);
+        };
+        $arrRes['pOwner'] = $tempArray;
+
+        $tempArray = [];
+        if($res->maintainer != null)
+        foreach($res->maintainer as $id){
+            $tempArray[] = Common::getStakeholderNameById($model, $id);
+        };
+        $arrRes['maintainer'] = $tempArray;
+        return json_encode($arrRes);
     }
 
 }
