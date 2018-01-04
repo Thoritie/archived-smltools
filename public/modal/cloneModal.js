@@ -665,6 +665,14 @@ function setTaskModalDetail(data, idModal){
    
 };
 
+function callDataRes(resId, idModal){
+    $.post(baseUrl+"resource/showDetailRes",{
+        resId : resId
+    }, function(data){
+
+    },"json");
+
+}
 $(document).on('hidden.bs.modal', "div.showTask", function() {
 	var vm = $(this);
 	var id = '#'+vm.prop('id');
