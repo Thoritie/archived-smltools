@@ -28,7 +28,7 @@
                                 foreach($res as $showRes) {  ?>
 						    <tr>
                             	<td><?= $i ?></td>
-                                <td><a href="#" class="showDetailTask" onclick="cloneModalDetailTask('<?=$showRes->_id?>')">
+                                <td><a href="#" class="showDetailRes" onclick="cloneModalDetailRes('<?=$showRes->_id?>')">
                                     <h6 style="color: #747474"><?=$showRes->name ?></h6>
                                 </a>
                                 </td>
@@ -94,7 +94,7 @@
 
 <!-- </div> -->
 
-<div class="modal showRes" id="showTask" role="dialog">
+<div class="modal showRes" id="showRes" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content card">
@@ -103,11 +103,49 @@
             <h4 class="modal-title">Resource Details</h4>
          </div>
          <div class="modal-body">
+            
             <div class="content">
-                  <div class="col-md-6">
-                     <label>Resource name</label>
-                     <h5 id="showResName"></h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Resource name</label>
+                        <h5 id="showResName"></h5>
+                    </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-12">
+                     <label>Description</label>
+                     <h5 id="showResDescription"></h5>
                   </div>
+               </div>
+               <hr>                    
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Includes</label>
+                     <div id="showResInclude"></div>
+                  </div>
+               </div>
+               <hr>
+
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>R Owner</label>
+                     <div id="showResRowner"></div>
+                  </div>
+                  <div class="col-md-6">
+                     <label>P Owner</label>
+                     <div id="showResPowner"></div>
+                  </div>
+               </div>
+               <hr>
+
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Maintainer</label>
+                     <div id="showResMaintainer"></div>
+                  </div>
+               </div>
+
             </div>
          </div>
          <div class="modal-footer">
