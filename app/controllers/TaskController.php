@@ -30,7 +30,7 @@ class TaskController extends ControllerBase
         //// $this->assets->addJs('jquery/jquery.js');
         //// $this->assets->addJs('jquery/jquery.min.js');
         $this->assets->addJs('popper/popper.min.js');
-        $this->assets->addJs('bootstrap-4/js/bootstrap.min.js');
+        // $this->assets->addJs('bootstrap-4/js/bootstrap.min.js');
         $this->assets->addJs('scrollreveal/scrollreveal.min.js');
         $this->assets->addJs('magnific-popup/jquery.magnific-popup.min.js');
         //// $this->assets->addJs('jslif/sb-admin.js');
