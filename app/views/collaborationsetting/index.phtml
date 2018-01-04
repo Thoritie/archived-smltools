@@ -46,6 +46,7 @@
               <?php } ?>
              
            </div>
+           <form action="<?=$this->url->get("collaborationsetting/index"); ?>" method="POST">
            <div class="col-md-3">
               <!-- Sort -->
               <div class="card s-navShadow">
@@ -54,11 +55,18 @@
                  </div>
                  <div class="content">
                     <div class="form-group">
-                       <!-- <label for="sel1">Select list (select one):</label> -->
-                       <select class="form-control" id="sel1">
-                          <option selected>List</option>
-                          <option>Title</option>
-                       </select>
+                    <?php 
+                        echo $this->tag->select(
+                            [
+                                    'sortBy',
+                                    $arrSortBy,
+                                    'value' => $sortBy,
+                                    'class' => 'form-control',
+                                    'id' => 'sel1',
+                                    'onchange' => 'this.form.submit()'
+                            ]
+                    );
+                    ?>
                     </div>
                  </div>
               </div>
@@ -68,20 +76,21 @@
                     <h4 class="title">Filter</h4>
                  </div>
                  <div class="content">
-                    <form action="#">
+                    
                        <div class="form-group">
                           <div class="form-group">
-                             <label>Project Name</label>
-                             <input type="text" class="form-control" placeholder="Project Name" value="">
+                             <label>Collaboration Name</label>
+                             <input type="text" class="form-control"  name="filter" value="<?=$filter?>">
                           </div>
                        </div>
                        <div class="footer text-right">
                           <button class="btn btn-default" type="submit">Filter</button>
                        </div>
-                    </form>
+                    
                  </div>
               </div>
            </div>
+        </form>
         </div>
      </div>
      <?php echo $collaboration->widgetPagination; ?>

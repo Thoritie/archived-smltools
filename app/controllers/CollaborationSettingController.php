@@ -84,7 +84,7 @@ class CollaborationsettingController extends ControllerBase
         		'page' => $currentPage,
         		'query' => $query,
         		'sort' => $sortBy,
-        		'baseUrl' => $this->url->get('Collaborationsetting/index'),
+        		'baseUrl' => $this->url->get('Collaborationsetting'),
         		'showNumberOfPage' => 6,
         		'data' => array(
         			'sortBy' => $sortBy,
