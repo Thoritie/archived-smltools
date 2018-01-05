@@ -45,7 +45,7 @@ class ResourceController extends ControllerBase
 
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('dist/jquery.validate.js');
-       
+
         $this->assets->addJs('jquery/resourceRedirect.js');
        
        
@@ -246,7 +246,8 @@ class ResourceController extends ControllerBase
         $arrRes['name'] = $res->name;
         $arrRes['description'] = $res->description;
        
-        $modal = new Resource();
+        $model = new Resource();
+        
         $tempArray = [];
         if($res->includes != null)
         foreach($res->includes as $id){
@@ -255,7 +256,7 @@ class ResourceController extends ControllerBase
             	$tempArray[] = $value;
         };
         $arrRes['includes'] = $tempArray;
-
+        
 
         $model = new Stakeholders();
         $tempArray = [];

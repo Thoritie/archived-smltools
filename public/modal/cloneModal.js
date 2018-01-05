@@ -719,7 +719,7 @@ function setResModalDetail(data, idModal){
    var includes = data.includes;
    var strIncludes = "";
    $.each(includes, function( index, value ) {
-       strIncludes += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
+       strIncludes += '<a href="#" class="labelCo labelInfo info-resource" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
    });
    $('#showResInclude-'+idModal).html(strIncludes);
    if(data.includes == null || data.includes== "") $('#showResInclude-'+idModal).html(empty);
@@ -727,7 +727,7 @@ function setResModalDetail(data, idModal){
 
    var rOwner = data.rOwner;
    var strROwner = "";
-   $.each(strROwner, function( index, value ) {
+   $.each(rOwner, function( index, value ) {
     strROwner += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
    });
    $('#showResRowner-'+idModal).html(strROwner);
@@ -736,7 +736,7 @@ function setResModalDetail(data, idModal){
 
    var pOwner = data.pOwner;
    var strPOwner = "";
-   $.each(strPOwner, function( index, value ) {
+   $.each(pOwner, function( index, value ) {
     strPOwner += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
    });
    $('#showResPowner-'+idModal).html(strPOwner);
@@ -744,7 +744,7 @@ function setResModalDetail(data, idModal){
 
    var maintainer = data.maintainer;
    var strMaintainer= "";
-   $.each(strMaintainer, function( index, value ) {
+   $.each(maintainer, function( index, value ) {
     strMaintainer += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
    });
    $('#showResMaintainer-'+idModal).html(strMaintainer);
