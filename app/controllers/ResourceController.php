@@ -237,7 +237,7 @@ class ResourceController extends ControllerBase
 
     }
 
-    public function showDetailRes()
+    public function showDetailResAction()
     {
         $id = $this->request->getPost('resId');
         $res = Resource::findById($id);

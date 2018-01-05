@@ -550,7 +550,7 @@ function setFormIdInModalTaskDetail(idModal, newModal){
 function callDataTask(taskId, idModal){
     $.post(baseUrl+"task/showDetailTask",{
        taskId : taskId
-    }, function(data){
+    }, function(data){   
        setTaskModalDetail(data, idModal);
     },"json"); 
 }
@@ -698,11 +698,13 @@ function setFormIdInModalResDetail(idModal, newModal){
 
 
 function callDataRes(resId, idModal){
+ 
     $.post(baseUrl+"resource/showDetailRes",{
         resId : resId
-    }, function(data){
+     }, function(data){
+        console.log(data);   
         setResModalDetail(data, idModal);
-    },"json");
+     },"json"); 
 }
 
 function setResModalDetail(data, idModal){
