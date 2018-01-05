@@ -712,7 +712,7 @@ function setResModalDetail(data, idModal){
    $('#showResName-'+idModal).html(data.name);
    if(data.name == null || data.name == "") $('#showResName-'+idModal).html(empty);
 
-   $('#showResDescription-'+idModal).html(data.Description);
+   $('#showResDescription-'+idModal).html(data.description);
    if(data.description == null || data.description == "") $('#showResDescription-'+idModal).html(empty);
 
 
