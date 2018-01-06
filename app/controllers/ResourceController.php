@@ -84,8 +84,24 @@ class ResourceController extends ControllerBase
         $this->view->res = $res;
 
         
+        //Sort
+        $currentPage = $this->request->get('page');
+        $idProject = $this->session->get('idProject');
+        $sortBy = $this->request->getPost('sortBy');
+        $filter = $this->request->getPost('filter');
 
+        $arrSortBy = array(
+            'name' => 'Name',
+            '_id' => 'Create Date'
+        );
         
+        $this->view->arrSortBy = $arrSortBy;
+        if($sortBy == null) $sortBy = $this->request->get('sortBy');
+        if($sortBy == null) $sortBy = $arrSortBy['name'];
+        $this->view->sortBy = $sortBy;
+        if($filter == null) $filter = $this->request->get('filter');
+        if($filter == null) $filter = '';
+        $this->view->filter = $filter;
     }
 
     public function createAction()

@@ -1,61 +1,60 @@
 <p><?php $this->flashSession->output() ?></p>
 <!-- new project card -->
 <ol class="breadcrumb inline-flex">
-        <li class="breadcrumb-item">
-            <a href="<?=$this->url->get("project/index"); ?>">Project</a>
-        </li>
-        <li class="breadcrumb-item active">
-              <a>Collaboration Setting</a>
-        </li>
+   <li class="breadcrumb-item">
+      <a href="<?=$this->url->get("project/index"); ?>">Project</a>
+   </li>
+   <li class="breadcrumb-item active">
+      <a>Collaboration Setting</a>
+   </li>
 </ol>
 <div class="container-fluid">
-        <div class="row">
-           <div class="col-md-9" style="padding:0">
-              <div class="col-md-4">
-                 <a href="<?=$this->url->get("collaborationsetting/create"); ?>">
-                    <div class="thumbnail s-navShadow" id="thumbnailProject">
-                            <i class="fa fa-5x fa-plus" style="
-                            color: #3d578a;
-                            display: flex;
-                            justify-content: center;
-                            width: 100%;
-                            height: 100%;
-                            margin-top: 40px;
-                        "></i>
-                    </div>
-                 </a>
-              </div>
-              <?php
-                 foreach ($collaboration->items as $key => $card) {
-                 ?>
-              <div class="col-md-4">
-                 <div class="thumbnail s-navShadow">
-                    <div class="caption">
-                       <div class="header">
-                             <h4><?=$card->name?></h4>
-                       </div>
-                       <hr>
-                       <div class="footer">
-                          <a onclick="confirm('Are you sure delete <?=$card->name?>?')?deleteCollaburation('<?=$card->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
-                          <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary collaburationEdit" data-id="<?=$card->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
-                          <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$pro->description?>"><i class="fa fa-info"></i></a> 
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <?php } ?>
-             
-           </div>
-           <form action="<?=$this->url->get("collaborationsetting/index"); ?>" method="POST">
-           <div class="col-md-3">
-              <!-- Sort -->
-              <div class="card s-navShadow">
-                 <div class="header">
-                    <h4 class="title">Sort</h4>
-                 </div>
-                 <div class="content">
-                    <div class="form-group">
-                    <?php 
+   <div class="row">
+      <div class="col-md-9" style="padding:0">
+         <div class="col-md-4">
+            <a href="<?=$this->url->get("collaborationsetting/create"); ?>">
+               <div class="thumbnail s-navShadow" id="thumbnailProject">
+                  <i class="fa fa-5x fa-plus" style="
+                     color: #3d578a;
+                     display: flex;
+                     justify-content: center;
+                     width: 100%;
+                     height: 100%;
+                     margin-top: 40px;
+                     "></i>
+               </div>
+            </a>
+         </div>
+         <?php
+            foreach ($collaboration->items as $key => $card) {
+            ?>
+         <div class="col-md-4">
+            <div class="thumbnail s-navShadow">
+               <div class="caption">
+                  <div class="header">
+                     <h4><?=$card->name?></h4>
+                  </div>
+                  <hr>
+                  <div class="footer">
+                     <a onclick="confirm('Are you sure delete <?=$card->name?>?')?deleteCollaburation('<?=$card->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
+                     <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary collaburationEdit" data-id="<?=$card->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                     <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$pro->description?>"><i class="fa fa-info"></i></a> 
+                  </div>
+               </div>
+            </div>
+         </div>
+         <?php } ?>
+      </div>
+      <form action="<?=$this->url->get("collaborationsetting/index"); ?>" method="POST">
+         <div class="col-md-3">
+            <!-- Sort -->
+            <div class="card s-navShadow">
+               <div class="header">
+                  <h4 class="title">Sort</h4>
+               </div>
+               <div class="content">
+                  <div class="form-group">
+                     <?php 
                         echo $this->tag->select(
                             [
                                     'sortBy',
@@ -65,51 +64,45 @@
                                     'id' => 'sel1',
                                     'onchange' => 'this.form.submit()'
                             ]
-                    );
-                    ?>
-                    </div>
-                 </div>
-              </div>
-              <!-- Filter -->
-              <div class="card s-navShadow">
-                 <div class="header">
-                    <h4 class="title">Filter</h4>
-                 </div>
-                 <div class="content">
-                    
-                       <div class="form-group">
-                          <div class="form-group">
-                             <label>Collaboration Name</label>
-                             <input type="text" class="form-control"  name="filter" value="<?=$filter?>">
-                          </div>
-                       </div>
-                       <div class="footer text-right">
-                          <button class="btn btn-default" type="submit">Filter</button>
-                       </div>
-                    
-                 </div>
-              </div>
-           </div>
-        </form>
-        </div>
-     </div>
-     <?php echo $collaboration->widgetPagination; ?>
+                        );
+                        ?>
+                  </div>
+               </div>
+            </div>
+            <!-- Filter -->
+            <div class="card s-navShadow">
+               <div class="header">
+                  <h4 class="title">Filter</h4>
+               </div>
+               <div class="content">
+                  <div class="form-group">
+                     <div class="form-group">
+                        <label>Collaboration Name</label>
+                        <input type="text" class="form-control"  name="filter" value="<?=$filter?>">
+                     </div>
+                  </div>
+                  <div class="footer text-right">
+                     <button class="btn btn-default" type="submit">Filter</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
+<?php echo $collaboration->widgetPagination; ?>
 <!-- blockJS -->
 <script>
-    
-    function deleteCollaburation(id){
-        var idCollaboration = id;
-       
-        $.post(baseUrl+"collaborationsetting/deleteCollaburation",{
-            idCollaboration : idCollaboration
-        }, function(data){
-            window.location.href = baseUrl+"collaborationsetting";
-        },  "json");
-
-         
-    }
+   function deleteCollaburation(id){
+       var idCollaboration = id;
+      
+       $.post(baseUrl+"collaborationsetting/deleteCollaburation",{
+           idCollaboration : idCollaboration
+       }, function(data){
+           window.location.href = baseUrl+"collaborationsetting";
+       },  "json");
+   
+        
+   }
 </script>
 <!-- /.blockJS -->
-
-     
-     
