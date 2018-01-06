@@ -32,7 +32,7 @@
             <div class="thumbnail s-navShadow">
                <div class="caption">
                   <div class="header">
-                     <a href="#" class="showDetailTask labelCo labelSuccess pull-right" onclick="cloneModalDetailTask('<?=$tk->_id?>')"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+                     <!-- <a href="#" class="showDetailTask pull-right" onclick="cloneModalDetailTask('<?=$tk->_id?>')"><i class="fa fa-eye" aria-hidden="true"></i></a> -->
                      <!-- <i class="showDetailTask" data-id="<?=$tk->_id?>"> -->
                         <h4><?=$tk->name?></h4>
                      </i>
@@ -40,7 +40,10 @@
                   <hr>
                   <div class="footer">
                      <a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
+
                      <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                     <a class="showDetailTask btn btn-xs pull-right"  onclick="cloneModalDetailTask('<?=$tk->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp; 
+
                      <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$tk->Description?>"><i class="fa fa-info"></i></a> 
                   </div>
                </div>
