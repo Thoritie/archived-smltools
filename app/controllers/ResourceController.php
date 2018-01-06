@@ -102,6 +102,44 @@ class ResourceController extends ControllerBase
         if($filter == null) $filter = $this->request->get('filter');
         if($filter == null) $filter = '';
         $this->view->filter = $filter;
+
+        //Pagination
+        $model = new Resource();
+        $query = array(
+        	'$and' => array(
+        		array('name' => new MongoRegex("/$filter/")),
+        		array(
+        			'$or' => array(
+        				array('idProject' => $idProject)
+        			),
+        		)
+        	)
+        );
+
+        $paginator = new Pagination(
+        	array(
+        		'model' => $model,
+        		'limit' => 8,
+        		'page' => $currentPage,
+        		'query' => $query,
+        		'sort' => $sortBy,
+        		'baseUrl' => $this->url->get('Resource'),
+        		'showNumberOfPage' => 6,
+        		'data' => array(
+        			'sortBy' => $sortBy,
+        			'filter' => $filter
+        		)
+        	)
+        );
+
+        //pagination results
+        $resource = $paginator->getPaginate();
+        $this->view->resource = $resource;
+        
+
+
+
+
     }
 
     public function createAction()

@@ -20,7 +20,7 @@
                <tbody>
                   <?php 
                      $i =1;
-                     foreach($res as $showRes) {  ?>
+                     foreach($resource->items as $key => $showRes) {  ?>
                   <tr>
                      <td><?= $i ?></td>
                      <td>
@@ -85,6 +85,8 @@
         </div>
       </form>
    </div>
+   <?php echo $resource->widgetPagination; ?>
+
    <!-- </div> -->
 </div>
 <!-- </div> -->
