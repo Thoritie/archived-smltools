@@ -788,6 +788,7 @@ function callDataColla(collaId, idModal){
     $.post(baseUrl+"collaborationsetting/showDetailColla",{
         collaId :collaId
     }, function(data){
+        console.log(data)
         setCollaModalDetail(data, idModal);
     }, "json");
 };
@@ -800,7 +801,17 @@ function setCollaModalDetail(data, idModal){
     $('#showCollaDescription-'+idModal).html(data.Description);
     if(data.Description == null || data.Description == "") $('#showCollaDescription-'+idModal).html(empty);
 
-    // include what ??
+    // include task
+
+    var include = data.include;
+    var strInclude = "";
+    $.each(include, function( index, value ) {
+        strInclude += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask(\''+value.id+'\')">'+value.name+'</a>';
+    });
+
+    $('#showCollaInclude-'+idModal).html(strInclude);
+    if(data.include == null || data.include== "") $('#showCollaInclude-'+idModal).html(empty);
+ 
  
 };
 
