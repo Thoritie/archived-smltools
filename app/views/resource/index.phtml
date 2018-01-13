@@ -24,14 +24,15 @@
                   <tr>
                      <td><?= $i ?></td>
                      <td>
-                        <a href="#" class="showDetailRes" onclick="cloneModalDetailRes('<?=$showRes->_id?>')">
                            <h6 style="color: #747474"><?=$showRes->name ?></h6>
-                        </a>
+                
                      </td>
                      <td><?=$showRes->description ?></td>
                      <td>
                         <a onclick="confirm('Are you sure delete <?=$showRes->name?>?')?deleteResource('<?=$showRes->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
                         <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary resEdit" data-id="<?=$showRes->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
+                        <a class="showDetailRes btn btn-xs pull-right"  onclick="cloneModalDetailRes('<?=$showRes->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp; 
+
                      </td>
                   </tr>
                   <?php  $i++; } ?> 
