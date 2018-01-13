@@ -755,6 +755,57 @@ function setResModalDetail(data, idModal){
     
 };
 
+// show collaboration setting by modal and eyes 
+function cloneModalDetailColla(collaId){
+    var modal = $('#showColla');
+    var newModal = modal.clone();
+
+     //gen id
+     var idModal = new Date().getTime();
+     newModal.attr("id", idModal);
+     newModal.attr("style", "z-index: " + zindex++);
+     
+     //set INPUT ID
+     setFormInModalCollaDetail(idModal, newModal);
+
+     //append it to modal
+     modal.after(newModal);
+     callDataColla(collaId, idModal);
+
+     //show modal
+     var modalId = "#" + idModal;
+     $(modalId).modal("show");
+     
+}; 
+
+function setFormInModalCollaDetail(idModal, newModal){
+    newModal.find('#showCollaName').attr('id', 'showCollaName-'+idModal);
+    newModal.find('#showCollaDescription').attr('id', 'showCollaDescription-'+idModal);
+    newModal.find('#showCollaInclude').attr('id', 'showCollaInclude-'+idModal);
+};
+
+function callDataColla(collaId, idModal){
+    $.post(baseUrl+"collaborationsetting/showDetailColla",{
+        collaId :collaId
+    }, function(data){
+        setCollaModalDetail(data, idModal);
+    }, "json");
+};
+
+function setCollaModalDetail(data, idModal){
+    var empty = '<label style="font-size: 10px; font-style : italic">This Field is Empty.</label>';
+    $('#showCollaName-'+idModal).html(data.name);
+    if(data.name == null || data.name == "") $('#showCollaName-'+idModal).html(empty);
+
+    $('#showCollaDescription-'+idModal).html(data.Description);
+    if(data.Description == null || data.Description == "") $('#showCollaDescription-'+idModal).html(empty);
+
+    // include what ??
+ 
+};
+
+
+
 $(document).on('hidden.bs.modal', "div.showTask", function() {
 	var vm = $(this);
 	var id = '#'+vm.prop('id');

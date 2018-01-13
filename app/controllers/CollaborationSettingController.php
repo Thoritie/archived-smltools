@@ -265,4 +265,22 @@ class CollaborationsettingController extends ControllerBase
        
     }
 
+    public function showDetailCollaAction()
+    {
+        $id = $this->request->getPost('collaId');
+        $colla = Collaboration::findById($id);
+
+        $arrColla = [];
+        $arrColla['name'] = $colla->name;
+        $arrColla['Description'] = $colla->Description;
+
+        // $model = new Collaboration();
+        // $tempArray = [];
+
+
+
+        return json_encode($arrColla);
+
+    }
+
 }
