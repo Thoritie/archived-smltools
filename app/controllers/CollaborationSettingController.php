@@ -277,13 +277,13 @@ class CollaborationsettingController extends ControllerBase
        
         $tempArray = [];
         $model = new Tasks();
-        if($task->includes != null)
-        foreach($task->includes as $id){
+        if($colla->include != null)
+        foreach($colla->include as $id){
         	$value = Common::getTaskNameById($model, $id);
         	if($value != null)
             	$tempArray[] = $value;
         };
-        $arrTask['include'] = $tempArray;
+        $arrColla['include'] = $tempArray;
 
 
 
