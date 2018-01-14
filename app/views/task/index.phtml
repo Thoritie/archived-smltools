@@ -105,7 +105,7 @@
 
 
 
-
+<!-- modal task -->
 <div class="modal showTask" id="showTask" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
@@ -205,6 +205,104 @@
                      <div id="showTaskRegulator"></div>
                   </div>
                </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- modal resource -->
+<div class="modal showRes" id="showRes" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content card">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Resource Details</h4>
+         </div>
+         <div class="modal-body">
+            <div class="content">
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Resource name</label>
+                     <h5 id="showResName"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Description</label>
+                     <h5 id="showResDescription"></h5>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Includes</label>
+                     <div id="showResInclude"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>R Owner</label>
+                     <div id="showResRowner"></div>
+                  </div>
+                  <div class="col-md-6">
+                     <label>P Owner</label>
+                     <div id="showResPowner"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Maintainer</label>
+                     <div id="showResMaintainer"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- modal collaboration  -->
+<div class="modal showColla" id="showColla" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content card">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Collaboration Setting Details</h4>
+         </div>
+         <div class="modal-body">
+            <div class="content">
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Collaboration Setting name</label>
+                     <h5 id="showCollaName"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Description</label>
+                     <h5 id="showCollaDescription"></h5>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Includes</label>
+                     <div id="showCollaInclude"></div>
+                  </div>
+               </div>
+    
+              
             </div>
          </div>
          <div class="modal-footer">

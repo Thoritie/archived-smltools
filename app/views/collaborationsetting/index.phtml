@@ -93,7 +93,7 @@
 </div>
 <?php echo $collaboration->widgetPagination; ?>
 
-
+<!-- modal colla -->
 <div class="modal showColla" id="showColla" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
@@ -125,6 +125,115 @@
                </div>
     
               
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- modal task  -->
+<div class="modal showTask" id="showTask" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content card">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Task Details</h4>
+         </div>
+         <div class="modal-body">
+            <div class="content">
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Task name</label>
+                     <h5 id="showTaskName"></h5>
+                  </div>
+                  <div class="col-md-6">
+                     <label>IsA</label>
+                     <h5 id="showTaskIsA">IsA Type Task</h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Description</label>
+                     <h5 id="showTaskDescription">Description Task I just try to make this paragraph long as much as i can</h5>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Includes</label>
+                     <div id="showTaskInclude"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>as IsState</label>
+                     <h5 id="showTaskAsIsState"></h5>
+                  </div>
+                  <div class="col-md-6">
+                     <label>to Be State</label>
+                     <h5 id="showTaskToBeState"></h5>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Uses</label>
+                     <div id="showTaskUses"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Produces</label>
+                     <div id="showTaskProduces"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>ToUse</label>
+                     <div id="showTaskToUses"></div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>ToProduce</label>
+                     <div id="showTaskToProduce"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Owner</label>
+                     <div id="showTaskOwner"></div>
+                  </div>
+                  <div class="col-md-6">
+                     <label>Collaborator</label>
+                     <div id="showTaskCollaborator"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>owner To Be</label>
+                     <div id="showTaskOwnerToBe"></div>
+                  </div>
+                  <div class="col-md-6">
+                     <label>collaborator To Be</label>
+                     <div id="showTaskCollaboratorToBe"></div>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Regulator</label>
+                     <div id="showTaskRegulator"></div>
+                  </div>
+               </div>
             </div>
          </div>
          <div class="modal-footer">
