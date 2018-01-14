@@ -585,7 +585,7 @@ function setTaskModalDetail(data, idModal){
    var uses = data.uses;
    var strUses = "";
    $.each(uses, function( index, value ) {
-       strUses += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+       strUses += '<a href="#" class="labelCo labelInfo info-resource" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
    });
    $('#showTaskUses-'+idModal).html(strUses);
    if(data.uses == null || data.uses== "") $('#showTaskUses-'+idModal).html(empty);
@@ -594,7 +594,7 @@ function setTaskModalDetail(data, idModal){
    var produces = data.produces;
    var strProduces = "";
    $.each(produces, function( index, value ) {
-       strProduces += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+       strProduces += '<a href="#" class="labelCo labelInfo info-resource" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
    });
    $('#showTaskProduces-'+idModal).html(strProduces);
    if(data.produces == null || data.produces== "") $('#showTaskProduces-'+idModal).html(empty);
@@ -603,7 +603,7 @@ function setTaskModalDetail(data, idModal){
    var toUses = data.toUse;
    var strToUses  = "";
    $.each(toUses, function( index, value ) {
-       strToUses += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+       strToUses += '<a href="#" class="labelCo labelInfo info-resource" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
    });
    $('#showTaskToUses-'+idModal).html(strToUses);
    if(data.toUse == null || data.toUse== "") $('#showTaskToUses-'+idModal).html(empty);
@@ -612,7 +612,7 @@ function setTaskModalDetail(data, idModal){
    var toProduces = data.toProduce;
    var strToProduces = "";
    $.each(toProduces, function( index, value ) {
-       strToProduces += '<a href="#" class="labelCo labelInfo info-resource" data-id="'+value.id+'">'+value.name+'</a>';
+       strToProduces += '<a href="#" class="labelCo labelInfo info-resource" onclick="cloneModalDetailRes(\''+value.id+'\')">'+value.name+'</a>';
    });
    $('#showTaskToProduce-'+idModal).html(strToProduces);
    if(data.toProduce == null || data.toProduce== "") $('#showTaskToProduce-'+idModal).html(empty);
