@@ -1,4 +1,8 @@
 <?php
+use MongoDB\BSON\ObjectId;
+use Library\Enum\Enum;
+use Library\Common\Common;
+use Library\Common\Pagination;
 
 class StakeholderController extends ControllerBase
 {
@@ -40,6 +44,8 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('dist/jquery.validate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('jslif/stake.js');
+        $this->assets->addJs('jquery/stakeEditRediract.js');
+        
 
 
     }
@@ -192,15 +198,173 @@ class StakeholderController extends ControllerBase
     {
         $this->view->disable();
         $input = $this->request->getPost('project');
-        
         $condition = [];
         
         if($input){
-            $condition["project"] = $input;
+            $condition["idProject"] = $input;
         }
 
         $stakeholders = Stakeholders::Find(array($condition));
 
         return json_encode($stakeholders);
+    }
+
+    public function findRepresentAction()
+    {
+        $this->view->disable();
+        $input = $this->request->getPost('project');
+        $query =  Stakeholders::Find(array(
+        	array('$and' => array(
+                array('idProject' => $input),
+                array(
+                    '$or' => array(
+                        array('type'=>"0"),
+                        array('type'=>"1"),
+                    )
+                )
+            )
+            )
+        )
+        );
+        echo $query;
+        return json_encode($query);
+    }
+
+    public function findDtaskAction()
+    {
+        $this->view->disable();
+        $input = $this->request->getPost('project');
+
+        $condition = [];
+        
+        if($input){
+            $condition["idProject"] = $input;
+        }
+
+        $tasks = Tasks::Find(array($condition));
+
+        return json_encode($tasks);
+    }
+
+    public function editAction()
+    {
+        $id = $this->request->getPost('id');
+        $stake = Stakeholders::findById($id);
+        $this->session->set("idstaleholder", $id);
+        if($stake->type=='0'||$stake->type=='1'){
+            
+            $this->dispatcher->forward([
+            'controller' => "stakeholder",
+            'action' => 'editOrgan'
+            ]);
+            
+        }else if($stake->type=='2')
+        {
+            $this->dispatcher->forward([
+            'controller' => "stakeholder",
+            'action' => 'editIndiv'
+            ]);
+        }else{
+            $this->dispatcher->forward([
+            'controller' => "stakeholder",
+            'action' => 'editRole'
+            ]);
+        }
+    }
+
+    public function editOrganAction()
+    {
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+        
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+
+        $id = $this->session->get('idProject');
+        $condition = [];
+        if($id){
+            $condition["idProject"] = $id;
+            $stake = Stakeholders::Find(array($condition));
+        
+        }
+        $this->view->stake = $stake;
+
+        // $this->view->representative = Common::addDataArray(new Stakeholders(), $stake->representative);
+        // $this->view->reports = Common::addDataArray(new Stakeholders(), $stake->reports);
+        // $this->view->consults = Common::addDataArray(new Stakeholders(), $stake->consults);
+        // $this->view->liaises = Common::addDataArray(new Stakeholders(), $stake->liaises);
+        // $this->view->delegate = Common::addDataArray(new Stakeholders(), $stake->delegate);
+        // $this->view->dTask = Common::addDataArray(new Stakeholders(), $stake->dTask);
+
+        // $idProject = $this->session->get('idProject');
+        // $this->view->idProject = $idProject;
+
+        // $this->view->idStake  = $stake->_id;
+        // $this->tag->setDefault("idProject", $idProject);
+        // $this->tag->setDefault("idStake", $id);
+        // $this->tag->setDefault("edStakeName", $stake->name);
+        // $this->tag->setDefault("aka", $stake->aka);
+        // $this->tag->setDefault("description", $stake->description);
+        // $this->tag->setDefault("concern", $stake->concern);
+
+        // $conditionStake = [];
+        // $conditionStake["idProject"] = $idProject;
+        // $tagsStake = Stakeholders::Find(array($conditionStake));
+        // $this->view->tagsStake = $tagsStake;
+
+
+        // $conditionTask = [];
+        // $conditionTask["idProject"] = $idProject;
+        // $conditionTask["mom"] = null;
+        // $conditionTask["name"] = ['$ne' => $task->name];
+        // $taskTags = Tasks::Find(array($conditionTask));
+        // $this->view->taskTags = $taskTags;
+    }
+
+    public function editIndivAction()
+    {
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+        
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+
+        $id = $this->session->get('idProject');
+        $condition = [];
+        if($id){
+            $condition["idProject"] = $id;
+            $stake = Stakeholders::Find(array($condition));
+        
+        }
+        
+        $this->view->stake = $stake;
+    }
+
+    public function editRoleAction()
+    {
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+        
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+
+        $id = $this->session->get('idProject');
+        $condition = [];
+        if($id){
+            $condition["idProject"] = $id;
+            $stake = Stakeholders::Find(array($condition));
+        
+        }
+        
+        $this->view->stake = $stake;
     }
 }

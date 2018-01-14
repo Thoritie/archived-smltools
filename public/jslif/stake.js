@@ -37,7 +37,7 @@ $(document).ready(function () {
     }
 
 
-    var project = $("#idProject").val();;     //input project id .val()
+    var project = $("#idProject").val();     //input project id .val()
 
     $.post(baseUrl + "stakeholder/findStake", {
         project: project
@@ -253,6 +253,95 @@ $(document).ready(function () {
         });
         
     }, "json");
+
+    $.post(baseUrl + "stakeholder/findRepresent", {
+        project: project
+    }, function (data) {
+
+        var auto = createJSON(data);
+        var n = createString(auto);
+        Stakeholder = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        Stakeholder.initialize();
+
+        var Orepresentative = $('#Orepresentative');
+        Orepresentative.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stake.ttAdapter(),
+                templates: {
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+
+    }, "json");
+
+    $.post(baseUrl + "stakeholder/findDtask", {
+        project: project
+    }, function (data) {
+
+        var auto = createJSON(data);
+        var n = createString(auto);
+        Tasks = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        Tasks.initialize();
+
+        var OdTask = $('#OdTask');
+        OdTask.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Tasks.ttAdapter(),
+                templates: {
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+        var indTask = $('#indTask');
+        indTask.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Tasks.ttAdapter(),
+                templates: {
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+        var rdTask = $('#rdTask');
+        rdTask.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Tasks.ttAdapter(),
+                templates: {
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
+
+    }, "json");
+
     ///saveOrganisation
     $('#SaveOr').click(function () {
         var name = $("#OStakeName").val()
@@ -285,7 +374,11 @@ $(document).ready(function () {
         $.each(delegate, function (index, input) {
             itemdelegate[index] = input.value
             });
-        var dTask = $("#OdTask").val()
+        var dTask = $("#OdTask").tagsinput('items');
+        itemdTask = {};
+        $.each(dTask, function (index, input) {
+            itemdTask[index] = input.value
+        });
         var wishes = $("#Owishes").val()
         var idProject = $("#idProject").val();
         var type;
@@ -307,7 +400,7 @@ $(document).ready(function () {
                 consults: itemconsults,
                 liaises: itemliaises,
                 delegate: itemdelegate,
-                dTask: dTask,
+                dTask: itemdTask,
                 wishes: wishes,
                 type: type,
                 idProject: idProject
@@ -348,7 +441,11 @@ $(document).ready(function () {
         $.each(indelegate, function (index, input) {
             itemindelegate[index] = input.value
         });
-        var indTask = $("#indTask").val()
+        var indTask = $("#indTask").tagsinput('items');
+        itemdTask = {};
+        $.each(indTask, function (index, input) {
+            itemdTask[index] = input.value
+        });
         var inwishes = $("#inwishes").val()
         var inidProject = $("#idProject").val();
         var intype=2;
@@ -366,7 +463,7 @@ $(document).ready(function () {
                 consults: iteminconsults,
                 liaises: iteminliaises,
                 delegate: itemindelegate,
-                dTask: indTask,
+                dTask: itemdTask,
                 wishes: inwishes,
                 type: intype,
                 idProject: inidProject
@@ -409,7 +506,11 @@ $(document).ready(function () {
         $.each(rdelegate, function (index, input) {
             itemrdelegate[index] = input.value
         });
-        var rdTask = $("#rdTask").val()
+        var rdTask = $("#rdTask").tagsinput('items');
+        itemdTask = {};
+        $.each(rdTask, function (index, input) {
+            itemdTask[index] = input.value
+        });
         var rwishes = $("#rwishes").val()
         var ridProject = $("#idProject").val();
         var rtype = 3;
@@ -428,7 +529,7 @@ $(document).ready(function () {
                 consults: itemrconsults,
                 liaises: itemrliaises,
                 delegate: itemrdelegate,
-                dTask: rdTask,
+                dTask: itemdTask,
                 wishes: rwishes,
                 type: rtype,
                 idProject: ridProject

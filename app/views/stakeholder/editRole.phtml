@@ -1,0 +1,130 @@
+<?php 
+   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
+?>
+<div class="container-fluid">
+<div class="row">
+            <div class="col-md-12">
+               <div class="card">
+                  <div class="row">
+                     <div class="col-md-8 col-md-offset-2">
+                        <div class="header">
+                           <h4 class="title">Create Role</h4>
+                        </div>
+                        <div class="content">
+                           <form>
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Name</label>
+                                       <input type="text" name="rStakeName" id="rStakeName" class="form-control" placeholder="Stakeholder name">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>aka</label>
+                                       <input type="text" name="raka" id="raka" class="form-control" placeholder="it's alias me..">
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label>is A</label>
+                                       <input type="text" name="isA" id="isA" class="form-control" placeholder="Stakeholder name">
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label>description</label>
+                                       <textarea rows="5" name="rdescription" id="rdescription" class="form-control" placeholder="Here can be your description"></textarea>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label>concern</label>
+                                       <input type="text" name="rconcern" id="rconcern" class="form-control" placeholder="it's concern...">
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>PlayerType</label>
+                                       <select class="form-control" name="PlayerType" id="PlayerType">
+                                          <option>select</option>
+                                          <option value="0">Only one</option>
+                                          <option value="1">One</option>
+                                          <option value="2">Any</option>
+                                          <option value="3">Group</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>RolePlayer</label>
+                                       <select class="form-control" name="RolePlayer" id="RolePlayer" >
+                                          <option>select</option>
+                                          <option value="0">All</option>
+                                          <option value="1">Some</option>
+                                          <option value="2">Any</option>
+                                       </select>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>reports</label>
+                                       <input type="text" name="rreports" id="rreports" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>consults</label>
+                                       <input type="text" name="rconsults" id="rconsults" class="form-control">
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label>liaises</label>
+                                       <input type="text" name="rliaises" id="rliaises" class="form-control">
+                                    </div>
+                                 </div>
+                                </div>
+                                <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>delegate</label>
+                                       <input type="text" name="rdelegate" id="rdelegate" class="form-control" >
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>dTask</label>
+                                       <input type="text" name="rdTask" id="rdTask" class="form-control" placeholder="">
+                                    </div>
+                                 </div>
+                                 </div>
+                                 <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label>wishes</label>
+                                       <input type="text" name="rwishes" id="rwishes" class="form-control" placeholder="goal name">
+                                    </div>
+                                 </div>
+                              </div>
+                              <button  class="btn btn-info btn-fill pull-right" id="saveR">Save Role</button>
+                              <div class="clearfix"></div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+</div>
