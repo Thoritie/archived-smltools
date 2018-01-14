@@ -95,6 +95,7 @@
       </div>
    </div>
 </div>
+<!-- ================================================== Modal Stakeholder ===================================================== -->
 <div class="modal createStakeholder" id="createStakeholder" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
@@ -105,328 +106,378 @@
             <button class="btn btn-info" onclick="cloneModal($('#createStakeholder'))">+</button>
          </div>
          <div class="modal-body">
-            <ul class="nav nav-tabs">
-               <li class="active"><a data-toggle="tab" href="#Organisation">Organisation</a></li>
-               <li><a data-toggle="tab" href="#Individual">Individual</a></li>
-               <li><a data-toggle="tab" href="#Role">Role</a></li>
-            </ul>
-            <div class="tab-content">
-               <div id="Organisation" class="tab-pane fade in active">
-                  <h3>Organisation</h3>
-                  <div class="content">
-                     <form>
+            <div class="container-fluid">
+                  <ul class="nav nav-tabs" id="myTabs" role="tablist" style="
+                     border-bottom: 0px">
+                     <li role="presentation" class="active"><a href="#organisation" id="organisation-tab" role="tab" data-toggle="tab" aria-controls="organisation" aria-expanded="true" >Organisation</a></li>
+                     <li role="presentation" class=""><a href="#individual" role="tab" id="individual-tab" data-toggle="tab" aria-controls="individual" aria-expanded="false">Individual</a></li>
+                     <li role="presentation" class=""><a href="#role" role="tab" id="role-tab" data-toggle="tab" aria-controls="role" aria-expanded="false">Role</a></li>
+                  </ul>
+                  <div class="tab-content" id="">
+                     <div class="tab-pane fade  active in" role="tabpanel" id="organisation" aria-labelledby="organisation-tab">
                         <div class="row">
                            <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>Name</label>
-                                 <input type="text" class="form-control">
+                              <div class="card">
+                                 <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                       <div class="header">
+                                          <h4 class="title">Create organisation</h4>
+                                       </div>
+                                       <div class="content">
+                                          <form>
+                                           <label>
+                                               <input type="checkbox" id="focal"> Focal Organisation
+                                           </label>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>Name</label>
+                                                      <input type="text" class="form-control" name="OStakeName" id="OStakeName" placeholder="Stakeholder Name...">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>Organisation</label>
+                                                      <input type="text" class="form-control" name="OrganName" id="OrganName" placeholder="Organisation name">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>aka</label>
+                                                      <input type="text" class="form-control" name="Oaka" id="Oaka" placeholder="it's alias me">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>description</label>
+                                                      <textarea rows="5" class="form-control" name="Odescription" id="Odescription" placeholder="Here can be your description"></textarea>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>concern</label>
+                                                      <input type="text" class="form-control" name="Oconcern" id="Oconcern" placeholder="it's concern...">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>representative</label>
+                                                      <input type="text" class="form-control" name="Orepresentative" id="Orepresentative" placeholder="">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>reports</label>
+                                                      <input type="text" class="form-control" name="Oreports" id="Oreports" placeholder="">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>consults</label>
+                                                      <input type="text" class="form-control" name="Oconsults" id="Oconsults" placeholder="">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>liaises</label>
+                                                      <input type="text" class="form-control" name="Oliaises" id="Oliaises" placeholder="">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>delegate</label>
+                                                      <input type="text" class="form-control" name="Odelegate" id="Odelegate" placeholder="">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>dTask</label>
+                                                      <input type="text" class="form-control" name="OdTask" id="OdTask" placeholder="">
+                                                   </div>
+                                                </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>wishes</label>
+                                                      <input type="text" class="form-control" name="Owishes" id="Owishes" placeholder="goal name">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <button type="button" class="btn btn-info btn-fill pull-right" id="SaveOr">Save Organisation</button>
+                                             <div class="clearfix"></div>
+                                          </form>
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>Organisation</label>
-                                 <input type="text" class="form-control" >
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>aka</label>
-                                 <input type="text" class="form-control" >
-                              </div>
-                           </div>
-                        </div>
+                     </div>
+                     <div class="tab-pane fade" role="tabpanel" id="individual" aria-labelledby="individual-tab">
                         <div class="row">
                            <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>description</label>
-                                 <textarea rows="5" class="form-control" ></textarea>
+                              <div class="card">
+                                 <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                       <div class="header">
+                                          <h4 class="title">Create individual</h4>
+                                       </div>
+                                       <div class="content">
+                                          <form>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>Name</label>
+                                                      <input type="text" name="inStakeName" id="inStakeName" class="form-control" placeholder="Stakeholder name">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>aka</label>
+                                                      <input type="text" name="inaka" id="inaka" class="form-control" placeholder="it's alias me..">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>description</label>
+                                                      <textarea rows="5" name="indescription" id="indescription" class="form-control" placeholder="Here can be your description"></textarea>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>concern</label>
+                                                      <input type="text" name="inconcern" id="inconcern" class="form-control" placeholder="it's concern...">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>attitude</label>
+                                                      <select class="form-control" name="attitude" id="attitude">
+                                                         <option>select</option>
+                                                         <option value="0">positive</option>
+                                                         <option value="1">neutral</option>
+                                                         <option value="2">negative</option>
+                                                         <option value="?">?</option>
+                                                      </select>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>domain Knowledge</label>
+                                                      <select class="form-control" name="domainKnowledge" id="domainKnowledge">
+                                                         <option>select</option>
+                                                         <option value="0">novice</option>
+                                                         <option value="1">intermediate</option>
+                                                         <option value="2">expert</option>
+                                                         <option value="?">?</option>
+                                                      </select>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>reports</label>
+                                                      <input type="text" name="inreports" id="inreports" class="form-control" >
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>consults</label>
+                                                      <input type="text" name="inconsults" id="inconsults" class="form-control" >
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>liaises</label>
+                                                      <input type="text" name="inliaises" id="inliaises" class="form-control" >
+                                                   </div>
+                                                </div>
+                                               </div>
+                                               <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>delegate</label>
+                                                      <input type="text" name="indelegate" id="indelegate" class="form-control" >
+                                                   </div>
+                                                </div>
+               
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>dTask</label>
+                                                      <input type="text" name="indTask" id="indTask" class="form-control" placeholder="">
+                                                   </div>
+                                                </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>wishes</label>
+                                                      <input type="text" name="inwishes" id="inwishes" class="form-control" placeholder="goal name">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <button  class="btn btn-info btn-fill pull-right" id="Savein">Save Individual</button>
+                                             <div class="clearfix"></div>
+                                          </form>
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
+                     </div>
+                     <div class="tab-pane fade" role="tabpanel" id="role" aria-labelledby="role-tab">
                         <div class="row">
                            <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>concern</label>
-                                 <input type="text" class="form-control" >
+                              <div class="card">
+                                 <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                       <div class="header">
+                                          <h4 class="title">Create Role</h4>
+                                       </div>
+                                       <div class="content">
+                                          <form>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>Name</label>
+                                                      <input type="text" name="rStakeName" id="rStakeName" class="form-control" placeholder="Stakeholder name">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>aka</label>
+                                                      <input type="text" name="raka" id="raka" class="form-control" placeholder="it's alias me..">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>is A</label>
+                                                      <input type="text" name="isA" id="isA" class="form-control" placeholder="Stakeholder name">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>description</label>
+                                                      <textarea rows="5" name="rdescription" id="rdescription" class="form-control" placeholder="Here can be your description"></textarea>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>concern</label>
+                                                      <input type="text" name="rconcern" id="rconcern" class="form-control" placeholder="it's concern...">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>PlayerType</label>
+                                                      <select class="form-control" name="PlayerType" id="PlayerType">
+                                                         <option>select</option>
+                                                         <option value="0">Only one</option>
+                                                         <option value="1">One</option>
+                                                         <option value="2">Any</option>
+                                                         <option value="3">Group</option>
+                                                      </select>
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>RolePlayer</label>
+                                                      <select class="form-control" name="RolePlayer" id="RolePlayer" >
+                                                         <option>select</option>
+                                                         <option value="0">All</option>
+                                                         <option value="1">Some</option>
+                                                         <option value="2">Any</option>
+                                                      </select>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>reports</label>
+                                                      <input type="text" name="rreports" id="rreports" class="form-control">
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>consults</label>
+                                                      <input type="text" name="rconsults" id="rconsults" class="form-control">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>liaises</label>
+                                                      <input type="text" name="rliaises" id="rliaises" class="form-control">
+                                                   </div>
+                                                </div>
+                                               </div>
+                                               <div class="row">
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>delegate</label>
+                                                      <input type="text" name="rdelegate" id="rdelegate" class="form-control" >
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                   <div class="form-group">
+                                                      <label>dTask</label>
+                                                      <input type="text" name="rdTask" id="rdTask" class="form-control" placeholder="">
+                                                   </div>
+                                                </div>
+                                                </div>
+                                                <div class="row">
+                                                <div class="col-md-12">
+                                                   <div class="form-group">
+                                                      <label>wishes</label>
+                                                      <input type="text" name="rwishes" id="rwishes" class="form-control" placeholder="goal name">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <button  class="btn btn-info btn-fill pull-right" id="saveR">Save Role</button>
+                                             <div class="clearfix"></div>
+                                          </form>
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>representative</label>
-                                 <input type="text" class="form-control">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>reports</label>
-                                 <input type="text" class="form-control" >
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>consults</label>
-                                 <input type="text" class="form-control">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>liaises</label>
-                                 <input type="text" class="form-control" >
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>delegate</label>
-                                 <input type="text" class="form-control">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>dTask</label>
-                                 <input type="text" class="form-control" >
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>wishes</label>
-                                 <input type="text" class="form-control" >
-                              </div>
-                           </div>
-                        </div>
-                        <div class="clearfix"></div>
-                     </form>
+                     </div>
                   </div>
                </div>
-               <div id="Individual" class="tab-pane fade">
-                  <h3>Individual</h3>
-                  <div class="content">
-                     <form>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>Name</label>
-                                 <input type="text" class="form-control" >
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>aka</label>
-                                 <input type="text" class="form-control" >
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>description</label>
-                                 <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>concern</label>
-                                 <input type="text" class="form-control" placeholder="it's concern...">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>attitude</label>
-                                 <select class="form-control" name="category">
-                                    <option>select</option>
-                                    <option>positive</option>
-                                    <option>neutral</option>
-                                    <option>negative</option>
-                                    <option>?</option>
-                                 </select>
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>domain Knowledge</label>
-                                 <select class="form-control" name="category">
-                                    <option>select</option>
-                                    <option>novice</option>
-                                    <option>intermediate</option>
-                                    <option>expert</option>
-                                    <option>?</option>
-                                 </select>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>reports</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>consults</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>liaises</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>delegate</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>dTask</label>
-                                 <input type="text" class="form-control" placeholder="Task name">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>wishes</label>
-                                 <input type="text" class="form-control" placeholder="goal name">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="clearfix"></div>
-                     </form>
-                  </div>
-               </div>
-               <div id="Role" class="tab-pane fade">
-                  <h3>Role</h3>
-                  <div class="content">
-                     <form>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>Name</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>aka</label>
-                                 <input type="text" class="form-control" placeholder="it's alias me..">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>is A</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>description</label>
-                                 <textarea rows="5" class="form-control" placeholder="Here can be your description"></textarea>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="form-group">
-                                 <label>concern</label>
-                                 <input type="text" class="form-control" placeholder="it's concern...">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>PlayerType</label>
-                                 <select class="form-control" name="category">
-                                    <option>select</option>
-                                    <option>Only one</option>
-                                    <option>One</option>
-                                    <option>Any</option>
-                                    <option>Group</option>
-                                 </select>
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>RolePlayer</label>
-                                 <select class="form-control" name="category">
-                                    <option>select</option>
-                                    <option>All</option>
-                                    <option>Some</option>
-                                    <option>Any</option>
-                                 </select>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>reports</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>consults</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>liaises</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>delegate</label>
-                                 <input type="text" class="form-control" placeholder="Stakeholder name">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="row">
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>dTask</label>
-                                 <input type="text" class="form-control" placeholder="Task name">
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <label>wishes</label>
-                                 <input type="text" class="form-control" placeholder="goal name">
-                              </div>
-                           </div>
-                        </div>
-                        <div class="clearfix"></div>
-                     </form>
-                  </div>
-               </div>
-            </div>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
@@ -435,7 +486,7 @@
       </div>
    </div>
 </div>
-<!-- Modal Resource-->
+<!-- ================================================== Modal Resource===================================================== -->
 <div class="modal createResource" id="createResource" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
