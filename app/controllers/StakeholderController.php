@@ -23,7 +23,7 @@ class StakeholderController extends ControllerBase
         $this->assets->addCss('jslif/app.css');
         // $this->assets->addCss('jslif/sb-admin.css');
         // $this->assets->addCss('jslif/sb-admin-override.css');
-        $this->assets->addCss('projectCard/proCard.css');
+        // $this->assets->addCss('projectCard/proCard.css');
         
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
@@ -39,11 +39,9 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
        
-        $this->assets->addJs('projectCard/proCard.js');
 
         $this->assets->addJs('dist/jquery.validate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
-        $this->assets->addJs('jslif/stake.js');
         $this->assets->addJs('jquery/stakeEditRediract.js');
         
 
@@ -52,13 +50,13 @@ class StakeholderController extends ControllerBase
 
     public function indexAction()
     {
-        $this->assets->addCss('dataTable/css/fresh-bootstrap-table.css');
-        $this->assets->addCss('addResource/addRe.css');
+        // $this->assets->addCss('dataTable/css/fresh-bootstrap-table.css');
+        // $this->assets->addCss('addResource/addRe.css');
         
-        $this->assets->addJs('addResource/addRe.js');
-        $this->assets->addJs('dataTable/js/jquery-1.11.2.min.js');
-        $this->assets->addJs('dataTable/js/js/bootstrap.js');
-        $this->assets->addJs('dataTable/js/bootstrap-table.js');
+        // $this->assets->addJs('addResource/addRe.js');
+        // $this->assets->addJs('dataTable/js/jquery-1.11.2.min.js');
+        // $this->assets->addJs('dataTable/js/js/bootstrap.js');
+        // $this->assets->addJs('dataTable/js/bootstrap-table.js');
         
 
         $stakeholders = Stakeholders::Find();
@@ -212,7 +210,7 @@ class StakeholderController extends ControllerBase
     public function findRepresentAction()
     {
         $this->view->disable();
-        $input = $this->request->getPost('project');
+        $input = $this->session->get('idProject');
         $query =  Stakeholders::Find(array(
         	array('$and' => array(
                 array('idProject' => $input),
@@ -226,7 +224,6 @@ class StakeholderController extends ControllerBase
             )
         )
         );
-        echo $query;
         return json_encode($query);
     }
 
@@ -250,7 +247,7 @@ class StakeholderController extends ControllerBase
     {
         $id = $this->request->getPost('id');
         $stake = Stakeholders::findById($id);
-        $this->session->set("idstaleholder", $id);
+        $this->session->set("idstakeholder", $id);
         if($stake->type=='0'||$stake->type=='1'){
             
             $this->dispatcher->forward([
@@ -291,37 +288,58 @@ class StakeholderController extends ControllerBase
         
         }
         $this->view->stake = $stake;
+        $idStake = $this->session->get("idstakeholder");
+        $edstake = Stakeholders::findById($idStake);
+        $this->view->representative = Common::addDataArray(new Stakeholders(), $edstake->representative);
+        $this->view->reports = Common::addDataArray(new Stakeholders(), $edstake->reports);
+        $this->view->consults = Common::addDataArray(new Stakeholders(), $edstake->consults);
+        $this->view->liaises = Common::addDataArray(new Stakeholders(), $edstake->liaises);
+        $this->view->delegate = Common::addDataArray(new Stakeholders(), $edstake->delegate);
+        $this->view->dTask = Common::addDataArray(new Tasks(), $edstake->dTask);
 
-        // $this->view->representative = Common::addDataArray(new Stakeholders(), $stake->representative);
-        // $this->view->reports = Common::addDataArray(new Stakeholders(), $stake->reports);
-        // $this->view->consults = Common::addDataArray(new Stakeholders(), $stake->consults);
-        // $this->view->liaises = Common::addDataArray(new Stakeholders(), $stake->liaises);
-        // $this->view->delegate = Common::addDataArray(new Stakeholders(), $stake->delegate);
-        // $this->view->dTask = Common::addDataArray(new Stakeholders(), $stake->dTask);
+        $idProject = $this->session->get('idProject');
+        $this->view->idProject = $idProject;
 
-        // $idProject = $this->session->get('idProject');
-        // $this->view->idProject = $idProject;
+        $this->view->idStake  = $edstake->_id;
+        $this->tag->setDefault("idProject", $idProject);
+        $this->tag->setDefault("idStake", $id);
+        $this->tag->setDefault("edStakeName", $edstake->name);
+        $this->tag->setDefault("OrganName", $edstake->OrganisationName);
+        $this->tag->setDefault("Oaka", $edstake->aka);
+        $this->tag->setDefault("Odescription", $edstake->description);
+        $this->tag->setDefault("Oconcern", $edstake->concern);
+        $this->tag->setDefault("Owishes", $edstake->wishes);
+        $this->view->focal = 0;
+        if($edstake->type=='1')
+        {
+            $this->view->focal = 1;
+        }
+        $conditionStake = [];
+        $conditionStake["idProject"] = $idProject;
+        $conditionStake["name"] = ['$ne' => $edstake->name];
+        $tagsStake = Stakeholders::Find(array($conditionStake));
+        $this->view->tagsStake = $tagsStake;
 
-        // $this->view->idStake  = $stake->_id;
-        // $this->tag->setDefault("idProject", $idProject);
-        // $this->tag->setDefault("idStake", $id);
-        // $this->tag->setDefault("edStakeName", $stake->name);
-        // $this->tag->setDefault("aka", $stake->aka);
-        // $this->tag->setDefault("description", $stake->description);
-        // $this->tag->setDefault("concern", $stake->concern);
+        $query =  Stakeholders::Find(array(
+        	array('$and' => array(
+                array('idProject' => $idProject),
+                array(
+                    '$or' => array(
+                        array('type'=>"0"),
+                        array('type'=>"1"),
+                    )
+                )
+            )
+            )
+        )
+        );
+        $this->view->tagsRepresent = $query;
 
-        // $conditionStake = [];
-        // $conditionStake["idProject"] = $idProject;
-        // $tagsStake = Stakeholders::Find(array($conditionStake));
-        // $this->view->tagsStake = $tagsStake;
-
-
-        // $conditionTask = [];
-        // $conditionTask["idProject"] = $idProject;
-        // $conditionTask["mom"] = null;
-        // $conditionTask["name"] = ['$ne' => $task->name];
-        // $taskTags = Tasks::Find(array($conditionTask));
-        // $this->view->taskTags = $taskTags;
+        $conditionTask = [];
+        $conditionTask["idProject"] = $idProject;
+        $conditionTask["mom"] = null;
+        $taskTags = Tasks::Find(array($conditionTask));
+        $this->view->taskTags = $taskTags;
     }
 
     public function editIndivAction()
@@ -342,8 +360,42 @@ class StakeholderController extends ControllerBase
             $stake = Stakeholders::Find(array($condition));
         
         }
-        
         $this->view->stake = $stake;
+        $idStake = $this->session->get("idstakeholder");
+        $edstake = Stakeholders::findById($idStake);
+
+        $this->view->reports = Common::addDataArray(new Stakeholders(), $edstake->reports);
+        $this->view->consults = Common::addDataArray(new Stakeholders(), $edstake->consults);
+        $this->view->liaises = Common::addDataArray(new Stakeholders(), $edstake->liaises);
+        $this->view->delegate = Common::addDataArray(new Stakeholders(), $edstake->delegate);
+        $this->view->dTask = Common::addDataArray(new Tasks(), $edstake->dTask);
+
+        $idProject = $this->session->get('idProject');
+        $this->view->idProject = $idProject;
+
+        $this->view->idStake  = $edstake->_id;
+        $this->tag->setDefault("idProject", $idProject);
+        $this->tag->setDefault("idStake", $id);
+        $this->tag->setDefault("inStakeName", $edstake->name);
+        $this->tag->setDefault("inaka", $edstake->aka);
+        $this->tag->setDefault("indescription", $edstake->description);
+        $this->tag->setDefault("inconcern", $edstake->concern);
+        $this->tag->setDefault("attitude", $edstake->attitude);
+        $this->tag->setDefault("domainKnowledge", $edstake->domainKnowledge);
+        $this->tag->setDefault("inwishes", $edstake->wishes);
+        
+        $conditionStake = [];
+        $conditionStake["idProject"] = $idProject;
+        $conditionStake["name"] = ['$ne' => $edstake->name];
+        $tagsStake = Stakeholders::Find(array($conditionStake));
+        $this->view->tagsStake = $tagsStake;
+
+
+        $conditionTask = [];
+        $conditionTask["idProject"] = $idProject;
+        $conditionTask["mom"] = null;
+        $taskTags = Tasks::Find(array($conditionTask));
+        $this->view->taskTags = $taskTags;
     }
 
     public function editRoleAction()
@@ -366,5 +418,42 @@ class StakeholderController extends ControllerBase
         }
         
         $this->view->stake = $stake;
+        $idStake = $this->session->get("idstakeholder");
+        $edstake = Stakeholders::findById($idStake);
+
+        $this->view->reports = Common::addDataArray(new Stakeholders(), $edstake->reports);
+        $this->view->consults = Common::addDataArray(new Stakeholders(), $edstake->consults);
+        $this->view->liaises = Common::addDataArray(new Stakeholders(), $edstake->liaises);
+        $this->view->delegate = Common::addDataArray(new Stakeholders(), $edstake->delegate);
+        $this->view->dTask = Common::addDataArray(new Tasks(), $edstake->dTask);
+
+        $idProject = $this->session->get('idProject');
+        $this->view->idProject = $idProject;
+
+        $this->view->idStake  = $edstake->_id;
+        $this->tag->setDefault("idProject", $idProject);
+        $this->tag->setDefault("idStake", $id);
+        $this->tag->setDefault("rStakeName", $edstake->name);
+        $this->tag->setDefault("raka", $edstake->aka);
+        $this->tag->setDefault("isA", $edstake->isA);
+        $this->tag->setDefault("rdescription", $edstake->description);
+        $this->tag->setDefault("rconcern", $edstake->concern);
+        $this->tag->setDefault("isA", $edstake->isA);
+        $this->tag->setDefault("PlayerType", $edstake->PlayerType);
+        $this->tag->setDefault("RolePlayer", $edstake->RolePlayer);
+        $this->tag->setDefault("rwishes", $edstake->wishes);
+        
+        $conditionStake = [];
+        $conditionStake["idProject"] = $idProject;
+        $conditionStake["name"] = ['$ne' => $edstake->name];
+        $tagsStake = Stakeholders::Find(array($conditionStake));
+        $this->view->tagsStake = $tagsStake;
+
+
+        $conditionTask = [];
+        $conditionTask["idProject"] = $idProject;
+        $conditionTask["mom"] = null;
+        $taskTags = Tasks::Find(array($conditionTask));
+        $this->view->taskTags = $taskTags;
     }
 }

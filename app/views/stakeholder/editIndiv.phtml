@@ -16,13 +16,21 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>Name</label>
-                                       <input type="text" name="inStakeName" id="inStakeName" class="form-control" placeholder="Stakeholder name">
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["inStakeName", "size" => 30, 
+                                        "class" => "form-control", "id" => "inStakeName" ]) 
+                                        ?>
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>aka</label>
-                                       <input type="text" name="inaka" id="inaka" class="form-control" placeholder="it's alias me..">
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["inaka", "size" => 30, 
+                                        "class" => "form-control", "id" => "inaka" ]) 
+                                        ?>
                                     </div>
                                  </div>
                               </div>
@@ -30,7 +38,11 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>description</label>
-                                       <textarea rows="5" name="indescription" id="indescription" class="form-control" placeholder="Here can be your description"></textarea>
+            
+                                        <?php 
+                                        echo $this->tag->textArea(["indescription", "row" => 3, 
+                                        "class" => "form-control", "id" => "indescription" ]) 
+                                        ?>
                                     </div>
                                  </div>
                               </div>
@@ -38,7 +50,11 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>concern</label>
-                                       <input type="text" name="inconcern" id="inconcern" class="form-control" placeholder="it's concern...">
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["inconcern", "size" => 30, 
+                                        "class" => "form-control", "id" => "inconcern" ]) 
+                                        ?>
                                     </div>
                                  </div>
                               </div>
@@ -46,25 +62,38 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>attitude</label>
-                                       <select class="form-control" name="attitude" id="attitude">
-                                          <option>select</option>
-                                          <option value="0">positive</option>
-                                          <option value="1">neutral</option>
-                                          <option value="2">negative</option>
-                                          <option value="?">?</option>
-                                       </select>
+                                       <?php 
+                                        echo $this->tag->selectStatic(["attitude", "class" => "form-control", 
+                                        "id" => "attitude" 
+                                          ,[
+                                              "positive" => "positive",
+                                              "neutral" => "neutral",
+                                              "negative" => "negative",
+                                              "?" => "?",
+                                          ],
+                                          "useEmpty" => true,
+                                          "emptyText"  => "select",
+                                        ]) 
+                                        ?>
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>domain Knowledge</label>
-                                       <select class="form-control" name="domainKnowledge" id="domainKnowledge">
-                                          <option>select</option>
-                                          <option value="0">novice</option>
-                                          <option value="1">intermediate</option>
-                                          <option value="2">expert</option>
-                                          <option value="?">?</option>
-                                       </select>
+                                       
+                                       <?php 
+                                        echo $this->tag->selectStatic(["domainKnowledge", "class" => "form-control", 
+                                        "id" => "domainKnowledge" 
+                                          ,[
+                                              "novice" => "novice",
+                                              "intermediate" => "intermediate",
+                                              "expert" => "expert",
+                                              "?" => "?",
+                                          ],
+                                          "useEmpty" => true,
+                                          "emptyText"  => "select",
+                                        ]) 
+                                        ?>
                                     </div>
                                  </div>
                               </div>
@@ -72,13 +101,21 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>reports</label>
-                                       <input type="text" name="inreports" id="inreports" class="form-control" >
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["edinreports", "size" => 30, 
+                                        "class" => "form-control", "id" => "edinreports" ]) 
+                                        ?>
                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>consults</label>
-                                       <input type="text" name="inconsults" id="inconsults" class="form-control" >
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["edinconsults", "size" => 30, 
+                                        "class" => "form-control", "id" => "edinconsults" ]) 
+                                        ?>
                                     </div>
                                  </div>
                               </div>
@@ -86,7 +123,11 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>liaises</label>
-                                       <input type="text" name="inliaises" id="inliaises" class="form-control" >
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["edinliaises", "size" => 30, 
+                                        "class" => "form-control", "id" => "edinliaises" ]) 
+                                        ?>
                                     </div>
                                  </div>
                                 </div>
@@ -94,14 +135,22 @@
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>delegate</label>
-                                       <input type="text" name="indelegate" id="indelegate" class="form-control" >
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["edindelegate", "size" => 30, 
+                                        "class" => "form-control", "id" => "edindelegate" ]) 
+                                        ?>
                                     </div>
                                  </div>
 
                                  <div class="col-md-6">
                                     <div class="form-group">
                                        <label>dTask</label>
-                                       <input type="text" name="indTask" id="indTask" class="form-control" placeholder="">
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["edindTask", "size" => 30, 
+                                        "class" => "form-control", "id" => "edindTask" ]) 
+                                        ?>
                                     </div>
                                  </div>
                                  </div>
@@ -109,7 +158,11 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                        <label>wishes</label>
-                                       <input type="text" name="inwishes" id="inwishes" class="form-control" placeholder="goal name">
+                                       
+                                       <?php 
+                                        echo $this->tag->textField(["inwishes", "size" => 30, 
+                                        "class" => "form-control", "id" => "inwishes" ]) 
+                                        ?>
                                     </div>
                                  </div>
                               </div>
@@ -124,3 +177,132 @@
          </div>
       
 </div>
+<!-- blockJS -->
+<script src="<?php echo $this->url->get('public/modal/cloneModal.js');?>"></script>
+<script src="<?php echo $this->url->get('public/jslif/stake.js');?>"></script>
+<script>
+
+var taskinput = '<?php echo json_encode($taskTags); ?>';
+    taskinput = JSON.parse(taskinput);
+    taskinput = createJSON(taskinput);
+    taskinput = JSON.stringify(taskinput);
+
+    var data_dTask = '<?php echo json_encode($dTask); ?>';
+
+
+    var stakeinput = '<?php echo json_encode($tagsStake); ?>';
+    stakeinput = JSON.parse(stakeinput);
+    stakeinput = createJSON(stakeinput);
+    stakeinput = JSON.stringify(stakeinput);
+
+    
+    var data_reports = '<?php echo json_encode($reports); ?>';
+    var data_consults = '<?php echo json_encode($consults); ?>';
+    var data_liaises = '<?php echo json_encode($liaises); ?>';
+    var data_delegate = '<?php echo json_encode($delegate); ?>';
+
+
+
+    $(document).ready(function(){
+        Tasks = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: JSON.parse(taskinput)
+        });
+        Tasks.initialize();
+
+        var edindTask = $('#edindTask');
+        edindTask.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Tasks.ttAdapter(),
+                templates: {
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+        add(edindTask, data_dTask);
+
+        Stakeholder = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(stakeinput)
+        });
+        Stakeholder.initialize();
+
+        var edinreports = $('#edinreports');
+        edinreports.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    highlight: true,
+                    empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+        add(edinreports, data_reports);
+
+        var edinconsults = $('#edinconsults');
+        edinconsults.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    highlight: true,
+                    empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+        add(edinconsults, data_consults);
+
+        var edinliaises = $('#edinliaises');
+        edinliaises.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+        add(edinliaises, data_liaises);
+
+        var edindelegate = $('#edindelegate');
+        edindelegate.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                },
+            }
+        });
+        add(edindelegate, data_delegate);
+
+    });
+    function add($elt, data){
+        $.each(JSON.parse(data), function(index ,data){   
+        $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
+        });
+    }
+
+    
+
+</script>
+<!-- /.blockJS -->

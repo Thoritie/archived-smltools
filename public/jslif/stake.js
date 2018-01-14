@@ -52,19 +52,7 @@ $(document).ready(function () {
         });
         Stakeholder.initialize();
 
-        var Orepresentative = $('#Orepresentative');
-        Orepresentative.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates: {
-                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                }
-            }
-        });
+        
 
         var Oreports = $('#Oreports');
         Oreports.tagsinput({
@@ -274,7 +262,7 @@ $(document).ready(function () {
             typeaheadjs: {
                 name: 'name',
                 displayKey: 'text',
-                source: Stake.ttAdapter(),
+                source: Stakeholder.ttAdapter(),
                 templates: {
                     empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                 }
