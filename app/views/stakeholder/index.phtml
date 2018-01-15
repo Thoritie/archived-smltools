@@ -25,17 +25,18 @@
 						</thead>
 						<tbody>
                             <?php 
-                                $i =1;
-                                foreach($stake as $showStake) {  ?>
-						    <tr>
-                            	<td><?= $i ?></td>
-                                <td><?=$showStake->name ?></td>
-                                <td><?=$showStake->description ?></td>
+                            $i =1;
+                            foreach($stakeholders->items as $key => $showStake) {  ?>
+                                <tr>
+                                    <td><?= $i ?></td>
+                                    <td>
+                                        <h6 style="color: #747474"><?=$showStake->name ?></h6>
+                                    </td>
+                                    <td><?=$showStake->description ?></td>
                             	<td>
-
 									<a onclick="confirm('Are you sure delete <?=$showStake->name?>?')?deleteResource('<?=$showStake->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
                           			<a href="#" class="btn btn-primary btn-xs pull-right labelPrimary stakeedit" data-id="<?=$showStake->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>  
-                          
+                                      <a class="showDetailRes btn btn-xs pull-right"  onclick="cloneModalDetailRes('<?=$showStake->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp; 
 								</td>
                             </tr>
                                     
@@ -48,42 +49,50 @@
                 
 			</div>
 			
-			<div class="col-md-3">
-            <!-- Sort -->
-            <div class="card s-navShadow">
-                <div class="header">
-                    <h4 class="title">Sort</h4>
-                </div>
-                <div class="content">
-                    <div class="form-group">
-                        <!-- <label for="sel1">Select list (select one):</label> -->
-                        <select class="form-control" id="sel1">
-                            <option selected>List</option>
-                            <option>Title</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <!-- Filter -->
-            <div class="card s-navShadow">
-                <div class="header">
-                    <h4 class="title">Filter</h4>
-                </div>
-                <div class="content">
-                    <form action="#">
-                        <div class="form-group">
+			<form action="<?=$this->url->get("stakeholder/index"); ?>" method="POST">
+                <div class="col-md-3">
+                   <!-- Sort -->
+                   <div class="card s-navShadow">
+                      <div class="header">
+                         <h4 class="title">Sort</h4>
+                      </div>
+                      <div class="content">
+                         <div class="form-group">
+                            <!-- <label for="sel1">Select list (select one):</label> -->
+                            <?php 
+                            echo $this->tag->select(
+                                    [
+                                            'sortBy',
+                                            $arrSortBy,
+                                            'value' => $sortBy,
+                                            'class' => 'form-control',
+                                            'id' => 'sel1',
+                                            'onchange' => 'this.form.submit()'
+                                    ]
+                            );
+                        ?>
+                         </div>
+                      </div>
+                   </div>
+                   <!-- Filter -->
+                   <div class="card s-navShadow">
+                      <div class="header">
+                         <h4 class="title">Filter</h4>
+                      </div>
+                      <div class="content">
                             <div class="form-group">
-                                <label>Project Name</label>
-                                <input type="text" class="form-control" placeholder="Project Name" value="">
+                               <div class="form-group">
+                                  <label>Stakeholder Name</label>
+                                  <input type="text" class="form-control" name="filter" placeholder="Stakeholder Name" value="<?=$filter?>">
+                               </div>
                             </div>
-                        </div>
-                        <div class="footer">
-                            <button class="btn btn-default pull-right" type="submit">Filter</button>
-                        </div>
-                    </form>
+                            <div class="footer">
+                               <button class="btn btn-default pull-right" type="submit">Filter</button>
+                            </div>
+                      </div>
+                   </div>
                 </div>
-            </div>
-        </div>
+                </form>
 
         </div>
     <!-- </div> -->

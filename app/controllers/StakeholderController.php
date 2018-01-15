@@ -59,9 +59,6 @@ class StakeholderController extends ControllerBase
         // $this->assets->addJs('dataTable/js/bootstrap-table.js');
         
 
-        $stakeholders = Stakeholders::Find();
-        $this->view->stakeholders =  $stakeholders;
-
         //Layout
         $projectname = $this->session->get('projectname');
         $this->view->projectname = $projectname;
@@ -72,15 +69,62 @@ class StakeholderController extends ControllerBase
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
 
-        $id = $this->session->get('idProject');
-        $condition = [];
-        if($id){
-            $condition["idProject"] = $id;
-            $stake = Stakeholders::Find(array($condition));
+        //data pagination
+        $idProject = $this->session->get('idProject');
+
+        $currentPage = $this->request->get('page');
+        $idProject = $this->session->get('idProject');
+        $sortBy = $this->request->getPost('sortBy');
+        $filter = $this->request->getPost('filter');
+
+        $arrSortBy = array(
+            'name' => 'Name',
+            '_id' => 'Create Date'
+        );
         
-        }
+        $this->view->arrSortBy = $arrSortBy;
+        if($sortBy == null) $sortBy = $this->request->get('sortBy');
+        if($sortBy == null) $sortBy = $arrSortBy['name'];
+        $this->view->sortBy = $sortBy;
+        if($filter == null) $filter = $this->request->get('filter');
+        if($filter == null) $filter = '';
+        $this->view->filter = $filter;
+
+        //Pagination
+        $model = new Stakeholders();
+        $query = array(
+        	'$and' => array(
+        		array('name' => new MongoRegex("/$filter/")),
+        		array(
+        			'$or' => array(
+        				array('idProject' => $idProject)
+        			),
+        		)
+        	)
+        );
+
+        $paginator = new Pagination(
+        	array(
+        		'model' => $model,
+        		'limit' => 8,
+        		'page' => $currentPage,
+        		'query' => $query,
+        		'sort' => $sortBy,
+        		'baseUrl' => $this->url->get('Stakeholeder'),
+        		'showNumberOfPage' => 6,
+        		'data' => array(
+        			'sortBy' => $sortBy,
+        			'filter' => $filter
+        		)
+        	)
+        );
+
+        //pagination results
+        $stakeholders = $paginator->getPaginate();
+        $this->view->stakeholders = $stakeholders;
+
+
         
-        $this->view->stake = $stake;
     }
 
     public function saveAction()

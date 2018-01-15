@@ -72,17 +72,7 @@ class ResourceController extends ControllerBase
         $this->view->userLogin = $userLogin;
 
         $id = $this->session->get('idProject');
-        $condition = [];
-        if($id){
-            $condition["idProject"] = $id;
-            $res = Resource::Find(array($condition));
-        
-        }else{
-            $this->view->res = 0;
-        }
-        
-        $this->view->res = $res;
-
+      
         
         //Sort
         $currentPage = $this->request->get('page');
