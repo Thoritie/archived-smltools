@@ -500,4 +500,13 @@ class StakeholderController extends ControllerBase
         $taskTags = Tasks::Find(array($conditionTask));
         $this->view->taskTags = $taskTags;
     }
+
+    public function deleteStakeholderAction()
+    {
+        $id = $this->request->getPost('idStake');
+        $stake = Stakeholders::findById($id);
+        
+        $stake->delete();
+        return json_encode('true');
+    }
 }
