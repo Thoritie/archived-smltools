@@ -73,10 +73,12 @@ function cloneModalStakeholder($modal) {
     newModal.attr("id", idModal);
     newModal.attr("style", "z-index: " + zindex++);
   
-    // setFormIdInModalStakeholder(idModal, newModal);
+    setFormIdInModalStakeholder(idModal, newModal);
 
     $modal.after(newModal);
-    // initDataStakeholder(idModal);
+    initDataResource(idModal);
+    initDataStakeholder(idModal);
+    initDataTask(idModal);
 
     var modalId = "#" + idModal;
     $(modalId).modal("show");
@@ -109,7 +111,7 @@ function initDataStakeholder(idModal){
             displayKey: 'text',
             source: Stakeholder.ttAdapter(),
             templates : {
-                empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createStakeholder\'))"> No matches.</div>'
+                empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
             },
         }
     });
@@ -204,6 +206,100 @@ function setFormIdInModalTask(idModal, newModal){
 	var idSaveModal = 'saveTaskformModal-'+idModal;
 	newModal.find('#saveTaskformModal').attr('id', idSaveModal);
     newModal.find('#'+idSaveModal).attr('onclick', onClickSave);
+}
+
+function setFormIdInModalStakeholder(idModal, newModal){
+    newModal.find('#idProjectmodalStake').attr('id', 'idProjectmodalStake-'+idModal);
+    //set ID tab
+    newModal.find('#ModalOrganisation-tab').attr('id', 'ModalOrganisation-tab-'+idModal);
+    newModal.find('#ModalOrganisation-tab-'+idModal).attr('href', '#'+'ModalOrganisation-'+idModal);
+    newModal.find('#ModalOrganisation').attr('id', 'ModalOrganisation-'+idModal);
+    newModal.find('#tab1').attr('id', 'tab1-'+idModal);
+
+    newModal.find('#ModalIndividual-tab').attr('id', 'ModalIndividual-tab-'+idModal);
+    newModal.find('#ModalIndividual-tab-'+idModal).attr('href', '#'+'ModalIndividual-'+idModal);
+    newModal.find('#ModalIndividual').attr('id', 'ModalIndividual-'+idModal);
+    newModal.find('#tab2').attr('id', 'tab2-'+idModal);
+
+    newModal.find('#ModalRole-tab').attr('id', 'ModalRole-tab-'+idModal);
+    newModal.find('#ModalRole-tab-'+idModal).attr('href', '#'+'ModalRole-'+idModal);
+    newModal.find('#ModalRole').attr('id', 'ModalRole-'+idModal);
+    newModal.find('#tab3').attr('id', 'tab3-'+idModal);
+
+    //set Form
+    newModal.find('#formOrganisation').attr('id', 'formOrganisation-'+idModal);
+    newModal.find('#ModalOFocal').attr('id', 'ModalOFocal-'+idModal);
+    newModal.find('#ModalOStakeName').attr('id', 'ModalOStakeName-'+idModal);
+    newModal.find('#ModalOrganName').attr('id', 'ModalOrganName-'+idModal);
+    newModal.find('#ModalOaka').attr('id', 'ModalOaka-'+idModal);
+    newModal.find('#ModalOdescription').attr('id', 'ModalOdescription-'+idModal);
+    newModal.find('#ModalOconcern').attr('id', 'ModalOconcern-'+idModal);
+    newModal.find('#ModalOrepresentative').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalOrepresentative').attr('id', 'ModalOrepresentative-'+idModal);
+    newModal.find('#ModalOreports').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalOreports').attr('id', 'ModalOreports-'+idModal);
+    newModal.find('#ModalOconsults').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalOconsults').attr('id', 'ModalOconsults-'+idModal);
+    newModal.find('#ModalOliaises').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalOliaises').attr('id', 'ModalOliaises-'+idModal);
+    newModal.find('#ModalOdelegate').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalOdelegate').attr('id', 'ModalOdelegate-'+idModal);
+    newModal.find('#ModalOdTask').addClass('ModalAddTask-'+idModal);
+    newModal.find('#ModalOdTask').attr('id', 'ModalOdTask-'+idModal);
+    newModal.find('#ModalOwishes').attr('id', 'ModalOwishes-'+idModal);
+
+
+    newModal.find('#formIndividual').attr('id', 'formIndividual-'+idModal);
+    newModal.find('#ModalInStakeName').attr('id', 'ModalInStakeName-'+idModal);
+    newModal.find('#ModalInaka').attr('id', 'ModalInaka-'+idModal);
+    newModal.find('#ModalInDescription').attr('id', 'ModalInDescription-'+idModal);
+    newModal.find('#ModalInConcern').attr('id', 'ModalInConcern-'+idModal);
+    newModal.find('#ModalInAttitude').attr('id', 'ModalInAttitude-'+idModal);
+    newModal.find('#ModalInDomainKnowledge').attr('id', 'ModalInDomainKnowledge-'+idModal);
+    newModal.find('#ModalInReports').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalInReports').attr('id', 'ModalInReports-'+idModal);
+    newModal.find('#ModalInConsults').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalInConsults').attr('id', 'ModalInConsults-'+idModal);
+    newModal.find('#ModalInLiaises').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalInLiaises').attr('id', 'ModalInLiaises-'+idModal);
+    newModal.find('#ModalInDelegate').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalInDelegate').attr('id', 'ModalInDelegate-'+idModal);
+    newModal.find('#ModalInDTask').addClass('ModalAddTask-'+idModal);
+    newModal.find('#ModalInDTask').attr('id', 'ModalInDTask-'+idModal);
+    newModal.find('#ModalInWishes').attr('id', 'ModalInWishes-'+idModal);
+    
+
+    newModal.find('#formRole').attr('id', 'formRole-'+idModal);
+    newModal.find('#ModalRoleStakeName').attr('id', 'ModalRoleStakeName-'+idModal);
+    newModal.find('#ModalRoleAka').attr('id', 'ModalRoleAka-'+idModal);
+    newModal.find('#ModalRoleIsA').attr('id', 'ModalRoleIsA-'+idModal);
+    newModal.find('#ModalRoleDescription').attr('id', 'ModalRoleDescription-'+idModal);
+    newModal.find('#ModalRoleConcern').attr('id', 'ModalRoleConcern-'+idModal);
+    newModal.find('#ModalRolePlayerType').attr('id', 'ModalRolePlayerType-'+idModal);
+    newModal.find('#ModalRoleRoleplayer').attr('id', 'ModalRoleRoleplayer-'+idModal);
+
+    newModal.find('#ModalRoleReports').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalRoleReports').attr('id', 'ModalRoleReports-'+idModal);
+
+    newModal.find('#ModalRoleConsults').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalRoleConsults').attr('id', 'ModalRoleConsults-'+idModal);
+
+    newModal.find('#ModalRoleLiaises').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalRoleLiaises').attr('id', 'ModalRoleLiaises-'+idModal);
+
+    newModal.find('#ModalRoleDelegate').addClass('ModalAddStakeholder-'+idModal);
+    newModal.find('#ModalRoleDelegate').attr('id', 'ModalRoleDelegate-'+idModal);
+
+    newModal.find('#ModalRoleDTask').addClass('ModalAddTask-'+idModal);
+    newModal.find('#ModalRoleDTask').attr('id', 'ModalRoleDTask-'+idModal);
+    newModal.find('#ModalRoleWishes').attr('id', 'ModalRoleWishes-'+idModal);
+
+    var onClickSave = "saveStakeholder('"+ idModal + "')";
+	var idSaveModal = 'saveStakeformModal-'+idModal;
+	newModal.find('#saveStakeformModal').attr('id', idSaveModal);
+    newModal.find('#'+idSaveModal).attr('onclick', onClickSave);
+
+
 }
 
 function saveResourse(idModal){
@@ -375,6 +471,246 @@ function saveResourse(idModal){
                 }
     }
 
+    function saveStakeholder(idModal){
+        if ( $("#tab1-"+idModal).hasClass('active') ) {
+            saveOrganisation(idModal);
+        }else if( $("#tab2-"+idModal).hasClass('active')){
+            saveIndividual(idModal);
+        }else{
+            saveRole(idModal);
+        }
+    }
+
+    function saveOrganisation(idModal){
+        var name = $("#ModalOStakeName-"+idModal).val()
+        var Organisation = $("#ModalOrganName-"+idModal).val()
+        var aka = $("#ModalOaka-"+idModal).val()
+        var description = $("#ModalOdescription-"+idModal).val()
+        var concern = $("#ModalOconcern-"+idModal).val()
+        var representative = $("#ModalOrepresentative-"+idModal).tagsinput('items');
+        itemrepresentative = {};
+        $.each(representative, function (index, input) {
+            itemrepresentative[index] = input.value
+            });
+        var reports = $("#ModalOreports-"+idModal).tagsinput('items');
+        itemreports = {};
+        $.each(reports, function (index, input) {
+            itemreports[index] = input.value
+            });
+        var consults = $("#ModalOconsults-"+idModal).tagsinput('items');
+        itemconsults = {};
+        $.each(consults, function (index, input) {
+            itemconsults[index] = input.value
+            });
+        var liaises = $("#ModalOliaises-"+idModal).tagsinput('items');
+        itemliaises = {};
+        $.each(liaises, function (index, input) {
+            itemliaises[index] = input.value
+            });
+        var delegate = $("#ModalOdelegate-"+idModal).tagsinput('items');
+        itemdelegate = {};
+        $.each(delegate, function (index, input) {
+            itemdelegate[index] = input.value
+            });
+        var dTask = $("#ModalOdTask-"+idModal).tagsinput('items');
+        itemdTask = {};
+        $.each(dTask, function (index, input) {
+            itemdTask[index] = input.value
+        });
+        var wishes = $("#ModalOwishes-"+idModal).val()
+        var idProject = $("#idProjectmodalStake-"+idModal).val();
+        var type;
+        if ($("#ModalOFocal-"+idModal).is(':checked'))
+            type = 1;
+        else
+            type = 0;
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + "stakeholder/save",
+            data: {
+                name: name,
+                Organisation: Organisation,
+                aka: aka,
+                description: description,
+                concern: concern,
+                representative: itemrepresentative,
+                reports: itemreports,
+                consults: itemconsults,
+                liaises: itemliaises,
+                delegate: itemdelegate,
+                dTask: itemdTask,
+                wishes: wishes,
+                type: type,
+                idProject: idProject
+            },
+            success: function (data) {
+                Stakeholder.clear();
+                $.post(baseUrl+"task/findStake",{
+                project : idProject
+                }, function(data){
+                    var auto = createJSON(data);
+                    var n = createString(auto);
+                    Stakeholder.local = JSON.parse(n);
+                    Stakeholder.initialize(true);
+                                        
+                    $('#'+idModal).modal('hide');
+                    $('#'+idModal).remove();
+                },  "json");
+            }
+        });
+    }
+
+    function saveIndividual(idModal){
+        var inname = $("#ModalInStakeName-"+idModal).val()
+        var inaka = $("#ModalInaka").val()
+        var indescription = $("#ModalInDescription-"+idModal).val()
+        var inconcern = $("#ModalInConcern-"+idModal).val()
+
+        var inattitude = $("#ModalInAttitude-"+idModal).val();
+        var indomainKnowledge = $("#ModalInDomainKnowledge-"+idModal).val();
+
+        var inreports = $("#ModalInReports-"+idModal).tagsinput('items');
+        iteminreports = {};
+        $.each(inreports, function (index, input) {
+            iteminreports[index] = input.value
+        });
+        var inconsults = $("#ModalInConsults-"+idModal).tagsinput('items');
+        iteminconsults = {};
+        $.each(inconsults, function (index, input) {
+            iteminconsults[index] = input.value
+        });
+        var inliaises = $("#ModalInLiaises-"+idModal).tagsinput('items');
+        iteminliaises = {};
+        $.each(inliaises, function (index, input) {
+            iteminliaises[index] = input.value
+        });
+        var indelegate = $("#ModalInDelegate-"+idModal).tagsinput('items');
+        itemindelegate = {};
+        $.each(indelegate, function (index, input) {
+            itemindelegate[index] = input.value
+        });
+        var indTask = $("#ModalInDTask-"+idModal).tagsinput('items');
+        itemdTask = {};
+        $.each(indTask, function (index, input) {
+            itemdTask[index] = input.value
+        });
+        var inwishes = $("#ModalInWishes-"+idModal).val()
+        var inidProject = $("#idProjectmodalStake-"+idModal).val();
+        var intype=2;
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + "stakeholder/save",
+            data: {
+                name: inname,
+                aka: inaka,
+                description: indescription,
+                concern: inconcern,
+                attitude: inattitude,
+                domainKnowledge: indomainKnowledge,
+                reports: iteminreports,
+                consults: iteminconsults,
+                liaises: iteminliaises,
+                delegate: itemindelegate,
+                dTask: itemdTask,
+                wishes: inwishes,
+                type: intype,
+                idProject: inidProject
+            },
+            success: function (data) {
+                Stakeholder.clear();
+                $.post(baseUrl+"task/findStake",{
+                project : idProject
+                }, function(data){
+                    var auto = createJSON(data);
+                    var n = createString(auto);
+                    Stakeholder.local = JSON.parse(n);
+                    Stakeholder.initialize(true);
+                                        
+                    $('#'+idModal).modal('hide');
+                    $('#'+idModal).remove();
+                },  "json");
+            }
+        })
+    }
+
+    function saveRole(idModal){
+        var rname = $("#ModalRoleStakeName-"+idModal).val()
+        var raka = $("#ModalRoleAka-"+idModal).val()
+        var isA = $("#ModalRoleIsA-"+idModal).val()
+        
+        var rdescription = $("#ModalRoleDescription-"+idModal).val()
+        var rconcern = $("#ModalRoleConcern-"+idModal).val()
+
+        var PlayerType = $("#PlayeModalRolePlayerTyperType-"+idModal).val();
+        var RolePlayer = $("#ModalRoleRoleplayer-"+idModal).val();
+        
+        var rreports = $("#ModalRoleReports-"+idModal).tagsinput('items');
+        itemrreports = {};
+        $.each(rreports, function (index, input) {
+            itemrreports[index] = input.value
+        });
+        var rconsults = $("#ModalRoleConsults-"+idModal).tagsinput('items');
+        itemrconsults = {};
+        $.each(rconsults, function (index, input) {
+            itemrconsults[index] = input.value
+        });
+        var rliaises = $("#ModalRoleLiaises-"+idModal).tagsinput('items');
+        itemrliaises = {};
+        $.each(rliaises, function (index, input) {
+            itemrliaises[index] = input.value
+        });
+        var rdelegate = $("#ModalRoleDelegate-"+idModal).tagsinput('items');
+        itemrdelegate = {};
+        $.each(rdelegate, function (index, input) {
+            itemrdelegate[index] = input.value
+        });
+        var rdTask = $("#ModalRoleDTask-"+idModal).tagsinput('items');
+        itemdTask = {};
+        $.each(rdTask, function (index, input) {
+            itemdTask[index] = input.value
+        });
+        var rwishes = $("#ModalRoleWishes-"+idModal).val()
+        var ridProject = $("#idProjectmodalStake-"+idModal).val();
+        var rtype = 3;
+        $.ajax({
+            type: 'POST',
+            url: baseUrl + "stakeholder/save",
+            data: {
+                name: rname,
+                aka: raka,
+                isA: isA,
+                description: rdescription,
+                concern: rconcern,
+                PlayerType: PlayerType,
+                RolePlayer: RolePlayer,
+                reports: itemrreports,
+                consults: itemrconsults,
+                liaises: itemrliaises,
+                delegate: itemrdelegate,
+                dTask: itemdTask,
+                wishes: rwishes,
+                type: rtype,
+                idProject: ridProject
+            },
+            success: function (data) {
+                Stakeholder.clear();
+                $.post(baseUrl+"task/findStake",{
+                project : idProject
+                }, function(data){
+                    var auto = createJSON(data);
+                    var n = createString(auto);
+                    Stakeholder.local = JSON.parse(n);
+                    Stakeholder.initialize(true);
+                                        
+                    $('#'+idModal).modal('hide');
+                    $('#'+idModal).remove();
+                },  "json");
+            }
+        });
+    }
+
+
+
 function createJSON(data) {
     jsonObj = [];
     $.each(data, function(index ,data){
@@ -402,7 +738,6 @@ function createString(auto){
 $(document).on('hidden.bs.modal', function () {
     var modalShow = $('.modal.show').length;
     var modalIn = $('.modal.in').length;
-    console.log(modalIn);
     if(modalShow > 0 || modalIn>0){
           $('body').attr('class','modal-open');
          
