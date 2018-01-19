@@ -501,12 +501,67 @@ class StakeholderController extends ControllerBase
         $this->view->taskTags = $taskTags;
     }
 
-    public function deleteStakeholderAction()
+    public function saveOrganisationAction()
     {
-        $id = $this->request->getPost('idStake');
-        $stake = Stakeholders::findById($id);
-        
-        $stake->delete();
-        return json_encode('true');
+        $stakeholders = new Stakeholders();
+        $stakeholders->name = $this->request->getPost("name");
+        $stakeholders->Organisationname = $this->request->getPost("Organisation");
+        $stakeholders->aka = $this->request->getPost("aka");
+        $stakeholders->description = $this->request->getPost("description");
+        $stakeholders->concern = $this->request->getPost("concern");
+        $stakeholders->representative = $this->request->getPost("representative");
+        $stakeholders->reports = $this->request->getPost("reports");
+        $stakeholders->consults = $this->request->getPost("consults");
+        $stakeholders->liaises = $this->request->getPost("liaises");
+        $stakeholders->delegate = $this->request->getPost("delegate");
+        $stakeholders->dTask = $this->request->getPost("dTask");
+        $stakeholders->wishes = $this->request->getPost("wishes");
+        $stakeholders->type = $this->request->getPost("type");
+        $stakeholders->idProject = $this->request->getPost("idProject");
+        $stakeholders->save();
     }
+
+    public function saveIndividualAction()
+    {
+        $stakeholders = new Stakeholders();
+        $stakeholders->name = $this->request->getPost("name");
+        $stakeholders->aka = $this->request->getPost("aka");
+        $stakeholders->description = $this->request->getPost("description");
+        $stakeholders->concern = $this->request->getPost("concern");
+        $stakeholders->attitude = $this->request->getPost("attitude");
+        $stakeholders->domainKnowledge = $this->request->getPost("domainKnowledge");
+        $stakeholders->reports = $this->request->getPost("reports");
+        $stakeholders->consults = $this->request->getPost("consults");
+        $stakeholders->liaises = $this->request->getPost("liaises");
+        $stakeholders->delegate = $this->request->getPost("delegate");
+        $stakeholders->dTask = $this->request->getPost("dTask");
+        $stakeholders->wishes = $this->request->getPost("wishes");
+        $stakeholders->type = "2";
+        $stakeholders->idProject = $this->request->getPost("idProject");
+        $stakeholders->save();
+       
+    }
+
+    public function saveRoleAction()
+    {
+        $stakeholders = new Stakeholders();
+        $stakeholders->name = $this->request->getPost("name");
+        $stakeholders->aka = $this->request->getPost("aka");
+        $stakeholders->isA = $this->request->getPost("isA");
+        $stakeholders->description = $this->request->getPost("description");
+        $stakeholders->concern = $this->request->getPost("concern");
+        $stakeholders->PlayerType = $this->request->getPost("PlayerType");
+        $stakeholders->RolePlayer = $this->request->getPost("RolePlayer");
+        $stakeholders->reports = $this->request->getPost("reports");
+        $stakeholders->consults = $this->request->getPost("consults");
+        $stakeholders->liaises = $this->request->getPost("liaises");
+        $stakeholders->delegate = $this->request->getPost("delegate");
+        $stakeholders->dTask = $this->request->getPost("dTask");
+        $stakeholders->wishes = $this->request->getPost("wishes");
+        $stakeholders->type = $this->request->getPost("type");
+        $stakeholders->idProject = $this->request->getPost("idProject");
+        $stakeholders->save();
+    }
+
+   
 }

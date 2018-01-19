@@ -526,7 +526,7 @@ function saveResourse(idModal){
             type = 0;
         $.ajax({
             type: 'POST',
-            url: baseUrl + "stakeholder/save",
+            url: baseUrl + "stakeholder/saveOrganisation",
             data: {
                 name: name,
                 Organisation: Organisation,
@@ -596,10 +596,9 @@ function saveResourse(idModal){
         });
         var inwishes = $("#ModalInWishes-"+idModal).val()
         var inidProject = $("#idProjectmodalStake-"+idModal).val();
-        var intype=2;
         $.ajax({
             type: 'POST',
-            url: baseUrl + "stakeholder/save",
+            url: baseUrl + "stakeholder/saveIndividual",
             data: {
                 name: inname,
                 aka: inaka,
@@ -613,13 +612,12 @@ function saveResourse(idModal){
                 delegate: itemindelegate,
                 dTask: itemdTask,
                 wishes: inwishes,
-                type: intype,
                 idProject: inidProject
             },
             success: function (data) {
                 Stakeholder.clear();
                 $.post(baseUrl+"task/findStake",{
-                project : idProject
+                project : inidProject
                 }, function(data){
                     var auto = createJSON(data);
                     var n = createString(auto);
@@ -629,6 +627,7 @@ function saveResourse(idModal){
                     $('#'+idModal).modal('hide');
                     $('#'+idModal).remove();
                 },  "json");
+                console.log(data);
             }
         })
     }
@@ -674,7 +673,7 @@ function saveResourse(idModal){
         var rtype = 3;
         $.ajax({
             type: 'POST',
-            url: baseUrl + "stakeholder/save",
+            url: baseUrl + "stakeholder/saveRole",
             data: {
                 name: rname,
                 aka: raka,
@@ -695,7 +694,7 @@ function saveResourse(idModal){
             success: function (data) {
                 Stakeholder.clear();
                 $.post(baseUrl+"task/findStake",{
-                project : idProject
+                project : ridProject
                 }, function(data){
                     var auto = createJSON(data);
                     var n = createString(auto);
