@@ -213,6 +213,21 @@ $(document).ready(function () {
         
     }, "json");
 
+
+    $.post( baseUrl+"task/findResource",{
+        project : projectid
+    }, function(data){
+        var auto = createJSON(data);
+        var n = createString(auto);
+
+        Resource = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        Resource.initialize();
+    },  "json");
+
     $.post(baseUrl + "stakeholder/findRepresent", {
         project: projectid
     }, function (data) {

@@ -156,6 +156,21 @@ $(document).ready(function() {
 
     },  "json");
 
+
+    $.post( baseUrl+"task/findTask",{
+        project : project
+    }, function(data){
+        var auto = createJSON(data);
+        var n = createString(auto);
+
+        Tasks = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(n)
+        });
+        Tasks.initialize();
+    },  "json");
+
     // save resource
     $('#saveResource').click(function (){
         if($("#createResource-form").valid()){
