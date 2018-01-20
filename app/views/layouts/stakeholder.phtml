@@ -95,3 +95,661 @@
       </div>
 </div>
 </div>
+
+<div class="modal createStakeholder" id="createStakeholder" role="dialog">
+    <div class="modal-dialog">
+       <!-- Modal content-->
+       <div class="modal-content">
+          <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title">New Stakeholder</h4>
+          </div>
+          <div class="modal-body">
+          <input type="hidden" name="idProjectmodalStake" value="<?=$idProject?>" id="idProjectmodalStake">
+                   <ul class="nav nav-tabs" id="myTabsModal" role="tablist" style="border-bottom: 0px">
+                      <li role="presentation" class="active" id="tab1"><a href="#ModalOrganisation" id="ModalOrganisation-tab" role="tab" data-toggle="tab" aria-controls="ModalOrganisation" aria-expanded="true" >Organisation</a></li>
+                      <li role="presentation" class="" id="tab2"><a href="#ModalIndividual" role="tab" id="ModalIndividual-tab" data-toggle="tab" aria-controls="ModalIndividual" aria-expanded="false">Individual</a></li>
+                      <li role="presentation" class="" id="tab3"><a href="#ModalRole" role="tab" id="ModalRole-tab" data-toggle="tab" aria-controls="ModalRole" aria-expanded="false">Role</a></li>
+                   </ul>
+                   <div class="tab-content">
+                      <div class="tab-pane fade active in" role="tabpanel" id="ModalOrganisation" aria-labelledby="ModalOrganisation-tab">
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="card">
+                                  <div class="row">
+                                     <div class="col-md-8 col-md-offset-2">
+                                        <div class="header">
+                                           <h4 class="title">Create organisation</h4>
+                                        </div>
+                                        <div class="content">
+                                           <form id="formOrganisation">
+                                            <label>
+                                                <input type="checkbox" id="ModalOFocal"> Focal Organisation
+                                            </label>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>Name</label>
+                                                       <input type="text" class="form-control" name="ModalOStakeName" id="ModalOStakeName">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>Organisation</label>
+                                                       <input type="text" class="form-control" name="ModalOrganName" id="ModalOrganName">
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>aka</label>
+                                                       <input type="text" class="form-control" name="ModalOaka" id="ModalOaka">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>description</label>
+                                                       <textarea rows="5" class="form-control" name="ModalOdescription" id="ModalOdescription" ></textarea>
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>concern</label>
+                                                       <input type="text" class="form-control" name="ModalOconcern" id="ModalOconcern">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>representative</label>
+                                                       <input type="text" class="form-control" name="ModalOrepresentative" id="ModalOrepresentative">
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>reports</label>
+                                                       <input type="text" class="form-control" name="ModalOreports" id="ModalOreports" >
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>consults</label>
+                                                       <input type="text" class="form-control" name="ModalOconsults" id="ModalOconsults" >
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>liaises</label>
+                                                       <input type="text" class="form-control" name="ModalOliaises" id="ModalOliaises" >
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>delegate</label>
+                                                       <input type="text" class="form-control" name="ModalOdelegate" id="ModalOdelegate" >
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>dTask</label>
+                                                       <input type="text" class="form-control" name="ModalOdTask" id="ModalOdTask" >
+                                                    </div>
+                                                 </div>
+                                                 </div>
+                                                 <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>wishes</label>
+                                                       <input type="text" class="form-control" name="ModalOwishes" id="ModalOwishes">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="clearfix"></div>
+                                           </form>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="tab-pane fade" role="tabpanel" id="ModalIndividual" aria-labelledby="ModalIndividual-tab">
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="card">
+                                  <div class="row">
+                                     <div class="col-md-8 col-md-offset-2">
+                                        <div class="header">
+                                           <h4 class="title">Create individual</h4>
+                                        </div>
+                                        <div class="content">
+                                           <form id="formIndividual">
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>Name</label>
+                                                       <input type="text" name="ModalInStakeName" id="ModalInStakeName" class="form-control">
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>aka</label>
+                                                       <input type="text" name="ModalInaka" id="ModalInaka" class="form-control">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>description</label>
+                                                       <textarea rows="5" name="ModalInDescription" id="ModalInDescription" class="form-control"></textarea>
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>concern</label>
+                                                       <input type="text" name="ModalInConcern" id="ModalInConcern" class="form-control">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>attitude</label>
+                                                       <select class="form-control" name="ModalInAttitude" id="ModalInAttitude">
+                                                          <option>select</option>
+                                                          <option value="0">positive</option>
+                                                          <option value="1">neutral</option>
+                                                          <option value="2">negative</option>
+                                                          <option value="?">?</option>
+                                                       </select>
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>domain Knowledge</label>
+                                                       <select class="form-control" name="ModalInDomainKnowledge" id="ModalInDomainKnowledge">
+                                                          <option>select</option>
+                                                          <option value="0">novice</option>
+                                                          <option value="1">intermediate</option>
+                                                          <option value="2">expert</option>
+                                                          <option value="?">?</option>
+                                                       </select>
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>reports</label>
+                                                       <input type="text" name="ModalInReports" id="ModalInReports" class="form-control" >
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>consults</label>
+                                                       <input type="text" name="ModalInConsults" id="ModalInConsults" class="form-control" >
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>liaises</label>
+                                                       <input type="text" name="ModalInLiaises" id="ModalInLiaises" class="form-control" >
+                                                    </div>
+                                                 </div>
+                                                </div>
+                                                <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>delegate</label>
+                                                       <input type="text" name="ModalInDelegate" id="ModalInDelegate" class="form-control" >
+                                                    </div>
+                                                 </div>
+                
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>dTask</label>
+                                                       <input type="text" name="ModalInDTask" id="ModalInDTask" class="form-control" >
+                                                    </div>
+                                                 </div>
+                                                 </div>
+                                                 <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>wishes</label>
+                                                       <input type="text" name="ModalInWishes" id="ModalInWishes" class="form-control">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="clearfix"></div>
+                                           </form>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="tab-pane fade" role="tabpanel" id="ModalRole" aria-labelledby="ModalRole-tab">
+                         <div class="row">
+                            <div class="col-md-12">
+                               <div class="card">
+                                  <div class="row">
+                                     <div class="col-md-8 col-md-offset-2">
+                                        <div class="header">
+                                           <h4 class="title">Create Role</h4>
+                                        </div>
+                                        <div class="content">
+                                           <form id="formRole">
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>Name</label>
+                                                       <input type="text" name="ModalRoleStakeName" id="ModalRoleStakeName" class="form-control">
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>aka</label>
+                                                       <input type="text" name="ModalRoleAka" id="ModalRoleAka" class="form-control">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>is A</label>
+                                                       <input type="text" name="ModalRoleIsA" id="ModalRoleIsA" class="form-control">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>description</label>
+                                                       <textarea rows="5" name="ModalRoleDescription" id="ModalRoleDescription" class="form-control"></textarea>
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>concern</label>
+                                                       <input type="text" name="ModalRoleConcern" id="ModalRoleConcern" class="form-control">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>PlayerType</label>
+                                                       <select class="form-control" name="ModalRolePlayerType" id="ModalRolePlayerType">
+                                                          <option>select</option>
+                                                          <option value="0">Only one</option>
+                                                          <option value="1">One</option>
+                                                          <option value="2">Any</option>
+                                                          <option value="3">Group</option>
+                                                       </select>
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>RolePlayer</label>
+                                                       <select class="form-control" name="ModalRoleRoleplayer" id="ModalRoleRoleplayer" >
+                                                          <option>select</option>
+                                                          <option value="0">All</option>
+                                                          <option value="1">Some</option>
+                                                          <option value="2">Any</option>
+                                                       </select>
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>reports</label>
+                                                       <input type="text" name="ModalRoleReports" id="ModalRoleReports" class="form-control">
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>consults</label>
+                                                       <input type="text" name="ModalRoleConsults" id="ModalRoleConsults" class="form-control">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>liaises</label>
+                                                       <input type="text" name="ModalRoleLiaises" id="ModalRoleLiaises" class="form-control">
+                                                    </div>
+                                                 </div>
+                                                </div>
+                                                <div class="row">
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>delegate</label>
+                                                       <input type="text" name="ModalRoleDelegate" id="ModalRoleDelegate" class="form-control" >
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-md-6">
+                                                    <div class="form-group">
+                                                       <label>dTask</label>
+                                                       <input type="text" name="ModalRoleDTask" id="ModalRoleDTask" class="form-control">
+                                                    </div>
+                                                 </div>
+                                                 </div>
+                                                 <div class="row">
+                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                       <label>wishes</label>
+                                                       <input type="text" name="ModalRoleWishes" id="ModalRoleWishes" class="form-control">
+                                                    </div>
+                                                 </div>
+                                              </div>
+                                              <div class="clearfix"></div>
+                                           </form>
+                                        </div>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-info" id="saveStakeformModal">Save</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- ================================================== Modal Resource===================================================== -->
+ <div class="modal createResource" id="createResource" role="dialog">
+    <div class="modal-dialog">
+       <!-- Modal content-->
+       <div class="modal-content">
+          <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title">New Resource</h4>
+          </div>
+          <div class="modal-body">
+             <div class="content">
+                <form id="form">
+                   <div class="row">
+                      <div class="col-md-12">
+                         <div class="form-group">
+                            <input type="hidden" name="idProjectmodalResource" value="<?=$idProject?>" id="idProjectmodalResource">
+                            <label>Resource Name</label>
+                            <?php 
+                               echo $this->tag->textField(["resourcename", "size" => 30, 
+                               "class" => "form-control", "id" => "Modalresourcename"]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-12">
+                         <div class="form-group">
+                            <label>description</label>
+                            <?php 
+                               echo $this->tag->textArea(["Description", "class" => "form-control", 
+                                "id" => "ModalDesResource" ,"rows" => 3,]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-12">
+                         <div class="form-group">
+                            <label>includes</label>
+                            <?php 
+                               echo $this->tag->textField(["includes", "size" => 30, 
+                               "class" => "form-control ModalincludesResource", "id" => "ModalincludesResource"]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <label>r Owner</label>
+                            <?php 
+                               echo $this->tag->textField(["rOwner", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalrOwnerResource"]) 
+                               ?>
+                         </div>
+                      </div>
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <label>p Owner</label>
+                            <?php 
+                               echo $this->tag->textField(["pOwner", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalpOwnerResource"]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-12">
+                         <div class="form-group">
+                            <label>Maintainer</label>
+                            <?php 
+                               echo $this->tag->textField(["maintainer", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalmaintainerResource"]) 
+                               ?>    
+                         </div>
+                      </div>
+                   </div>
+                   <div class="clearfix"></div>
+                </form>
+             </div>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-info" id="saveResourceformModal">Save</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- ================================  modal Tasks  ============================================ -->
+ <div class="modal createTask" id="createTask" role="dialog">
+    <div class="modal-dialog">
+       <!-- Modal content-->
+       <div class="modal-content">
+          <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal">&times;</button>
+             <h4 class="modal-title">New Task</h4>
+          </div>
+          <div class="modal-body">
+             <div class="content">
+                <form id="form">
+                   <div class="row">
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <input type="hidden" name="idProjectmodalTask" value="<?=$idProject?>" id="idProjectmodalTask">
+                            <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
+                            <?php 
+                               echo $this->tag->textField(["Modaltaskname", "size" => 30, 
+                               "class" => "form-control", "id" => "Modaltaskname" , ]) 
+                               ?>
+                         </div>
+                      </div>
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <label>IsA</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalIsATask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalIsATask" ,]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-12">
+                         <div class="form-group">
+                            <label>Description</label>
+                            <?php 
+                               echo $this->tag->textArea(["ModalDescriptionTask", "class" => "form-control", 
+                                "id" => "ModalDescriptionTask" ,"rows" => 3,]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-8">
+                         <div class="form-group">
+                            <label>Includes</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalincludesTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalincludesTask"]) 
+                               ?>
+                         </div>
+                      </div>
+                      <div class="col-md-4">
+                         <div class="form-group">
+                            <label>as IsState</label>
+                            <?php 
+                               echo $this->tag->selectStatic(["ModalasIsStateTask", "class" => "form-control", 
+                               "id" => "ModalasIsStateTask" 
+                               ,[
+                                   "E" => "EXIST",
+                                   "N" => "NEXIST",
+                               ]
+                               ]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-4">
+                         <div class="form-group">
+                            <label>Owner</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalOwnerTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalOwnerTask" ]) 
+                               ?>
+                         </div>
+                      </div>
+                      <div class="col-md-4">
+                         <div class="form-group">
+                            <label>Collaburator</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalCollaburatorTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalCollaburatorTask" ]) 
+                               ?>  
+                         </div>
+                      </div>
+                      <div class="col-md-4">
+                         <div class="form-group">
+                            <label>Regulator</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalRegulatorTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalregulatorTask"]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-8">
+                         <div class="form-group">
+                            <label>Uses</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalUsesTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalUsesTask" ]) 
+                               ?>
+                         </div>
+                      </div>
+                      <div class="col-md-4">
+                         <div class="form-group">
+                            <label>to Be State</label>
+                            <?php 
+                               echo $this->tag->selectStatic(["ModalToBeStateTask", "class" => "form-control", 
+                               "id" => "ModalToBeStateTask" 
+                               ,[
+                                   "E" => "EXIST",
+                                   "N" => "NEXIST",
+                                   "A" => "ADEPTED",
+                               ]
+                               ]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-12">
+                         <div class="form-group">
+                            <label>Produces</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalProducesTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalProducesTask" ]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <label>owner To Be</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalOwnerToBeTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalOwnerToBeTask"]) 
+                               ?>
+                         </div>
+                      </div>
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <label>collaborator To Be</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalCollaboratorToBeTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalCollaboratorToBeTask" ]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="row">
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <label>toUse</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalToUseTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalToUseTask"]) 
+                               ?>
+                         </div>
+                      </div>
+                      <div class="col-md-6">
+                         <div class="form-group">
+                            <label>toProduce</label>
+                            <?php 
+                               echo $this->tag->textField(["ModalToProduceTask", "size" => 30, 
+                               "class" => "form-control", "id" => "ModalToProduceTask"]) 
+                               ?>
+                         </div>
+                      </div>
+                   </div>
+                </form>
+             </div>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-info" id="saveTaskformModal">Save</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+       </div>
+    </div>
+ </div>
