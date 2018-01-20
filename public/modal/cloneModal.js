@@ -789,12 +789,12 @@ function questionMark($textinput){
           $.each(data, function(index ,input){   
                 item [index] = input.value
           });
-          if(item[0]==0){
-                if(tag.value!=0){
+          if(item[0]==1){
+                if(tag.value!=1){
                       $textinput.tagsinput('remove', { value: tag.value, text: tag.text });
                 }
           }else{
-                if(tag.value==0){
+                if(tag.value==1){
                       $textinput.tagsinput('remove', { value: tag.value, text: tag.text });
                 }
           } 
