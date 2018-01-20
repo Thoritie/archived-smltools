@@ -82,6 +82,26 @@ function cloneModalStakeholder($modal) {
 
     var modalId = "#" + idModal;
     $(modalId).modal("show");
+    // validateModalStake('#form-'+idModal,idModal);
+
+    questionMark($('#ModalOrepresentative-'+idModal));
+    questionMark($('#ModalOreports-'+idModal));
+    questionMark($('#ModalOconsults-'+idModal));
+    questionMark($('#ModalOliaises-'+idModal));
+    questionMark($('#ModalOdelegate-'+idModal));
+    questionMark($('#ModalOdTask-'+idModal));
+  
+    questionMark($('#ModalInReports-'+idModal));
+    questionMark($('#ModalInConsults-'+idModal));
+    questionMark($('#ModalInLiaises-'+idModal));
+    questionMark($('#ModalInDelegate-'+idModal));
+    questionMark($('#ModalInDTask-'+idModal));
+
+    questionMark($('#ModalRoleReports-'+idModal));
+    questionMark($('#ModalRoleConsults-'+idModal));
+    questionMark($('#ModalRoleLiaises-'+idModal));
+    questionMark($('#ModalRoleDelegate-'+idModal));
+    questionMark($('#ModalRoleDTask-'+idModal));
     
 }
 
@@ -722,7 +742,7 @@ function createJSON(data) {
     });
 
     item = {}
-    item ["value"] = 0;
+    item ["value"] = 1;
     item ["text"] = "?";
   
     jsonObj.push(item);
@@ -843,24 +863,29 @@ function validateModalResource(formId,idModal){
 
 //-------------------------------- clone show detail modal ----------------------------------- //
 function cloneModalDetailTask(taskId) {
-	var modal = $('#showTask');
-	var newModal = modal.clone();
-    //gen id
-    var idModal = new Date().getTime();
-    newModal.attr("id", idModal);
-    newModal.attr("style", "z-index: " + zindex++);
+    if(taskId==="1"){
+        return;
+    }else{
+        var modal = $('#showTask');
+        var newModal = modal.clone();
+        //gen id
+        var idModal = new Date().getTime();
+        newModal.attr("id", idModal);
+        newModal.attr("style", "z-index: " + zindex++);
+        
+        
+        //set input id
+        setFormIdInModalTaskDetail(idModal, newModal);
     
-    
-    //set input id
-    setFormIdInModalTaskDetail(idModal, newModal);
-
-    //append to modal
-    modal.after(newModal);
-    callDataTask(taskId, idModal);
-    
-    //show modal
-    var modalId = "#" + idModal;
-    $(modalId).modal("show");
+        //append to modal
+        modal.after(newModal);
+        callDataTask(taskId, idModal);
+        
+        //show modal
+        var modalId = "#" + idModal;
+        $(modalId).modal("show");
+    }
+	
 }
 
 function setFormIdInModalTaskDetail(idModal, newModal){
@@ -1001,24 +1026,29 @@ function setTaskModalDetail(data, idModal){
 
 // clone show modal resource
 function cloneModalDetailRes(resId) {
-	var modal = $('#showRes');
-	var newModal = modal.clone();
-    //gen id
-    var idModal = new Date().getTime();
-    newModal.attr("id", idModal);
-    newModal.attr("style", "z-index: " + zindex++);
-    
-    
-    //set input id
-    setFormIdInModalResDetail(idModal, newModal);
+    if(resId==="1"){
+        return;
+    }else{
+        var modal = $('#showRes');
+        var newModal = modal.clone();
+        //gen id
+        var idModal = new Date().getTime();
+        newModal.attr("id", idModal);
+        newModal.attr("style", "z-index: " + zindex++);
+        
+        
+        //set input id
+        setFormIdInModalResDetail(idModal, newModal);
 
-    //append to modal
-    modal.after(newModal);
-    callDataRes(resId, idModal);
-    
-    //show modal
-    var modalId = "#" + idModal;
-    $(modalId).modal("show");
+        //append to modal
+        modal.after(newModal);
+        callDataRes(resId, idModal);
+        
+        //show modal
+        var modalId = "#" + idModal;
+        $(modalId).modal("show");
+    }
+	
 }
 
 function setFormIdInModalResDetail(idModal, newModal){
@@ -1036,7 +1066,6 @@ function callDataRes(resId, idModal){
     $.post(baseUrl+"resource/showDetailRes",{
         resId : resId
      }, function(data){
-        console.log(data);   
         setResModalDetail(data, idModal);
      },"json"); 
 }
@@ -1091,24 +1120,29 @@ function setResModalDetail(data, idModal){
 
 // show collaboration setting by modal and eyes 
 function cloneModalDetailColla(collaId){
-    var modal = $('#showColla');
-    var newModal = modal.clone();
+    if(collaId==="1"){
+        return;
+    }else{
+        var modal = $('#showColla');
+        var newModal = modal.clone();
 
-     //gen id
-     var idModal = new Date().getTime();
-     newModal.attr("id", idModal);
-     newModal.attr("style", "z-index: " + zindex++);
-     
-     //set INPUT ID
-     setFormInModalCollaDetail(idModal, newModal);
+        //gen id
+        var idModal = new Date().getTime();
+        newModal.attr("id", idModal);
+        newModal.attr("style", "z-index: " + zindex++);
+        
+        //set INPUT ID
+        setFormInModalCollaDetail(idModal, newModal);
 
-     //append it to modal
-     modal.after(newModal);
-     callDataColla(collaId, idModal);
+        //append it to modal
+        modal.after(newModal);
+        callDataColla(collaId, idModal);
 
-     //show modal
-     var modalId = "#" + idModal;
-     $(modalId).modal("show");
+        //show modal
+        var modalId = "#" + idModal;
+        $(modalId).modal("show");
+    }
+    
      
 }; 
 
