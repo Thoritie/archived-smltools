@@ -564,5 +564,11 @@ class StakeholderController extends ControllerBase
         $stakeholders->save();
     }
 
+    public function deleteStakeholderAction(){
+        $id = $this->request->getPost('idStake');
+        $stake = Stakeholders::findById($id);
+        $stake->delete();
+        return json_encode('true');
+    }
    
 }

@@ -1,6 +1,3 @@
-var Resource;
-var Stakeholder;
-var Tasks;
 var projectid = $("#idProject").val();
 //modal 
 
@@ -12,35 +9,9 @@ function showModalNewTask() {
     $("#createTask").modal("show");
 };
 $(document).ready(function () {
-    function createJSON(data) {
-        jsonObj = [];
-        $.each(data, function (index, data) {
-
-            item = {}
-            item["value"] = data._id.$id;
-            item["text"] = data.name;
-
-            jsonObj.push(item);
-        });
-
-        item = {}
-        item["value"] = 0;
-        item["text"] = "?";
-
-        jsonObj.push(item);
-
-        return jsonObj;
-    }
-
-    function createString(auto) {
-        return JSON.stringify(auto)
-    }
-
-
-    var project = $("#idProject").val();     //input project id .val()
 
     $.post(baseUrl + "stakeholder/findStake", {
-        project: project
+        project: projectid
     }, function (data) {
 
         var auto = createJSON(data);
@@ -243,7 +214,7 @@ $(document).ready(function () {
     }, "json");
 
     $.post(baseUrl + "stakeholder/findRepresent", {
-        project: project
+        project: projectid
     }, function (data) {
 
         var auto = createJSON(data);
@@ -273,7 +244,7 @@ $(document).ready(function () {
     }, "json");
 
     $.post(baseUrl + "stakeholder/findDtask", {
-        project: project
+        project: projectid
     }, function (data) {
 
         var auto = createJSON(data);
@@ -394,7 +365,7 @@ $(document).ready(function () {
                 idProject: idProject
             },
             success: function (data) {
-                $.redirect(baseUrl + "stakeholder/index", {});
+                window.location.href = baseUrl+"stakeholder";
             }
         })
     });
@@ -457,7 +428,7 @@ $(document).ready(function () {
                 idProject: inidProject
             },
             success: function (data) {
-                $.redirect(baseUrl + "stakeholder/index", {});
+                window.location.href = baseUrl+"stakeholder";
             }
         })
     });
@@ -523,7 +494,7 @@ $(document).ready(function () {
                 idProject: ridProject
             },
             success: function (data) {
-                $.redirect(baseUrl + "stakeholder/index", {});
+                window.location.href = baseUrl+"stakeholder";
             }
         })
     });
