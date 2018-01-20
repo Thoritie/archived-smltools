@@ -44,7 +44,8 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('jquery/stakeEditRediract.js');
         
-
+        $this->assets->addJs('modal/cloneModal.js');
+        $this->assets->addJs('jslif/stake.js');
 
     }
 

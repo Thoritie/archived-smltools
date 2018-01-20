@@ -36,10 +36,10 @@ class CollaborationsettingController extends ControllerBase
         $this->assets->addJs('jslif/typeahead.bundle.min.js');
         $this->assets->addJs('popper/popper.min.js');
 
-
         $this->assets->addJs('jquery/collaburationEditRedirect.js');  
        
-        
+        $this->assets->addJs('modal/cloneModal.js');
+        $this->assets->addJs('jslif/tagCollaboration.js');
 
     }
     public function indexAction()

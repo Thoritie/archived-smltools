@@ -40,16 +40,14 @@ class ResourceController extends ControllerBase
 
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
-       
-        
 
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('dist/jquery.validate.js');
 
         $this->assets->addJs('jquery/resourceRedirect.js');
        
-       
-       
+        $this->assets->addJs('modal/cloneModal.js');
+        $this->assets->addJs('jslif/tagResource.js');
 
 
     }
