@@ -97,14 +97,14 @@
 <div class="modal createStakeholder" id="createStakeholder" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content card">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">New Stakeholder</h4>
          </div>
          <div class="modal-body">
          <input type="hidden" name="idProjectmodalStake" value="<?=$idProject?>" id="idProjectmodalStake">
-                  <ul class="nav nav-tabs" id="myTabsModal" role="tablist" style="border-bottom: 0px">
+                  <ul class="nav nav-tabs nav-justified" id="myTabsModal" role="tablist" style="border-bottom: 0px">
                      <li role="presentation" class="active" id="tab1"><a href="#ModalOrganisation" id="ModalOrganisation-tab" role="tab" data-toggle="tab" aria-controls="ModalOrganisation" aria-expanded="true" >Organisation</a></li>
                      <li role="presentation" class="" id="tab2"><a href="#ModalIndividual" role="tab" id="ModalIndividual-tab" data-toggle="tab" aria-controls="ModalIndividual" aria-expanded="false">Individual</a></li>
                      <li role="presentation" class="" id="tab3"><a href="#ModalRole" role="tab" id="ModalRole-tab" data-toggle="tab" aria-controls="ModalRole" aria-expanded="false">Role</a></li>
@@ -112,10 +112,9 @@
                   <div class="tab-content">
                      <div class="tab-pane fade active in" role="tabpanel" id="ModalOrganisation" aria-labelledby="ModalOrganisation-tab">
                         <div class="row">
-                           <div class="col-md-12">
-                              <div class="card">
+                              <div class="col-md-12">
                                  <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
+                                    <div class="col-md-12">
                                        <div class="header">
                                           <h4 class="title">Create organisation</h4>
                                        </div>
@@ -218,15 +217,13 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
                         </div>
                      </div>
                      <div class="tab-pane fade" role="tabpanel" id="ModalIndividual" aria-labelledby="ModalIndividual-tab">
                         <div class="row">
                            <div class="col-md-12">
-                              <div class="card">
                                  <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
+                                    <div class="col-md-12">
                                        <div class="header">
                                           <h4 class="title">Create individual</h4>
                                        </div>
@@ -338,16 +335,14 @@
                                        </div>
                                     </div>
                                  </div>
-                              </div>
                            </div>
                         </div>
                      </div>
                      <div class="tab-pane fade" role="tabpanel" id="ModalRole" aria-labelledby="ModalRole-tab">
                         <div class="row">
                            <div class="col-md-12">
-                              <div class="card">
                                  <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
+                                    <div class="col-md-12">
                                        <div class="header">
                                           <h4 class="title">Create Role</h4>
                                        </div>
@@ -465,7 +460,6 @@
                                        </div>
                                     </div>
                                  </div>
-                              </div>
                            </div>
                         </div>
                      </div>
@@ -482,7 +476,7 @@
 <div class="modal createResource" id="createResource" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content card">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">New Resource</h4>
@@ -570,7 +564,7 @@
 <div class="modal createTask" id="createTask" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content card">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">New Task</h4>
