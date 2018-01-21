@@ -111,7 +111,7 @@ class StakeholderController extends ControllerBase
         		'page' => $currentPage,
         		'query' => $query,
         		'sort' => $sortBy,
-        		'baseUrl' => $this->url->get('Stakeholeder'),
+        		'baseUrl' => $this->url->get('Stakeholder'),
         		'showNumberOfPage' => 6,
         		'data' => array(
         			'sortBy' => $sortBy,
