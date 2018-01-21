@@ -1183,6 +1183,152 @@ function setCollaModalDetail(data, idModal){
  
 };
 
+// show Stakholder detail by modal
+function cloneModalDetailStake(stakeId){
+    if(stakeId==="1"){
+        return;
+    }else{
+        var modal = $('#showStake');
+        var newModal = modal.clone();
+
+        //gen id
+        var idModal = new Date().getTime();
+        newModal.attr("id", idModal);
+        newModal.attr("style", "z-index: " + zindex++);
+        
+        //set INPUT ID
+        setFormInModalStakeDetail(idModal, newModal);
+
+        //append it to modal
+        modal.after(newModal);
+        callDataStake(stakeId, idModal);
+
+        //show modal
+        var modalId = "#" + idModal;
+        $(modalId).modal("show");
+    }
+};
+
+function setFormInModalStakeDetail(idModal, newModal){
+    newModal.find('#showStakeName').attr('id', 'showStakeName-'+idModal);
+    newModal.find('#showStakeOrganization').attr('id', 'showStakeOrganization-'+idModal);
+    newModal.find('#showStakeAka').attr('id', 'showStakeAka-'+idModal);
+    newModal.find('#showStakeDescription').attr('id', 'showStakeDescription-'+idModal);
+    newModal.find('#showStakeConcern').attr('id', 'showStakeConcern-'+idModal);
+
+    newModal.find('#showStakeRepresentative').attr('id', 'showStakeRepresentative-'+idModal);
+    newModal.find('#showStakeReports').attr('id', 'showStakeReports-'+idModal);
+    newModal.find('#showStakeConsults').attr('id', 'showStakeConsults-'+idModal);
+    newModal.find('#showStakeLiaises').attr('id', 'showStakeLiaises-'+idModal);
+    newModal.find('#showStakeDelegate').attr('id', 'showStakeDelegate-'+idModal);
+    newModal.find('#showStakeDtask').attr('id', 'showStakeDtask-'+idModal);
+    
+    newModal.find('#showStakeWishes').attr('id', 'showStakeWishes-'+idModal);
+
+    newModal.find('#showStakeAttitude').attr('id', 'showStakeAttitude-'+idModal);
+    newModal.find('#showStakeDomainKnowledge').attr('id', 'showStakeDomainKnowledge-'+idModal);
+
+    newModal.find('#showStakeIsA').attr('id', 'showStakeIsA-'+idModal);
+    newModal.find('#showStakePlayerType').attr('id', 'showStakePlayerType-'+idModal);
+    newModal.find('#showStakeRoleType').attr('id', 'showStakeRoleType-'+idModal);
+
+  
+}
+
+function  callDataStake(stakeId, idModal){
+    $.post(baseUrl+"stakeholder/showDetailStake",{
+        stakeId :stakeId
+    }, function(data){
+        setStakeModalDetail(data, idModal);
+    }, "json");
+}
+function setStakeModalDetail(data, idModal){
+    var empty = '<label style="font-size: 10px; font-style : italic">This Field is Empty.</label>';
+
+    $('#showStakeName-'+idModal).html(data.name);
+    if(data.name == null || data.name == "") $('#showStakeName-'+idModal).html(empty);
+
+    $('#showStakeOrganization-'+idModal).html(data.OrganisationName);
+    if(data.OrganisationName == null || data.OrganisationName == "") $('#showStakeOrganization-'+idModal).html(empty);
+
+    $('#showStakeAka-'+idModal).html(data.aka);
+    if(data.aka == null || data.aka == "") $('#showStakeAka-'+idModal).html(empty);
+
+
+    $('#showStakeDescription-'+idModal).html(data.description);
+    if(data.description == null || data.description == "") $('#showStakeDescription-'+idModal).html(empty);
+
+
+    $('#showStakeConcern-'+idModal).html(data.concern);
+    if(data.concern == null || data.concern == "") $('#showStakeConcern-'+idModal).html(empty);
+
+   
+    $('#showStakeWishes-'+idModal).html(data.wishes);
+    if(data.wishes == null || data.wishes == "") $('#showStakeWishes-'+idModal).html(empty);
+
+    $('#showStakeIsA-'+idModal).html(data.isA);
+    if(data.isA == null || data.isA == "") $('#showStakeIsA-'+idModal).html(empty);
+
+
+    var representative = data.representative;
+    var strRepresentative = "";
+    $.each(representative, function( index, value ) {
+        strRepresentative += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailStake(\''+value.id+'\')">'+value.name+'</a>';
+    });
+    $('#showStakeRepresentative-'+idModal).html(strRepresentative);
+    if(data.representative == null || data.representative== "") $('#showStakeRepresentative-'+idModal).html(empty);
+ 
+
+    var reports = data.reports;
+    var strReports = "";
+    $.each(reports, function( index, value ) {
+        strReports += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailStake(\''+value.id+'\')">'+value.name+'</a>';
+    });
+    $('#showStakeReports-'+idModal).html(strReports);
+    if(data.reports == null || data.reports== "") $('#showStakeReports-'+idModal).html(empty);
+ 
+    
+    var consults = data.consults;
+    var strConsults = "";
+    $.each(consults, function( index, value ) {
+        strConsults += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailStake(\''+value.id+'\')">'+value.name+'</a>';
+    });
+    $('#showStakeConsults-'+idModal).html(strConsults);
+    if(data.consults == null || data.consults== "") $('#showStakeConsults-'+idModal).html(empty);
+ 
+
+    var liaises = data.liaises;
+    var strLiaises = "";
+    $.each(liaises, function( index, value ) {
+        strLiaises += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailStake(\''+value.id+'\')">'+value.name+'</a>';
+    });
+    $('#showStakeLiaises-'+idModal).html(strLiaises);
+    if(data.liaises == null || data.liaises== "") $('#showStakeLiaises-'+idModal).html(empty);
+ 
+
+    var delegate = data.delegate;
+    var strDelegate = "";
+    $.each(delegate, function( index, value ) {
+        strDelegate += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailStake(\''+value.id+'\')">'+value.name+'</a>';
+    });
+    $('#showStakeDelegate-'+idModal).html(strDelegate);
+    if(data.delegate == null || data.delegate== "") $('#showStakeDelegate-'+idModal).html(empty);
+ 
+
+    var dTask = data.dTask;
+    var strDTask = "";
+    $.each(dTask, function( index, value ) {
+        strDTask += '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailStake(\''+value.id+'\')">'+value.name+'</a>';
+    });
+    $('#showStakeDtask-'+idModal).html(strDTask);
+    if(data.dTask == null || data.dTask== "") $('#showStakeDtask-'+idModal).html(empty);
+ 
+    
+    
+
+
+}
+
 
 
 $(document).on('hidden.bs.modal', "div.showTask", function() {

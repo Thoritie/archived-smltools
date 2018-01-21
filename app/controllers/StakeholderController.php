@@ -570,5 +570,9 @@ class StakeholderController extends ControllerBase
         $stake->delete();
         return json_encode('true');
     }
+
+    public function showDetailStakeAction(){
+        
+    }
    
 }
