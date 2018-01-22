@@ -572,7 +572,21 @@ class StakeholderController extends ControllerBase
     }
 
     public function showDetailStakeAction(){
+        $id = $this->request->getPost('stakeId');
+        $stake = Stakeholder::findById($id);
+
+        $arrStake = [];
+        $arrStake['name'] = $stake->name;
+        $arrStake['description'] = $stake->description;
+        $arrStake['OrganisationName'] = $stake->OrganisationName;
+        $arrStake['aka'] = $stake->aka;
+        $arrStake['concern'] = $stake->concern;
+        $arrStake['wishes'] = $stake->wishes;
+        $arrStake['isA'] = $stake->isA;
+
         
+        
+
     }
    
 }
