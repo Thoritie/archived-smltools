@@ -345,15 +345,15 @@ class StakeholderController extends ControllerBase
         $idProject = $this->session->get('idProject');
         $this->view->idProject = $idProject;
 
-        $this->view->idStake  = $edstake->_id;
+        
         $this->tag->setDefault("idProject", $idProject);
-        $this->tag->setDefault("idStake", $id);
+        $this->tag->setDefault("idStake", $idStake);
         $this->tag->setDefault("edStakeName", $edstake->name);
-        $this->tag->setDefault("OrganName", $edstake->OrganisationName);
-        $this->tag->setDefault("Oaka", $edstake->aka);
-        $this->tag->setDefault("Odescription", $edstake->description);
-        $this->tag->setDefault("Oconcern", $edstake->concern);
-        $this->tag->setDefault("Owishes", $edstake->wishes);
+        $this->tag->setDefault("edOrganName", $edstake->OrganisationName);
+        $this->tag->setDefault("edOaka", $edstake->aka);
+        $this->tag->setDefault("edOdescription", $edstake->description);
+        $this->tag->setDefault("edOconcern", $edstake->concern);
+        $this->tag->setDefault("edOwishes", $edstake->wishes);
         $this->view->focal = 0;
         if($edstake->type=='1')
         {
@@ -418,16 +418,16 @@ class StakeholderController extends ControllerBase
         $idProject = $this->session->get('idProject');
         $this->view->idProject = $idProject;
 
-        $this->view->idStake  = $edstake->_id;
+        
         $this->tag->setDefault("idProject", $idProject);
-        $this->tag->setDefault("idStake", $id);
-        $this->tag->setDefault("inStakeName", $edstake->name);
-        $this->tag->setDefault("inaka", $edstake->aka);
-        $this->tag->setDefault("indescription", $edstake->description);
-        $this->tag->setDefault("inconcern", $edstake->concern);
-        $this->tag->setDefault("attitude", $edstake->attitude);
-        $this->tag->setDefault("domainKnowledge", $edstake->domainKnowledge);
-        $this->tag->setDefault("inwishes", $edstake->wishes);
+        $this->tag->setDefault("idStake", $idStake);
+        $this->tag->setDefault("edinStakeName", $edstake->name);
+        $this->tag->setDefault("edinaka", $edstake->aka);
+        $this->tag->setDefault("edindescription", $edstake->description);
+        $this->tag->setDefault("edinconcern", $edstake->concern);
+        $this->tag->setDefault("edattitude", $edstake->attitude);
+        $this->tag->setDefault("eddomainKnowledge", $edstake->domainKnowledge);
+        $this->tag->setDefault("edinwishes", $edstake->wishes);
         
         $conditionStake = [];
         $conditionStake["idProject"] = $idProject;
@@ -475,18 +475,18 @@ class StakeholderController extends ControllerBase
         $idProject = $this->session->get('idProject');
         $this->view->idProject = $idProject;
 
-        $this->view->idStake  = $edstake->_id;
+        
         $this->tag->setDefault("idProject", $idProject);
-        $this->tag->setDefault("idStake", $id);
-        $this->tag->setDefault("rStakeName", $edstake->name);
-        $this->tag->setDefault("raka", $edstake->aka);
-        $this->tag->setDefault("isA", $edstake->isA);
-        $this->tag->setDefault("rdescription", $edstake->description);
-        $this->tag->setDefault("rconcern", $edstake->concern);
-        $this->tag->setDefault("isA", $edstake->isA);
-        $this->tag->setDefault("PlayerType", $edstake->PlayerType);
-        $this->tag->setDefault("RolePlayer", $edstake->RolePlayer);
-        $this->tag->setDefault("rwishes", $edstake->wishes);
+        $this->tag->setDefault("idStake", $idStake);
+        $this->tag->setDefault("edrStakeName", $edstake->name);
+        $this->tag->setDefault("edraka", $edstake->aka);
+        $this->tag->setDefault("edisA", $edstake->isA);
+        $this->tag->setDefault("edrdescription", $edstake->description);
+        $this->tag->setDefault("edrconcern", $edstake->concern);
+        $this->tag->setDefault("edisA", $edstake->isA);
+        $this->tag->setDefault("edPlayerType", $edstake->PlayerType);
+        $this->tag->setDefault("edRolePlayer", $edstake->RolePlayer);
+        $this->tag->setDefault("edrwishes", $edstake->wishes);
         
         $conditionStake = [];
         $conditionStake["idProject"] = $idProject;

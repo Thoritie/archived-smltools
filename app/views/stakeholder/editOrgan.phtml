@@ -1,5 +1,6 @@
 <?php 
-   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
+   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]);
+   echo $this->tag->hiddenField(["idStake", "id" => "idStake" ]);
 ?>
 <div class="container-fluid">
 <div class="row">
@@ -35,7 +36,7 @@
                                     <div class="form-group">
                                        <label>Organisation</label>
                                        <?php 
-                                        echo $this->tag->textField(["OrganName", "size" => 30, 
+                                        echo $this->tag->textField(["edOrganName", "size" => 30, 
                                         "class" => "form-control", "id" => "OrganName" ]) 
                                         ?>
                                     </div>
@@ -45,7 +46,7 @@
                                        <label>aka</label>
                                        
                                        <?php 
-                                        echo $this->tag->textField(["Oaka", "size" => 30, 
+                                        echo $this->tag->textField(["edOaka", "size" => 30, 
                                         "class" => "form-control", "id" => "Oaka" ]) 
                                         ?>
                                     </div>
@@ -57,7 +58,7 @@
                                        <label>description</label>
                 
                                        <?php 
-                                        echo $this->tag->textArea(["Odescription", "rows" => 3, 
+                                        echo $this->tag->textArea(["edOdescription", "rows" => 3, 
                                         "class" => "form-control", "id" => "Odescription" ]) 
                                         ?>
                                     </div>
@@ -69,7 +70,7 @@
                                        <label>concern</label>
                                       
                                        <?php 
-                                        echo $this->tag->textField(["Oconcern", "size" => 30, 
+                                        echo $this->tag->textField(["edOconcern", "size" => 30, 
                                         "class" => "form-control", "id" => "Oconcern" ]) 
                                         ?>
                                     </div>
@@ -147,13 +148,13 @@
                                        <label>wishes</label>
                                       
                                        <?php 
-                                        echo $this->tag->textField(["Owishes", "size" => 30, 
+                                        echo $this->tag->textField(["edOwishes", "size" => 30, 
                                         "class" => "form-control", "id" => "Owishes" ]) 
                                         ?>
                                     </div>
                                  </div>
                               </div>
-                              <button type="button" class="btn btn-info btn-fill pull-right" id="SaveOr">Save Organisation</button>
+                              <button class="btn btn-info btn-fill pull-right" id="SaveedOr">Save Organisation</button>
                               <div class="clearfix"></div>
                            </form>
                         </div>
