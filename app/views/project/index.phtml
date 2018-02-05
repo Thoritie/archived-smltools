@@ -108,22 +108,7 @@
 		<?php echo $dataProvider->widgetPagination; ?>
 	<!-- /Pagination -->
      
-     <h1>Example Enum</h1>
-     <?php 
-	     echo $this->tag->select(
-	     		[
-	     				'status',
-	     				$arrStatus,
-	     				'value' => 2,
-	     				'useEmpty' => true,
-	     				"emptyText"  => "Please, choose one...",
-        				"emptyValue" => 0,		
-	     				
-	     		]
-	     );
-	     
-	     echo "<br><br>ค่าที่มาจาก ENUM::STATUS_ACTIVE=" . $status;
-     ?>
+     
      
 <!-- blockJS -->
     <script>

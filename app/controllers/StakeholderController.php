@@ -518,7 +518,7 @@ class StakeholderController extends ControllerBase
         $stakeholders->dTask = $this->request->getPost("dTask");
         $stakeholders->wishes = $this->request->getPost("wishes");
         $stakeholders->type = $this->request->getPost("type");
-        $stakeholders->idProject = $this->request->getPost("idProject");
+        $stakeholders->idProject = $this->session->get('idProject');
         $stakeholders->save();
     }
 
@@ -538,7 +538,7 @@ class StakeholderController extends ControllerBase
         $stakeholders->dTask = $this->request->getPost("dTask");
         $stakeholders->wishes = $this->request->getPost("wishes");
         $stakeholders->type = "2";
-        $stakeholders->idProject = $this->request->getPost("idProject");
+        $stakeholders->idProject = $this->session->get('idProject');
         $stakeholders->save();
        
     }
@@ -560,7 +560,7 @@ class StakeholderController extends ControllerBase
         $stakeholders->dTask = $this->request->getPost("dTask");
         $stakeholders->wishes = $this->request->getPost("wishes");
         $stakeholders->type = $this->request->getPost("type");
-        $stakeholders->idProject = $this->request->getPost("idProject");
+        $stakeholders->idProject = $this->session->get('idProject');
         $stakeholders->save();
     }
 
