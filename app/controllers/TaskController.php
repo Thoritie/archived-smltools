@@ -436,7 +436,12 @@ class TaskController extends ControllerBase
         $arrTask['asIsState'] =  Enum::$AsIsstate[$task->asIsState];
         $arrTask['toBeState'] = Enum::$ToBeState[$task->toBeState];
 
-
+       
+        if(isset($task->mom)){
+            $temp = Common::getTaskNameById($model, $task->mom);
+             $data = $temp['name'];
+            $arrTask['mom'] =  "(". $data.")" ;
+       }
         // Details of Resouce
         $model = new Resource();
         $tempArray = [];
@@ -445,6 +450,8 @@ class TaskController extends ControllerBase
             $tempArray[] = Common::getResourceNameById($model, $id);
         };
         $arrTask['uses'] = $tempArray;
+
+
 
         $tempArray = [];
         if($task->produces != null)

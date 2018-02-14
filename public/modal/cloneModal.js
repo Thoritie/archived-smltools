@@ -889,7 +889,8 @@ function cloneModalDetailTask(taskId) {
 }
 
 function setFormIdInModalTaskDetail(idModal, newModal){
-	newModal.find('#showTaskName').attr('id', 'showTaskName-'+idModal);
+    newModal.find('#showTaskName').attr('id', 'showTaskName-'+idModal);
+    newModal.find('#parent').attr('id', 'parent-'+idModal);
 	newModal.find('#showTaskIsA').attr('id', 'showTaskIsA-'+idModal);
 	newModal.find('#showTaskDescription').attr('id', 'showTaskDescription-'+idModal);
 	newModal.find('#showTaskInclude').attr('id', 'showTaskInclude-'+idModal);
@@ -915,6 +916,8 @@ function callDataTask(taskId, idModal){
 }
 
 function setTaskModalDetail(data, idModal){
+    $('#parent-'+idModal).html(data.mom);
+
    var empty = '<label style="font-size: 10px; font-style : italic">This Field is Empty.</label>';
    $('#showTaskName-'+idModal).html(data.name);
    if(data.name == null || data.name == "") $('#showTaskName-'+idModal).html(empty);
