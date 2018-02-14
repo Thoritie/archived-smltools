@@ -1,6 +1,8 @@
 <?php 
-   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
+   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]);
+   echo $this->tag->hiddenField(["idStake", "id" => "idStake" ]);
 ?>
+
 <div class="container-fluid">
     <div class="row">
             <div class="col-md-12">
@@ -18,7 +20,7 @@
                                        <label>Name</label>
                                        
                                        <?php 
-                                        echo $this->tag->textField(["inStakeName", "size" => 30, 
+                                        echo $this->tag->textField(["edinStakeName", "size" => 30, 
                                         "class" => "form-control", "id" => "inStakeName" ]) 
                                         ?>
                                     </div>
@@ -28,7 +30,7 @@
                                        <label>aka</label>
                                        
                                        <?php 
-                                        echo $this->tag->textField(["inaka", "size" => 30, 
+                                        echo $this->tag->textField(["edinaka", "size" => 30, 
                                         "class" => "form-control", "id" => "inaka" ]) 
                                         ?>
                                     </div>
@@ -40,7 +42,7 @@
                                        <label>description</label>
             
                                         <?php 
-                                        echo $this->tag->textArea(["indescription", "row" => 3, 
+                                        echo $this->tag->textArea(["edindescription", "row" => 3, 
                                         "class" => "form-control", "id" => "indescription" ]) 
                                         ?>
                                     </div>
@@ -52,7 +54,7 @@
                                        <label>concern</label>
                                        
                                        <?php 
-                                        echo $this->tag->textField(["inconcern", "size" => 30, 
+                                        echo $this->tag->textField(["edinconcern", "size" => 30, 
                                         "class" => "form-control", "id" => "inconcern" ]) 
                                         ?>
                                     </div>
@@ -63,7 +65,7 @@
                                     <div class="form-group">
                                        <label>attitude</label>
                                        <?php 
-                                        echo $this->tag->selectStatic(["attitude", "class" => "form-control", 
+                                        echo $this->tag->selectStatic(["edattitude", "class" => "form-control", 
                                         "id" => "attitude" 
                                           ,[
                                               "positive" => "positive",
@@ -82,7 +84,7 @@
                                        <label>domain Knowledge</label>
                                        
                                        <?php 
-                                        echo $this->tag->selectStatic(["domainKnowledge", "class" => "form-control", 
+                                        echo $this->tag->selectStatic(["eddomainKnowledge", "class" => "form-control", 
                                         "id" => "domainKnowledge" 
                                           ,[
                                               "novice" => "novice",
@@ -160,13 +162,13 @@
                                        <label>wishes</label>
                                        
                                        <?php 
-                                        echo $this->tag->textField(["inwishes", "size" => 30, 
+                                        echo $this->tag->textField(["edinwishes", "size" => 30, 
                                         "class" => "form-control", "id" => "inwishes" ]) 
                                         ?>
                                     </div>
                                  </div>
                               </div>
-                              <button  class="btn btn-info btn-fill pull-right" id="Savein">Save Individual</button>
+                              <button  class="btn btn-info btn-fill pull-right" id="Saveedin">Save Individual</button>
                               <div class="clearfix"></div>
                            </form>
                         </div>
