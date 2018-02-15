@@ -88,18 +88,83 @@
 </div>
 <?php echo $stakeholders->widgetPagination; ?>
 <!-- </div> -->
+<!-- choose modal  -->
+<!-- Organization -->
 <div class="modal showStake" id="showStake" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content card">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Stakeholder Details</h4>
+            <h4 class="modal-title">Organisation Details</h4>
          </div>
          <div class="modal-body">
-             <div class="content">
-                        
-             </div>
+            <div class="content">
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Name</label>
+                     <h5 id="showStakeName"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Organisation name</label>
+                     <h5 id="showStakeOrganization"></h5>
+                  </div>
+                  <div class="col-md-6">
+                     <label>AKA</label>
+                     <h5 id="showStakeAka"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Description</label>
+                     <h5 id="showStakeDescription"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Concern</label>
+                     <h5 id="showStakeConcern"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Representative</label>
+                     <h5 id="showStakeRepresentative"></h5>
+                  </div>
+                  <div class="col-md-6">
+                     <label>Reports</label>
+                     <h5 id="showStakeReports"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Consults</label>
+                     <h5 id="showStakeConsults"></h5>
+                  </div>
+                  <div class="col-md-6">
+                     <label>Liaises</label>
+                     <h5 id="showStakeLiaises"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Delegate</label>
+                     <h5 id="showStakeDelegate"></h5>
+                  </div>
+                  <div class="col-md-6">
+                     <label>Dtask</label>
+                     <h5 id="showStakeDtask"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Wishes</label>
+                     <h5 id="showStakeWishes"></h5>
+                  </div>
+               </div>
+            </div>
          </div>
          <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -107,8 +172,8 @@
       </div>
    </div>
 </div>
-
-
+<!-- Individual -->
+<!-- role -->
 <!-- blockJS -->
 <script>
    function deleteStake(id){
