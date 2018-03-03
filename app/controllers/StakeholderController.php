@@ -583,10 +583,26 @@ class StakeholderController extends ControllerBase
         $arrStake['concern'] = $stake->concern;
         $arrStake['wishes'] = $stake->wishes;
         $arrStake['isA'] = $stake->isA;
-
-        
-        
-
     }
-   
+
+    public function checkDupNameStakeAction(){
+        $idProject = $this->request->getPost('idProject');
+        $StakeName = $this->request->getPost('StakeName');
+        $typeStake = $this->request->getPost('typeStake');
+        $result = true;
+        $condition = [];
+            
+        $condition["idProject"] = $idProject;
+        $condition["name"] = $StakeName;
+        $condition["type"] = $typeStake;
+
+        $stakeholders = Stakeholders::Find(array($condition));
+
+        if($stakeholders){
+            $result = false;
+        }
+        return json_encode($result);
+    }
+
+
 }
