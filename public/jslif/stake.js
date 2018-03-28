@@ -11,6 +11,43 @@ function showModalNewTask() {
 };
 $(document).ready(function () {
 
+    $.validator.setDefaults({
+        errorClass: 'badge badge-danger',
+        highlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .addClass('has-error has-feedback')
+        },
+        unhighlight: function (element) {
+            $(element)
+                .closest('.form-group')
+                .removeClass('has-error has-feedback')
+        }
+    })
+
+    $("#organisation").validate({
+        rules: {
+            OStakeName: {
+                required: true,
+                remote: {
+                    url: baseUrl + "stakeholder/checkDupNameStake",
+                    type: "post",
+                    data: {
+                        StakeName: function () {
+                            return $("#OStakeName").val()
+                        }
+                    }
+                }
+            },
+        },
+        messages: {
+            OStakeName: {
+                required: "Task name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
+            }
+        }
+    })
+
     $.post(baseUrl + "stakeholder/findStake", {
         project: projectid
     }, function (data) {
@@ -319,6 +356,7 @@ $(document).ready(function () {
 
     ///saveOrganisation
     $('#SaveOr').click(function () {
+        if ($("#organisation").valid()) {
         var name = $("#OStakeName").val()
         var Organisation = $("#OrganName").val()
         var aka = $("#Oaka").val()
@@ -384,6 +422,7 @@ $(document).ready(function () {
                 window.location.href = baseUrl+"stakeholder";
             }
         })
+    }
     });
 
     ///saveIndividual

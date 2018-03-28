@@ -587,12 +587,13 @@ class StakeholderController extends ControllerBase
 
     public function checkDupNameStakeAction(){
         $idProject = $this->request->getPost('idProject');
+        $id = $this->session->get('idProject');
         $StakeName = $this->request->getPost('StakeName');
         $typeStake = $this->request->getPost('typeStake');
         $result = true;
         $condition = [];
             
-        $condition["idProject"] = $idProject;
+        $condition["idProject"] = $id;
         $condition["name"] = $StakeName;
         $condition["type"] = $typeStake;
 
