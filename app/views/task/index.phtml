@@ -1,20 +1,30 @@
-<p><?php $this->flashSession->output() ?></p>
-<ol class="breadcrumb inline-flex">
+<p>
+    <?php $this->flashSession->output() ?>
+</p>
+<!-- breadcrumb -->
+<!-- <ol class="breadcrumb inline-flex">
    <li class="breadcrumb-item">
       <a href="<?=$this->url->get("project/index"); ?>">Project</a>
    </li>
    <li class="breadcrumb-item active">
       <a>Task</a>
    </li>
-</ol>
+</ol> -->
+
 <div class="container-fluid">
-   <div class="row">
-      <div class="col-md-9" style="padding:0">
-         <!-- new complete card  -->
-         <div class="col-md-4">
-            <a href="<?=$this->url->get("task/create"); ?>">
-               <div class="thumbnail s-navShadow" id="thumbnailProject">
-                  <i class="fa fa-5x fa-plus" style="
+    <div class="row">
+        <div class="col-md-12">
+            <a href="<?=$this->url->get("task/create"); ?>" class="labelAdd btn btn-Primary pull-right"><i
+                    class="fa fa-plus"></i></a>
+        </div>
+    </div>
+    <div class="row"  style="margin-top: 50px">
+        <div class="col-md-9" >
+            <!-- new complete card  -->
+            <!-- <div class="col-md-4">
+                <a href="<?=$this->url->get(" task/create"); ?>">
+                    <div class="thumbnail s-navShadow" id="thumbnailProject">
+                        <i class="fa fa-5x fa-plus" style="
                      color: #3d578a;
                      display: flex;
                      justify-content: center;
@@ -22,82 +32,136 @@
                      height: 100%;
                      margin-top: 40px;
                      "></i>
-               </div>
-            </a>
-         </div>
-         <?php 
+                    </div>
+                </a>
+            </div> -->
+             <!-- card task -->
+            <!-- <?php 
            
-                 foreach ($task->items as $key => $tk) { ?>
-         <div class="col-md-4">
-            <div class="thumbnail s-navShadow">
-               <div class="caption">
-                  <div class="header">
-                     <!-- <a href="#" class="showDetailTask pull-right" onclick="cloneModalDetailTask('<?=$tk->_id?>')"><i class="fa fa-eye" aria-hidden="true"></i></a> -->
-                     <!-- <i class="showDetailTask" data-id="<?=$tk->_id?>"> -->
-                        <h4><?=$tk->name?></h4>
-                     </i>
-                  </div>
-                  <hr>
-                  <div class="footer">
-                     <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body" data-placement="bottom"  data-toggle="popover" data-placement="left" data-content="<?=$tk->Description?>"><i class="fa fa-info"></i></a> 
+                 foreach ($task->items as $key => $tk) { 
+            ?>
+           
+            <div class="col-md-4">
+                <div class="thumbnail s-navShadow">
+                    <div class="caption">
+                        <div class="header">
+                            
+                            <h4>
+                                <?=$tk->name?>
+                            </h4>
+                            </i>
+                        </div>
+                        <hr>
+                        <div class="footer">
+                            <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body"
+                                data-placement="bottom" data-toggle="popover" data-placement="left" data-content="<?=$tk->Description?>"><i
+                                    class="fa fa-info"></i></a>
 
-                     <a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
+                            <a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;"
+                                class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;"
+                                data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
 
-                     <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> 
-                     <a class="showDetailTask btn btn-xs pull-right"  onclick="cloneModalDetailTask('<?=$tk->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp; 
+                            <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>"
+                                role="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a class="showDetailTask btn btn-xs pull-right" onclick="cloneModalDetailTask('<?=$tk->_id?>')"
+                                role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top"
+                                title="Show"><i class="fa fa-eye"></i></a>&nbsp;
 
-                  </div>
-               </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-         <?php }?>
-         <!-- end new -->
-      </div>
-      <form action="<?=$this->url->get("task/index"); ?>" method="POST">
-      <div class="col-md-3">
-         <!-- Sort -->
-         <div class="card s-navShadow">
-            <div class="header">
-               <h4 class="title">Sort</h4>
+            <?php }?> -->
+            <!-- end new -->
+           
+            <div class="fresh-table s-navShadow">
+                <table id="fresh-table" class="table">
+                    <thead>
+                        <th data-field="id">No.</th>
+                        <th data-field="name" data-sortable="true">Name</th>
+                        <th data-field="country" data-sortable="true">Description</th>
+                        <th data-field="actions" data-formatter="" data-events="operateEvents" class="pull-right">Manage
+                            Actions</th>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            $i =1;
+                            foreach ($task->items as $key => $tk) {  
+                            ?>
+                        <tr>
+                            <td>
+                                <?= $i ?>
+                            </td>
+                            <td>
+                                <h6 style="color: #747474">
+                                    <?=$tk->name?>
+                                </h6>
+                            </td>
+                            <td>
+                                <?=$tk->Description ?>
+                            </td>
+                            <td>
+                                <a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;"
+                                    class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;"
+                                    data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
+
+                                <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>"
+                                    role="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a class="showDetailTask btn btn-xs pull-right" onclick="cloneModalDetailTask('<?=$tk->_id?>')"
+                                    role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top"
+                                    title="Show"><i class="fa fa-eye"></i></a>&nbsp;
+                            </td>
+                        </tr>
+                        <?php  $i++; } ?>
+                    </tbody>
+                </table>
             </div>
-            <div class="content">
-               <div class="form-group">
-                  <!-- <label for="sel1">Select list (select one):</label> -->
-                  <?php 
-                  echo $this->tag->select(
-                          [
-                                  'sortBy',
-                                  $arrSortBy,
-                                  'value' => $sortBy,
-                                  'class' => 'form-control',
-                                  'id' => 'sel1',
-                                  'onchange' => 'this.form.submit()'
-                          ]
-                  );
-              ?>
-               </div>
+        </div>
+        <form action="<?=$this->url->get("task/index"); ?>" method="POST">
+            <div class="col-md-3">
+                <!-- Sort -->
+                <div class="card s-navShadow">
+                    <div class="header">
+                        <h4 class="title">Sort</h4>
+                    </div>
+                    <div class="content">
+                        <div class="form-group">
+                            <!-- <label for="sel1">Select list (select one):</label> -->
+                            <?php 
+                                echo $this->tag->select(
+                                        [
+                                                'sortBy',
+                                                $arrSortBy,
+                                                'value' => $sortBy,
+                                                'class' => 'form-control',
+                                                'id' => 'sel1',
+                                                'onchange' => 'this.form.submit()'
+                                        ]
+                                );
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <!-- Filter -->
+                <div class="card s-navShadow">
+                    <div class="header">
+                        <h4 class="title">Filter</h4>
+                    </div>
+                    <div class="content">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Task Name</label>
+                                <input type="text" class="form-control" name="filter" placeholder="Task Name" value="<?=$filter?>">
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button class="btn btn-default pull-right" type="submit">Filter</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-         <!-- Filter -->
-         <div class="card s-navShadow">
-            <div class="header">
-               <h4 class="title">Filter</h4>
-            </div>
-            <div class="content">
-                  <div class="form-group">
-                     <div class="form-group">
-                        <label>Task Name</label>
-                        <input type="text" class="form-control" name="filter" placeholder="Task Name" value="<?=$filter?>">
-                     </div>
-                  </div>
-                  <div class="footer">
-                     <button class="btn btn-default pull-right" type="submit">Filter</button>
-                  </div>
-            </div>
-         </div>
-      </div>
-      </form>
-   </div>
+        </form>
+    </div>
 </div>
 
 
@@ -107,223 +171,223 @@
 
 <!-- modal task -->
 <div class="modal showTask" id="showTask" role="dialog">
-   <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content card">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Task Details   <span id="parent"></span></h4>
-            
-         </div>
-         <div class="modal-body">
-            <div class="content">
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>Task name</label>
-                     <h5 id="showTaskName"></h5>
-                  </div>
-                  <div class="col-md-6">
-                     <label>IsA</label>
-                     <h5 id="showTaskIsA">IsA Type Task</h5>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Description</label>
-                     <h5 id="showTaskDescription">Description Task I just try to make this paragraph long as much as i can</h5>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Includes</label>
-                     <div id="showTaskInclude"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>as IsState</label>
-                     <h5 id="showTaskAsIsState"></h5>
-                  </div>
-                  <div class="col-md-6">
-                     <label>to Be State</label>
-                     <h5 id="showTaskToBeState"></h5>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Uses</label>
-                     <div id="showTaskUses"></div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Produces</label>
-                     <div id="showTaskProduces"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>ToUse</label>
-                     <div id="showTaskToUses"></div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>ToProduce</label>
-                     <div id="showTaskToProduce"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>Owner</label>
-                     <div id="showTaskOwner"></div>
-                  </div>
-                  <div class="col-md-6">
-                     <label>Collaborator</label>
-                     <div id="showTaskCollaborator"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>owner To Be</label>
-                     <div id="showTaskOwnerToBe"></div>
-                  </div>
-                  <div class="col-md-6">
-                     <label>collaborator To Be</label>
-                     <div id="showTaskCollaboratorToBe"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Regulator</label>
-                     <div id="showTaskRegulator"></div>
-                  </div>
-               </div>
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content card">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Task Details <span id="parent"></span></h4>
+
             </div>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-         </div>
-      </div>
-   </div>
+            <div class="modal-body">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Task name</label>
+                            <h5 id="showTaskName"></h5>
+                        </div>
+                        <div class="col-md-6">
+                            <label>IsA</label>
+                            <h5 id="showTaskIsA">IsA Type Task</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <h5 id="showTaskDescription">Description Task I just try to make this paragraph long as
+                                much as i can</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Includes</label>
+                            <div id="showTaskInclude"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>as IsState</label>
+                            <h5 id="showTaskAsIsState"></h5>
+                        </div>
+                        <div class="col-md-6">
+                            <label>to Be State</label>
+                            <h5 id="showTaskToBeState"></h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Uses</label>
+                            <div id="showTaskUses"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Produces</label>
+                            <div id="showTaskProduces"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>ToUse</label>
+                            <div id="showTaskToUses"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>ToProduce</label>
+                            <div id="showTaskToProduce"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Owner</label>
+                            <div id="showTaskOwner"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Collaborator</label>
+                            <div id="showTaskCollaborator"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>owner To Be</label>
+                            <div id="showTaskOwnerToBe"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>collaborator To Be</label>
+                            <div id="showTaskCollaboratorToBe"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Regulator</label>
+                            <div id="showTaskRegulator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- modal resource -->
 <div class="modal showRes" id="showRes" role="dialog">
-   <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content card">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Resource Details</h4>
-         </div>
-         <div class="modal-body">
-            <div class="content">
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>Resource name</label>
-                     <h5 id="showResName"></h5>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Description</label>
-                     <h5 id="showResDescription"></h5>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Includes</label>
-                     <div id="showResInclude"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>R Owner</label>
-                     <div id="showResRowner"></div>
-                  </div>
-                  <div class="col-md-6">
-                     <label>P Owner</label>
-                     <div id="showResPowner"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Maintainer</label>
-                     <div id="showResMaintainer"></div>
-                  </div>
-               </div>
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content card">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Resource Details</h4>
             </div>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-         </div>
-      </div>
-   </div>
+            <div class="modal-body">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Resource name</label>
+                            <h5 id="showResName"></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <h5 id="showResDescription"></h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Includes</label>
+                            <div id="showResInclude"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>R Owner</label>
+                            <div id="showResRowner"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>P Owner</label>
+                            <div id="showResPowner"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Maintainer</label>
+                            <div id="showResMaintainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- modal collaboration  -->
 <div class="modal showColla" id="showColla" role="dialog">
-   <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content card">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Collaboration Setting Details</h4>
-         </div>
-         <div class="modal-body">
-            <div class="content">
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>Collaboration Setting name</label>
-                     <h5 id="showCollaName"></h5>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Description</label>
-                     <h5 id="showCollaDescription"></h5>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Includes</label>
-                     <div id="showCollaInclude"></div>
-                  </div>
-               </div>
-    
-              
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content card">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Collaboration Setting Details</h4>
             </div>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-         </div>
-      </div>
-   </div>
+            <div class="modal-body">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Collaboration Setting name</label>
+                            <h5 id="showCollaName"></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <h5 id="showCollaDescription"></h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Includes</label>
+                            <div id="showCollaInclude"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- blockJS -->
 <script>
- 
-   function deleteTask(id){
-       var idtask = id;
-   
-       $.post(baseUrl+"task/deleteTask",{
-           idTask : idtask
-       }, function(data){
-        window.location.href = baseUrl+"task";
-       },  "json");
-      
-   }
+    function deleteTask(id) {
+        var idtask = id;
+
+        $.post(baseUrl + "task/deleteTask", {
+            idTask: idtask
+        }, function (data) {
+            window.location.href = baseUrl + "task";
+        }, "json");
+
+    }
 </script>
 <!-- /.blockJS -->
