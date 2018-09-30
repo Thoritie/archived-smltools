@@ -1,3 +1,4 @@
+<p><?php $this->flashSession->output() ?></p>
 <!-- <div class="wrapper"> -->
 <div class="container-fluid">
    <!-- <div class="container"> -->
@@ -11,11 +12,11 @@
          <div class="fresh-table s-navShadow">
             <table id="fresh-table" class="table">
                <thead>
-                  <th data-field="id">ID</th>
+                  <th data-field="id">No.</th>
                   <th data-field="name" data-sortable="true">Name</th>
                   <!-- <th data-field="salary" data-sortable="true">Salary</th> -->
-                  <th data-field="country" data-sortable="true">Def</th>
-                  <th data-field="actions" data-formatter="" data-events="operateEvents">Manage Actions</th>
+                  <th data-field="country" data-sortable="true">Description</th>
+                  <th data-field="actions" data-formatter="" data-events="operateEvents" class="pull-right">Manage Actions</th>
                </thead>
                <tbody>
                   <?php 
