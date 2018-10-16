@@ -1277,7 +1277,6 @@ function callDataColla(collaId, idModal){
     $.post(baseUrl+"collaborationsetting/showDetailColla",{
         collaId :collaId
     }, function(data){
-        console.log(data)
         setCollaModalDetail(data, idModal);
     }, "json");
 };
