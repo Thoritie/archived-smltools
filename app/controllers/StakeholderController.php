@@ -154,7 +154,9 @@ class StakeholderController extends ControllerBase
         $isA = $this->request->getPost("isA");
         $PlayerType = $this->request->getPost("PlayerType");
         $RolePlayer = $this->request->getPost("RolePlayer");
-        
+        $NoStake = $this->request->getPost("NoStake");
+        $playRole = $this->request->getPost("playRole");
+        $roleTF = $this->request->getPost("roleTF");
         
 
         $id = $this->request->getPost("idStake");
@@ -186,6 +188,9 @@ class StakeholderController extends ControllerBase
             $stakeholders->description = $description;
             $stakeholders->concern = $concern;
             $stakeholders->PlayerType = $PlayerType;
+            $stakeholders->NoStake = $NoStake;
+            $stakeholders->playRole = $playRole;
+            $stakeholders->roleTF = $roleTF;
             $stakeholders->RolePlayer = $RolePlayer;
             $stakeholders->reports = $reports;
             $stakeholders->consults = $consults;
