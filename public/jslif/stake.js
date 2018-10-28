@@ -760,69 +760,103 @@ $(document).ready(function () {
         }
     });
 
-     ///saveIndividual
-    $('#Saveedin').click(function () {
-        var inname = $("#inStakeName").val()
-        var inaka = $("#inaka").val()
-        var indescription = $("#indescription").val()
-        var inconcern = $("#inconcern").val()
-
-        var inattitude = $("#attitude  option:selected").val();
-        var indomainKnowledge = $("#domainKnowledge  option:selected").val();
-
-        var inreports = $("#edinreports").tagsinput('items');
-        iteminreports = {};
-        $.each(inreports, function (index, input) {
-            iteminreports[index] = input.value
-        });
-        var inconsults = $("#edinconsults").tagsinput('items');
-        iteminconsults = {};
-        $.each(inconsults, function (index, input) {
-            iteminconsults[index] = input.value
-        });
-        var inliaises = $("#edinliaises").tagsinput('items');
-        iteminliaises = {};
-        $.each(inliaises, function (index, input) {
-            iteminliaises[index] = input.value
-        });
-        var indelegate = $("#edindelegate").tagsinput('items');
-        itemindelegate = {};
-        $.each(indelegate, function (index, input) {
-            itemindelegate[index] = input.value
-        });
-        var indTask = $("#edindTask").tagsinput('items');
-        itemdTask = {};
-        $.each(indTask, function (index, input) {
-            itemdTask[index] = input.value
-        });
-        var inwishes = $("#inwishes").val()
-        var inidProject = $("#idProject").val();
-        var stakeid = $("#idStake").val();
-        var intype = 2;
-        $.ajax({
-            type: 'POST',
-            url: baseUrl + "stakeholder/save",
-            data: {
-                name: inname,
-                aka: inaka,
-                description: indescription,
-                concern: inconcern,
-                attitude: inattitude,
-                domainKnowledge: indomainKnowledge,
-                reports: iteminreports,
-                consults: iteminconsults,
-                liaises: iteminliaises,
-                delegate: itemindelegate,
-                dTask: itemdTask,
-                wishes: inwishes,
-                type: intype,
-                idProject: inidProject,
-                idStake: stakeid
+    $("#edit_individual").validate({
+        rules: {
+            edinStakeName: {
+                required: true,
+                remote: {
+                    url: baseUrl + "stakeholder/checkDupNameEditStake",
+                    type: "post",
+                    data: {
+                        StakeName: function () {
+                            return $("#inStakeName").val()
+                        },
+                        idProject: function () {
+                            return $("#idProject").val()
+                        },
+                        typeStake: function () {
+                            return 2
+                        },
+                        idStake: function () {
+                            return $("#idStake").val()
+                        }
+                    }
+                }
             },
-            success: function (data) {
-                window.location.href = baseUrl + "stakeholder";
+        },
+        messages: {
+            OStakeName: {
+                required: "stakeholder name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
             }
-        })
+        }
+    })
+
+     ///saveIndividual
+    $('#save_edit_individual').click(function () {
+        if ($("#edit_individual").valid()) {
+            var inname = $("#inStakeName").val()
+            var inaka = $("#inaka").val()
+            var indescription = $("#indescription").val()
+            var inconcern = $("#inconcern").val()
+
+            var inattitude = $("#attitude  option:selected").val();
+            var indomainKnowledge = $("#domainKnowledge  option:selected").val();
+
+            var inreports = $("#edinreports").tagsinput('items');
+            iteminreports = {};
+            $.each(inreports, function (index, input) {
+                iteminreports[index] = input.value
+            });
+            var inconsults = $("#edinconsults").tagsinput('items');
+            iteminconsults = {};
+            $.each(inconsults, function (index, input) {
+                iteminconsults[index] = input.value
+            });
+            var inliaises = $("#edinliaises").tagsinput('items');
+            iteminliaises = {};
+            $.each(inliaises, function (index, input) {
+                iteminliaises[index] = input.value
+            });
+            var indelegate = $("#edindelegate").tagsinput('items');
+            itemindelegate = {};
+            $.each(indelegate, function (index, input) {
+                itemindelegate[index] = input.value
+            });
+            var indTask = $("#edindTask").tagsinput('items');
+            itemdTask = {};
+            $.each(indTask, function (index, input) {
+                itemdTask[index] = input.value
+            });
+            var inwishes = $("#inwishes").val()
+            var inidProject = $("#idProject").val();
+            var stakeid = $("#idStake").val();
+            var intype = 2;
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + "stakeholder/save",
+                data: {
+                    name: inname,
+                    aka: inaka,
+                    description: indescription,
+                    concern: inconcern,
+                    attitude: inattitude,
+                    domainKnowledge: indomainKnowledge,
+                    reports: iteminreports,
+                    consults: iteminconsults,
+                    liaises: iteminliaises,
+                    delegate: itemindelegate,
+                    dTask: itemdTask,
+                    wishes: inwishes,
+                    type: intype,
+                    idProject: inidProject,
+                    idStake: stakeid
+                },
+                success: function (data) {
+                    window.location.href = baseUrl + "stakeholder";
+                }
+            })
+        }
     });
 
     ///saveRole

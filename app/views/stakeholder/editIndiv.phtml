@@ -5,66 +5,66 @@
 
 <div class="container-fluid">
     <div class="row">
-            <div class="col-md-12">
-               <div class="card">
-                  <div class="row">
-                     <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
                         <div class="header">
-                           <h4 class="title">Edit Individual</h4>
+                            <h4 class="title">Edit Individual</h4>
                         </div>
                         <div class="content">
-                           <form>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>Name</label>
-                                       
-                                       <?php 
+                            <form id="edit_individual">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Name</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edinStakeName", "size" => 30, 
                                         "class" => "form-control", "id" => "inStakeName" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>aka</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>aka</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edinaka", "size" => 30, 
                                         "class" => "form-control", "id" => "inaka" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <label>description</label>
-            
-                                        <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>description</label>
+
+                                            <?php 
                                         echo $this->tag->textArea(["edindescription", "row" => 3, 
                                         "class" => "form-control", "id" => "indescription" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <label>concern</label>
-                                       
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>concern</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edinconcern", "size" => 30, 
                                         "class" => "form-control", "id" => "inconcern" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>attitude</label>
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>attitude</label>
+                                            <?php 
                                         echo $this->tag->selectStatic(["edattitude", "class" => "form-control", 
                                         "id" => "attitude" 
                                           ,[
@@ -77,13 +77,13 @@
                                           "emptyText"  => "select",
                                         ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>domain Knowledge</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>domain Knowledge</label>
+
+                                            <?php 
                                         echo $this->tag->selectStatic(["eddomainKnowledge", "class" => "form-control", 
                                         "id" => "domainKnowledge" 
                                           ,[
@@ -96,93 +96,92 @@
                                           "emptyText"  => "select",
                                         ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>reports</label>
-                                       
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>reports</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edinreports", "size" => 30, 
                                         "class" => "form-control", "id" => "edinreports" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>consults</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>consults</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edinconsults", "size" => 30, 
                                         "class" => "form-control", "id" => "edinconsults" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <label>liaises</label>
-                                       
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>liaises</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edinliaises", "size" => 30, 
                                         "class" => "form-control", "id" => "edinliaises" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
                                 </div>
                                 <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>delegate</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>delegate</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edindelegate", "size" => 30, 
                                         "class" => "form-control", "id" => "edindelegate" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
 
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>dTask</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>dTask</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edindTask", "size" => 30, 
                                         "class" => "form-control", "id" => "edindTask" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 </div>
-                                 <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <label>wishes</label>
-                                       
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>wishes</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edinwishes", "size" => 30, 
                                         "class" => "form-control", "id" => "inwishes" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <button  class="btn btn-info btn-fill pull-right" id="Saveedin">Save Individual</button>
-                              <div class="clearfix"></div>
-                           </form>
+                                </div>
+                                <button class="btn btn-info btn-fill pull-right" id="save_edit_individual">Save Individual</button>
+                                <div class="clearfix"></div>
+                            </form>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      
+        </div>
+    </div>
+
 </div>
 <!-- blockJS -->
 <script>
-
-var taskinput = '<?php echo json_encode($taskTags); ?>';
+    var taskinput = '<?php echo json_encode($taskTags); ?>';
     taskinput = JSON.parse(taskinput);
     taskinput = createJSON(taskinput);
     taskinput = JSON.stringify(taskinput);
@@ -195,7 +194,7 @@ var taskinput = '<?php echo json_encode($taskTags); ?>';
     stakeinput = createJSON(stakeinput);
     stakeinput = JSON.stringify(stakeinput);
 
-    
+
     var data_reports = '<?php echo json_encode($reports); ?>';
     var data_consults = '<?php echo json_encode($consults); ?>';
     var data_liaises = '<?php echo json_encode($liaises); ?>';
@@ -203,11 +202,11 @@ var taskinput = '<?php echo json_encode($taskTags); ?>';
 
 
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         Tasks = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: JSON.parse(taskinput)
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(taskinput)
         });
         Tasks.initialize();
 
@@ -296,13 +295,14 @@ var taskinput = '<?php echo json_encode($taskTags); ?>';
         add(edindelegate, data_delegate);
 
     });
-    function add($elt, data){
-        $.each(JSON.parse(data), function(index ,data){   
-        $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
+
+    function add($elt, data) {
+        $.each(JSON.parse(data), function (index, data) {
+            $elt.tagsinput('add', {
+                "value": data._id.$id,
+                "text": data.name
+            });
         });
     }
-
-    
-
 </script>
 <!-- /.blockJS -->
