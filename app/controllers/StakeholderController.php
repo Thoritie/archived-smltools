@@ -545,7 +545,6 @@ class StakeholderController extends ControllerBase
         $stakeholders->type = "2";
         $stakeholders->idProject = $this->session->get('idProject');
         $stakeholders->save();
-       
     }
 
     public function saveRoleAction()
@@ -610,5 +609,29 @@ class StakeholderController extends ControllerBase
         return json_encode($result);
     }
 
+    public function checkDupNameEditStakeAction(){
+        $idProject = $this->request->getPost('idProject');
+        $StakeName = $this->request->getPost('StakeName');
+        $typeStake = $this->request->getPost('typeStake');
+        $idStake = $this->request->getPost('idStake');
+
+        $result = true;
+        $condition = [];
+            
+        $condition["idProject"] = $idProject;
+        $condition["name"] = $StakeName;
+        $condition["type"] = $typeStake;
+
+        $stakeholders = Stakeholders::Find(array($condition));
+        $stakeCompare = Stakeholders::findById($idStake);
+
+        if($stakeholders){
+            $result = false;
+            if($stakeholders[0]->name == $stakeCompare->name){
+                $result = true;
+            }
+        }
+        return json_encode($result);
+    }
 
 }

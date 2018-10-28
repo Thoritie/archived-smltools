@@ -3,315 +3,321 @@
    echo $this->tag->hiddenField(["idStake", "id" => "idStake" ]);
 ?>
 <div class="container-fluid">
-<div class="row">
-            <div class="col-md-12">
-               <div class="card">
-                  <div class="row">
-                     <div class="col-md-8 col-md-offset-2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
                         <div class="header">
-                           <h4 class="title">Edit Organisation</h4>
+                            <h4 class="title">Edit Organisation</h4>
                         </div>
                         <div class="content">
-                           <form>
-                            <label>
-                            <?php if($focal == 1) { ?>
-                                <input type="checkbox" id="focal" checked> Focal Organisation
-                            <?php }else{ ?>
-                                <input type="checkbox" id="focal"> Focal Organisation>
-                            <?php }?>
-                            </label>
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <label>Name</label>
-                                       <?php 
+                            <form id="edit_organisation">
+                                <label>
+                                    <?php if($focal == 1) { ?>
+                                    <input type="checkbox" id="focal" checked> Focal Organisation
+                                    <?php }else{ ?>
+                                    <input type="checkbox" id="focal"> Focal Organisation>
+                                    <?php }?>
+                                </label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <?php 
                                         echo $this->tag->textField(["edStakeName", "size" => 30, 
                                         "class" => "form-control", "id" => "edStakeName" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>Organisation</label>
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Organisation</label>
+                                            <?php 
                                         echo $this->tag->textField(["edOrganName", "size" => 30, 
                                         "class" => "form-control", "id" => "OrganName" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>aka</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>aka</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOaka", "size" => 30, 
                                         "class" => "form-control", "id" => "Oaka" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <label>description</label>
-                
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>description</label>
+
+                                            <?php 
                                         echo $this->tag->textArea(["edOdescription", "rows" => 3, 
                                         "class" => "form-control", "id" => "Odescription" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <label>concern</label>
-                                      
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>concern</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOconcern", "size" => 30, 
                                         "class" => "form-control", "id" => "Oconcern" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>representative</label>
-                                       
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>representative</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOrepresentative", "size" => 30, 
                                         "class" => "form-control", "id" => "edOrepresentative" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>reports</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>reports</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOreports", "size" => 30, 
                                         "class" => "form-control", "id" => "edOreports" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>consults</label>
-                                       
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>consults</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOconsults", "size" => 30, 
                                         "class" => "form-control", "id" => "edOconsults" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>liaises</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>liaises</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOliaises", "size" => 30, 
                                         "class" => "form-control", "id" => "edOliaises" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>delegate</label>
-                                       
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>delegate</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOdelegate", "size" => 30, 
                                         "class" => "form-control", "id" => "edOdelegate" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>dTask</label>
-                                       
-                                       <?php 
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>dTask</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOdTask", "size" => 30, 
                                         "class" => "form-control", "id" => "edOdTask" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                                 </div>
-                                 <div class="row">
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <label>wishes</label>
-                                      
-                                       <?php 
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>wishes</label>
+
+                                            <?php 
                                         echo $this->tag->textField(["edOwishes", "size" => 30, 
                                         "class" => "form-control", "id" => "Owishes" ]) 
                                         ?>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                              <button class="btn btn-info btn-fill pull-right" id="SaveedOr">Save Organisation</button>
-                              <div class="clearfix"></div>
-                           </form>
+                                </div>
+                                <button type="button" class="btn btn-info btn-fill pull-right" id="Save_edit_Organ">Save Organisation</button>
+                                <div class="clearfix"></div>
+                            </form>
                         </div>
-                     </div>
-                  </div>
-               </div>
-</div>
-<!-- blockJS -->
-<script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- blockJS -->
+        <script>
+            var taskinput = '<?php echo json_encode($taskTags); ?>';
+            taskinput = JSON.parse(taskinput);
+            taskinput = createJSON(taskinput);
+            taskinput = JSON.stringify(taskinput);
 
-var taskinput = '<?php echo json_encode($taskTags); ?>';
-    taskinput = JSON.parse(taskinput);
-    taskinput = createJSON(taskinput);
-    taskinput = JSON.stringify(taskinput);
-
-    var data_dTask = '<?php echo json_encode($dTask); ?>';
+            var data_dTask = '<?php echo json_encode($dTask); ?>';
 
 
-    var stakeinput = '<?php echo json_encode($tagsStake); ?>';
-    stakeinput = JSON.parse(stakeinput);
-    stakeinput = createJSON(stakeinput);
-    stakeinput = JSON.stringify(stakeinput);
+            var stakeinput = '<?php echo json_encode($tagsStake); ?>';
+            stakeinput = JSON.parse(stakeinput);
+            stakeinput = createJSON(stakeinput);
+            stakeinput = JSON.stringify(stakeinput);
 
-    
-    var data_reports = '<?php echo json_encode($reports); ?>';
-    var data_consults = '<?php echo json_encode($consults); ?>';
-    var data_liaises = '<?php echo json_encode($liaises); ?>';
-    var data_delegate = '<?php echo json_encode($delegate); ?>';
+            var data_reports = '<?php echo json_encode($reports); ?>';
+            var data_consults = '<?php echo json_encode($consults); ?>';
+            var data_liaises = '<?php echo json_encode($liaises); ?>';
+            var data_delegate = '<?php echo json_encode($delegate); ?>';
 
-    var stakerepersent = '<?php echo json_encode($tagsRepresent); ?>';
-    stakerepersent = JSON.parse(stakerepersent);
-    stakerepersent = createJSON(stakerepersent);
-    stakerepersent = JSON.stringify(stakerepersent);
+            var stakerepersent = '<?php echo json_encode($tagsRepresent); ?>';
+            stakerepersent = JSON.parse(stakerepersent);
+            stakerepersent = createJSON(stakerepersent);
+            stakerepersent = JSON.stringify(stakerepersent);
 
-    var data_representative = '<?php echo json_encode($representative); ?>';
+            var data_representative = '<?php echo json_encode($representative); ?>';
 
-    $(document).ready(function(){
-        Tasks = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: JSON.parse(taskinput)
-        });
-        Tasks.initialize();
+            $(document).ready(function () {
+                Tasks = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: JSON.parse(taskinput)
+                });
+                Tasks.initialize();
 
-        var edOdTask = $('#edOdTask');
-        edOdTask.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Tasks.ttAdapter(),
-                templates: {
-                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                }
+                var edOdTask = $('#edOdTask');
+                edOdTask.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Tasks.ttAdapter(),
+                        templates: {
+                            empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                        }
+                    }
+                });
+                add(edOdTask, data_dTask);
+
+                Stakeholder = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: JSON.parse(stakeinput)
+                });
+                Stakeholder.initialize();
+
+                var edOreports = $('#edOreports');
+                edOreports.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates: {
+                            highlight: true,
+                            empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                        }
+                    }
+                });
+                add(edOreports, data_reports);
+
+                var edOconsults = $('#edOconsults');
+                edOconsults.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates: {
+                            highlight: true,
+                            empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                        }
+                    }
+                });
+                add(edOconsults, data_consults);
+
+                var edOliaises = $('#edOliaises');
+                edOliaises.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates: {
+                            empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                        }
+                    }
+                });
+                add(edOliaises, data_liaises);
+
+                var edOdelegate = $('#edOdelegate');
+                edOdelegate.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates: {
+                            empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                        },
+                    }
+                });
+                add(edOdelegate, data_delegate);
+
+                Stakeholder = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: JSON.parse(stakerepersent)
+                });
+                Stakeholder.initialize();
+
+                var edOrepresentative = $('#edOrepresentative');
+                edOrepresentative.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: Stakeholder.ttAdapter(),
+                        templates: {
+                            empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                        }
+                    }
+                });
+                add(edOrepresentative, data_representative);
+            });
+
+            function add($elt, data) {
+                $.each(JSON.parse(data), function (index, data) {
+                    $elt.tagsinput('add', {
+                        "value": data._id.$id,
+                        "text": data.name
+                    });
+                });
             }
-        });
-        add(edOdTask, data_dTask);
 
-        Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(stakeinput)
-        });
-        Stakeholder.initialize();
-
-        var edOreports = $('#edOreports');
-        edOreports.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates: {
-                    highlight: true,
-                    empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                }
-            }
-        });
-        add(edOreports, data_reports);
-
-        var edOconsults = $('#edOconsults');
-        edOconsults.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates: {
-                    highlight: true,
-                    empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                }
-            }
-        });
-        add(edOconsults, data_consults);
-
-        var edOliaises = $('#edOliaises');
-        edOliaises.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates: {
-                    empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                }
-            }
-        });
-        add(edOliaises, data_liaises);
-
-        var edOdelegate = $('#edOdelegate');
-        edOdelegate.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates: {
-                    empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                },
-            }
-        });
-        add(edOdelegate, data_delegate);
-
-        Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(stakerepersent)
-        });
-        Stakeholder.initialize();
-
-        var edOrepresentative = $('#edOrepresentative');
-        edOrepresentative.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates: {
-                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                }
-            }
-        });
-        add(edOrepresentative, data_representative);
-    });
-    function add($elt, data){
-        $.each(JSON.parse(data), function(index ,data){   
-        $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
-        });
-    }
-
-    
-
-</script>
-<!-- /.blockJS -->
+            questionMark($('#edOrepresentative'));
+            questionMark($('#edOreports'));
+            questionMark($('#edOconsults'));
+            questionMark($('#edOliaises'));
+            questionMark($('#edOdelegate'));
+            questionMark($('#edOdTask'));
+        </script>
+        <!-- /.blockJS -->

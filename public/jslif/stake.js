@@ -574,7 +574,6 @@ $(document).ready(function () {
 
     ///saveRole
     $('#saveR').click(function () {
-        
         if ($("#create_role").valid()) {
             var rname = $("#rStakeName").val()
             var raka = $("#raka").val()
@@ -584,7 +583,6 @@ $(document).ready(function () {
             var rolePlayerType = $('#role_playerType:checked').val();
             var roleNoStake = $("#role_number_of_stakeholder").val();
             var RolePlayer = $("#role_RolePlayer  option:selected").val();
-            console.log(RolePlayer);
             var roleTF = $("#role_TF  option:selected").val();
             var rolePlayRole = $("#role_play_role").tagsinput('items');
             itemRolePlayRole = {};
@@ -652,16 +650,16 @@ $(document).ready(function () {
 
     // ---------------------------------------EDITSTAKE-------------------------------------------------------
 
-    $("#create_editorganisation").validate({
+    $("#edit_organisation").validate({
         rules: {
-            OStakeName: {
+            edStakeName: {
                 required: true,
                 remote: {
-                    url: baseUrl + "stakeholder/checkDupNameStake",
+                    url: baseUrl + "stakeholder/checkDupNameEditStake",
                     type: "post",
                     data: {
                         StakeName: function () {
-                            return $("#OStakeName").val()
+                            return $("#edStakeName").val()
                         },
                         idProject: function () {
                             return $("#idProject").val()
@@ -674,6 +672,9 @@ $(document).ready(function () {
                             
                             return typeOrgan
                         },
+                        idStake: function () {
+                            return $("#idStake").val()
+                        }
                     }
                 }
             },
@@ -688,73 +689,75 @@ $(document).ready(function () {
 
 
     $('#Save_edit_Organ').click(function () {
-        var name = $("#edStakeName").val()
-        var Organisation = $("#OrganName").val()
-        var aka = $("#Oaka").val()
-        var description = $("#Odescription").val()
-        var concern = $("#Oconcern").val()
-        var representative = $("#edOrepresentative").tagsinput('items');
-        itemrepresentative = {};
-        $.each(representative, function (index, input) {
-            itemrepresentative[index] = input.value
-        });
-        var reports = $("#edOreports").tagsinput('items');
-        itemreports = {};
-        $.each(reports, function (index, input) {
-            itemreports[index] = input.value
-        });
-        var consults = $("#edOconsults").tagsinput('items');
-        itemconsults = {};
-        $.each(consults, function (index, input) {
-            itemconsults[index] = input.value
-        });
-        var liaises = $("#edOliaises").tagsinput('items');
-        itemliaises = {};
-        $.each(liaises, function (index, input) {
-            itemliaises[index] = input.value
-        });
-        var delegate = $("#edOdelegate").tagsinput('items');
-        itemdelegate = {};
-        $.each(delegate, function (index, input) {
-            itemdelegate[index] = input.value
-        });
-        var dTask = $("#edOdTask").tagsinput('items');
-        itemdTask = {};
-        $.each(dTask, function (index, input) {
-            itemdTask[index] = input.value
-        });
-        var wishes = $("#Owishes").val()
-        var idProject = $("#idProject").val();
-        var stakeid = $("#idStake").val();
-        var type;
-        if ($('#focal').is(':checked'))
-            type = 1;
-        else
-            type = 0;
-        $.ajax({
-            type: 'POST',
-            url: baseUrl + "stakeholder/save",
-            data: {
-                name: name,
-                Organisation: Organisation,
-                aka: aka,
-                description: description,
-                concern: concern,
-                representative: itemrepresentative,
-                reports: itemreports,
-                consults: itemconsults,
-                liaises: itemliaises,
-                delegate: itemdelegate,
-                dTask: itemdTask,
-                wishes: wishes,
-                type: type,
-                idProject: idProject,
-                idStake: stakeid
-            },
-            success: function (data) {
-                window.location.href = baseUrl + "stakeholder";
-            }
-        })
+        if ($("#edit_organisation").valid()) {
+            var name = $("#edStakeName").val()
+            var Organisation = $("#OrganName").val()
+            var aka = $("#Oaka").val()
+            var description = $("#Odescription").val()
+            var concern = $("#Oconcern").val()
+            var representative = $("#edOrepresentative").tagsinput('items');
+            itemrepresentative = {};
+            $.each(representative, function (index, input) {
+                itemrepresentative[index] = input.value
+            });
+            var reports = $("#edOreports").tagsinput('items');
+            itemreports = {};
+            $.each(reports, function (index, input) {
+                itemreports[index] = input.value
+            });
+            var consults = $("#edOconsults").tagsinput('items');
+            itemconsults = {};
+            $.each(consults, function (index, input) {
+                itemconsults[index] = input.value
+            });
+            var liaises = $("#edOliaises").tagsinput('items');
+            itemliaises = {};
+            $.each(liaises, function (index, input) {
+                itemliaises[index] = input.value
+            });
+            var delegate = $("#edOdelegate").tagsinput('items');
+            itemdelegate = {};
+            $.each(delegate, function (index, input) {
+                itemdelegate[index] = input.value
+            });
+            var dTask = $("#edOdTask").tagsinput('items');
+            itemdTask = {};
+            $.each(dTask, function (index, input) {
+                itemdTask[index] = input.value
+            });
+            var wishes = $("#Owishes").val()
+            var idProject = $("#idProject").val();
+            var stakeid = $("#idStake").val();
+            var type;
+            if ($('#focal').is(':checked'))
+                type = 1;
+            else
+                type = 0;
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + "stakeholder/save",
+                data: {
+                    name: name,
+                    Organisation: Organisation,
+                    aka: aka,
+                    description: description,
+                    concern: concern,
+                    representative: itemrepresentative,
+                    reports: itemreports,
+                    consults: itemconsults,
+                    liaises: itemliaises,
+                    delegate: itemdelegate,
+                    dTask: itemdTask,
+                    wishes: wishes,
+                    type: type,
+                    idProject: idProject,
+                    idStake: stakeid
+                },
+                success: function (data) {
+                    window.location.href = baseUrl + "stakeholder";
+                }
+            })
+        }
     });
 
      ///saveIndividual
