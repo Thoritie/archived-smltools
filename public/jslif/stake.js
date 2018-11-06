@@ -400,7 +400,7 @@ $(document).ready(function () {
                 displayKey: 'text',
                 source: Tasks.ttAdapter(),
                 templates: {
-                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
                 }
             }
         });
@@ -414,7 +414,7 @@ $(document).ready(function () {
                 displayKey: 'text',
                 source: Tasks.ttAdapter(),
                 templates: {
-                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
                 }
             }
         });
@@ -428,7 +428,7 @@ $(document).ready(function () {
                 displayKey: 'text',
                 source: Tasks.ttAdapter(),
                 templates: {
-                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
                 }
             }
         });
@@ -785,7 +785,7 @@ $(document).ready(function () {
             },
         },
         messages: {
-            OStakeName: {
+            edinStakeName: {
                 required: "stakeholder name is required",
                 remote: jQuery.validator.format("{0} is already taken.")
             }
@@ -859,70 +859,115 @@ $(document).ready(function () {
         }
     });
 
-    ///saveRole
-    $('#saveedR').click(function () {
-        var rname = $("#rStakeName").val()
-        var raka = $("#raka").val()
-        var isA = $("#isA").val()
-
-        var rdescription = $("#rdescription").val()
-        var rconcern = $("#rconcern").val()
-
-        var PlayerType = $("#PlayerType  option:selected").val();
-        var RolePlayer = $("#RolePlayer  option:selected").val();
-
-        var rreports = $("#edrreports").tagsinput('items');
-        itemrreports = {};
-        $.each(rreports, function (index, input) {
-            itemrreports[index] = input.value
-        });
-        var rconsults = $("#edrconsults").tagsinput('items');
-        itemrconsults = {};
-        $.each(rconsults, function (index, input) {
-            itemrconsults[index] = input.value
-        });
-        var rliaises = $("#edrliaises").tagsinput('items');
-        itemrliaises = {};
-        $.each(rliaises, function (index, input) {
-            itemrliaises[index] = input.value
-        });
-        var rdelegate = $("#edrdelegate").tagsinput('items');
-        itemrdelegate = {};
-        $.each(rdelegate, function (index, input) {
-            itemrdelegate[index] = input.value
-        });
-        var rdTask = $("#edrdTask").tagsinput('items');
-        itemdTask = {};
-        $.each(rdTask, function (index, input) {
-            itemdTask[index] = input.value
-        });
-        var rwishes = $("#rwishes").val()
-        var ridProject = $("#idProject").val();
-        var rtype = 3;
-        $.ajax({
-            type: 'POST',
-            url: baseUrl + "stakeholder/save",
-            data: {
-                name: rname,
-                aka: raka,
-                isA: isA,
-                description: rdescription,
-                concern: rconcern,
-                PlayerType: PlayerType,
-                RolePlayer: RolePlayer,
-                reports: itemrreports,
-                consults: itemrconsults,
-                liaises: itemrliaises,
-                delegate: itemrdelegate,
-                dTask: itemdTask,
-                wishes: rwishes,
-                type: rtype,
-                idProject: ridProject,
-                idStake: stakeid
+    $("#edit_role").validate({
+        rules: {
+            edrStakeName: {
+                required: true,
+                remote: {
+                    url: baseUrl + "stakeholder/checkDupNameEditStake",
+                    type: "post",
+                    data: {
+                        StakeName: function () {
+                            return $("#edit_role_StakeName").val()
+                        },
+                        idProject: function () {
+                            return $("#idProject").val()
+                        },
+                        typeStake: function () {
+                            return 3
+                        },
+                        idStake: function () {
+                            return $("#idStake").val()
+                        }
+                    }
+                }
             },
-            success: function (data) {
-                window.location.href = baseUrl + "stakeholder";
+        },
+        messages: {
+            edrStakeName: {
+                required: "stakeholder name is required",
+                remote: jQuery.validator.format("{0} is already taken.")
             }
-        })
+        }
+    })
+
+    ///saveRole
+    $('#save_edit_role').click(function () {
+        if ($("#edit_role").valid()) {
+            var rname = $("#edit_role_StakeName").val()
+            var raka = $("#raka").val()
+            var isA = $("#isA").val()
+            var rdescription = $("#rdescription").val()
+            var rconcern = $("#rconcern").val()
+            var PlayerType = $("#role_edit_playerType:checked").val();
+            var roleNoOfStake = $("#role_edit_number_of_stakeholder").val()
+            
+            var rolePlayRole = $("#role_edit_play_role").tagsinput('items');
+            itemPlayRole = {};
+            $.each(rolePlayRole, function (index, input) {
+                itemPlayRole[index] = input.value
+            });
+
+            var RolePlayer = $("#role_edit_RolePlayer  option:selected").val();
+            var TF = $("#role_edit_TF  option:selected").val();
+
+            var rreports = $("#edrreports").tagsinput('items');
+            itemrreports = {};
+            $.each(rreports, function (index, input) {
+                itemrreports[index] = input.value
+            });
+            var rconsults = $("#edrconsults").tagsinput('items');
+            itemrconsults = {};
+            $.each(rconsults, function (index, input) {
+                itemrconsults[index] = input.value
+            });
+            var rliaises = $("#edrliaises").tagsinput('items');
+            itemrliaises = {};
+            $.each(rliaises, function (index, input) {
+                itemrliaises[index] = input.value
+            });
+            var rdelegate = $("#edrdelegate").tagsinput('items');
+            itemrdelegate = {};
+            $.each(rdelegate, function (index, input) {
+                itemrdelegate[index] = input.value
+            });
+            var rdTask = $("#edrdTask").tagsinput('items');
+            itemdTask = {};
+            $.each(rdTask, function (index, input) {
+                itemdTask[index] = input.value
+            });
+            var rwishes = $("#rwishes").val()
+            var ridProject = $("#idProject").val();
+            var rtype = 3;
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + "stakeholder/save",
+                data: {
+                    name: rname,
+                    aka: raka,
+                    isA: isA,
+                    description: rdescription,
+                    concern: rconcern,
+                    PlayerType: PlayerType,
+                    NoStake: roleNoOfStake,
+                    playRole: itemPlayRole,
+                    RolePlayer: RolePlayer,
+                    roleTF : TF,
+                    reports: itemrreports,
+                    consults: itemrconsults,
+                    liaises: itemrliaises,
+                    delegate: itemrdelegate,
+                    dTask: itemdTask,
+                    wishes: rwishes,
+                    type: rtype,
+                    idProject: ridProject,
+                    idStake: stakeid
+                },
+                success: function (data) {
+                    window.location.href = baseUrl + "stakeholder";
+                }
+            })
+        }
     });
+        
 });

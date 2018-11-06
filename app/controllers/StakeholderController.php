@@ -471,6 +471,7 @@ class StakeholderController extends ControllerBase
         $idStake = $this->session->get("idstakeholder");
         $edstake = Stakeholders::findById($idStake);
 
+        $this->view->edit_playRole = Common::addDataArray(new Stakeholders(), $edstake->playRole);
         $this->view->reports = Common::addDataArray(new Stakeholders(), $edstake->reports);
         $this->view->consults = Common::addDataArray(new Stakeholders(), $edstake->consults);
         $this->view->liaises = Common::addDataArray(new Stakeholders(), $edstake->liaises);
@@ -480,7 +481,11 @@ class StakeholderController extends ControllerBase
         $idProject = $this->session->get('idProject');
         $this->view->idProject = $idProject;
 
-        
+        if($edstake->PlayerType == 'Many' or $edstake->PlayerType == 'Group')
+            $this->view->check_disable = 0;
+        else
+            $this->view->check_disable = 1;
+
         $this->tag->setDefault("idProject", $idProject);
         $this->tag->setDefault("idStake", $idStake);
         $this->tag->setDefault("edrStakeName", $edstake->name);
@@ -489,8 +494,10 @@ class StakeholderController extends ControllerBase
         $this->tag->setDefault("edrdescription", $edstake->description);
         $this->tag->setDefault("edrconcern", $edstake->concern);
         $this->tag->setDefault("edisA", $edstake->isA);
-        $this->tag->setDefault("edPlayerType", $edstake->PlayerType);
-        $this->tag->setDefault("edRolePlayer", $edstake->RolePlayer);
+        $this->tag->setDefault("role_edit_playerType", $edstake->PlayerType);
+        $this->tag->setDefault("role_edit_TF", $edstake->roleTF);
+        $this->tag->setDefault("role_edit_RolePlayer", $edstake->RolePlayer);
+        $this->tag->setDefault("role_edit_number_of_stakeholder", $edstake->NoStake);
         $this->tag->setDefault("edrwishes", $edstake->wishes);
         
         $conditionStake = [];
