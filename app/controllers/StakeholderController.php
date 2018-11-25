@@ -104,6 +104,14 @@ class StakeholderController extends ControllerBase
         	)
         );
 
+        $aggregate = array(
+            '$match' => array(
+                'idProject' => $idProject,
+                'name' => new MongoRegex("/$filter/")
+            ),
+        );
+
+
         $paginator = new Pagination(
         	array(
         		'model' => $model,
@@ -116,7 +124,8 @@ class StakeholderController extends ControllerBase
         		'data' => array(
         			'sortBy' => $sortBy,
         			'filter' => $filter
-        		)
+                ),
+                'aggregate' => $aggregate
         	)
         );
 

@@ -1,3 +1,4 @@
+
 <p><?php $this->flashSession->output() ?></p>
 <!-- <div class="wrapper"> -->
 <div class="container-fluid">
@@ -14,20 +15,34 @@
                <thead>
                   <th data-field="id">No.</th>
                   <th data-field="name" data-sortable="true">Name</th>
-                  <!-- <th data-field="salary" data-sortable="true">Salary</th> -->
-                  <th data-field="country" data-sortable="true">Description</th>
-                  <th data-field="actions" data-formatter="" data-events="operateEvents" class="pull-right">Manage Actions</th>
+                  <th data-sortable="true">Role</th>
+                  <th data-sortable="true">Task</th>
+                  <th data-sortable="true">Resource</th>
+                  <th data-sortable="true">Stakeholder</th>
+                  <th data-formatter="" data-events="operateEvents" class="pull-right">Manage Actions</th>
                </thead>
                <tbody>
                   <?php 
                      $i =1;
-                     foreach($stakeholders->items as $key => $showStake) {  ?>
+                     foreach($stakeholders->items['cursor']['firstBatch'] as $key => $showStake) {  ?>
                   <tr>
                      <td><?= $i ?></td>
                      <td>
-                        <h6 style="color: #747474"><?=$showStake->name ?></h6>
+                        <h6 style="color: #747474"><?=$showStake['name'] ?></h6>
                      </td>
-                     <td><?=$showStake->description ?></td>
+                     <td>
+                        <?php 
+                        if($showStake['type'] == '1' or $showStake['type'] =='0')
+                            echo 'organisation';
+                        elseif($showStake['type'] =='2')
+                            echo 'individual';
+                        else
+                            echo 'role';
+                        ?>
+                     </td>
+                     <td><?=$showStake['sumStake']?></td>
+                     <td><?=$showStake['sumResource']?></td>
+                     <td><?=$showStake['sumStake']?></td>
                      <td>
                         <a onclick="confirm('Are you sure delete <?=$showStake->name?>?')?deleteStake('<?=$showStake->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
                         <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary stakeedit" data-id="<?=$showStake->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>  

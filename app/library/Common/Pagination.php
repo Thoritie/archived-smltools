@@ -12,6 +12,7 @@ class Pagination{
 	private $sort;
 	private $baseUrl;
 	private $showNumberOfPage;
+	private $aggregate;
 	
 	public function __construct($config) {
 
@@ -59,6 +60,12 @@ class Pagination{
 			$this->showNumberOfPage = 5;
 		}
 
+		if (isset($config['aggregate'])) {
+			$this->aggregate = $config['aggregate'];
+		}else{
+			$this->aggregate = "";
+		}
+
 	}
 	
 	public function getPaginate() {
@@ -97,14 +104,170 @@ class Pagination{
 		}
 		
 		$page = new \stdClass();
-		$page->items = $model::find(
+	
+		if (is_a($model, 'Stakeholders')) {
+			$page->items = $model::aggregate(
 				array(
-					$this->query,
-					'sort' => array($this->sort => 1),
-					'skip' => $nLimit * ($pageNumber - 1),
-					'limit' => $nLimit
-				)
-		);
+					$this->aggregate,
+					//===================================== version 1 =====================================
+					array( '$addFields' => array( 'userId' => array('$toString' => '$_id'))),
+					//lookup in task
+					array( '$lookup' => array(
+						'from' => 'tasks',
+						'localField' => 'userId',
+						'foreignField' => 'owner',
+						'as' =>  'taskOwner'
+					)),
+					array( '$lookup' => array(
+						'from' => 'tasks',
+						'localField' => 'userId',
+						'foreignField' => 'collaburator',
+						'as' =>  'taskCollaburator'
+					)),
+					array( '$lookup' => array(
+						'from' => 'tasks',
+						'localField' => 'userId',
+						'foreignField' => 'regulator',
+						'as' =>  'taskRegulator'
+					)),
+					array( '$lookup' => array(
+						'from' => 'tasks',
+						'localField' => 'userId',
+						'foreignField' => 'ownerToBe',
+						'as' =>  'taskOwnerToBer'
+					)),
+					array( '$lookup' => array(
+						'from' => 'tasks',
+						'localField' => 'userId',
+						'foreignField' => 'collaboratorToBe',
+						'as' =>  'taskCollaboratorToBe'
+					)),
+
+					//lookup in reasource
+					array( '$lookup' => array(
+						'from' => 'resource',
+						'localField' => 'userId',
+						'foreignField' => 'rOwner',
+						'as' =>  'reasourceROwner'
+					)),
+					array( '$lookup' => array(
+						'from' => 'resource',
+						'localField' => 'userId',
+						'foreignField' => 'pOwner',
+						'as' =>  'reasourcePOwnerr'
+					)),
+					array( '$lookup' => array(
+						'from' => 'resource',
+						'localField' => 'userId',
+						'foreignField' => 'maintainer',
+						'as' =>  'reasourceMaintainer'
+					)),
+
+					//lookup in stakeholeder
+					array( '$lookup' => array(
+						'from' => 'stakeholders',
+						'localField' => 'userId',
+						'foreignField' => 'representative',
+						'as' =>  'stakeholdersRepresentative'
+					)),
+					array( '$lookup' => array(
+						'from' => 'stakeholders',
+						'localField' => 'userId',
+						'foreignField' => 'reports',
+						'as' =>  'stakeholdersReports'
+					)),
+					array( '$lookup' => array(
+						'from' => 'stakeholders',
+						'localField' => 'userId',
+						'foreignField' => 'consults',
+						'as' =>  'stakeholdersConsults'
+					)),
+					array( '$lookup' => array(
+						'from' => 'stakeholders',
+						'localField' => 'userId',
+						'foreignField' => 'liaises',
+						'as' =>  'stakeholdersLiaises'
+					)),
+					array( '$lookup' => array(
+						'from' => 'stakeholders',
+						'localField' => 'userId',
+						'foreignField' => 'delegate',
+						'as' =>  'stakeholdersDelegate'
+					)),
+					array( '$lookup' => array(
+						'from' => 'stakeholders',
+						'localField' => 'userId',
+						'foreignField' => 'playRole',
+						'as' =>  'stakeholdersPlayRole'
+					)),
+
+
+					array( '$project' => array (
+						'name' => 1,
+						'sumStake' => array('$sum' => array(
+							array('$size' => '$taskOwner'),
+							array('$size' => '$taskCollaburator'),
+							array('$size' => '$taskRegulator'),
+							array('$size' => '$taskOwnerToBer'),
+							array('$size' => '$taskCollaboratorToBe'),
+							)),
+						'sumResource' => array('$sum' => array(
+							array('$size' => '$reasourceROwner'),
+							array('$size' => '$reasourcePOwnerr'),
+							array('$size' => '$reasourceMaintainer'),
+							)),
+						'sumStakeholder' => array('$sum' => array(
+							array('$size' => '$stakeholdersRepresentative'),
+							array('$size' => '$stakeholdersReports'),
+							array('$size' => '$stakeholdersConsults'),
+							array('$size' => '$stakeholdersLiaises'),
+							array('$size' => '$stakeholdersDelegate'),
+							array('$size' => '$stakeholdersPlayRole'),
+							)),
+							'type' => '$type'
+					)),
+
+					//===================================== version 1 =====================================
+						
+					//===================================== version 2 =====================================
+						// array( '$addFields' => array( 'userId' => array('$toString' => '$_id'))),
+						// array( '$lookup' => array(
+						// 	'from' =>  'tasks',
+						// 	'let' => array( 'userstake' => 'userId'),
+						// 	'pipeline' => array(
+						// 		// array('$match' => array('$expr' => array( '$or' => array(
+						// 		// 			'$in' => array('$userId','$owner')
+						// 		// 			)
+						// 		// )))
+						// ),
+						// 	'as'=> "task"
+						// 	)
+						// ),
+						// array( '$project' => array (
+						// 	'name' => 1,
+						// 	'NoTask' => array('$size' => '$task'),
+						// 	'userid' => '$userId',
+						// 	'owner' => array('$task.name','$task.owner'),
+						// 	'tasketest' => array('$in' => array('$userId' , '$task.owner'))
+						// )),
+					//===================================== version2 =====================================
+
+					array('$sort' => array ($this->sort => 1)),
+					array('$skip' => $nLimit * ($pageNumber - 1)),
+					array('$limit' => $nLimit)
+				),
+				array('cursor' => array('batchSize' => 1000))
+			);
+		}else{
+			$page->items = $model::find(
+					array(
+						$this->query,
+						'sort' => array($this->sort => 1),
+						'skip' => $nLimit * ($pageNumber - 1),
+						'limit' => $nLimit
+					)
+			);
+		}
 		
 		//Fix next
 		if ($pageNumber < $totalPages) {
