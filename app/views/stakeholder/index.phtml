@@ -44,9 +44,9 @@
                      <td><?=$showStake['sumResource']?></td>
                      <td><?=$showStake['sumStake']?></td>
                      <td>
-                        <a onclick="confirm('Are you sure delete <?=$showStake->name?>?')?deleteStake('<?=$showStake->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
-                        <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary stakeedit" data-id="<?=$showStake->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>  
-                        <a class="showDetailStake btn btn-xs pull-right"  onclick="cloneModalDetailStake('<?=$showStake->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp; 
+                        <a onclick="confirm('Are you sure delete <?=$showStake['name']?>?')?deleteStake('<?=$showStake['_id']?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
+                        <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary stakeedit" data-id="<?=$showStake['_id']?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>  
+                        <a class="showDetailStake btn btn-xs pull-right"  onclick="cloneModalDetailStake('<?=$showStake['_id']?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp; 
                      </td>
                   </tr>
                   <?php  $i++; } ?> 
@@ -193,7 +193,7 @@
 <script>
    function deleteStake(id){
        var idStake = id;
-   
+       console.log('test');
        $.post(baseUrl+"stakeholder/deleteStakeholder",{
            idStake : idStake
        }, function(data){
