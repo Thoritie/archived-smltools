@@ -8,31 +8,31 @@ class ResourceController extends ControllerBase
 {
     public function onConstruct(){
         $this->assets->addCss('sml/regis.css');
-        
+
         $this->assets->addCss('assetsThor/css/bootstrap.min.css');
-        $this->assets->addCss('font-awesome/css/font-awesome.css');        
+        $this->assets->addCss('font-awesome/css/font-awesome.css');
         $this->assets->addCss('assetsThor/css/animate.min.css');
         $this->assets->addCss('assetsThor/css/light-bootstrap-dashboard.css');
-        $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');        
+        $this->assets->addCss('assetsThor/css/pe-icon-7-stroke.css');
         $this->assets->addCss('assetsThor/css/demo.css');
         $this->assets->addCss('assetsThor/css/navbar.css');
 
-         
+
         $this->assets->addCss('jslif/bootstrap-tagsinput.css');
         $this->assets->addCss('jslif/app.css');
-       
+
         $this->assets->addCss('jslif/sb-admin-override.css');
-       
+
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
-       
-       
+
+
 
         $this->assets->addJs('popper/popper.min.js');
         $this->assets->addJs('bootstrap-4/js/bootstrap.min.js');
         $this->assets->addJs('scrollreveal/scrollreveal.min.js');
         $this->assets->addJs('magnific-popup/jquery.magnific-popup.min.js');
-       
+
 
         $this->assets->addJs('jslif/jquery.easing.min.js');
         $this->assets->addJs('jslif/typeahead.bundle.min.js');
@@ -45,7 +45,7 @@ class ResourceController extends ControllerBase
         $this->assets->addJs('dist/jquery.validate.js');
 
         $this->assets->addJs('jquery/resourceRedirect.js');
-       
+
         $this->assets->addJs('modal/cloneModal.js');
         $this->assets->addJs('jslif/tagResource.js');
 
@@ -61,7 +61,7 @@ class ResourceController extends ControllerBase
         //Layout
         $projectname = $this->session->get('projectname');
         $this->view->projectname = $projectname;
-        
+
         $ownerLayout =   $projectname = $this->session->get('ownerLayout');
         $this->view->ownerLayout = $ownerLayout;
 
@@ -70,8 +70,8 @@ class ResourceController extends ControllerBase
         $this->view->userLogin = $userLogin;
 
         $id = $this->session->get('idProject');
-      
-        
+
+
         //Sort
         $currentPage = $this->request->get('page');
         $idProject = $this->session->get('idProject');
@@ -82,7 +82,7 @@ class ResourceController extends ControllerBase
             'name' => 'Name',
             '_id' => 'Create Date'
         );
-        
+
         $this->view->arrSortBy = $arrSortBy;
         if($sortBy == null) $sortBy = $this->request->get('sortBy');
         if($sortBy == null) $sortBy = $arrSortBy['name'];
@@ -147,11 +147,11 @@ class ResourceController extends ControllerBase
         $this->tag->setDefault("idProject", $id);
         $this->view->idProject = $id;
 
-        
-    }   
+
+    }
 
     public function saveAction()
-    {    
+    {
         $resid = $this->request->getPost("idResource");
         if(!$resid){
             $res = new Resource();
@@ -159,7 +159,7 @@ class ResourceController extends ControllerBase
             $res = Resource::findById($resid);
         }
 
-       
+
 
         $res->name = $this->request->getPost("resourcename");
         $res->description = $this->request->getPost("Description");
@@ -168,11 +168,11 @@ class ResourceController extends ControllerBase
         $res->pOwner = $this->request->getPost("pOwner");
         $res->maintainer = $this->request->getPost("maintainer");
         $res->idProject = $this->request->getPost("idProject");
-       
-        $res->save();
-       
 
-        
+        $res->save();
+
+
+
     }
 
 
@@ -180,7 +180,7 @@ class ResourceController extends ControllerBase
     {
         $id = $this->request->getPost('idResource');
         $res = Resource::findById($id);
-        
+
         $res->delete();
         return json_encode('true');
     }
@@ -190,12 +190,12 @@ class ResourceController extends ControllerBase
         $result = true;
         $resourcename = $this->request->getPost('resourcename');
         $idProject = $this->request->getPost('idProject');
-        
+
         $condition = [];
-        
+
         $condition["name"] = $resourcename;
         $condition["idProject"] = $idProject;
-        
+
         $res = Resource::Find(array($condition));
         if($res){
             $result = false;
@@ -212,10 +212,10 @@ class ResourceController extends ControllerBase
         $idResource = $this->request->getPost('idResource');
         $result = true;
         $condition = [];
-            
+
         $condition["idProject"] = $idProject;
         $condition["name"] = $resourcename;
-       
+
         $ResourceCompare = Resource::findById($idResource);
         $resource = Resource::Find(array($condition));
 
@@ -226,7 +226,7 @@ class ResourceController extends ControllerBase
             }
         }
         return json_encode($result);
-       
+
 
     }
 
@@ -247,7 +247,7 @@ class ResourceController extends ControllerBase
 
         $id = $this->request->getPost('id');
         $res = Resource::findById($id);
-        
+
         $this->view->res = $res;
         $this->tag->setDefault("idProject", $res->idProject);
         $this->tag->setDefault("idResource", $id);
@@ -255,11 +255,11 @@ class ResourceController extends ControllerBase
         $this->tag->setDefault("editResDesCription", $res->description);
 
         $this->view->includes = Common::addDataArray(new Resource(), $res->includes);
-       
+
         $this->view->rOwner = Common::addDataArray(new Stakeholders(), $res->rOwner);
 
         $this->view->pOwner = Common::addDataArray(new Stakeholders(), $res->pOwner);
-    
+
         $this->view->maintainer = Common::addDataArray(new Stakeholders(), $res->maintainer);
 
 
@@ -287,9 +287,9 @@ class ResourceController extends ControllerBase
         $arrRes = [];
         $arrRes['name'] = $res->name;
         $arrRes['description'] = $res->description;
-       
+
         $model = new Resource();
-        
+
         $tempArray = [];
         if($res->includes != null)
         foreach($res->includes as $id){
@@ -298,7 +298,7 @@ class ResourceController extends ControllerBase
             	$tempArray[] = $value;
         };
         $arrRes['includes'] = $tempArray;
-        
+
 
         $model = new Stakeholders();
         $tempArray = [];
