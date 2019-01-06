@@ -1,0 +1,291 @@
+<?php $empty= '<label style="font-size: 10px; font-style : italic">This Field is Empty.</label>' ?>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="header">
+                            <h4 class="title">Individual Details</h4>
+                        </div>
+                        <div class="content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <h5><?php echo $stakeholder_name ?></h5>
+                                            <h5>
+                                                <?php if( $stakeholder_name == '' || $stakeholder_name == null) echo $empty; ?>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>aka</label>
+                                            <h5><?php echo $aka ?></h5>
+                                            <?php if( $aka == '' || $aka == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>description</label>
+                                            <h5><?php echo $description?></h5>
+                                            <?php if( $description == '' || $description == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>concern</label>
+                                            <h5><?php echo $concern ?></h5>
+                                            <?php if( $concern == '' || $concern == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Attitude</label>
+                                            <h5><?php echo $attitude ?></h5>
+                                            <?php if( $attitude == '' || $attitude == null) echo $empty; ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Domain Knowledge</label>
+                                            <h5><?php echo $domain ?></h5>
+                                            <?php if( $domain == '' || $domain == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Reports</label>
+                                            <?php
+                                             $reports_json = json_encode($reports);
+                                             $reports = json_decode($reports_json, true);
+                                             foreach ($reports as $each) {
+                                                echo '<a href="#" class="showDetailStake labelCo labelInfo info-resource" data-id="' . $each['_id']['$id'] . '">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $reports == '' || $reports == null) echo $empty; ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Consults</label>
+                                            <?php
+                                             $consults_json = json_encode($consults);
+                                             $consults = json_decode($consults_json, true);
+                                             foreach ($consults as $each) {
+                                                echo '<a href="#" class="showDetailStake labelCo labelInfo info-resource" data-id="' . $each['_id']['$id'] . '">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $consults == '' || $consults == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Liaises</label>
+                                            <?php
+                                             $liaises_json = json_encode($liaises);
+                                             $liaises = json_decode($liaises_json, true);
+                                             foreach ($liaises as $each) {
+                                                echo '<a href="#" class="showDetailStake labelCo labelInfo info-resource" data-id="' . $each['_id']['$id'] . '">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $liaises == '' || $liaises == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>delegate</label>
+                                            <?php
+                                             $delegate_json = json_encode($delegate);
+                                             $delegate = json_decode($delegate_json, true);
+                                             foreach ($delegate as $each) {
+                                                echo '<a href="#" class="showDetailStake labelCo labelInfo info-resource" data-id="' . $each['_id']['$id'] . '">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $delegate == '' || $delegate == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>dTask</label>
+                                            <?php
+                                             $dTask_json = json_encode($dTask);
+                                             $dTask = json_decode($dTask_json, true);
+                                             foreach ($dTask as $each) {
+                                                echo '<a href="#" class="showDetailStake labelCo labelInfo info-resource" data-id="' . $each['_id']['$id'] . '">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $dTask == '' || $dTask == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>wishes</label>
+                                            <h5><?php echo $wishes ?></h5>
+                                            <?php if( $wishes == '' || $wishes == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr>
+                        </div>
+                        <div class="header">
+                            <h4 class="title">Connected to task</h4>
+                        </div>
+                        <div class="content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Owner of</label>
+                                            <?php
+                                             $ownerOf_json = json_encode($ownerOf);
+                                             $ownerOf = json_decode($ownerOf_json, true);
+                                             foreach ($ownerOf as $each) {
+                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $ownerOf == '' || $ownerOf == null) echo $empty; ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Collaborator of</label>
+                                            <?php
+                                             $collaburatorOf_json = json_encode($collaburatorOf);
+                                             $collaburatorOf = json_decode($collaburatorOf_json, true);
+                                             foreach ($collaburatorOf as $each) {
+                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $collaburatorOf == '' || $collaburatorOf == null) echo $empty; ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Owner to be of</label>
+                                            <?php
+                                             $ownerToBeOf_json = json_encode($ownerToBeOf);
+                                             $ownerToBeOf = json_decode($ownerToBeOf_json, true);
+                                             foreach ($ownerToBeOf as $each) {
+                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $ownerToBeOf == '' || $ownerToBeOf == null) echo $empty; ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Collaborator to be of</label>
+                                            <?php
+                                             $collaboratorToBeOf_json = json_encode($collaboratorToBeOf);
+                                             $collaboratorToBeOf = json_decode($collaboratorToBeOf_json, true);
+                                             foreach ($collaboratorToBeOf as $each) {
+                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $collaboratorToBeOf == '' || $collaboratorToBeOf == null) echo $empty; ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Regulator of</label>
+                                            <?php
+                                             $regulatorOf_json = json_encode($regulatorOf);
+                                             $regulatorOf = json_decode($regulatorOf_json, true);
+                                             foreach ($regulatorOf as $each) {
+                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $regulatorOf == '' || $regulatorOf == null) echo $empty; ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr>
+                        </div>
+                        <div class="header">
+                            <h4 class="title">Connected to resource</h4>
+                        </div>
+                        <div class="content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>R Owner of</label>
+                                            <?php
+                                             $rOwnerOf_json = json_encode($rOwnerOf);
+                                             $rOwnerOf = json_decode($rOwnerOf_json, true);
+                                             foreach ($rOwnerOf as $each) {
+                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $rOwnerOf == '' || $rOwnerOf == null) echo $empty; ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>P Owner of</label>
+                                            <?php
+                                             $pOwnerOf_json = json_encode($pOwnerOf);
+                                             $pOwnerOf = json_decode($pOwnerOf_json, true);
+                                             foreach ($pOwnerOf as $each) {
+                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $pOwnerOf == '' || $pOwnerOf == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Maintainer of</label>
+                                            <?php
+                                             $maintainerOf_json = json_encode($maintainerOf);
+                                             $maintainerOf = json_decode($maintainerOf_json, true);
+                                             foreach ($maintainerOf as $each) {
+                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                             }
+                                            ?>
+                                            <?php if( $maintainerOf == '' || $maintainerOf == null) echo $empty; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
