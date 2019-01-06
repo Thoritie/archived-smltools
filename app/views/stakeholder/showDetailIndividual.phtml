@@ -162,7 +162,8 @@
                                              $ownerOf_json = json_encode($ownerOf);
                                              $ownerOf = json_decode($ownerOf_json, true);
                                              foreach ($ownerOf as $each) {
-                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                                $id = "'" . $each['_id']['$id'] . "'";
+                                                echo '<a class="showDetailTask labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $id .')" role="button" >' . $each['name'] .'</a>';
                                              }
                                             ?>
                                             <?php if( $ownerOf == '' || $ownerOf == null) echo $empty; ?>
@@ -176,7 +177,8 @@
                                              $collaburatorOf_json = json_encode($collaburatorOf);
                                              $collaburatorOf = json_decode($collaburatorOf_json, true);
                                              foreach ($collaburatorOf as $each) {
-                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                                $id = "'" . $each['_id']['$id'] . "'";
+                                                echo '<a class="showDetailTask labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $id .')" role="button" >' . $each['name'] .'</a>';
                                              }
                                             ?>
                                             <?php if( $collaburatorOf == '' || $collaburatorOf == null) echo $empty; ?>
@@ -192,7 +194,8 @@
                                              $ownerToBeOf_json = json_encode($ownerToBeOf);
                                              $ownerToBeOf = json_decode($ownerToBeOf_json, true);
                                              foreach ($ownerToBeOf as $each) {
-                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                                $id = "'" . $each['_id']['$id'] . "'";
+                                                echo '<a class="showDetailTask labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $id .')" role="button" >' . $each['name'] .'</a>';
                                              }
                                             ?>
                                             <?php if( $ownerToBeOf == '' || $ownerToBeOf == null) echo $empty; ?>
@@ -206,7 +209,8 @@
                                              $collaboratorToBeOf_json = json_encode($collaboratorToBeOf);
                                              $collaboratorToBeOf = json_decode($collaboratorToBeOf_json, true);
                                              foreach ($collaboratorToBeOf as $each) {
-                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                                $id = "'" . $each['_id']['$id'] . "'";
+                                                echo '<a class="showDetailTask labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $id .')" role="button">' . $each['name'] .'</a>';
                                              }
                                             ?>
                                             <?php if( $collaboratorToBeOf == '' || $collaboratorToBeOf == null) echo $empty; ?>
@@ -222,7 +226,8 @@
                                              $regulatorOf_json = json_encode($regulatorOf);
                                              $regulatorOf = json_decode($regulatorOf_json, true);
                                              foreach ($regulatorOf as $each) {
-                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                                $id = "'" . $each['_id']['$id'] . "'";
+                                                echo '<a class="showDetailTask labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $id .')" role="button" >' . $each['name'] .'</a>';
                                              }
                                             ?>
                                             <?php if( $regulatorOf == '' || $regulatorOf == null) echo $empty; ?>
@@ -245,8 +250,9 @@
                                              $rOwnerOf_json = json_encode($rOwnerOf);
                                              $rOwnerOf = json_decode($rOwnerOf_json, true);
                                              foreach ($rOwnerOf as $each) {
-                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
-                                             }
+                                                $id = "'" . $each['_id']['$id'] . "'";
+                                                echo '<a class="showDetailRes labelCo labelInfo info-task" onclick="cloneModalDetailRes('. $id .')" role="button" >' . $each['name'] .'</a>';
+                                              }
                                             ?>
                                             <?php if( $rOwnerOf == '' || $rOwnerOf == null) echo $empty; ?>
 
@@ -259,7 +265,8 @@
                                              $pOwnerOf_json = json_encode($pOwnerOf);
                                              $pOwnerOf = json_decode($pOwnerOf_json, true);
                                              foreach ($pOwnerOf as $each) {
-                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                                $id = "'" . $each['_id']['$id'] . "'";
+                                                echo '<a class="showDetailRes labelCo labelInfo info-task" onclick="cloneModalDetailRes('. $id .')" role="button" >' . $each['name'] .'</a>';
                                              }
                                             ?>
                                             <?php if( $pOwnerOf == '' || $pOwnerOf == null) echo $empty; ?>
@@ -274,7 +281,8 @@
                                              $maintainerOf_json = json_encode($maintainerOf);
                                              $maintainerOf = json_decode($maintainerOf_json, true);
                                              foreach ($maintainerOf as $each) {
-                                                echo '<a href="#" class="labelCo labelInfo info-task" onclick="cloneModalDetailTask('. $each['_id']['$id'] .')">' . $each['name'] .'</a>';
+                                                $id = "'" . $each['_id']['$id'] . "'";
+                                                echo '<a class="showDetailRes labelCo labelInfo info-task" onclick="cloneModalDetailRes('. $id .')" role="button" >' . $each['name'] .'</a>';
                                              }
                                             ?>
                                             <?php if( $maintainerOf == '' || $maintainerOf == null) echo $empty; ?>
@@ -289,3 +297,172 @@
             </div>
         </div>
     </div>
+
+
+<!-- modal task -->
+<div class="modal showTask" id="showTask" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content card">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Task Details <span id="parent"></span></h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Task name</label>
+                            <h5 id="showTaskName"></h5>
+                        </div>
+                        <div class="col-md-6">
+                            <label>IsA</label>
+                            <h5 id="showTaskIsA">IsA Type Task</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <h5 id="showTaskDescription">Description Task I just try to make this paragraph long as
+                                much as i can</h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Includes</label>
+                            <div id="showTaskInclude"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>as IsState</label>
+                            <h5 id="showTaskAsIsState"></h5>
+                        </div>
+                        <div class="col-md-6">
+                            <label>to Be State</label>
+                            <h5 id="showTaskToBeState"></h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Uses</label>
+                            <div id="showTaskUses"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Produces</label>
+                            <div id="showTaskProduces"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>ToUse</label>
+                            <div id="showTaskToUses"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>ToProduce</label>
+                            <div id="showTaskToProduce"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Owner</label>
+                            <div id="showTaskOwner"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Collaborator</label>
+                            <div id="showTaskCollaborator"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>owner To Be</label>
+                            <div id="showTaskOwnerToBe"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>collaborator To Be</label>
+                            <div id="showTaskCollaboratorToBe"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Regulator</label>
+                            <div id="showTaskRegulator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal resource -->
+<div class="modal showRes" id="showRes" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content card">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Resource Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Resource name</label>
+                            <h5 id="showResName"></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <h5 id="showResDescription"></h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Includes</label>
+                            <div id="showResInclude"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>R Owner</label>
+                            <div id="showResRowner"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>P Owner</label>
+                            <div id="showResPowner"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Maintainer</label>
+                            <div id="showResMaintainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
