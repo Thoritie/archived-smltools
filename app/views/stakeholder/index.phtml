@@ -22,7 +22,7 @@
                   <th data-formatter="" data-events="operateEvents" class="pull-right">Manage Actions</th>
                </thead>
                <tbody>
-                  <?php 
+                  <?php
                      $i =1;
                      foreach($stakeholders->items['cursor']['firstBatch'] as $key => $showStake) {  ?>
                   <tr>
@@ -31,7 +31,7 @@
                         <h6 style="color: #747474"><?=$showStake['name'] ?></h6>
                      </td>
                      <td>
-                        <?php 
+                        <?php
                         if($showStake['type'] == '1' or $showStake['type'] =='0')
                             echo 'organisation';
                         elseif($showStake['type'] =='2')
@@ -44,12 +44,12 @@
                      <td><?=$showStake['sumResource']?></td>
                      <td><?=$showStake['sumStake']?></td>
                      <td>
-                        <a onclick="confirm('Are you sure delete <?=$showStake['name']?>?')?deleteStake('<?=$showStake['_id']?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; 
-                        <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary stakeedit" data-id="<?=$showStake['_id']?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>  
-                        <a class="showDetailStake btn btn-xs pull-right"  onclick="cloneModalDetailStake('<?=$showStake['_id']?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp; 
+                        <a onclick="confirm('Are you sure delete <?=$showStake['name']?>?')?deleteStake('<?=$showStake['_id']?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
+                        <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary stakeedit" data-id="<?=$showStake['_id']?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                        <a class="showDetailStake btn btn-xs pull-right"  data-id="<?=$showStake['_id']?>"  role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp;
                      </td>
                   </tr>
-                  <?php  $i++; } ?> 
+                  <?php  $i++; } ?>
                </tbody>
             </table>
          </div>
@@ -64,7 +64,7 @@
                <div class="content">
                   <div class="form-group">
                      <!-- <label for="sel1">Select list (select one):</label> -->
-                     <?php 
+                     <?php
                         echo $this->tag->select(
                                 [
                                         'sortBy',
@@ -199,7 +199,7 @@
        }, function(data){
         window.location.href = baseUrl+"stakeholder";
        },  "json");
-      
+
    }
 </script>
 <!-- /.blockJS -->
