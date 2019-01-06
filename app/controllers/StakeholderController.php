@@ -739,6 +739,11 @@ class StakeholderController extends ControllerBase
         $this->view->collaboratorToBeOf = $collaboratorToBeOf_task;
 
         $condition = [];
+        $condition["regulator"] = $stakeholder_id;
+        $regulatorOf_task = Tasks::Find(array($condition));
+        $this->view->regulatorOf = $regulatorOf_task;
+
+        $condition = [];
         $condition["rOwner"] = $stakeholder_id;
         $rOwnerOf_task = Resource::Find(array($condition));
         $this->view->rOwnerOf = $rOwnerOf_task;
@@ -752,11 +757,6 @@ class StakeholderController extends ControllerBase
         $condition["maintainer"] = $stakeholder_id;
         $maintainerOf_task = Resource::Find(array($condition));
         $this->view->maintainerOf = $maintainerOf_task;
-
-        $condition = [];
-        $condition["regulator"] = $stakeholder_id;
-        $regulatorOf_task = Resource::Find(array($condition));
-        $this->view->regulatorOf = $regulatorOf_task;
     }
 
     public function showDetailIndividualAction() {
@@ -812,6 +812,11 @@ class StakeholderController extends ControllerBase
         $this->view->ownerToBeOf = $ownerToBeOf_task;
 
         $condition = [];
+        $condition["regulator"] = $stakeholder_id;
+        $regulatorOf_task = Tasks::Find(array($condition));
+        $this->view->regulatorOf = $regulatorOf_task;
+
+        $condition = [];
         $condition["collaboratorToBe"] = $stakeholder_id;
         $collaboratorToBeOf_task = Tasks::Find(array($condition));
         $this->view->collaboratorToBeOf = $collaboratorToBeOf_task;
@@ -831,10 +836,6 @@ class StakeholderController extends ControllerBase
         $maintainerOf_task = Resource::Find(array($condition));
         $this->view->maintainerOf = $maintainerOf_task;
 
-        $condition = [];
-        $condition["regulator"] = $stakeholder_id;
-        $regulatorOf_task = Resource::Find(array($condition));
-        $this->view->regulatorOf = $regulatorOf_task;
     }
 
     public function showDetailRoleAction() {
@@ -900,6 +901,11 @@ class StakeholderController extends ControllerBase
         $this->view->collaboratorToBeOf = $collaboratorToBeOf_task;
 
         $condition = [];
+        $condition["regulator"] = $stakeholder_id;
+        $regulatorOf_task = Tasks::Find(array($condition));
+        $this->view->regulatorOf = $regulatorOf_task;
+
+        $condition = [];
         $condition["rOwner"] = $stakeholder_id;
         $rOwnerOf_task = Resource::Find(array($condition));
         $this->view->rOwnerOf = $rOwnerOf_task;
@@ -913,12 +919,6 @@ class StakeholderController extends ControllerBase
         $condition["maintainer"] = $stakeholder_id;
         $maintainerOf_task = Resource::Find(array($condition));
         $this->view->maintainerOf = $maintainerOf_task;
-
-        $condition = [];
-        $condition["regulator"] = $stakeholder_id;
-        $regulatorOf_task = Resource::Find(array($condition));
-        $this->view->regulatorOf = $regulatorOf_task;
-
     }
 
 }
