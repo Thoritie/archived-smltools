@@ -473,6 +473,7 @@
         });
 
         $('input:radio[name=PlayerType]').change(function () {
+            $('#role_play_role').tagsinput('removeAll');
             if(this.value == 'Only One'){
                 $('#role_number_of_stakeholder').prop('disabled', true);
                 $('#role_number_of_stakeholder').val("");

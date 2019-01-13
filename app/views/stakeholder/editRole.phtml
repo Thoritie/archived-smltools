@@ -267,6 +267,7 @@
                 $('#role_edit_RolePlayer').prop('disabled', true);
             }
             $('input:radio[name=role_edit_playerType]').change(function () {
+                $('#role_edit_play_role').tagsinput('removeAll');
                 if (this.value == 'Only One') {
                     $('#role_edit_number_of_stakeholder').prop('disabled', true);
                     $('#role_edit_number_of_stakeholder').val("");
