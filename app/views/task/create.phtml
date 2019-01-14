@@ -74,7 +74,7 @@
                                        echo $this->tag->textField(["includes", "size" => 30, 
                                        "class" => "form-control", "id" => "includes"]) 
                                        ?>
-                                                <i class="fa fa-plus iconInput" id="createTaskIcon"></i>
+                                       <i class="fa fa-plus iconInput createTaskIcon"></i>
                                  </div>
                               </div>
                               <div class="col-md-4">
@@ -100,6 +100,7 @@
                                        echo $this->tag->textField(["owner", "size" => 30, 
                                        "class" => "form-control", "id" => "owner" ]) 
                                        ?>
+                                       <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                               <div class="col-md-4">
@@ -108,7 +109,8 @@
                                     <?php 
                                        echo $this->tag->textField(["collaburator", "size" => 30, 
                                        "class" => "form-control", "id" => "collaburator" ]) 
-                                       ?>  
+                                       ?>
+                                       <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                               <div class="col-md-4">
@@ -118,6 +120,7 @@
                                        echo $this->tag->textField(["regulator", "size" => 30, 
                                        "class" => "form-control", "id" => "regulator"]) 
                                        ?>
+                                       <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -129,6 +132,7 @@
                                        echo $this->tag->textField(["uses", "size" => 30, 
                                        "class" => "form-control", "id" => "uses" ]) 
                                        ?>
+                                       <i class="fa fa-plus iconInput createResourceIcon"></i>
                                  </div>
                               </div>
                               <div class="col-md-4">
@@ -149,7 +153,8 @@
                                     <?php 
                                        echo $this->tag->textField(["produces", "size" => 30, 
                                        "class" => "form-control", "id" => "produces" ]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createResourceIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -160,7 +165,8 @@
                                     <?php 
                                        echo $this->tag->textField(["ownerToBe", "size" => 30, 
                                        "class" => "form-control", "id" => "ownerToBe"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                               <div class="col-md-6">
@@ -169,7 +175,8 @@
                                     <?php 
                                        echo $this->tag->textField(["collaboratorToBe", "size" => 30, 
                                        "class" => "form-control", "id" => "collaboratorToBe" ]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -180,7 +187,8 @@
                                     <?php 
                                        echo $this->tag->textField(["toUse", "size" => 30, 
                                        "class" => "form-control", "id" => "toUse"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createResourceIcon"></i>
                                  </div>
                               </div>
                               <div class="col-md-6">
@@ -189,7 +197,8 @@
                                     <?php 
                                        echo $this->tag->textField(["toProduce", "size" => 30, 
                                        "class" => "form-control", "id" => "toProduce"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createResourceIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -210,9 +219,17 @@
 <!-- blockJS -->
 
 <script>
-      $("#createTaskIcon").click(function(){
-            cloneModalTask($('#createTask'));
-      })
+      $(".createTaskIcon").click(function(){
+         cloneModalTask($('#createTask'));
+      });
+
+      $(".createResourceIcon").click(function(){
+         cloneModalResource($('#createResource'));
+      });
+
+      $(".createStakeholderIcon").click(function(){
+         cloneModalStakeholder($('#createStakeholder'));
+      });
 </script>
 
 <script>
