@@ -80,21 +80,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>representative</label>
-
                                             <?php
-                                        echo $this->tag->textField(["edOrepresentative", "size" => 30,
-                                        "class" => "form-control", "id" => "edOrepresentative" ])
-                                        ?>
+                                                echo $this->tag->textField(["edOrepresentative", "size" => 30,
+                                                "class" => "form-control", "id" => "edOrepresentative" ])
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>reports</label>
-
                                             <?php
-                                        echo $this->tag->textField(["edOreports", "size" => 30,
-                                        "class" => "form-control", "id" => "edOreports" ])
-                                        ?>
+                                                echo $this->tag->textField(["edOreports", "size" => 30,
+                                                "class" => "form-control", "id" => "edOreports" ])
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -102,21 +102,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>consults</label>
-
                                             <?php
-                                        echo $this->tag->textField(["edOconsults", "size" => 30,
-                                        "class" => "form-control", "id" => "edOconsults" ])
-                                        ?>
+                                                echo $this->tag->textField(["edOconsults", "size" => 30,
+                                                "class" => "form-control", "id" => "edOconsults" ])
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>liaises</label>
-
                                             <?php
-                                        echo $this->tag->textField(["edOliaises", "size" => 30,
-                                        "class" => "form-control", "id" => "edOliaises" ])
-                                        ?>
+                                                echo $this->tag->textField(["edOliaises", "size" => 30,
+                                                "class" => "form-control", "id" => "edOliaises" ])
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -124,21 +124,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>delegate</label>
-
                                             <?php
-                                        echo $this->tag->textField(["edOdelegate", "size" => 30,
-                                        "class" => "form-control", "id" => "edOdelegate" ])
-                                        ?>
+                                                echo $this->tag->textField(["edOdelegate", "size" => 30,
+                                                "class" => "form-control", "id" => "edOdelegate" ])
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>dTask</label>
-
                                             <?php
-                                        echo $this->tag->textField(["edOdTask", "size" => 30,
-                                        "class" => "form-control", "id" => "edOdTask" ])
-                                        ?>
+                                                echo $this->tag->textField(["edOdTask", "size" => 30,
+                                                "class" => "form-control", "id" => "edOdTask" ])
+                                            ?>
+                                            <i class="fa fa-plus iconInput createTaskIcon"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -164,6 +164,17 @@
         </div>
         <!-- blockJS -->
         <script>
+            $(".createTaskIcon").click(function(){
+                cloneModalTask($('#createTask'));
+            });
+
+            $(".createResourceIcon").click(function(){
+                cloneModalResource($('#createResource'));
+            });
+
+            $(".createStakeholderIcon").click(function(){
+                cloneModalStakeholder($('#createStakeholder'));
+            });
             var taskinput = '<?php echo json_encode($taskTags); ?>';
             taskinput = JSON.parse(taskinput);
             taskinput = createJSON(taskinput);

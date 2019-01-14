@@ -103,21 +103,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>reports</label>
-
                                             <?php 
-                                        echo $this->tag->textField(["edinreports", "size" => 30, 
-                                        "class" => "form-control", "id" => "edinreports" ]) 
-                                        ?>
+                                                echo $this->tag->textField(["edinreports", "size" => 30, 
+                                                "class" => "form-control", "id" => "edinreports" ]) 
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>consults</label>
-
                                             <?php 
-                                        echo $this->tag->textField(["edinconsults", "size" => 30, 
-                                        "class" => "form-control", "id" => "edinconsults" ]) 
-                                        ?>
+                                                echo $this->tag->textField(["edinconsults", "size" => 30, 
+                                                "class" => "form-control", "id" => "edinconsults" ]) 
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -125,11 +125,11 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>liaises</label>
-
                                             <?php 
-                                        echo $this->tag->textField(["edinliaises", "size" => 30, 
-                                        "class" => "form-control", "id" => "edinliaises" ]) 
-                                        ?>
+                                                echo $this->tag->textField(["edinliaises", "size" => 30, 
+                                                "class" => "form-control", "id" => "edinliaises" ]) 
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -137,22 +137,22 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>delegate</label>
-
                                             <?php 
-                                        echo $this->tag->textField(["edindelegate", "size" => 30, 
-                                        "class" => "form-control", "id" => "edindelegate" ]) 
-                                        ?>
+                                                echo $this->tag->textField(["edindelegate", "size" => 30, 
+                                                "class" => "form-control", "id" => "edindelegate" ]) 
+                                            ?>
+                                            <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>dTask</label>
-
                                             <?php 
-                                        echo $this->tag->textField(["edindTask", "size" => 30, 
-                                        "class" => "form-control", "id" => "edindTask" ]) 
-                                        ?>
+                                                echo $this->tag->textField(["edindTask", "size" => 30, 
+                                                "class" => "form-control", "id" => "edindTask" ]) 
+                                            ?>
+                                            <i class="fa fa-plus iconInput createTaskIcon"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -181,6 +181,18 @@
 </div>
 <!-- blockJS -->
 <script>
+    $(".createTaskIcon").click(function(){
+        cloneModalTask($('#createTask'));
+    });
+
+    $(".createResourceIcon").click(function(){
+        cloneModalResource($('#createResource'));
+    });
+
+    $(".createStakeholderIcon").click(function(){
+        cloneModalStakeholder($('#createStakeholder'));
+    });
+
     var taskinput = '<?php echo json_encode($taskTags); ?>';
     taskinput = JSON.parse(taskinput);
     taskinput = createJSON(taskinput);

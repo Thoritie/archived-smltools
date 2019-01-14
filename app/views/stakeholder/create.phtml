@@ -75,6 +75,7 @@
                                                     <label>representative</label>
                                                     <input type="text" class="form-control" name="Orepresentative" id="Orepresentative"
                                                         placeholder="">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -82,6 +83,7 @@
                                                     <label>reports</label>
                                                     <input type="text" class="form-control" name="Oreports" id="Oreports"
                                                         placeholder="">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,6 +93,7 @@
                                                     <label>consults</label>
                                                     <input type="text" class="form-control" name="Oconsults" id="Oconsults"
                                                         placeholder="">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -98,6 +101,7 @@
                                                     <label>liaises</label>
                                                     <input type="text" class="form-control" name="Oliaises" id="Oliaises"
                                                         placeholder="">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,6 +111,7 @@
                                                     <label>delegate</label>
                                                     <input type="text" class="form-control" name="Odelegate" id="Odelegate"
                                                         placeholder="">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -114,6 +119,7 @@
                                                     <label>dTask</label>
                                                     <input type="text" class="form-control" name="OdTask" id="OdTask"
                                                         placeholder="">
+                                                    <i class="fa fa-plus iconInput createTaskIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,12 +219,14 @@
                                                 <div class="form-group">
                                                     <label>reports</label>
                                                     <input type="text" name="inreports" id="inreports" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>consults</label>
                                                     <input type="text" name="inconsults" id="inconsults" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -227,6 +235,7 @@
                                                 <div class="form-group">
                                                     <label>liaises</label>
                                                     <input type="text" name="inliaises" id="inliaises" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -235,6 +244,7 @@
                                                 <div class="form-group">
                                                     <label>delegate</label>
                                                     <input type="text" name="indelegate" id="indelegate" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
 
@@ -243,6 +253,7 @@
                                                     <label>dTask</label>
                                                     <input type="text" name="indTask" id="indTask" class="form-control"
                                                         placeholder="">
+                                                    <i class="fa fa-plus iconInput createTaskIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -357,6 +368,7 @@
                                                 <div class="form-group">
                                                     <label>Play Role</label>
                                                     <input type="text" name="role_play_role" id="role_play_role" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -388,12 +400,14 @@
                                                 <div class="form-group">
                                                     <label>reports</label>
                                                     <input type="text" name="rreports" id="rreports" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>consults</label>
                                                     <input type="text" name="rconsults" id="rconsults" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -402,6 +416,7 @@
                                                 <div class="form-group">
                                                     <label>liaises</label>
                                                     <input type="text" name="rliaises" id="rliaises" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -410,6 +425,7 @@
                                                 <div class="form-group">
                                                     <label>delegate</label>
                                                     <input type="text" name="rdelegate" id="rdelegate" class="form-control">
+                                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -417,6 +433,7 @@
                                                     <label>dTask</label>
                                                     <input type="text" name="rdTask" id="rdTask" class="form-control"
                                                         placeholder="">
+                                                        <i class="fa fa-plus iconInput createTaskIcon"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -464,7 +481,18 @@
     questionMark($('#rliaises'));
     questionMark($('#rdelegate'));
     questionMark($('#rdTask'));
-  
+
+    $(".createTaskIcon").click(function(){
+        cloneModalTask($('#createTask'));
+    });
+
+    $(".createResourceIcon").click(function(){
+        cloneModalResource($('#createResource'));
+    });
+
+    $(".createStakeholderIcon").click(function(){
+        cloneModalStakeholder($('#createStakeholder'));
+    });
 
     $(document).ready(function () {
         $('#myTabs a').click(function (e) {

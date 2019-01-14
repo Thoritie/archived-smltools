@@ -53,7 +53,8 @@
                                     <?php 
                                        echo $this->tag->textField(["includes", "size" => 30, 
                                        "class" => "form-control", "id" => "Editincludes"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createResourceIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -64,7 +65,8 @@
                                     <?php 
                                        echo $this->tag->textField(["rOwner", "size" => 30, 
                                        "class" => "form-control", "id" => "EditrOwner"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                               <div class="col-md-6">
@@ -73,7 +75,8 @@
                                     <?php 
                                        echo $this->tag->textField(["pOwner", "size" => 30, 
                                        "class" => "form-control", "id" => "EditpOwner"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -84,7 +87,8 @@
                                     <?php 
                                        echo $this->tag->textField(["maintainer", "size" => 30, 
                                        "class" => "form-control", "id" => "Editmaintainer"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -103,6 +107,14 @@
 
 <!-- blockJS -->
 <script>
+      $(".createResourceIcon").click(function(){
+         cloneModalResource($('#createResource'));
+      });
+
+      $(".createStakeholderIcon").click(function(){
+         cloneModalStakeholder($('#createStakeholder'));
+      });
+      
       var resourceinput = '<?php echo json_encode($resourceTags); ?>';
       resourceinput = JSON.parse(resourceinput);
       resourceinput = createJSON(resourceinput);
