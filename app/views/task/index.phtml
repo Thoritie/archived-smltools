@@ -1,15 +1,6 @@
 <p>
     <?php $this->flashSession->output() ?>
 </p>
-<!-- breadcrumb -->
-<!-- <ol class="breadcrumb inline-flex">
-   <li class="breadcrumb-item">
-      <a href="<?=$this->url->get("project/index"); ?>">Project</a>
-   </li>
-   <li class="breadcrumb-item active">
-      <a>Task</a>
-   </li>
-</ol> -->
 
 <div class="container-fluid">
     <div class="row">
@@ -19,61 +10,7 @@
         </div>
     </div>
     <div class="row"  style="margin-top: 50px">
-        <div class="col-md-9" >
-            <!-- new complete card  -->
-            <!-- <div class="col-md-4">
-                <a href="<?=$this->url->get(" task/create"); ?>">
-                    <div class="thumbnail s-navShadow" id="thumbnailProject">
-                        <i class="fa fa-5x fa-plus" style="
-                     color: #3d578a;
-                     display: flex;
-                     justify-content: center;
-                     width: 100%;
-                     height: 100%;
-                     margin-top: 40px;
-                     "></i>
-                    </div>
-                </a>
-            </div> -->
-             <!-- card task -->
-            <!-- <?php 
-           
-                 foreach ($task->items as $key => $tk) { 
-            ?>
-           
-            <div class="col-md-4">
-                <div class="thumbnail s-navShadow">
-                    <div class="caption">
-                        <div class="header">
-                            
-                            <h4>
-                                <?=$tk->name?>
-                            </h4>
-                            </i>
-                        </div>
-                        <hr>
-                        <div class="footer">
-                            <a href="#" class="btn btn-info btn-xs labelInfo" role="button" data-container="body"
-                                data-placement="bottom" data-toggle="popover" data-placement="left" data-content="<?=$tk->Description?>"><i
-                                    class="fa fa-info"></i></a>
-
-                            <a onclick="confirm('Are you sure delete <?=$tk->name?>?')?deleteTask('<?=$tk->_id?>'):false;"
-                                class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;"
-                                data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
-
-                            <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary taskedit" data-id="<?=$tk->_id?>"
-                                role="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                            <a class="showDetailTask btn btn-xs pull-right" onclick="cloneModalDetailTask('<?=$tk->_id?>')"
-                                role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top"
-                                title="Show"><i class="fa fa-eye"></i></a>&nbsp;
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php }?> -->
-            <!-- end new -->
-           
+        <div class="col-md-9" >           
             <div class="fresh-table s-navShadow">
                 <table id="fresh-table" class="table">
                     <thead>
