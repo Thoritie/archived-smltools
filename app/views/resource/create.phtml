@@ -61,10 +61,11 @@
                               <div class="col-md-12">
                                  <div class="form-group">
                                     <label>includes</label>
-                                    <?php 
+                                    <?php
                                        echo $this->tag->textField(["includes", "size" => 30, 
                                        "class" => "form-control", "id" => "includes"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createResourceIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -75,7 +76,8 @@
                                     <?php 
                                        echo $this->tag->textField(["rOwner", "size" => 30, 
                                        "class" => "form-control", "id" => "rOwner"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                               <div class="col-md-6">
@@ -84,7 +86,8 @@
                                     <?php 
                                        echo $this->tag->textField(["pOwner", "size" => 30, 
                                        "class" => "form-control", "id" => "pOwner"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -95,7 +98,8 @@
                                     <?php 
                                        echo $this->tag->textField(["maintainer", "size" => 30, 
                                        "class" => "form-control", "id" => "maintainer"]) 
-                                       ?>
+                                    ?>
+                                    <i class="fa fa-plus iconInput createStakeholderIcon"></i>
                                  </div>
                               </div>
                            </div>
@@ -118,6 +122,13 @@
       questionMark($('#pOwner'));
       questionMark($('#maintainer'));
 
+      $(".createResourceIcon").click(function(){
+         cloneModalResource($('#createResource'));
+      });
+
+      $(".createStakeholderIcon").click(function(){
+         cloneModalStakeholder($('#createStakeholder'));
+      });
 </script>
 
 <!-- /.blockJS -->
