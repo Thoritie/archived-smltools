@@ -1,99 +1,101 @@
 <div class="wrapper">
-<div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
-   <div class="sidebar-wrapper">
-      <div class="logo">
-         <a href="#" class="simple-text">
-         SMLTOOLS
-         </a>
-      </div>
-      <ul class="nav">
-         <li class="active">
-            <a href="#">
-               <i class="pe-7s-graph"></i>
-               <h6>Project : <?=$projectname?></h6>
-               <hr class="proSide">
-               <p>Owner : <?=$ownerLayout?></p>
+   <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+      <div class="sidebar-wrapper">
+         <div class="logo">
+            <a href="#" class="simple-text">
+            SMLTOOLS
             </a>
-         </li>
-         <li>
-            <a href="<?=$this->url->get("project/index"); ?>">
-               <i class="pe-7s-user"></i>
-               <p>Dashboard</p>
-            </a>
-         </li>
-         <li>
-            <a href="<?=$this->url->get("collaborationsetting/"); ?>">
-               <i class="pe-7s-note2"></i>
-               <p>Collaboration Setting</p>
-            </a>
-         </li>
-         <li>
-            <a href="<?=$this->url->get("stakeholder/index"); ?>">
-               <i class="pe-7s-news-paper"></i>
-               <p>Stakeholder</p>
-            </a>
-         </li>
-         <li>
-            <a href="<?=$this->url->get("resource/"); ?>">
-               <i class="pe-7s-science"></i>
-               <p>Resource</p>
-            </a>
-         </li>
-         <li>
-            <a href="<?=$this->url->get("task/"); ?>">
-               <i class="pe-7s-map-marker"></i>
-               <p>Task</p>
-            </a>
-         </li>
-         <!-- <li>
-            <a href="#">
-               <i class="pe-7s-bell"></i>
-               <p>Notifications</p>
-            </a>
-         </li> -->
-      </ul>
-   </div>
-</div>
-<div class="main-panel">
-   <nav class="navbar s-navShadow navbar-default navbar-fixed">
-      <div class="container-fluid">
-         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Resource</a>
          </div>
-         <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="separator hidden-lg"></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
-                    <img src="http://placehold.it/30x30" class="img-circle special-img"><?= $userLogin ?><b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+         <ul class="nav">
+            <li class="active">
+               <a href="#">
+                  <i class="pe-7s-graph"></i>
+                  <h6>Project : <?=$projectname?></h6>
+                  <hr class="proSide">
+                  <p>Owner : <?=$ownerLayout?></p>
+               </a>
+            </li>
+            <li>
+               <a href="<?=$this->url->get("project/index"); ?>">
+                  <i class="pe-7s-user"></i>
+                  <p>Dashboard</p>
+               </a>
+            </li>
+            <li>
+               <a href="<?=$this->url->get("collaborationsetting/"); ?>">
+                  <i class="pe-7s-note2"></i>
+                  <p>Collaboration Setting</p>
+               </a>
+            </li>
+            <li>
+               <a href="<?=$this->url->get("stakeholder/index"); ?>">
+                  <i class="pe-7s-news-paper"></i>
+                  <p>Stakeholder</p>
+               </a>
+            </li>
+            <li>
+               <a href="<?=$this->url->get("resource/index"); ?>">
+                  <i class="pe-7s-science"></i>
+                  <p>Resource</p>
+               </a>
+            </li>
+            <li>
+               <a href="<?=$this->url->get("task/"); ?>">
+                  <i class="pe-7s-map-marker"></i>
+                  <p>Task</p>
+               </a>
+            </li>
+            <!-- <li>
+               <a href="#">
+                  <i class="pe-7s-bell"></i>
+                  <p>Notifications</p>
+               </a>
+               </li> -->
+         </ul>
+      </div>
+   </div>
+   <div class="main-panel">
+      <nav class="navbar s-navShadow navbar-default navbar-fixed">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="#">Task</a>
+            </div>
+            <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                  <li class="separator hidden-lg"></li>
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+                     <img src="http://placehold.it/30x30" class="img-circle special-img"><?= $userLogin ?><b class="caret"></b></a>
+                     <ul class="dropdown-menu">
                         <li><a href="#"><i class="fa fa-cog"></i> Account</a></li>
                         <li class="divider"></li>
                         <li> <a href="<?=$this->url->get("auth/logout")?>"><i class="fa fa-sign-out"></i> Sign-out</a></li>
-                    </ul>
-                </li>
-            </ul>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
          </div>
+      </nav>
+      <div class="content">
+         <?php 
+            //eco เนื้อหาของแต่ละหน้า
+            echo $this->render->getContent($this->getContent());
+                
+            //ตัวแปรเก็บค่า script นำไป eco ในไฟล์ index.phtml
+            $script = $this->render->getScript(
+                $this->getContent()
+            );
+            ?>
       </div>
-   </nav>
-   <div class="content">
-   <?php 
-   
-   echo $this->render->getContent($this->getContent());
-   $script = $this->render->getScript(
-       $this->getContent()
-   );
-?>
-      
    </div>
 </div>
-</div>
+<!-- ================================================== Modal Stakeholder ===================================================== -->
 <div class="modal createStakeholder" id="createStakeholder" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
@@ -166,12 +168,14 @@
                                                    <div class="form-group">
                                                       <label>representative</label>
                                                       <input type="text" class="form-control" name="ModalOrepresentative" id="ModalOrepresentative">
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                    <div class="form-group">
                                                       <label>reports</label>
                                                       <input type="text" class="form-control" name="ModalOreports" id="ModalOreports" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                              </div>
@@ -180,12 +184,14 @@
                                                    <div class="form-group">
                                                       <label>consults</label>
                                                       <input type="text" class="form-control" name="ModalOconsults" id="ModalOconsults" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                    <div class="form-group">
                                                       <label>liaises</label>
                                                       <input type="text" class="form-control" name="ModalOliaises" id="ModalOliaises" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                              </div>
@@ -194,12 +200,14 @@
                                                    <div class="form-group">
                                                       <label>delegate</label>
                                                       <input type="text" class="form-control" name="ModalOdelegate" id="ModalOdelegate" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                    <div class="form-group">
                                                       <label>dTask</label>
                                                       <input type="text" class="form-control" name="ModalOdTask" id="ModalOdTask" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalTask($('#createTask'))"></i>
                                                    </div>
                                                 </div>
                                                 </div>
@@ -290,12 +298,14 @@
                                                    <div class="form-group">
                                                       <label>reports</label>
                                                       <input type="text" name="ModalInReports" id="ModalInReports" class="form-control" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                    <div class="form-group">
                                                       <label>consults</label>
                                                       <input type="text" name="ModalInConsults" id="ModalInConsults" class="form-control" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                              </div>
@@ -304,6 +314,7 @@
                                                    <div class="form-group">
                                                       <label>liaises</label>
                                                       <input type="text" name="ModalInLiaises" id="ModalInLiaises" class="form-control" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                                </div>
@@ -312,6 +323,7 @@
                                                    <div class="form-group">
                                                       <label>delegate</label>
                                                       <input type="text" name="ModalInDelegate" id="ModalInDelegate" class="form-control" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                
@@ -319,6 +331,7 @@
                                                    <div class="form-group">
                                                       <label>dTask</label>
                                                       <input type="text" name="ModalInDTask" id="ModalInDTask" class="form-control" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalTask($('#createTask'))"></i>
                                                    </div>
                                                 </div>
                                                 </div>
@@ -416,12 +429,14 @@
                                                    <div class="form-group">
                                                       <label>reports</label>
                                                       <input type="text" name="ModalRoleReports" id="ModalRoleReports" class="form-control">
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                    <div class="form-group">
                                                       <label>consults</label>
                                                       <input type="text" name="ModalRoleConsults" id="ModalRoleConsults" class="form-control">
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                              </div>
@@ -430,6 +445,7 @@
                                                    <div class="form-group">
                                                       <label>liaises</label>
                                                       <input type="text" name="ModalRoleLiaises" id="ModalRoleLiaises" class="form-control">
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                                </div>
@@ -438,12 +454,14 @@
                                                    <div class="form-group">
                                                       <label>delegate</label>
                                                       <input type="text" name="ModalRoleDelegate" id="ModalRoleDelegate" class="form-control" >
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                    <div class="form-group">
                                                       <label>dTask</label>
                                                       <input type="text" name="ModalRoleDTask" id="ModalRoleDTask" class="form-control">
+                                                      <i class="fa fa-plus iconInput" onclick="cloneModalTask($('#createTask'))"></i>
                                                    </div>
                                                 </div>
                                                 </div>
@@ -514,7 +532,8 @@
                            <?php 
                               echo $this->tag->textField(["includes", "size" => 30, 
                               "class" => "form-control ModalincludesResource", "id" => "ModalincludesResource"]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
                      </div>
                   </div>
@@ -525,7 +544,8 @@
                            <?php 
                               echo $this->tag->textField(["rOwner", "size" => 30, 
                               "class" => "form-control", "id" => "ModalrOwnerResource"]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
                      </div>
                      <div class="col-md-6">
@@ -534,7 +554,8 @@
                            <?php 
                               echo $this->tag->textField(["pOwner", "size" => 30, 
                               "class" => "form-control", "id" => "ModalpOwnerResource"]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
                      </div>
                   </div>
@@ -545,7 +566,8 @@
                            <?php 
                               echo $this->tag->textField(["maintainer", "size" => 30, 
                               "class" => "form-control", "id" => "ModalmaintainerResource"]) 
-                              ?>    
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>    
                         </div>
                      </div>
                   </div>
@@ -607,11 +629,12 @@
                   <div class="row">
                      <div class="col-md-8">
                         <div class="form-group">
-                           <label>Includes</label>
+                           <label>Includes Tasks</label>
                            <?php 
                               echo $this->tag->textField(["ModalincludesTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalincludesTask"]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalTask($('#createTask'))"></i>
                         </div>
                      </div>
                      <div class="col-md-4">
@@ -636,7 +659,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalOwnerTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalOwnerTask" ]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
                      </div>
                      <div class="col-md-4">
@@ -645,7 +669,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalCollaburatorTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalCollaburatorTask" ]) 
-                              ?>  
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>  
                         </div>
                      </div>
                      <div class="col-md-4">
@@ -654,7 +679,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalRegulatorTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalregulatorTask"]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
                      </div>
                   </div>
@@ -665,7 +691,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalUsesTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalUsesTask" ]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
                      </div>
                      <div class="col-md-4">
@@ -691,7 +718,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalProducesTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalProducesTask" ]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
                      </div>
                   </div>
@@ -702,7 +730,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalOwnerToBeTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalOwnerToBeTask"]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
                      </div>
                      <div class="col-md-6">
@@ -711,7 +740,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalCollaboratorToBeTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalCollaboratorToBeTask" ]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
                      </div>
                   </div>
@@ -722,7 +752,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalToUseTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalToUseTask"]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
                      </div>
                      <div class="col-md-6">
@@ -731,7 +762,8 @@
                            <?php 
                               echo $this->tag->textField(["ModalToProduceTask", "size" => 30, 
                               "class" => "form-control", "id" => "ModalToProduceTask"]) 
-                              ?>
+                           ?>
+                           <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
                      </div>
                   </div>
