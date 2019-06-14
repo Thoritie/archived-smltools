@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  mongo:
+    image: mongo:3.4
+
+  web:
+    image: lifzzz/phalcon-mongo:1.0
+    volumes:
+      - ./smltools:/var/www/html/smltools/
+    ports:
+      - 8000:80
+    depends_on:
+      - mongo

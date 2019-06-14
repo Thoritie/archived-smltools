@@ -1,8 +1,10 @@
-FROM mileschou/phalcon:7.2-apache
+FROM mileschou/phalcon:5.6-apache
 
 COPY apache.conf /etc/apache2/apache2.conf
-
-RUN pecl install mongodb 
-RUN echo "extension=mongodb.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+RUN apt-get update -y
+RUN apt-get install libssl-dev -y
+RUN pecl install mongo
+RUN docker-php-ext-install bcmath
+RUN echo "extension=mongo.so" >> /usr/local/etc/php/conf.d/mongo.ini
 
 RUN a2enmod rewrite
