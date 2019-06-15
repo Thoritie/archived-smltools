@@ -15,6 +15,6 @@ $docker-compose up -d
 ```
 $docker-compose exec mongo bash
 $cd /home/local-data
-$./dummy-data .sh
+$./dummy_data .sh
 ```
 
