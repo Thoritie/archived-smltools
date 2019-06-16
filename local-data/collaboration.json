@@ -1,0 +1,12 @@
+[
+    {
+        "_id" : ObjectId("5d051b3092312adc19000029"),
+        "name" : "new event",
+        "Description" : "New event ",
+        "include" : [ 
+            "5d0375c192312a482e00002a", 
+            "5d037a2692312a142b00002d"
+        ],
+        "idProject" : "5d03758092312a7827000029"
+    }
+]

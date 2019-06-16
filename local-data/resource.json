@@ -1,0 +1,21 @@
+[
+    { 
+        "_id" : ObjectId("5d05cbf6575d581c008b4567"),
+        "name" : "document of create event",
+        "description" : "document of create event",
+        "includes" : [ "5d05cc2d575d5815008b4567" ],
+        "rOwner" : [ "5d03788092312ad01700002b" ],
+        "pOwner" : null,
+        "maintainer" : [ "5d03788092312ad01700002b" ],
+        "idProject" : "5d03758092312a7827000029" 
+    },
+    { 
+        "_id" : ObjectId("5d05cc2d575d5815008b4567"), 
+        "name" : "document of record attendance ", 
+        "description" : "document of record attendance ", 
+        "includes" : null, 
+        "rOwner" : [ "5d03788092312ad01700002b" ], 
+        "pOwner" : null, 
+        "maintainer" : [ "5d03788092312ad01700002b" ], 
+        "idProject" : "5d03758092312a7827000029" }
+]
