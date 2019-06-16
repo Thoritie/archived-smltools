@@ -19,7 +19,6 @@ class ProjectController extends ControllerBase
         $this->assets->addCss('jslif/app.css');
         // $this->assets->addCss('jslif/sb-admin.css');
         // $this->assets->addCss('jslif/sb-admin-override.css');
-        // $this->assets->addCss('projectCard/proCard.css');
         $this->assets->addCss('addResource/addRe.css');
         
 
@@ -41,8 +40,6 @@ class ProjectController extends ControllerBase
         $this->assets->addJs('jquery/projectRedirect.js');
         $this->assets->addJs('jquery/editProject.js');
 
-       
-        // $this->assets->addJs('projectCard/proCard.js');
     }
 
     public function indexAction()

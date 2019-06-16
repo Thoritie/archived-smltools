@@ -23,7 +23,6 @@ class StakeholderController extends ControllerBase
         $this->assets->addCss('jslif/app.css');
         // $this->assets->addCss('jslif/sb-admin.css');
         // $this->assets->addCss('jslif/sb-admin-override.css');
-        // $this->assets->addCss('projectCard/proCard.css');
 
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
