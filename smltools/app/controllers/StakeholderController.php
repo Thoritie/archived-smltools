@@ -23,7 +23,6 @@ class StakeholderController extends ControllerBase
         $this->assets->addCss('jslif/app.css');
         // $this->assets->addCss('jslif/sb-admin.css');
         // $this->assets->addCss('jslif/sb-admin-override.css');
-        // $this->assets->addCss('projectCard/proCard.css');
 
         $this->assets->addJs('pro/js/jquery-3.2.1.min.js');
         $this->assets->addJs('assetsThor/js/bootstrap.min.js');
@@ -46,20 +45,15 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('jquery/stakeHolderDetailsRedirect.js');
 
         $this->assets->addJs('modal/cloneModal.js');
-        $this->assets->addJs('jslif/stake.js');
+        $this->assets->addJs('jslif/tagStake.js');
 
     }
 
     public function indexAction()
     {
-        // $this->assets->addCss('dataTable/css/fresh-bootstrap-table.css');
         // $this->assets->addCss('addResource/addRe.css');
 
         // $this->assets->addJs('addResource/addRe.js');
-        // $this->assets->addJs('dataTable/js/jquery-1.11.2.min.js');
-        // $this->assets->addJs('dataTable/js/js/bootstrap.js');
-        // $this->assets->addJs('dataTable/js/bootstrap-table.js');
-
 
         //Layout
         $projectname = $this->session->get('projectname');

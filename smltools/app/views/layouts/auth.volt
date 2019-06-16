@@ -122,7 +122,6 @@
         
         <!-- {{ javascript_include('popper/popper.min.js') }}         -->
         {{ javascript_include('bootstrap-4/js/bootstrap.min.js') }}        
-        <!-- {{ javascript_include('jquery-easing/jquery.easing.min.js') }}                 -->
         <!-- {{ javascript_include('scrollreveal/scrollreveal.min.js') }}         -->
         <!-- {{ javascript_include('magnific-popup/jquery.magnific-popup.min.js') }}         -->
         <!-- {{ javascript_include('nav/js/creative.js') }} -->

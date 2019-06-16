@@ -43,8 +43,6 @@ class TaskController extends ControllerBase
        
         $this->assets->addJs('assetsThor/js/light-bootstrap-dashboard.js');
         $this->assets->addJs('assetsThor/js/demo.js');
-       
-        //// $this->assets->addJs('projectCard/proCard.js');
 
         $this->assets->addJs('dist/jquery.validate.js');
         $this->assets->addJs('jquery/jquery.redirect.js');
