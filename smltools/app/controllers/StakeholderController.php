@@ -45,7 +45,7 @@ class StakeholderController extends ControllerBase
         $this->assets->addJs('jquery/stakeHolderDetailsRedirect.js');
 
         $this->assets->addJs('modal/cloneModal.js');
-        $this->assets->addJs('jslif/stake.js');
+        $this->assets->addJs('jslif/tagStake.js');
 
     }
 
