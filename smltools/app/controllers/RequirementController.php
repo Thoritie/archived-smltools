@@ -53,5 +53,20 @@ class RequirementController extends ControllerBase
 
         $id = $this->session->get('idProject');
     }
+
+    public function createAction() 
+    {
+        
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+
+        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+
+        $id = $this->session->get('idProject');
+    }
 }
 
