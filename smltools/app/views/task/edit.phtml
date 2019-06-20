@@ -305,13 +305,13 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
     add(Edincludes, data_includes);
 
 
-    Stakeholder = new Bloodhound({
+    Stakeholder_Edit = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         local: JSON.parse(stakeinput)
     });
   
-    Stakeholder.initialize();
+    Stakeholder_Edit.initialize();
 
     var EdownerToBe = $('#EdownerToBe');
     EdownerToBe.tagsinput({
@@ -320,7 +320,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
         typeaheadjs: {
             name: 'name',
             displayKey: 'text',
-            source: Stakeholder.ttAdapter(),
+            source: Stakeholder_Edit.ttAdapter(),
             templates: {
                 empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
             },
@@ -336,7 +336,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
+        source: Stakeholder_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
         },
@@ -352,7 +352,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
+        source: Stakeholder_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
         },
@@ -368,7 +368,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
+        source: Stakeholder_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
         },
@@ -384,7 +384,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
+        source: Stakeholder_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
         },

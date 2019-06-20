@@ -499,13 +499,10 @@ function saveResourse(idModal){
 
     function saveStakeholder(idModal){
         if ( $("#tab1-"+idModal).hasClass('active') ) {
-            console.log("1");
             saveOrganisation(idModal);
         }else if( $("#tab2-"+idModal).hasClass('active')){
-            console.log("2");
             saveIndividual(idModal);
         }else{
-            console.log("3");
             saveRole(idModal);
         }
 
@@ -514,7 +511,6 @@ function saveResourse(idModal){
 
     function saveOrganisation(idModal){
         result = $('#formOrganisation-'+idModal).valid();
-        console.log(result);
         if(result){
             var name = $("#ModalOStakeName-"+idModal).val()
             var Organisation = $("#ModalOrganName-"+idModal).val()
@@ -586,7 +582,9 @@ function saveResourse(idModal){
                         var n = createString(auto);
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
-                                            
+                        
+                        Stakeholder_Edit.local = JSON.parse(n);
+                        Stakeholder_Edit.initialize(true);
                         $('#'+idModal).modal('hide');
                         $('#'+idModal).remove();
                     },  "json");
