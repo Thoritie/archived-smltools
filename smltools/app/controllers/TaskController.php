@@ -400,12 +400,15 @@ class TaskController extends ControllerBase
     {
         $this->view->disable();
         $input = $this->request->getPost('project');
-        $taskname = $this->request->getPost('taskname');
+        $taskName = $this->request->getPost('taskNameEdit');
         
         $condition = [];
         $condition["idProject"] = $input;   
         $condition["mom"] = null;
         
+        if($taskName)            
+            $condition["name"] = ['$ne' => $taskName];
+            
         $tasks = Tasks::Find(array($condition));
 
         return json_encode($tasks);
