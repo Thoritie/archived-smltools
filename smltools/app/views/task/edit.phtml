@@ -393,13 +393,13 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
     add(EdcollaboratorToBe, data_collaboratorTobe);
 
 
-   Resource_edit = new Bloodhound({
+   Resource_Edit = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: JSON.parse(resourceinput)
     });
-  
-    Resource.initialize();
+    Resource_Edit.initialize();
+
     var Eduses = $('#Eduses');
     Eduses.tagsinput({
       itemValue: 'value',
@@ -407,7 +407,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource_edit.ttAdapter(),
+        source: Resource_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -423,7 +423,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource_edit.ttAdapter(),
+        source: Resource_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -439,7 +439,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource_edit.ttAdapter(),
+        source: Resource_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -455,7 +455,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource_edit.ttAdapter(),
+        source: Resource_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },

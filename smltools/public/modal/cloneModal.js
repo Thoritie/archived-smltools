@@ -373,8 +373,8 @@ function saveResourse(idModal){
                                     Resource.local = JSON.parse(n);
                                     Resource.initialize(true);
                                     
-                                    Resource.local = JSON.parse(n);
-                                    Resource.initialize(true);
+                                    Resource_Edit.local = JSON.parse(n);
+                                    Resource_Edit.initialize(true);
                                     
                                     $('#'+idModal).modal('hide');
                                     $('#'+idModal).remove();
