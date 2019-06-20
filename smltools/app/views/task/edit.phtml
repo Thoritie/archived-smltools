@@ -393,7 +393,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
     add(EdcollaboratorToBe, data_collaboratorTobe);
 
 
-      Resource = new Bloodhound({
+   Resource_edit = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: JSON.parse(resourceinput)
@@ -407,7 +407,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource.ttAdapter(),
+        source: Resource_edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -423,7 +423,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource.ttAdapter(),
+        source: Resource_edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -439,7 +439,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource.ttAdapter(),
+        source: Resource_edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -455,7 +455,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource.ttAdapter(),
+        source: Resource_edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
