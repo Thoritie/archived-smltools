@@ -10,7 +10,7 @@ function cloneModalResource($modal) {
     var idModal = new Date().getTime();
     newModal.attr("id", idModal);
     newModal.attr("style", "z-index: " + zindex++);
-    
+
     
     //set onclick in button
     setFormIdInModalResource(idModal, newModal);
@@ -586,9 +586,12 @@ function saveResourse(idModal){
                         var n = createString(auto);
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
+
+                        if (typeof Tasks_Edit !== 'undefined') {
+                            Stakeholder_Edit.local = JSON.parse(n);
+                            Stakeholder_Edit.initialize(true);
+                        }
                         
-                        Stakeholder_Edit.local = JSON.parse(n);
-                        Stakeholder_Edit.initialize(true);
                         $('#'+idModal).modal('hide');
                         $('#'+idModal).remove();
                     },  "json");
@@ -662,11 +665,15 @@ function saveResourse(idModal){
                         var n = createString(auto);
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
-                                            
+
+                        if (typeof Tasks_Edit !== 'undefined') {
+                            Stakeholder_Edit.local = JSON.parse(n);
+                            Stakeholder_Edit.initialize(true);
+                        }
+    
                         $('#'+idModal).modal('hide');
                         $('#'+idModal).remove();
                     },  "json");
-                    console.log(data);
                 }
             })
         }
@@ -742,7 +749,12 @@ function saveResourse(idModal){
                         var n = createString(auto);
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
-                                            
+
+                        if (typeof Tasks_Edit !== 'undefined') {
+                            Stakeholder_Edit.local = JSON.parse(n);
+                            Stakeholder_Edit.initialize(true);
+                        }
+
                         $('#'+idModal).modal('hide');
                         $('#'+idModal).remove();
                     },  "json");
