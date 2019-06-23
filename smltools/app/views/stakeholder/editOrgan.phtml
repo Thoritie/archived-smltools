@@ -201,12 +201,12 @@
             var data_representative = '<?php echo json_encode($representative); ?>';
 
             $(document).ready(function () {
-                Tasks = new Bloodhound({
+                Tasks_Edit = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                     queryTokenizer: Bloodhound.tokenizers.whitespace,
                     local: JSON.parse(taskinput)
                 });
-                Tasks.initialize();
+                Tasks_Edit.initialize();
 
                 var edOdTask = $('#edOdTask');
                 edOdTask.tagsinput({
@@ -215,7 +215,7 @@
                     typeaheadjs: {
                         name: 'name',
                         displayKey: 'text',
-                        source: Tasks.ttAdapter(),
+                        source: Tasks_Edit.ttAdapter(),
                         templates: {
                             empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
                         }
@@ -223,12 +223,12 @@
                 });
                 add(edOdTask, data_dTask);
 
-                Stakeholder = new Bloodhound({
+                Stakeholder_Edit = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                     queryTokenizer: Bloodhound.tokenizers.whitespace,
                     local: JSON.parse(stakeinput)
                 });
-                Stakeholder.initialize();
+                Stakeholder_Edit.initialize();
 
                 var edOreports = $('#edOreports');
                 edOreports.tagsinput({
@@ -237,7 +237,7 @@
                     typeaheadjs: {
                         name: 'name',
                         displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
+                        source: Stakeholder_Edit.ttAdapter(),
                         templates: {
                             highlight: true,
                             empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
@@ -253,7 +253,7 @@
                     typeaheadjs: {
                         name: 'name',
                         displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
+                        source: Stakeholder_Edit.ttAdapter(),
                         templates: {
                             highlight: true,
                             empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
@@ -269,7 +269,7 @@
                     typeaheadjs: {
                         name: 'name',
                         displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
+                        source: Stakeholder_Edit.ttAdapter(),
                         templates: {
                             empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                         }
@@ -284,20 +284,13 @@
                     typeaheadjs: {
                         name: 'name',
                         displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
+                        source: Stakeholder_Edit.ttAdapter(),
                         templates: {
                             empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                         },
                     }
                 });
                 add(edOdelegate, data_delegate);
-
-                Stakeholder = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: JSON.parse(stakerepersent)
-                });
-                Stakeholder.initialize();
 
                 var edOrepresentative = $('#edOrepresentative');
                 edOrepresentative.tagsinput({
@@ -306,7 +299,7 @@
                     typeaheadjs: {
                         name: 'name',
                         displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
+                        source: Stakeholder_Edit.ttAdapter(),
                         templates: {
                             empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                         }

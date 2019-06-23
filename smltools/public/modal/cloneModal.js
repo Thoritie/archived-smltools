@@ -563,6 +563,8 @@ function saveResourse(idModal){
                 type = 1;
             else
                 type = 0;
+            
+            var organisationname = $("#edStakeName").val()
             $.ajax({
                 type: 'POST',
                 url: baseUrl + "stakeholder/saveOrganisation",
@@ -585,7 +587,8 @@ function saveResourse(idModal){
                 success: function (data) {
                     Stakeholder.clear();
                     $.post(baseUrl+"task/findStake",{
-                    project : idProject
+                    project : idProject,
+                    stakeNameEdit : organisationname
                     }, function(data){
                         var auto = createJSON(data);
                         var n = createString(auto);
@@ -643,6 +646,7 @@ function saveResourse(idModal){
             });
             var inwishes = $("#ModalInWishes-"+idModal).val()
             var inidProject = $("#idProjectmodalStake-"+idModal).val();
+            var inStakeName = $("#inStakeName").val();
             $.ajax({
                 type: 'POST',
                 url: baseUrl + "stakeholder/saveIndividual",
@@ -664,7 +668,8 @@ function saveResourse(idModal){
                 success: function (data) {
                     Stakeholder.clear();
                     $.post(baseUrl+"task/findStake",{
-                    project : inidProject
+                    project : inidProject,
+                    stakeNameEdit : inStakeName
                     }, function(data){
                         var auto = createJSON(data);
                         var n = createString(auto);
@@ -725,6 +730,7 @@ function saveResourse(idModal){
             var rwishes = $("#ModalRoleWishes-"+idModal).val()
             var ridProject = $("#idProjectmodalStake-"+idModal).val();
             var rtype = 3;
+            var rolename = $('#edit_role_StakeName').val();
             $.ajax({
                 type: 'POST',
                 url: baseUrl + "stakeholder/saveRole",
@@ -748,7 +754,8 @@ function saveResourse(idModal){
                 success: function (data) {
                     Stakeholder.clear();
                     $.post(baseUrl+"task/findStake",{
-                    project : ridProject
+                    project : ridProject,
+                    stakeNameEdit : rolename
                     }, function(data){
                         var auto = createJSON(data);
                         var n = createString(auto);

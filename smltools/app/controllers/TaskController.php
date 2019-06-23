@@ -216,12 +216,16 @@ class TaskController extends ControllerBase
     {
         $this->view->disable();
         $input = $this->request->getPost('project');
-        
+        $stakeName = $this->request->getPost('stakeNameEdit');
+
         $condition = [];
         
         if($input){
             $condition["idProject"] = $input;
         }
+
+        if($stakeName)            
+            $condition["name"] = ['$ne' => $stakeName];
 
         $stakeholders = Stakeholders::Find(array($condition));
 
