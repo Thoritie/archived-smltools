@@ -364,7 +364,8 @@ function saveResourse(idModal){
                     success:function(data){
                         Resource.clear();
                         $.post(baseUrl+"task/findResource",{
-                                project : idProject
+                                project : idProject,
+                                resourceNameEdit : resourcename
                                 }, function(data){
                                 
                                     var auto = createJSON(data);

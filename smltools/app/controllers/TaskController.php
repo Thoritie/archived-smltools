@@ -233,12 +233,16 @@ class TaskController extends ControllerBase
     {
         $this->view->disable();
         $input = $this->request->getPost('project');
-        
+        $resourceName = $this->request->getPost('resourceNameEdit');
         $condition = [];
         
         if($input){
             $condition["idProject"] = $input;
+            $condition["mom"] = null;
         }
+
+        if($resourceName)            
+            $condition["name"] = ['$ne' => $resourceName];
 
         $resource = Resource::Find(array($condition));
 

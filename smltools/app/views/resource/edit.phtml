@@ -139,7 +139,7 @@
                local: JSON.parse(resourceinput)
          });
 
-         Resource.initialize();
+         Resource_Edit.initialize();
 
          var Editincludes = $('#Editincludes');
          Editincludes.tagsinput({
@@ -148,7 +148,7 @@
                typeaheadjs:{
                      name : 'name',
                      displayKey: 'text',
-                     source: Resource.ttAdapter(),
+                     source: Resource_Edit.ttAdapter(),
                      templates: {
                            empty: '<div class="empty-message text-info resourse-emptry" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
 
@@ -158,13 +158,13 @@
          });
          add(Editincludes,data_includes);
 
-         Stakeholder = new Bloodhound({
+         Stakeholder_Edit = new Bloodhound({
                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                queryTokenizer: Bloodhound.tokenizers.whitespace,
                local: JSON.parse(stakeinput)
          });
 
-         Stakeholder.initialize();
+         Stakeholder_Edit.initialize();
          
          var EditrOwner = $('#EditrOwner');
          EditrOwner.tagsinput({
@@ -173,7 +173,7 @@
                typeaheadjs:{
                      name : 'name',
                      displayKey: 'text',
-                     source: Stakeholder.ttAdapter(),
+                     source: Stakeholder_Edit.ttAdapter(),
                      templates: {
                            empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
 
@@ -190,7 +190,7 @@
                typeaheadjs:{
                      name : 'name',
                      displayKey: 'text',
-                     source: Stakeholder.ttAdapter(),
+                     source: Stakeholder_Edit.ttAdapter(),
                      templates: {
                            empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
 
@@ -207,7 +207,7 @@
                typeaheadjs:{
                      name : 'name',
                      displayKey: 'text',
-                     source: Stakeholder.ttAdapter(),
+                     source: Stakeholder_Edit.ttAdapter(),
                      templates: {
                            empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                      },
