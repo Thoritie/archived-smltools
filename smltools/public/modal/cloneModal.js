@@ -373,8 +373,11 @@ function saveResourse(idModal){
                                     Resource.local = JSON.parse(n);
                                     Resource.initialize(true);
                                     
-                                    Resource_Edit.local = JSON.parse(n);
-                                    Resource_Edit.initialize(true);
+                                    if (typeof Resource_Edit !== 'undefined') {
+                                        Resource_Edit.local = JSON.parse(n);
+                                        Resource_Edit.initialize(true);
+                                    }
+                                   
                                     
                                     $('#'+idModal).modal('hide');
                                     $('#'+idModal).remove();
@@ -587,7 +590,7 @@ function saveResourse(idModal){
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
 
-                        if (typeof Tasks_Edit !== 'undefined') {
+                        if (typeof Stakeholder_Edit !== 'undefined') {
                             Stakeholder_Edit.local = JSON.parse(n);
                             Stakeholder_Edit.initialize(true);
                         }
@@ -666,7 +669,7 @@ function saveResourse(idModal){
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
 
-                        if (typeof Tasks_Edit !== 'undefined') {
+                        if (typeof Stakeholder_Edit !== 'undefined') {
                             Stakeholder_Edit.local = JSON.parse(n);
                             Stakeholder_Edit.initialize(true);
                         }
@@ -750,7 +753,7 @@ function saveResourse(idModal){
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
 
-                        if (typeof Tasks_Edit !== 'undefined') {
+                        if (typeof Stakeholder_Edit !== 'undefined') {
                             Stakeholder_Edit.local = JSON.parse(n);
                             Stakeholder_Edit.initialize(true);
                         }
