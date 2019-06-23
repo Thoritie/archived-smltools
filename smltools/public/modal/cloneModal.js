@@ -374,7 +374,7 @@ function saveResourse(idModal){
                                     
                                     Resource.local = JSON.parse(n);
                                     Resource.initialize(true);
-                                    console.log(n)
+
                                     if (typeof Resource_Edit !== 'undefined') {
                                         Resource_Edit.local = JSON.parse(n);
                                         Resource_Edit.initialize(true);
