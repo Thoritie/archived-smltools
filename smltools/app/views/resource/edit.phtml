@@ -133,87 +133,87 @@
 
       $(document).ready(function() {
 
-            Resource = new Bloodhound({
-                  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                  queryTokenizer: Bloodhound.tokenizers.whitespace,
-                  local: JSON.parse(resourceinput)
-            });
+         Resource_Edit = new Bloodhound({
+               datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+               queryTokenizer: Bloodhound.tokenizers.whitespace,
+               local: JSON.parse(resourceinput)
+         });
 
-            Resource.initialize();
+         Resource.initialize();
 
-            var Editincludes = $('#Editincludes');
-            Editincludes.tagsinput({
-                  itemValue:'value',
-                  itemText: 'text',
-                  typeaheadjs:{
-                        name : 'name',
-                        displayKey: 'text',
-                        source: Resource.ttAdapter(),
-                        templates: {
-                              empty: '<div class="empty-message text-info resourse-emptry" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
+         var Editincludes = $('#Editincludes');
+         Editincludes.tagsinput({
+               itemValue:'value',
+               itemText: 'text',
+               typeaheadjs:{
+                     name : 'name',
+                     displayKey: 'text',
+                     source: Resource.ttAdapter(),
+                     templates: {
+                           empty: '<div class="empty-message text-info resourse-emptry" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
 
-                        },
-                  }
+                     },
+               }
 
-            });
-            add(Editincludes,data_includes);
+         });
+         add(Editincludes,data_includes);
 
-            Stakeholder = new Bloodhound({
-                  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                  queryTokenizer: Bloodhound.tokenizers.whitespace,
-                  local: JSON.parse(stakeinput)
-            });
+         Stakeholder = new Bloodhound({
+               datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+               queryTokenizer: Bloodhound.tokenizers.whitespace,
+               local: JSON.parse(stakeinput)
+         });
 
-            Stakeholder.initialize();
-            
-            var EditrOwner = $('#EditrOwner');
-            EditrOwner.tagsinput({
-                  itemValue:'value',
-                  itemText: 'text',
-                  typeaheadjs:{
-                        name : 'name',
-                        displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
-                        templates: {
-                              empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+         Stakeholder.initialize();
+         
+         var EditrOwner = $('#EditrOwner');
+         EditrOwner.tagsinput({
+               itemValue:'value',
+               itemText: 'text',
+               typeaheadjs:{
+                     name : 'name',
+                     displayKey: 'text',
+                     source: Stakeholder.ttAdapter(),
+                     templates: {
+                           empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
 
-                        },
-                  }
+                     },
+               }
 
-            });
-            add(EditrOwner,data_rOwner);
+         });
+         add(EditrOwner,data_rOwner);
 
-            var EditpOwner = $('#EditpOwner');
-            EditpOwner.tagsinput({
-                  itemValue:'value',
-                  itemText: 'text',
-                  typeaheadjs:{
-                        name : 'name',
-                        displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
-                        templates: {
-                              empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+         var EditpOwner = $('#EditpOwner');
+         EditpOwner.tagsinput({
+               itemValue:'value',
+               itemText: 'text',
+               typeaheadjs:{
+                     name : 'name',
+                     displayKey: 'text',
+                     source: Stakeholder.ttAdapter(),
+                     templates: {
+                           empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
 
-                        },
-                  }
+                     },
+               }
 
-            });
-            add(EditpOwner,data_pOwner);
+         });
+         add(EditpOwner,data_pOwner);
 
-            var Editmaintainer = $('#Editmaintainer');
-            Editmaintainer.tagsinput({
-                  itemValue:'value',
-                  itemText: 'text',
-                  typeaheadjs:{
-                        name : 'name',
-                        displayKey: 'text',
-                        source: Stakeholder.ttAdapter(),
-                        templates: {
-                              empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                        },
-                  }
-            });
-            add(Editmaintainer,data_maintainer);
+         var Editmaintainer = $('#Editmaintainer');
+         Editmaintainer.tagsinput({
+               itemValue:'value',
+               itemText: 'text',
+               typeaheadjs:{
+                     name : 'name',
+                     displayKey: 'text',
+                     source: Stakeholder.ttAdapter(),
+                     templates: {
+                           empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                     },
+               }
+         });
+         add(Editmaintainer,data_maintainer);
       });
 
       function add($elt, data){

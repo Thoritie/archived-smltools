@@ -487,11 +487,12 @@ function saveResourse(idModal){
                             var auto = createJSON(data);
                             var n = createString(auto);
                             Tasks.local = JSON.parse(n);
-                            Tasks.initialize(true);
-
-                            Tasks_Edit.local = JSON.parse(n);
-                            Tasks_Edit.initialize(true);
+                            Tasks.initialize(true);  
                             
+                            if (typeof Tasks_Edit !== 'undefined') {
+                                Tasks_Edit.local = JSON.parse(n);
+                                Tasks_Edit.initialize(true);
+                            }
                             $('#'+idModal).modal('hide');
                             $('#'+idModal).remove();
                         },  "json");
