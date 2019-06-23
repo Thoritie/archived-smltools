@@ -349,6 +349,7 @@ function saveResourse(idModal){
                     item3 [index] = input.value
                 });
                 var idProject = $("#idProjectmodalResource").val();
+                var resourceNameEdit = $('#editResName').val();
                 $.ajax({
                     type:'POST',
                     url: baseUrl+"task/saveResourceFormModal",
@@ -365,7 +366,7 @@ function saveResourse(idModal){
                         Resource.clear();
                         $.post(baseUrl+"task/findResource",{
                                 project : idProject,
-                                resourceNameEdit : resourcename
+                                resourceNameEdit : resourceNameEdit
                                 }, function(data){
                                 
                                     var auto = createJSON(data);
@@ -373,7 +374,7 @@ function saveResourse(idModal){
                                     
                                     Resource.local = JSON.parse(n);
                                     Resource.initialize(true);
-                                    
+                                    console.log(n)
                                     if (typeof Resource_Edit !== 'undefined') {
                                         Resource_Edit.local = JSON.parse(n);
                                         Resource_Edit.initialize(true);
