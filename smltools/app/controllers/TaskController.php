@@ -290,7 +290,7 @@ class TaskController extends ControllerBase
                 $this->tag->setDefault("idTask", $id);
                 $this->tag->setDefault("taskname", $task->name);
                 $this->tag->setDefault("isA", $task->isA);
-                $this->tag->setDefault("Description", $task->Description);
+                $this->tag->setDefault("task_Description", $task->Description);
                 $this->tag->setDefault("asIsState", $task->asIsState);
                 $this->tag->setDefault("toBeState", $task->toBeState);
                
