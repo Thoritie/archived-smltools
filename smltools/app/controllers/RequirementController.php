@@ -37,6 +37,8 @@ class RequirementController extends ControllerBase
         $this->assets->addJs('jquery/jquery.redirect.js');
         $this->assets->addJs('dist/jquery.validate.js');
 
+        $this->assets->addJs('modal/cloneModal.js');
+        $this->assets->addJs('jslif/tagRequirementCreate.js');
     }
 
     public function indexAction() 
@@ -67,6 +69,21 @@ class RequirementController extends ControllerBase
         $this->view->userLogin = $userLogin;
 
         $id = $this->session->get('idProject');
+    }
+
+    public function saveAction()
+    {
+        $requirement_id = $this->request->getPost("idRequirement");
+        if(!$requirement_id){
+            $requirement = new Requirement();
+        }else{
+            $requirement = Requirement::findById($requirement_id);
+        }
+    
+        $requirement->name = $this->request->getPost("requirementname");
+        $requirement->description = $this->request->getPost("description");
+
+        $requirement->save();
     }
 }
 

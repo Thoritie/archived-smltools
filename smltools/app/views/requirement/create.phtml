@@ -1,0 +1,76 @@
+<ol class="breadcrumb inline-flex">
+        <li class="breadcrumb-item">
+            <a href="<?=$this->url->get("project/index"); ?>">Project</a>
+        </li>
+        <li class="breadcrumb-item">
+        <a href="<?=$this->url->get("requirement/index"); ?>">Requirement</a>
+        </li>
+        <li class="breadcrumb-item active">
+              <a>Create</a>
+        </li>
+</ol>
+<?php
+   echo $this->tag->form(
+       [
+         
+           "autocomplete" => "off",
+           "class" => "",
+           "id" => "createRequirement-form"
+       ]
+   );
+   ?>
+
+<?php 
+   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
+   ?>
+<div class="content">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="card s-navShadow">
+               <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                     <div class="header">
+                        <h4 class="title">Create Requirement</h4>
+                     </div>
+                     <div class="content">
+                        <form>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Requirement Name</label>
+                                    <?php 
+                                       echo $this->tag->textField(["requirementname", "size" => 30, 
+                                       "class" => "form-control", "id" => "requirementname" , "placeholder"=>"Requirement Name..."]) 
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>description</label>
+                                    <?php 
+                                       echo $this->tag->textArea(["description", "class" => "form-control", 
+                                        "id" => "description" , "placeholder"=>"Here can be your description...","rows" => 3,]) 
+                                       ?>
+                                 </div>
+                              </div>
+                            </div>
+                           <?php echo $this->tag->endForm(); ?>
+                           <button type="button" class="btn btn-info btn-fill pull-right"  id="saveRequirement">Save Requirement</button>
+                           <div class="clearfix"></div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- blockJS -->
+<script>
+</script>
+
+<!-- /.blockJS -->
