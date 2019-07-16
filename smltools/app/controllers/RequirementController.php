@@ -80,8 +80,9 @@ class RequirementController extends ControllerBase
             $requirement = Requirement::findById($requirement_id);
         }
     
-        $requirement->name = $this->request->getPost("requirementname");
+        $requirement->name        = $this->request->getPost("requirementname");
         $requirement->description = $this->request->getPost("description");
+        $requirement->type        = $this->request->getPost("requirementtype");
 
         $requirement->save();
     }

@@ -1,28 +1,19 @@
 <ol class="breadcrumb inline-flex">
-        <li class="breadcrumb-item">
-            <a href="<?=$this->url->get("project/index"); ?>">Project</a>
-        </li>
-        <li class="breadcrumb-item">
-        <a href="<?=$this->url->get("requirement/index"); ?>">Requirement</a>
-        </li>
-        <li class="breadcrumb-item active">
-              <a>Create</a>
-        </li>
+   <li class="breadcrumb-item"><a href="<?=$this->url->get("project/index"); ?>">Project</a></li>
+   <li class="breadcrumb-item"><a href="<?=$this->url->get("requirement/index"); ?>">Requirement</a></li>
+   <li class="breadcrumb-item active"><a>Create</a></li>
 </ol>
 <?php
    echo $this->tag->form(
-       [
-         
-           "autocomplete" => "off",
-           "class" => "",
-           "id" => "createRequirement-form"
-       ]
+      [
+         "autocomplete" => "off",
+         "class" => "",
+         "id" => "createRequirement-form"
+      ]
    );
-   ?>
+?>
 
-<?php 
-   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) 
-   ?>
+<?php echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) ?>
 <div class="content">
    <div class="container-fluid">
       <div class="row">
@@ -46,17 +37,43 @@
                                  </div>
                               </div>
                            </div>
+
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="form-group">
                                     <label>description</label>
                                     <?php 
                                        echo $this->tag->textArea(["description", "class" => "form-control", 
-                                        "id" => "description" , "placeholder"=>"Here can be your description...","rows" => 3,]) 
-                                       ?>
+                                          "id" => "description" , "placeholder"=>"Here can be your description...","rows" => 3,]) 
+                                    ?>
                                  </div>
                               </div>
-                            </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label>Requirement Type</label>
+                                       <?php
+                                          echo $this->tag->selectStatic([
+                                             "requirementtype", 
+                                             "class" => "form-control",
+                                             "id"    => "requirementtype",
+                                             [
+                                                "F" => "Functional Requirement",
+                                                "N" => "Nonfunctional Requirement",
+                                             ]
+                                          ])
+                                       
+                                       ?>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    
+                                 </div>
+                              </div>
+                           </div>
+                  
                            <?php echo $this->tag->endForm(); ?>
                            <button type="button" class="btn btn-info btn-fill pull-right"  id="saveRequirement">Save Requirement</button>
                            <div class="clearfix"></div>
@@ -69,6 +86,7 @@
       </div>
    </div>
 </div>
+
 <!-- blockJS -->
 <script>
 </script>

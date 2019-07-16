@@ -74,6 +74,7 @@ $(document).ready(function() {
             var idProject = $("#idProject").val();
             var requirementname = $("#requirementname").val();
             var description = $("#description").val();
+            var requirementtype = $("#requirementtype").val();
 
             $.ajax({
                 type:'POST',
@@ -81,7 +82,8 @@ $(document).ready(function() {
                 data:{
                     requirementname: requirementname,
                     description: description,
-                    idProject : idProject
+                    idProject : idProject,
+                    requirementtype: requirementtype
                 },
                 success:function(data){
                     window.location.href=baseUrl+"requirement";
