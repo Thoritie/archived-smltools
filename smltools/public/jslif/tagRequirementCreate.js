@@ -74,7 +74,6 @@ $(document).ready(function() {
             var idProject = $("#idProject").val();
             var requirementname = $("#requirementname").val();
             var description = $("#description").val();
-            console.log(Description);
 
             $.ajax({
                 type:'POST',
