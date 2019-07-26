@@ -10,7 +10,7 @@ function cloneModalResource($modal) {
     var idModal = new Date().getTime();
     newModal.attr("id", idModal);
     newModal.attr("style", "z-index: " + zindex++);
-    
+
     
     //set onclick in button
     setFormIdInModalResource(idModal, newModal);
@@ -349,6 +349,7 @@ function saveResourse(idModal){
                     item3 [index] = input.value
                 });
                 var idProject = $("#idProjectmodalResource").val();
+                var resourceNameEdit = $('#editResName').val();
                 $.ajax({
                     type:'POST',
                     url: baseUrl+"task/saveResourceFormModal",
@@ -364,7 +365,8 @@ function saveResourse(idModal){
                     success:function(data){
                         Resource.clear();
                         $.post(baseUrl+"task/findResource",{
-                                project : idProject
+                                project : idProject,
+                                resourceNameEdit : resourceNameEdit
                                 }, function(data){
                                 
                                     var auto = createJSON(data);
@@ -372,6 +374,12 @@ function saveResourse(idModal){
                                     
                                     Resource.local = JSON.parse(n);
                                     Resource.initialize(true);
+
+                                    if (typeof Resource_Edit !== 'undefined') {
+                                        Resource_Edit.local = JSON.parse(n);
+                                        Resource_Edit.initialize(true);
+                                    }
+                                   
                                     
                                     $('#'+idModal).modal('hide');
                                     $('#'+idModal).remove();
@@ -383,124 +391,127 @@ function saveResourse(idModal){
 
 
     function saveTask(idModal){
-                var result = $('#form-'+idModal).valid();
-                if(result){
-                    var taskname = $("#Modaltaskname-"+idModal).val();
-                    var isA = $("#ModalIsATask-"+idModal).val();
-                    var Description = $("#ModalDescriptionTask-"+idModal).val();
+        var result = $('#form-'+idModal).valid();
+        if(result){
+            var taskname = $("#Modaltaskname-"+idModal).val();
+            var isA = $("#ModalIsATask-"+idModal).val();
+            var Description = $("#ModalDescriptionTask-"+idModal).val();
 
-                    var includes = $("#ModalincludesTask-"+idModal).tagsinput('items')
-                    itemIncludes = {};
-                    $.each(includes, function(index ,input){   
-                        itemIncludes [index] = input.value
-                    });
+            var includes = $("#ModalincludesTask-"+idModal).tagsinput('items')
+            itemIncludes = {};
+            $.each(includes, function(index ,input){   
+                itemIncludes [index] = input.value
+            });
 
-                    var asIsState = $("#ModalasIsStateTask-"+idModal).val();
-                
-                    var owner = $("#ModalOwnerTask-"+idModal).tagsinput('items')
-                    item1 = {};
-                    $.each(owner, function(index ,input){   
-                        item1 [index] = input.value
-                    });
+            var asIsState = $("#ModalasIsStateTask-"+idModal).val();
+        
+            var owner = $("#ModalOwnerTask-"+idModal).tagsinput('items')
+            item1 = {};
+            $.each(owner, function(index ,input){   
+                item1 [index] = input.value
+            });
 
-                    var collaburator = $("#ModalCollaburatorTask-"+idModal).tagsinput('items')
-                    item2 = {};
-                    $.each(collaburator, function(index ,input){   
-                        item2 [index] = input.value
-                    });
-                    var regulator = $("#ModalregulatorTask-"+idModal).tagsinput('items')
-                    itemRegulator = {};
-                    $.each(regulator, function(index ,input){   
-                        itemRegulator [index] = input.value
-                    });
+            var collaburator = $("#ModalCollaburatorTask-"+idModal).tagsinput('items')
+            item2 = {};
+            $.each(collaburator, function(index ,input){   
+                item2 [index] = input.value
+            });
+            var regulator = $("#ModalregulatorTask-"+idModal).tagsinput('items')
+            itemRegulator = {};
+            $.each(regulator, function(index ,input){   
+                itemRegulator [index] = input.value
+            });
 
-                    var uses = $("#ModalUsesTask-"+idModal).tagsinput('items')
-                    itemUses = {};
-                    $.each(collaburator, function(index ,input){   
-                        itemUses [index] = input.value
-                    });
+            var uses = $("#ModalUsesTask-"+idModal).tagsinput('items')
+            itemUses = {};
+            $.each(collaburator, function(index ,input){   
+                itemUses [index] = input.value
+            });
 
-                    var produces = $("#ModalProducesTask-"+idModal).tagsinput('items')
-                    itemProduces = {};
-                    $.each(collaburator, function(index ,input){   
-                        itemProduces [index] = input.value
-                    });
+            var produces = $("#ModalProducesTask-"+idModal).tagsinput('items')
+            itemProduces = {};
+            $.each(collaburator, function(index ,input){   
+                itemProduces [index] = input.value
+            });
 
-                    var toBeState = $("#ModalToBeStateTask-"+idModal).val();
+            var toBeState = $("#ModalToBeStateTask-"+idModal).val();
 
-                    var ownerToBe = $("#ModalOwnerToBeTask-"+idModal).tagsinput('items')
-                    item3 = {};
-                    $.each(ownerToBe, function(index ,input){   
-                        item3 [index] = input.value
-                    });
-                    var collaboratorToBe = $("#ModalCollaboratorToBeTask-"+idModal).tagsinput('items')
-                    item4 = {};
-                    $.each(collaboratorToBe, function(index ,input){   
-                        item4 [index] = input.value
-                    });
-                    var toUse = $("#ModalToUseTask-"+idModal).tagsinput('items')
-                    itemToUse = {};
-                    $.each(collaburator, function(index ,input){   
-                        itemToUse [index] = input.value
-                    });
+            var ownerToBe = $("#ModalOwnerToBeTask-"+idModal).tagsinput('items')
+            item3 = {};
+            $.each(ownerToBe, function(index ,input){   
+                item3 [index] = input.value
+            });
+            var collaboratorToBe = $("#ModalCollaboratorToBeTask-"+idModal).tagsinput('items')
+            item4 = {};
+            $.each(collaboratorToBe, function(index ,input){   
+                item4 [index] = input.value
+            });
+            var toUse = $("#ModalToUseTask-"+idModal).tagsinput('items')
+            itemToUse = {};
+            $.each(collaburator, function(index ,input){   
+                itemToUse [index] = input.value
+            });
 
-                    var toProduce = $("#ModalToProduceTask-"+idModal).tagsinput('items')
-                    itemToProduces = {};
-                    $.each(collaburator, function(index ,input){   
-                        itemToProduces [index] = input.value
-                    });
+            var toProduce = $("#ModalToProduceTask-"+idModal).tagsinput('items')
+            itemToProduces = {};
+            $.each(collaburator, function(index ,input){   
+                itemToProduces [index] = input.value
+            });
 
-                    var idProject = $("#idProjectmodalTask-"+idModal).val();
-                
-                        $.ajax({
-                            type:'POST',
-                            url: baseUrl+"task/save",
-                            data:{
-                                taskname : taskname,
-                                isA : isA,
-                                Description : Description,
-                                includes : itemIncludes,
-                                asIsState : asIsState,
-                                owner : item1,
-                                collaburator : item2,
-                                regulator : itemRegulator,
-                                uses : itemUses,
-                                produces : itemProduces,
-                                toBeState : toBeState,
-                                ownerToBe : item3,
-                                collaboratorToBe : item4,
-                                toUse : itemToUse,
-                                toProduce : itemToProduces,
-                                idProject : idProject
-                            },
-                            success:function(data){
-                                Tasks.clear();
-                                $.post(baseUrl+"task/findTask",{
-                                        project : idProject
-                                        }, function(data){
-                                            
-                                            var auto = createJSON(data);
-                                            var n = createString(auto);
-                                            Tasks.local = JSON.parse(n);
-                                            Tasks.initialize(true);
-                                        
-                                            $('#'+idModal).modal('hide');
-                                            $('#'+idModal).remove();
-                                        },  "json");
+            var idProject = $("#idProjectmodalTask-"+idModal).val();
+            var taskNameEdit = $("#Edname").val();
+            
+            $.ajax({
+                type:'POST',
+                url: baseUrl+"task/save",
+                data:{
+                    taskname : taskname,
+                    isA : isA,
+                    Description : Description,
+                    includes : itemIncludes,
+                    asIsState : asIsState,
+                    owner : item1,
+                    collaburator : item2,
+                    regulator : itemRegulator,
+                    uses : itemUses,
+                    produces : itemProduces,
+                    toBeState : toBeState,
+                    ownerToBe : item3,
+                    collaboratorToBe : item4,
+                    toUse : itemToUse,
+                    toProduce : itemToProduces,
+                    idProject : idProject
+                },
+                success:function(data){
+                    Tasks.clear();
+                    $.post(baseUrl+"task/findTask",{
+                        project : idProject,
+                        taskNameEdit : taskNameEdit
+                        }, function(data){
+                            
+                            var auto = createJSON(data);
+                            var n = createString(auto);
+                            Tasks.local = JSON.parse(n);
+                            Tasks.initialize(true);  
+                            
+                            if (typeof Tasks_Edit !== 'undefined') {
+                                Tasks_Edit.local = JSON.parse(n);
+                                Tasks_Edit.initialize(true);
                             }
-                        })    
+                            $('#'+idModal).modal('hide');
+                            $('#'+idModal).remove();
+                        },  "json");
                 }
+            })    
+        }
     }
 
     function saveStakeholder(idModal){
         if ( $("#tab1-"+idModal).hasClass('active') ) {
-            console.log("1");
             saveOrganisation(idModal);
         }else if( $("#tab2-"+idModal).hasClass('active')){
-            console.log("2");
             saveIndividual(idModal);
         }else{
-            console.log("3");
             saveRole(idModal);
         }
 
@@ -509,7 +520,6 @@ function saveResourse(idModal){
 
     function saveOrganisation(idModal){
         result = $('#formOrganisation-'+idModal).valid();
-        console.log(result);
         if(result){
             var name = $("#ModalOStakeName-"+idModal).val()
             var Organisation = $("#ModalOrganName-"+idModal).val()
@@ -553,6 +563,8 @@ function saveResourse(idModal){
                 type = 1;
             else
                 type = 0;
+            
+            var organisationname = $("#edStakeName").val()
             $.ajax({
                 type: 'POST',
                 url: baseUrl + "stakeholder/saveOrganisation",
@@ -575,13 +587,19 @@ function saveResourse(idModal){
                 success: function (data) {
                     Stakeholder.clear();
                     $.post(baseUrl+"task/findStake",{
-                    project : idProject
+                    project : idProject,
+                    stakeNameEdit : organisationname
                     }, function(data){
                         var auto = createJSON(data);
                         var n = createString(auto);
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
-                                            
+
+                        if (typeof Stakeholder_Edit !== 'undefined') {
+                            Stakeholder_Edit.local = JSON.parse(n);
+                            Stakeholder_Edit.initialize(true);
+                        }
+                        
                         $('#'+idModal).modal('hide');
                         $('#'+idModal).remove();
                     },  "json");
@@ -628,6 +646,7 @@ function saveResourse(idModal){
             });
             var inwishes = $("#ModalInWishes-"+idModal).val()
             var inidProject = $("#idProjectmodalStake-"+idModal).val();
+            var inStakeName = $("#inStakeName").val();
             $.ajax({
                 type: 'POST',
                 url: baseUrl + "stakeholder/saveIndividual",
@@ -649,17 +668,22 @@ function saveResourse(idModal){
                 success: function (data) {
                     Stakeholder.clear();
                     $.post(baseUrl+"task/findStake",{
-                    project : inidProject
+                    project : inidProject,
+                    stakeNameEdit : inStakeName
                     }, function(data){
                         var auto = createJSON(data);
                         var n = createString(auto);
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
-                                            
+
+                        if (typeof Stakeholder_Edit !== 'undefined') {
+                            Stakeholder_Edit.local = JSON.parse(n);
+                            Stakeholder_Edit.initialize(true);
+                        }
+    
                         $('#'+idModal).modal('hide');
                         $('#'+idModal).remove();
                     },  "json");
-                    console.log(data);
                 }
             })
         }
@@ -706,6 +730,7 @@ function saveResourse(idModal){
             var rwishes = $("#ModalRoleWishes-"+idModal).val()
             var ridProject = $("#idProjectmodalStake-"+idModal).val();
             var rtype = 3;
+            var rolename = $('#edit_role_StakeName').val();
             $.ajax({
                 type: 'POST',
                 url: baseUrl + "stakeholder/saveRole",
@@ -729,13 +754,19 @@ function saveResourse(idModal){
                 success: function (data) {
                     Stakeholder.clear();
                     $.post(baseUrl+"task/findStake",{
-                    project : ridProject
+                    project : ridProject,
+                    stakeNameEdit : rolename
                     }, function(data){
                         var auto = createJSON(data);
                         var n = createString(auto);
                         Stakeholder.local = JSON.parse(n);
                         Stakeholder.initialize(true);
-                                            
+
+                        if (typeof Stakeholder_Edit !== 'undefined') {
+                            Stakeholder_Edit.local = JSON.parse(n);
+                            Stakeholder_Edit.initialize(true);
+                        }
+
                         $('#'+idModal).modal('hide');
                         $('#'+idModal).remove();
                     },  "json");

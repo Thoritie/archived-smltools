@@ -70,7 +70,7 @@ $(document).ready(function() {
                             return $("#Edname").val()
                         },
                         idProject: function () {
-                            return $("#EdidProject").val()
+                            return $("#idProject").val()
                         },
                         idTask: function () {
                             return $("#EdidTask").val()
@@ -93,7 +93,7 @@ $(document).ready(function() {
         $.post(baseUrl+"task/findStake",{
             project : project
         }, function(data){
-           
+               
                 var auto = createJSON(data);
                 var n = createString(auto);
                 Stakeholder = new Bloodhound({
@@ -190,13 +190,13 @@ $(document).ready(function() {
       
 
       
-            
+
             $.post(baseUrl+"task/findResource",{
                 project : projectid
             }, function(data){
                     var auto = createJSON(data);
                     var n = createString(auto);
-                
+
                     Resource = new Bloodhound({
                         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -269,13 +269,13 @@ $(document).ready(function() {
         
         //find Tasks 
 
-       
+
         $.post(baseUrl+"task/findTask",{
             project : projectid
         }, function(data){
             var auto = createJSON(data);
             var n = createString(auto);
-        
+
                 Tasks = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -466,9 +466,9 @@ $(document).ready(function() {
                 $.each(toProduce, function(index ,input){   
                     itemtoProduce [index] = input.value
                 });
-                var idProject = $("#EdidProject").val();
+                var idProject = $("#idProject").val();
                 var idTask = $("#EdidTask").val();
-            
+                
                     $.ajax({
                         type:'POST',
                         url: baseUrl+"task/save",

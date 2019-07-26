@@ -130,6 +130,20 @@ $(document).ready(function () {
         });
         Stakeholder.initialize();
 
+        var Orepresentative = $('#Orepresentative');
+        Orepresentative.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholder.ttAdapter(),
+                templates: {
+                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+                }
+            }
+        });
+
         var Oreports = $('#Oreports');
         Oreports.tagsinput({
             itemValue: 'value',
@@ -348,35 +362,18 @@ $(document).ready(function () {
         Resource.initialize();
     },  "json");
 
-    $.post(baseUrl + "stakeholder/findRepresent", {
-        project: projectid
-    }, function (data) {
-
-        var auto = createJSON(data);
-        var n = createString(auto);
-        Stakeholder = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            local: JSON.parse(n)
-        });
-        Stakeholder.initialize();
-
-        var Orepresentative = $('#Orepresentative');
-        Orepresentative.tagsinput({
-            itemValue: 'value',
-            itemText: 'text',
-            typeaheadjs: {
-                name: 'name',
-                displayKey: 'text',
-                source: Stakeholder.ttAdapter(),
-                templates: {
-                    empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-                }
-            }
-        });
-
-
-    }, "json");
+    // $.post(baseUrl + "stakeholder/findRepresent", {
+    //     project: projectid
+    // }, function (data) {
+    //     var auto = createJSON(data);
+    //     var n = createString(auto);
+    //     Stakeholder = new Bloodhound({
+    //         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+    //         queryTokenizer: Bloodhound.tokenizers.whitespace,
+    //         local: JSON.parse(n)
+    //     });
+    //     Stakeholder.initialize();
+    // }, "json");
 
     $.post(baseUrl + "stakeholder/findDtask", {
         project: projectid

@@ -216,12 +216,16 @@ class TaskController extends ControllerBase
     {
         $this->view->disable();
         $input = $this->request->getPost('project');
-        
+        $stakeName = $this->request->getPost('stakeNameEdit');
+
         $condition = [];
         
         if($input){
             $condition["idProject"] = $input;
         }
+
+        if($stakeName)            
+            $condition["name"] = ['$ne' => $stakeName];
 
         $stakeholders = Stakeholders::Find(array($condition));
 
@@ -233,12 +237,16 @@ class TaskController extends ControllerBase
     {
         $this->view->disable();
         $input = $this->request->getPost('project');
-        
+        $resourceName = $this->request->getPost('resourceNameEdit');
         $condition = [];
         
         if($input){
             $condition["idProject"] = $input;
+            $condition["mom"] = null;
         }
+
+        if($resourceName)            
+            $condition["name"] = ['$ne' => $resourceName];
 
         $resource = Resource::Find(array($condition));
 
@@ -290,7 +298,7 @@ class TaskController extends ControllerBase
                 $this->tag->setDefault("idTask", $id);
                 $this->tag->setDefault("taskname", $task->name);
                 $this->tag->setDefault("isA", $task->isA);
-                $this->tag->setDefault("Description", $task->Description);
+                $this->tag->setDefault("task_Description", $task->Description);
                 $this->tag->setDefault("asIsState", $task->asIsState);
                 $this->tag->setDefault("toBeState", $task->toBeState);
                
@@ -400,12 +408,15 @@ class TaskController extends ControllerBase
     {
         $this->view->disable();
         $input = $this->request->getPost('project');
-        $taskname = $this->request->getPost('taskname');
+        $taskName = $this->request->getPost('taskNameEdit');
         
         $condition = [];
         $condition["idProject"] = $input;   
         $condition["mom"] = null;
         
+        if($taskName)            
+            $condition["name"] = ['$ne' => $taskName];
+            
         $tasks = Tasks::Find(array($condition));
 
         return json_encode($tasks);

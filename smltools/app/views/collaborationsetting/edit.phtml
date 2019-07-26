@@ -85,12 +85,12 @@
       }, function(data){
           var auto = createJSON(data);
           var n = createString(auto);
-              Resource = new Bloodhound({
+          Resource_Edit = new Bloodhound({
               datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
               queryTokenizer: Bloodhound.tokenizers.whitespace,
               local: JSON.parse(n)
           });
-          Resource.initialize();
+          Resource_Edit.initialize();
       
       },  "json");
 
@@ -99,12 +99,12 @@
       }, function(data){
           var auto = createJSON(data);
           var n = createString(auto);
-          Stakeholder = new Bloodhound({
+          Stakeholder_Edit = new Bloodhound({
               datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
               queryTokenizer: Bloodhound.tokenizers.whitespace,
               local: JSON.parse(n)
           });
-          Stakeholder.initialize();
+          Stakeholder_Edit.initialize();
       
       },  "json");   
     
@@ -119,13 +119,13 @@
  
   $(document).ready(function(){
 
-      Tasks = new Bloodhound({
+   Tasks_Edit = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: JSON.parse(task)
     });
   
-    Tasks.initialize();
+    Tasks_Edit.initialize();
 
     var EdInclude = $('#EdInclude');
     EdInclude.tagsinput({
@@ -134,7 +134,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Tasks.ttAdapter(),
+        source: Tasks_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
         },

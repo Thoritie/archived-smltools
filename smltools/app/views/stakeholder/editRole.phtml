@@ -300,12 +300,12 @@
                     $('#role_edit_RolePlayer').prop('disabled', false);
                 }
             });
-            Tasks = new Bloodhound({
+            Tasks_Edit = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 local: JSON.parse(taskinput)
             });
-            Tasks.initialize();
+            Tasks_Edit.initialize();
 
             var edrdTask = $('#edrdTask');
             edrdTask.tagsinput({
@@ -314,7 +314,7 @@
                 typeaheadjs: {
                     name: 'name',
                     displayKey: 'text',
-                    source: Tasks.ttAdapter(),
+                    source: Tasks_Edit.ttAdapter(),
                     templates: {
                         empty: '<div id="nomatch" class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
                     }
@@ -322,12 +322,12 @@
             });
             add(edrdTask, data_dTask);
 
-            Stakeholder = new Bloodhound({
+            Stakeholder_Edit = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 local: JSON.parse(stakeinput)
             });
-            Stakeholder.initialize();
+            Stakeholder_Edit.initialize();
 
             var editPlayRole = $('#role_edit_play_role');
             editPlayRole.tagsinput({
@@ -336,7 +336,7 @@
                 typeaheadjs: {
                     name: 'name',
                     displayKey: 'text',
-                    source: Stakeholder.ttAdapter(),
+                    source: Stakeholder_Edit.ttAdapter(),
                     templates: {
                         highlight: true,
                         empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
@@ -352,7 +352,7 @@
                 typeaheadjs: {
                     name: 'name',
                     displayKey: 'text',
-                    source: Stakeholder.ttAdapter(),
+                    source: Stakeholder_Edit.ttAdapter(),
                     templates: {
                         highlight: true,
                         empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
@@ -368,7 +368,7 @@
                 typeaheadjs: {
                     name: 'name',
                     displayKey: 'text',
-                    source: Stakeholder.ttAdapter(),
+                    source: Stakeholder_Edit.ttAdapter(),
                     templates: {
                         highlight: true,
                         empty: '<div class="empty-message text-info add-stakeholder" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
@@ -384,7 +384,7 @@
                 typeaheadjs: {
                     name: 'name',
                     displayKey: 'text',
-                    source: Stakeholder.ttAdapter(),
+                    source: Stakeholder_Edit.ttAdapter(),
                     templates: {
                         empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                     }
@@ -399,7 +399,7 @@
                 typeaheadjs: {
                     name: 'name',
                     displayKey: 'text',
-                    source: Stakeholder.ttAdapter(),
+                    source: Stakeholder_Edit.ttAdapter(),
                     templates: {
                         empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
                     },
