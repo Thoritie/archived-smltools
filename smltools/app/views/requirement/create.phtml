@@ -11,9 +11,8 @@
          "id" => "createRequirement-form"
       ]
    );
+   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]);
 ?>
-
-<?php echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]) ?>
 <div class="content">
    <div class="container-fluid">
       <div class="row">
@@ -30,9 +29,9 @@
                               <div class="col-md-12">
                                  <div class="form-group">
                                     <label>Requirement Name</label>
-                                    <?php 
-                                       echo $this->tag->textField(["requirementname", "size" => 30, 
-                                       "class" => "form-control", "id" => "requirementname" , "placeholder"=>"Requirement Name..."]) 
+                                    <?php
+                                       echo $this->tag->textField(["requirementname", "size" => 30,
+                                       "class" => "form-control", "id" => "requirementname" , "placeholder"=>"Requirement Name..."])
                                        ?>
                                  </div>
                               </div>
@@ -42,34 +41,65 @@
                               <div class="col-md-12">
                                  <div class="form-group">
                                     <label>description</label>
-                                    <?php 
-                                       echo $this->tag->textArea(["description", "class" => "form-control", 
-                                          "id" => "description" , "placeholder"=>"Here can be your description...","rows" => 3,]) 
+                                    <?php
+                                       echo $this->tag->textArea(["description", "class" => "form-control",
+                                          "id" => "description" , "placeholder"=>"Here can be your description...","rows" => 3,])
                                     ?>
                                  </div>
                               </div>
                            </div>
                            <div class="row">
                               <div class="col-md-12">
-                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>Requirement Type</label>
-                                       <?php
-                                          echo $this->tag->selectStatic([
-                                             "requirementtype", 
-                                             "class" => "form-control",
-                                             "id"    => "requirementtype",
-                                             [
-                                                "F" => "Functional Requirement",
-                                                "N" => "Nonfunctional Requirement",
-                                             ]
-                                          ])
-                                       
-                                       ?>
-                                    </div>
+                                 <div class="form-group">
+                                    <label>Requirement Type</label>
+                                    <?php
+                                       echo $this->tag->selectStatic([
+                                          "requirementtype",
+                                          "class" => "form-control",
+                                          "id"    => "requirementtype",
+                                          [
+                                             "F" => "Functional Requirement",
+                                             "N" => "Nonfunctional Requirement",
+                                          ]
+                                       ])
+
+                                    ?>
                                  </div>
-                                 <div class="col-md-6">
-                                    
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Source Type</label>
+                                    <?php
+                                       echo $this->tag->selectStatic([
+                                          "sourcetype",
+                                          "class" => "form-control",
+                                          "id"    => "sourcetype",
+                                          [
+                                             "Resource"      => "Select Requirement Source",
+                                             "Resource"      => "Resource",
+                                             "Stakeholders"  => "Stakeholder",
+                                             "Tasks"         => "Task",
+                                             "Collaboration" => "Collaboration Setting",
+                                          ]
+                                       ])
+                                    ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group hidden sourcename">
+                                    <label>From</label>
+                                    <?php
+                                    echo $this->tag->textField([
+                                          "from",
+                                          "size"  => 30,
+                                          "class" => "form-control",
+                                          "id"    => "from"
+                                    ])
+                                    ?>
                                  </div>
                               </div>
                            </div>
