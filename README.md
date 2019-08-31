@@ -8,13 +8,11 @@ $mkdir cache/
 ```
 2. Run Project
 ```
-$docker-compose up -d 
+$docker-compose up -d
 ```
-3. Import local data 
+3. Import local data
 
 ```
-$docker-compose exec mongo bash
-$cd /home/local-data
-$./dummy_data .sh
+$ ./import_local_data.sh
 ```
 
