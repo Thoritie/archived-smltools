@@ -1,5 +1,6 @@
 <?php
 use MongoDB\BSON\ObjectId;
+use Library\Common\Pagination;
 
 class RequirementController extends ControllerBase
 {
@@ -41,50 +42,117 @@ class RequirementController extends ControllerBase
         $this->assets->addJs('jslif/tagRequirementCreate.js');
     }
 
-    public function indexAction() 
+    public function indexAction()
     {
-        //Layout
-        $projectname = $this->session->get('projectname');
-        $this->view->projectname = $projectname;
-
-        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
-        $this->view->ownerLayout = $ownerLayout;
-
-        $userLogin = $this->session->get('userLogin');
-        $this->view->userLogin = $userLogin;
+        $this->view->projectname = $this->session->get('projectname');
+        $this->view->ownerLayout = $this->session->get('ownerLayout');
+        $this->view->userLogin   = $this->session->get('userLogin');
 
         $id = $this->session->get('idProject');
+
+        $currentPage = $this->request->get('page');
+        $sortBy      = $this->request->getPost('sortBy');
+        $filter      = $this->request->getPost('filter');
+
+        //Pagination
+        $model = new Requirement();
+        $query = array(
+        	'$and' => array(
+        		array('name' => new MongoRegex("/$filter/")),
+        		array(
+        			'$or' => array(
+        				array('idProject' => $id)
+        			),
+        		)
+        	)
+        );
+
+        $arrSortBy = array(
+            'name' => 'Name',
+            '_id'  => 'Create Date'
+        );
+
+        $this->view->arrSortBy = $arrSortBy;
+        if($sortBy == null) {
+            $sortBy = $this->request->get('sortBy');
+            $sortBy = $arrSortBy['name'];
+        }
+
+        $this->view->sortBy = $sortBy;
+
+        if($filter == null) {
+            $filter = $this->request->get('filter');
+            $filter = '';
+        }
+
+        $this->view->filter = $filter;
+
+        $paginator = new Pagination(
+        	array(
+        		'model'            => $model,
+        		'limit'            => 8,
+        		'page'             => $currentPage,
+        		'query'            => $query,
+        		'sort'             => $sortBy,
+        		'baseUrl'          => $this->url->get('Requirement'),
+        		'showNumberOfPage' => 6,
+        		'data'             => array(
+        			'sortBy' => $sortBy,
+        			'filter' => $filter
+        		)
+        	)
+        );
+
+         //pagination results
+         $requirement = $paginator->getPaginate();
+         $this->view->requirement = $requirement;
     }
 
-    public function createAction() 
-    {
-        
-        $projectname = $this->session->get('projectname');
-        $this->view->projectname = $projectname;
-
-        $ownerLayout =   $projectname = $this->session->get('ownerLayout');
-        $this->view->ownerLayout = $ownerLayout;
-
-        $userLogin = $this->session->get('userLogin');
-        $this->view->userLogin = $userLogin;
+    public function createAction() {
+        $this->view->projectname = $this->session->get('projectname');
+        $this->view->ownerLayout = $this->session->get('ownerLayout');
+        $this->view->userLogin   = $this->session->get('userLogin');
 
         $id = $this->session->get('idProject');
+
+        $this->tag->setDefault("idProject", $id);
+        $this->view->idProject = $id;
     }
 
-    public function saveAction()
-    {
+    public function saveAction() {
         $requirement_id = $this->request->getPost("idRequirement");
+
         if(!$requirement_id){
             $requirement = new Requirement();
         }else{
             $requirement = Requirement::findById($requirement_id);
         }
-    
+
         $requirement->name        = $this->request->getPost("requirementname");
         $requirement->description = $this->request->getPost("description");
         $requirement->type        = $this->request->getPost("requirementtype");
+        $requirement->source_type = $this->request->getPost("sourcetype");
+        $requirement->idProject   = $this->request->getPost("idProject");
+        // $requirement->from        = $this->request->getPost("from");
 
         $requirement->save();
+    }
+
+    public function findRequirementSourceAction() {
+        $this->view->disable();
+
+        $projectId  = $this->request->getPost('projectId');
+        $sourceType = $this->request->getPost('sourceType');
+
+        $condition  = [];
+
+        if( $projectId ) {
+            $condition["idProject"] = $projectId;
+        }
+
+        $source = $sourceType::Find(array($condition));
+
+        return json_encode($source);
     }
 }
 
