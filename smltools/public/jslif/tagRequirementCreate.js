@@ -68,6 +68,49 @@ $(document).ready(function() {
             }
         }
     });
+   
+    
+    var projectId = $('#idProject').val();
+    
+    $('#sourcetype').change( (e) => {
+        $('.sourcename').removeClass('hidden')
+        var sourceType = $('#sourcetype').val();
+
+        $.ajax({
+            type: 'POST',
+            url: baseUrl+"requirement/findRequirementSource",
+            data: {
+                projectId: projectId,
+                sourceType: sourceType
+            },
+            success:function(data){
+                json_data = JSON.parse(data)
+                var cleaned_json = createJSON(json_data);
+                var clean_data = createString(cleaned_json);
+                
+                SourceRequirement = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    local: JSON.parse(clean_data)
+                });
+                SourceRequirement.initialize();
+        
+                var from = $('#from');
+                from.tagsinput({
+                    itemValue: 'value',
+                    itemText: 'text',
+                    typeaheadjs: {
+                        name: 'name',
+                        displayKey: 'text',
+                        source: SourceRequirement.ttAdapter(),
+                        templates: {
+                            empty:'<div id="nomatch" class="empty-message text-info"> No matches.</div>'
+                        } 
+                    }
+                });
+            }
+        });
+    });
 
     $('#saveRequirement').click(function (){
         if($("#createRequirement-form").valid()){
@@ -75,6 +118,7 @@ $(document).ready(function() {
             var requirementname = $("#requirementname").val();
             var description = $("#description").val();
             var requirementtype = $("#requirementtype").val();
+            var sourcetype = $("#sourcetype").val();
 
             $.ajax({
                 type:'POST',
@@ -83,63 +127,11 @@ $(document).ready(function() {
                     requirementname: requirementname,
                     description: description,
                     idProject : idProject,
-                    requirementtype: requirementtype
+                    requirementtype: requirementtype,
+                    sourcetype: sourcetype
                 },
                 success:function(data){
                     window.location.href=baseUrl+"requirement";
-                }
-            })
-
-        }
-
-    });
-
-
-    $('#saveEditResource').click(function (){
-        if($("#editResource").valid()){
-            var resourcename = $("#editResName").val();
-            var Description = $("#editResDesCription").val();
-            var idProject = $("#idProjectEdit").val();
-            var idResource = $("#idResourceEdit").val();
-            var includes =$("#Editincludes").tagsinput('items')
-            item4 = {};
-            $.each(includes, function(index, input){
-                item4 [index] = input.value
-            });
-
-            var rOwner =$("#EditrOwner").tagsinput('items')
-            item1 = {};
-            $.each(rOwner, function(index, input){
-                item1 [index] = input.value
-            });
-
-            var pOwner =$("#EditpOwner").tagsinput('items')
-            item2 = {};
-            $.each(pOwner, function(index, input){
-                item2 [index] = input.value
-            });
-
-            var maintainer =$("#Editmaintainer").tagsinput('items')
-            item3 = {};
-            $.each(maintainer, function(index, input){
-                item3 [index] = input.value
-            });
-
-            $.ajax({
-                type:'POST',
-                url:  baseUrl+"resource/save",
-                data:{
-                    resourcename: resourcename,
-                    Description: Description,
-                    includes: item4,
-                    rOwner : item1,
-                    pOwner : item2,
-                    maintainer: item3,
-                    idProject : idProject,
-                    idResource : idResource
-                },
-                success:function(data){
-                    window.location.href=baseUrl+"resource";
                 }
             })
         }
