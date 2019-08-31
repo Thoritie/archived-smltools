@@ -133,7 +133,7 @@ class RequirementController extends ControllerBase
         $requirement->type        = $this->request->getPost("requirementtype");
         $requirement->source_type = $this->request->getPost("sourcetype");
         $requirement->idProject   = $this->request->getPost("idProject");
-        // $requirement->from        = $this->request->getPost("from");
+        $requirement->from        = $this->request->getPost("from");
 
         $requirement->save();
     }

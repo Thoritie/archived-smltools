@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    //validate
-    
     $.validator.setDefaults({
         errorClass: 'badge badge-danger',
         highlight: function (element) {
@@ -68,10 +66,10 @@ $(document).ready(function() {
             }
         }
     });
-   
-    
+
+
     var projectId = $('#idProject').val();
-    
+
     $('#sourcetype').change( (e) => {
         $('.sourcename').removeClass('hidden')
         var sourceType = $('#sourcetype').val();
@@ -87,14 +85,14 @@ $(document).ready(function() {
                 json_data = JSON.parse(data)
                 var cleaned_json = createJSON(json_data);
                 var clean_data = createString(cleaned_json);
-                
+
                 SourceRequirement = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
                     queryTokenizer: Bloodhound.tokenizers.whitespace,
                     local: JSON.parse(clean_data)
                 });
                 SourceRequirement.initialize();
-        
+
                 var from = $('#from');
                 from.tagsinput({
                     itemValue: 'value',
@@ -105,7 +103,7 @@ $(document).ready(function() {
                         source: SourceRequirement.ttAdapter(),
                         templates: {
                             empty:'<div id="nomatch" class="empty-message text-info"> No matches.</div>'
-                        } 
+                        }
                     }
                 });
             }
@@ -120,6 +118,12 @@ $(document).ready(function() {
             var requirementtype = $("#requirementtype").val();
             var sourcetype = $("#sourcetype").val();
 
+            var from = $("#from").tagsinput('items')
+            from_item = {};
+            $.each(from, (index, input) => {
+                from_item[index] = input.value
+            })
+
             $.ajax({
                 type:'POST',
                 url: baseUrl+"requirement/save",
@@ -128,7 +132,8 @@ $(document).ready(function() {
                     description: description,
                     idProject : idProject,
                     requirementtype: requirementtype,
-                    sourcetype: sourcetype
+                    sourcetype: sourcetype,
+                    from: from
                 },
                 success:function(data){
                     window.location.href=baseUrl+"requirement";
