@@ -154,5 +154,16 @@ class RequirementController extends ControllerBase
 
         return json_encode($source);
     }
+
+    public function showDetailRequirementAction() {
+        $id = $this->request->getPost('requirementId');
+
+        $requirement = Requirement::findById($id);
+
+        $requirement_detail         = [];
+        $requirement_detail['name'] = $requirement->name;
+
+        return json_encode($requirement_detail);
+    }
 }
 
