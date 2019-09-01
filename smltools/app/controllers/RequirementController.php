@@ -1,6 +1,7 @@
 <?php
-use MongoDB\BSON\ObjectId;
 use Library\Common\Pagination;
+use Library\Enum\Enum;
+use MongoDB\BSON\ObjectId;
 
 class RequirementController extends ControllerBase
 {
@@ -160,10 +161,11 @@ class RequirementController extends ControllerBase
 
         $requirement = Requirement::findById($id);
 
-        $requirement_detail         = [];
+        $requirement_detail = [];
 
         $requirement_detail['name']        = $requirement->name;
         $requirement_detail['description'] = $requirement->description;
+        $requirement_detail['type']        = Enum::$RequirementType[$requirement->type];
 
         return json_encode($requirement_detail);
     }

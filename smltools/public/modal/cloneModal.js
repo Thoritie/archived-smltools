@@ -1187,6 +1187,7 @@ function cloneModalDetailRequirement(requirementId) {
 function setFormIdInModalRequirementDetail(idModal, newModal) {
     newModal.find('#showRequirementName').attr('id', 'showRequirementName-' + idModal);
     newModal.find('#showRequirementDescription').attr('id', 'showRequirementDescription-' + idModal);
+    newModal.find('#showRequirementType').attr('id', 'showRequirementType-' + idModal);
 }
 
 function callDataRequirement(requirementId, idModal) {
@@ -1206,6 +1207,8 @@ function setRequirementDetail(data, idModal) {
     $('#showRequirementDescription-' + idModal).html(data.description);
     if(data.description == null || data.description == '') $('#showRequirementDescription-' + idModal).html(empty);
 
+    $('#showRequirementType-' + idModal).html(data.type);
+    if(data.type == null || data.type == '') $('#showRequirementType-' + idModal).html(empty);
 }
 
 // clone show modal resource
