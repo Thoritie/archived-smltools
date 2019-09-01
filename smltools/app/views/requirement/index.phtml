@@ -1,12 +1,12 @@
 <p><?php $this->flashSession->output() ?></p>
-<!-- <div class="wrapper"> -->
+
 <div class="container-fluid">
-   <!-- <div class="container"> -->
    <div class="row">
       <div class="col-md-12">
          <a href="<?=$this->url->get("requirement/create"); ?>" class="labelAdd btn btn-Primary pull-right"><i class="fa fa-plus"></i></a>
       </div>
    </div>
+
    <div class="row" style="margin-top: 50px">
       <div class="col-md-9">
          <div class="fresh-table s-navShadow">
@@ -14,26 +14,23 @@
                <thead>
                   <th data-field="id">No.</th>
                   <th data-field="name" data-sortable="true">Name</th>
-                  <!-- <th data-field="salary" data-sortable="true">Salary</th> -->
                   <th data-field="country" data-sortable="true">Description</th>
                   <th data-field="actions" data-formatter="" data-events="operateEvents" class="pull-right">Manage Actions</th>
                </thead>
                <tbody>
                   <?php
                      $i =1;
-                     foreach($requirement->items as $key => $showRes) {  ?>
+                     foreach($requirement->items as $key => $showRequirement) {  ?>
                   <tr>
                      <td><?= $i ?></td>
                      <td>
-                           <h6 style="color: #747474"><?=$showRes->name ?></h6>
-
+                        <h6 style="color: #747474"><?=$showRequirement->name ?></h6>
                      </td>
-                     <td><?=$showRes->description ?></td>
+                     <td><?=$showRequirement->description ?></td>
                      <td>
-                        <a onclick="confirm('Are you sure delete <?=$showRes->name?>?')?deleteRequirement('<?=$showRes->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
-                        <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary resEdit" data-id="<?=$showRes->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                        <a class="showDetailRes btn btn-xs pull-right"  onclick="cloneModalDetailRes('<?=$showRes->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp;
-
+                        <!-- <a onclick="confirm('Are you sure delete <?=$showRequirement->name?>?')?deleteRequirement('<?=$showRequirement->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; -->
+                        <!-- <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary resEdit" data-id="<?=$showRequirement->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> -->
+                        <a class="showDetailRequirement btn btn-xs pull-right" onclick="cloneModalDetailRequirement('<?=$showRequirement->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp;
                      </td>
                   </tr>
                   <?php  $i++; } ?>
@@ -41,6 +38,7 @@
             </table>
          </div>
       </div>
+
       <form action="<?=$this->url->get("requirement/index"); ?>" method="POST">
         <div class="col-md-3">
          <!-- Sort -->
@@ -86,10 +84,9 @@
       </form>
    </div>
 
-   <!-- </div> -->
 </div>
-<!-- </div> -->
-<div class="modal showRes" id="showRes" role="dialog">
+
+<div class="modal showRequirement" id="showRequirement" role="dialog">
    <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content card">
@@ -102,40 +99,16 @@
                <div class="row">
                   <div class="col-md-6">
                      <label>Requirement name</label>
-                     <h5 id="showResName"></h5>
+                     <h5 id="showRequirementName"></h5>
                   </div>
                </div>
                <div class="row">
                   <div class="col-md-12">
                      <label>Description</label>
-                     <h5 id="showResDescription"></h5>
+                     <h5 id="showRequirementDescription"></h5>
                   </div>
                </div>
                <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Includes</label>
-                     <div id="showResInclude"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-6">
-                     <label>R Owner</label>
-                     <div id="showResRowner"></div>
-                  </div>
-                  <div class="col-md-6">
-                     <label>P Owner</label>
-                     <div id="showResPowner"></div>
-                  </div>
-               </div>
-               <hr>
-               <div class="row">
-                  <div class="col-md-12">
-                     <label>Maintainer</label>
-                     <div id="showResMaintainer"></div>
-                  </div>
-               </div>
             </div>
          </div>
          <div class="modal-footer">
@@ -144,6 +117,7 @@
       </div>
    </div>
 </div>
+
 <!-- blockJS -->
 <script>
    function deleteResource(id){
@@ -154,7 +128,6 @@
        }, function(data){
           window.location.href = baseUrl+"resource";
        },  "json");
-
    }
 </script>
 <!-- /.blockJS -->
