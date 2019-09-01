@@ -161,7 +161,9 @@ class RequirementController extends ControllerBase
         $requirement = Requirement::findById($id);
 
         $requirement_detail         = [];
-        $requirement_detail['name'] = $requirement->name;
+
+        $requirement_detail['name']        = $requirement->name;
+        $requirement_detail['description'] = $requirement->description;
 
         return json_encode($requirement_detail);
     }
