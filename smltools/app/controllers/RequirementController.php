@@ -166,6 +166,7 @@ class RequirementController extends ControllerBase
         $requirement_detail['name']        = $requirement->name;
         $requirement_detail['description'] = $requirement->description;
         $requirement_detail['type']        = Enum::$RequirementType[$requirement->type];
+        $requirement_detail['source']      = $requirement->source_type;
 
         return json_encode($requirement_detail);
     }

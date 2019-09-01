@@ -1188,6 +1188,7 @@ function setFormIdInModalRequirementDetail(idModal, newModal) {
     newModal.find('#showRequirementName').attr('id', 'showRequirementName-' + idModal);
     newModal.find('#showRequirementDescription').attr('id', 'showRequirementDescription-' + idModal);
     newModal.find('#showRequirementType').attr('id', 'showRequirementType-' + idModal);
+    newModal.find('#showRequirementSource').attr('id', 'showRequirementSource-' + idModal);
 }
 
 function callDataRequirement(requirementId, idModal) {
@@ -1209,6 +1210,9 @@ function setRequirementDetail(data, idModal) {
 
     $('#showRequirementType-' + idModal).html(data.type);
     if(data.type == null || data.type == '') $('#showRequirementType-' + idModal).html(empty);
+
+    $('#showRequirementSource-' + idModal).html(data.source);
+    if(data.type == null || data.type == '') $('#showRequirementSource-' + idModal).html(empty);
 }
 
 // clone show modal resource
