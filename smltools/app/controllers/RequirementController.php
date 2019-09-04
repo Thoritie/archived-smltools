@@ -168,6 +168,14 @@ class RequirementController extends ControllerBase
         $requirement_detail['type']        = Enum::$RequirementType[$requirement->type];
         $requirement_detail['source']      = $requirement->source_type;
 
+        $tempArray = [];
+        foreach($requirement->from as $each){
+        	if($each != null)
+            	$tempArray[] = $each['text'];
+        };
+
+        $requirement_detail['from'] = $tempArray;
+
         return json_encode($requirement_detail);
     }
 }
