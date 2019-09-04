@@ -19,7 +19,7 @@ class Common {
             $arrTask['id'] = (string)$task->_id;
             return $arrTask;
         }
-       
+
     }
 
     public static function getResourceNameById($model, $id){
@@ -57,7 +57,7 @@ class Common {
             return $arrStake;
         }
     }
-    
+
     public static function addDataArray($model, $value){
     	$arrData = array();
     	if($value != null){
@@ -73,7 +73,7 @@ class Common {
 	    			    array_push($arrData,$item);
                 }
 
-	    		
+
 	    	}
         }
     	return $arrData;
