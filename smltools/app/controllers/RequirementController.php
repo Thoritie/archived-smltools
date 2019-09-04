@@ -178,5 +178,14 @@ class RequirementController extends ControllerBase
 
         return json_encode($requirement_detail);
     }
+
+    public function deleteRequirementAction() {
+        $id = $this->request->getPost('idRequirement');
+
+        $requirement = Requirement::findById($id);
+        $requirement->delete();
+
+        return json_encode('true');
+    }
 }
 

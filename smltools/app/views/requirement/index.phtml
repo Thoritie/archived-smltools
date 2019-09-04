@@ -28,7 +28,7 @@
                      </td>
                      <td><?=$showRequirement->description ?></td>
                      <td>
-                        <!-- <a onclick="confirm('Are you sure delete <?=$showRequirement->name?>?')?deleteRequirement('<?=$showRequirement->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp; -->
+                        <a onclick="confirm('Are you sure delete <?=$showRequirement->name?>?')?deleteRequirement('<?=$showRequirement->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
                         <!-- <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary resEdit" data-id="<?=$showRequirement->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> -->
                         <a class="showDetailRequirement btn btn-xs pull-right" onclick="cloneModalDetailRequirement('<?=$showRequirement->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp;
                      </td>
@@ -138,13 +138,13 @@
 
 <!-- blockJS -->
 <script>
-   function deleteResource(id){
-       var idresource = id;
+   function deleteRequirement(id){
+       var idRequirement = id;
 
-       $.post(baseUrl+"requirement/deleteResource",{
-           idResource : idresource
+       $.post(baseUrl+"requirement/deleteRequirement",{
+           idRequirement : idRequirement
        }, function(data){
-          window.location.href = baseUrl+"resource";
+          window.location.href = baseUrl+"requirement";
        },  "json");
    }
 </script>
