@@ -1,30 +1,29 @@
 <p></p>
 <ol class="breadcrumb inline-flex">
-        <li class="breadcrumb-item">
-          <a href="<?=$this->url->get("project/index"); ?>">Project</a>
-        </li>
-        <li class="breadcrumb-item">
-          <a href="<?=$this->url->get("task/index"); ?>">Task</a>
-        </li>
-        <li class="breadcrumb-item active">
-              <a>Edit</a>
-        </li>
+    <li class="breadcrumb-item">
+        <a href="<?=$this->url->get("project/index"); ?>">Project</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="<?=$this->url->get("task/index"); ?>">Task</a>
+    </li>
+    <li class="breadcrumb-item active">
+            <a>Edit</a>
+    </li>
 </ol>
 <!-- new -->
 <h2 class="headform textCenter">Edit Task</h2>
 <?php
    echo $this->tag->form(
        [
-         
            "autocomplete" => "off",
            "id" => "editTask-form"
        ]
    );
-   ?>
-            <?php 
-            echo $this->tag->hiddenField(["idProject", "id" => "EdidProject" ]);
-            echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
-            ?>
+?>
+<?php 
+echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]);
+echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
+?>
  <div class="content">
   <div class="container-fluid">
      <div class="row">
@@ -62,7 +61,7 @@
                                 <div class="form-group">
                                    <label>Description</label>
                                    <?php 
-                                      echo $this->tag->textArea(["Description", "class" => "form-control", 
+                                      echo $this->tag->textArea(["task_Description", "class" => "form-control", 
                                       "id" => "EdDescription","rows" => 3,]) 
                                     ?>
                                 </div>
@@ -226,29 +225,29 @@
 <!-- blockJS -->
 
 <script>
-      $(".createTaskIcon").click(function(){
-            cloneModalTask($('#createTask'));
-      });
+    $(".createTaskIcon").click(function(){
+        cloneModalTask($('#createTask'));
+    });
 
-      $(".createResourceIcon").click(function(){
-         cloneModalResource($('#createResource'));
-      });
+    $(".createResourceIcon").click(function(){
+        cloneModalResource($('#createResource'));
+    });
 
-      $(".createStakeholderIcon").click(function(){
-         cloneModalStakeholder($('#createStakeholder'));
-      });
+    $(".createStakeholderIcon").click(function(){
+        cloneModalStakeholder($('#createStakeholder'));
+    });
 </script>
 <script>
-       questionMark($('#Edincludes'));
-       questionMark($('#Edowner'));
-       questionMark($('#Edcollaburator'));
-       questionMark($('#Edregulator'));
-       questionMark($('#Eduses'));
-       questionMark($('#Edproduces'));
-       questionMark($('#EdownerToBe'));
-       questionMark($('#EdcollaboratorToBe'));
-       questionMark($('#EdtoUse'));
-       questionMark($('#EdtoProduce'));
+    questionMark($('#Edincludes'));
+    questionMark($('#Edowner'));
+    questionMark($('#Edcollaburator'));
+    questionMark($('#Edregulator'));
+    questionMark($('#Eduses'));
+    questionMark($('#Edproduces'));
+    questionMark($('#EdownerToBe'));
+    questionMark($('#EdcollaboratorToBe'));
+    questionMark($('#EdtoUse'));
+    questionMark($('#EdtoProduce'));
 </script>
 <script>
     var taskinput = '<?php echo json_encode($taskTags); ?>';
@@ -283,49 +282,49 @@
 
   $(document).ready(function(){
 
-      Tasks = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: JSON.parse(taskinput)
+    Tasks_Edit = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: JSON.parse(taskinput)
     });
-    Tasks.initialize();
+    Tasks_Edit.initialize();
     
     var Edincludes = $('#Edincludes');
     Edincludes.tagsinput({
-      itemValue: 'value',
-      itemText: 'text',
-      typeaheadjs: {
-        name: 'name',
-        displayKey: 'text',
-        source: Tasks.ttAdapter(),
-        templates: {
-          empty: '<div class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
-        },
-      }
+        itemValue: 'value',
+        itemText: 'text',
+        typeaheadjs: {
+            name: 'name',
+            displayKey: 'text',
+            source: Tasks_Edit.ttAdapter(),
+            templates: {
+                empty: '<div class="empty-message text-info" onclick="cloneModalTask($(\'#createTask\'))"> No matches.</div>'
+            },
+        }
     });
     add(Edincludes, data_includes);
 
 
-      Stakeholder = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: JSON.parse(stakeinput)
+    Stakeholder_Edit = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: JSON.parse(stakeinput)
     });
   
-    Stakeholder.initialize();
+    Stakeholder_Edit.initialize();
 
     var EdownerToBe = $('#EdownerToBe');
     EdownerToBe.tagsinput({
-      itemValue: 'value',
-      itemText: 'text',
-      typeaheadjs: {
-        name: 'name',
-        displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
-        templates: {
-          empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
-        },
-      }
+        itemValue: 'value',
+        itemText: 'text',
+        typeaheadjs: {
+            name: 'name',
+            displayKey: 'text',
+            source: Stakeholder_Edit.ttAdapter(),
+            templates: {
+                empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
+            },
+        }
     });
     add(EdownerToBe, data_ownerTobe);
 
@@ -337,7 +336,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
+        source: Stakeholder_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
         },
@@ -353,7 +352,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
+        source: Stakeholder_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
         },
@@ -369,7 +368,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
+        source: Stakeholder_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
         },
@@ -385,7 +384,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Stakeholder.ttAdapter(),
+        source: Stakeholder_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalStakeholder($(\'#createStakeholder\'))"> No matches.</div>'
         },
@@ -394,13 +393,13 @@
     add(EdcollaboratorToBe, data_collaboratorTobe);
 
 
-      Resource = new Bloodhound({
+   Resource_Edit = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       local: JSON.parse(resourceinput)
     });
-  
-    Resource.initialize();
+    Resource_Edit.initialize();
+
     var Eduses = $('#Eduses');
     Eduses.tagsinput({
       itemValue: 'value',
@@ -408,7 +407,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource.ttAdapter(),
+        source: Resource_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -424,7 +423,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource.ttAdapter(),
+        source: Resource_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -440,7 +439,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource.ttAdapter(),
+        source: Resource_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -456,7 +455,7 @@
       typeaheadjs: {
         name: 'name',
         displayKey: 'text',
-        source: Resource.ttAdapter(),
+        source: Resource_Edit.ttAdapter(),
         templates: {
           empty: '<div class="empty-message text-info" onclick="cloneModalResource($(\'#createResource\'))"> No matches.</div>'
         },
@@ -469,9 +468,9 @@
 
 
   function add($elt, data){
-          $.each(JSON.parse(data), function(index ,data){   
-            $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
-          });
+    $.each(JSON.parse(data), function(index ,data){   
+        $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
+    });
   }
 </script>
 
