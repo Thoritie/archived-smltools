@@ -68,47 +68,65 @@ $(document).ready(function() {
     });
 
 
-    var projectId = $('#idProject').val();
+    var project = $('#idProject').val();
 
-    $('#sourcetype').change( (e) => {
-        $('.sourcename').removeClass('hidden')
-        var sourceType = $('#sourcetype').val();
+    $.post( baseUrl + "requirement/findTask", {
+        project : project
+    }, function(data) {
+        json_data = JSON.parse(data)
+        var cleaned_json = createJSON(json_data);
+        var clean_data = createString(cleaned_json);
 
-        $.ajax({
-            type: 'POST',
-            url: baseUrl+"requirement/findRequirementSource",
-            data: {
-                projectId: projectId,
-                sourceType: sourceType
-            },
-            success:function(data){
-                json_data = JSON.parse(data)
-                var cleaned_json = createJSON(json_data);
-                var clean_data = createString(cleaned_json);
-
-                SourceRequirement = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    local: JSON.parse(clean_data)
-                });
-                SourceRequirement.initialize();
-
-                var from = $('#from');
-                from.tagsinput({
-                    itemValue: 'value',
-                    itemText: 'text',
-                    typeaheadjs: {
-                        name: 'name',
-                        displayKey: 'text',
-                        source: SourceRequirement.ttAdapter(),
-                        templates: {
-                            empty:'<div id="nomatch" class="empty-message text-info"> No matches.</div>'
-                        }
-                    }
-                });
-            }
+        Tasks = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(clean_data)
         });
-    });
+        Tasks.initialize();
+
+        var tasks = $('#tasks');
+        tasks.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Tasks.ttAdapter(),
+                templates: {
+                    empty: '<div id="nomatch" class="empty-message text-info"> No matches.</div>'
+                }
+            }
+        })
+    })
+
+    $.post( baseUrl + "requirement/findStakeholder", {
+        project : project
+    }, function(data) {
+        json_data = JSON.parse(data)
+        var cleaned_json = createJSON(json_data);
+        var clean_data = createString(cleaned_json);
+
+        Stakeholders = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            local: JSON.parse(clean_data)
+        });
+        Stakeholders.initialize();
+
+        var stakeholders = $('#stakeholders');
+        stakeholders.tagsinput({
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'name',
+                displayKey: 'text',
+                source: Stakeholders.ttAdapter(),
+                templates: {
+                    empty: '<div id="nomatch" class="empty-message text-info"> No matches.</div>'
+                }
+            }
+        })
+    })
 
     $('#saveRequirement').click(function (){
         if($("#createRequirement-form").valid()){
@@ -116,12 +134,17 @@ $(document).ready(function() {
             var requirementname = $("#requirementname").val();
             var description = $("#description").val();
             var requirementtype = $("#requirementtype").val();
-            var sourcetype = $("#sourcetype").val();
 
-            var from = $("#from").tagsinput('items')
-            from_item = {};
-            $.each(from, (index, input) => {
-                from_item[index] = input.value
+            var tasks = $("#tasks").tagsinput('items');
+            tasks_value = {};
+            $.each(tasks, function(index, input){
+                tasks_value[index] = input.value;
+            })
+
+            var stakeholders = $("#stakeholders").tagsinput('items');
+            stakeholders_value = {};
+            $.each(stakeholders, function(index, input){
+                stakeholders_value[index] = input.value;
             })
 
             $.ajax({
@@ -132,14 +155,13 @@ $(document).ready(function() {
                     description: description,
                     idProject : idProject,
                     requirementtype: requirementtype,
-                    sourcetype: sourcetype,
-                    from: from
+                    tasks: tasks_value,
+                    stakeholders: stakeholders_value,
                 },
                 success:function(data){
                     window.location.href=baseUrl+"requirement";
                 }
             })
         }
-
     });
 });

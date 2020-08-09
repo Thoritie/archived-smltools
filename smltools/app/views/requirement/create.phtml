@@ -69,35 +69,30 @@
                            </div>
                            <div class="row">
                               <div class="col-md-12">
-                                 <div class="form-group">
-                                    <label>Source Type</label>
+                                 <div class="form-group stakeholders">
+                                    <label>From Stakeholders</label>
                                     <?php
-                                       echo $this->tag->selectStatic([
-                                          "sourcetype",
+                                    echo $this->tag->textField([
+                                          "stakeholders",
+                                          "size"  => 30,
                                           "class" => "form-control",
-                                          "id"    => "sourcetype",
-                                          [
-                                             "Resource"      => "Select Requirement Source",
-                                             "Resource"      => "Resource",
-                                             "Stakeholders"  => "Stakeholder",
-                                             "Tasks"         => "Task",
-                                             "Collaboration" => "Collaboration Setting",
-                                          ]
-                                       ])
+                                          "id"    => "stakeholders"
+                                    ])
                                     ?>
                                  </div>
                               </div>
                            </div>
+
                            <div class="row">
                               <div class="col-md-12">
-                                 <div class="form-group hidden sourcename">
-                                    <label>From</label>
+                                 <div class="form-group stakeholders">
+                                    <label>From Tasks</label>
                                     <?php
                                     echo $this->tag->textField([
-                                          "from",
+                                          "tasks",
                                           "size"  => 30,
                                           "class" => "form-control",
-                                          "id"    => "from"
+                                          "id"    => "tasks"
                                     ])
                                     ?>
                                  </div>
