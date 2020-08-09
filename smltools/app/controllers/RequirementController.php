@@ -184,14 +184,26 @@ class RequirementController extends ControllerBase
         $requirement_detail['description'] = $requirement->description;
         $requirement_detail['type']        = Enum::$RequirementType[$requirement->type];
 
-        // $tempArray = [];
-        // foreach($requirement->from as $each){
-        // 	if($each != null)
-        //     	$tempArray[] = $each['text'];
-        // };
+        $tasksModel = new Tasks();
+        $tempArray = [];
 
-        // // TODO  remove source
-        // $requirement_detail['from'] = $tempArray;
+        if($requirement->tasks != null)
+        foreach($requirement->tasks as $id) {
+            $value = Common::getTaskNameById($tasksModel, $id);
+            if($value != null)
+                $tempArray[] = $value;
+        };
+        $requirement_detail['tasks'] = $tempArray;
+
+        $stakeholdersModel = new Stakeholders();
+        $tempArray = [];
+        if($requirement->stakeholders != null)
+        foreach($requirement->stakeholders as $id) {
+            $value = Common::getStakeholderNameById($stakeholdersModel, $id);
+            if($value != null)
+                $tempArray[] = $value;
+        };
+        $requirement_detail['stakeholders'] = $tempArray;
 
         return json_encode($requirement_detail);
     }

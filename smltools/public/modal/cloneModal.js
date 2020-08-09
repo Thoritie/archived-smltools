@@ -1188,8 +1188,8 @@ function setFormIdInModalRequirementDetail(idModal, newModal) {
     newModal.find('#showRequirementName').attr('id', 'showRequirementName-' + idModal);
     newModal.find('#showRequirementDescription').attr('id', 'showRequirementDescription-' + idModal);
     newModal.find('#showRequirementType').attr('id', 'showRequirementType-' + idModal);
-    newModal.find('#showRequirementSource').attr('id', 'showRequirementSource-' + idModal);
-    newModal.find('#showRequirementFrom').attr('id', 'showRequirementFrom-' + idModal);
+    newModal.find('#showRequirementFromStakeholders').attr('id', 'showRequirementFromStakeholders-' + idModal);
+    newModal.find('#showRequirementFromTasks').attr('id', 'showRequirementFromTasks-' + idModal);
 }
 
 function callDataRequirement(requirementId, idModal) {
@@ -1215,14 +1215,24 @@ function setRequirementDetail(data, idModal) {
     $('#showRequirementSource-' + idModal).html(data.source);
     if(data.type == null || data.type == '') $('#showRequirementSource-' + idModal).html(empty);
 
-    var from = data.from;
-    var strFrom = "";
-    $.each(from, function( index, value) {
-        strFrom += '<a href="#" class="labelCo labelInfo info-resource" >'+ value +'</a>';
-    });
-    $('#showRequirementFrom-' + idModal).html(strFrom);
-    if(data.type == null || data.type == '') $('#showRequirementFrom-' + idModal).html(empty);
 
+    var stakeholders = data.stakeholders;
+    var strStakeholders = "";
+    $.each(stakeholders, function( index, value) {
+        strStakeholders += '<a href="#" class="labelCo labelInfo info-resource" >'+ value.name +'</a>';
+    });
+
+    $('#showRequirementFromStakeholders-' + idModal).html(strStakeholders);
+    if(data.stakeholders == null || data.stakeholders == '') $('#showRequirementFromStakeholders-' + idModal).html(empty);
+
+    var tasks = data.tasks;
+    var strTasks = "";
+    $.each(tasks, function( index, value) {
+        strTasks += '<a href="#" class="labelCo labelInfo info-resource" >'+ value.name +'</a>';
+    });
+
+    $('#showRequirementFromTasks-' + idModal).html(strTasks);
+    if(data.tasks == null || data.tasks == '') $('#showRequirementFromTasks-' + idModal).html(empty);
 }
 
 // clone show modal resource
