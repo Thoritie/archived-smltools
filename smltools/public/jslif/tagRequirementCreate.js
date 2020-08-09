@@ -17,7 +17,7 @@ $(document).ready(function() {
             resourcename: {
                 required: true,
                 remote: {
-                    url:  baseUrl+"resource/checkDupplicateRequirementName",
+                    url:  baseUrl+"resource/checkDuplicateRequirementName",
                     type: "post",
                     data: {
                         resourcename: function () {
@@ -40,10 +40,10 @@ $(document).ready(function() {
 
     $("#editRequirement").validate({
         rules: {
-            editResName: {
+            editRequirementName: {
                 required: true,
                 remote: {
-                    url:  baseUrl+"resource/checkDupplicateRequirementEditName",
+                    url:  baseUrl+"requirement/checkDuplicateRequirementEditName",
                     type: "post",
                     data: {
                         resourcename: function () {
@@ -60,7 +60,7 @@ $(document).ready(function() {
             },
         },
         messages: {
-            editResName: {
+            editRequirementName: {
                 required: "Requirement name is required",
                 remote: jQuery.validator.format("{0} is already taken.")
             }
@@ -159,6 +159,48 @@ $(document).ready(function() {
                     stakeholders: stakeholders_value,
                 },
                 success:function(data){
+                    window.location.href=baseUrl+"requirement";
+                }
+            })
+        }
+    });
+
+    $('#saveEditRequirement').click(function (){
+        if($("#editRequirement").valid()){
+            var requirementname = $("#editRequirementname").val();
+            var description = $("#editDescription").val();
+            var idProject = $("#idProjectEdit").val();
+            var requirementtype = $("#editRequirementtype").val();
+            var idRequirement = $("#idRequirementEdit").val();
+
+            console.log(idRequirement);
+
+            var tasks = $("#editTasks").tagsinput("items");
+            tasks_value = {};
+            $.each(tasks, function(index, input){
+                tasks_value[index] = input.value
+            });
+
+            var stakeholders = $("#editStakeholders").tagsinput("items");
+            stakeholders_value = {};
+            $.each(stakeholders, function(index, input){
+                stakeholders_value[index] = input.value
+            });
+
+
+            $.ajax({
+                type:'POST',
+                url: baseUrl+"requirement/save",
+                data: {
+                    requirementname: requirementname,
+                    description: description,
+                    idProject: idProject,
+                    requirementtype: requirementtype,
+                    tasks: tasks_value,
+                    stakeholders: stakeholders_value,
+                    idRequirement: idRequirement,
+                },
+                success: function(data) {
                     window.location.href=baseUrl+"requirement";
                 }
             })

@@ -1,5 +1,6 @@
 <?php
 use Library\Common\Pagination;
+use Library\Common\Common;
 use Library\Enum\Enum;
 use MongoDB\BSON\ObjectId;
 
@@ -41,6 +42,9 @@ class RequirementController extends ControllerBase
 
         $this->assets->addJs('modal/cloneModal.js');
         $this->assets->addJs('jslif/tagRequirementCreate.js');
+
+        $this->assets->addJs('jquery/requirementEditRedirect.js');
+
     }
 
     public function indexAction()
@@ -132,28 +136,41 @@ class RequirementController extends ControllerBase
         $requirement->name        = $this->request->getPost("requirementname");
         $requirement->description = $this->request->getPost("description");
         $requirement->type        = $this->request->getPost("requirementtype");
-        $requirement->source_type = $this->request->getPost("sourcetype");
         $requirement->idProject   = $this->request->getPost("idProject");
-        $requirement->from        = $this->request->getPost("from");
+        $requirement->tasks        = $this->request->getPost("tasks");
+        $requirement->stakeholders = $this->request->getPost("stakeholders");
 
         $requirement->save();
     }
 
-    public function findRequirementSourceAction() {
+    public function findStakeholderAction() {
         $this->view->disable();
-
         $projectId  = $this->request->getPost('projectId');
-        $sourceType = $this->request->getPost('sourceType');
 
-        $condition  = [];
+        $condition = [];
 
         if( $projectId ) {
             $condition["idProject"] = $projectId;
         }
 
-        $source = $sourceType::Find(array($condition));
+        $stakeholders = Stakeholders::Find(array($condition));
 
-        return json_encode($source);
+        return json_encode($stakeholders);
+    }
+
+    public function findTaskAction() {
+        $this->view->disable();
+        $projectId  = $this->request->getPost('projectId');
+
+        $condition = [];
+
+        if( $projectId ) {
+            $condition["idProject"] = $projectId;
+        }
+
+        $tasks = Tasks::Find(array($condition));
+
+        return json_encode($tasks);
     }
 
     public function showDetailRequirementAction() {
@@ -166,15 +183,15 @@ class RequirementController extends ControllerBase
         $requirement_detail['name']        = $requirement->name;
         $requirement_detail['description'] = $requirement->description;
         $requirement_detail['type']        = Enum::$RequirementType[$requirement->type];
-        $requirement_detail['source']      = $requirement->source_type;
 
-        $tempArray = [];
-        foreach($requirement->from as $each){
-        	if($each != null)
-            	$tempArray[] = $each['text'];
-        };
+        // $tempArray = [];
+        // foreach($requirement->from as $each){
+        // 	if($each != null)
+        //     	$tempArray[] = $each['text'];
+        // };
 
-        $requirement_detail['from'] = $tempArray;
+        // // TODO  remove source
+        // $requirement_detail['from'] = $tempArray;
 
         return json_encode($requirement_detail);
     }
@@ -186,6 +203,82 @@ class RequirementController extends ControllerBase
         $requirement->delete();
 
         return json_encode('true');
+    }
+
+    public function editAction() {
+        $userLogin = $this->session->get('userLogin');
+        $this->view->userLogin = $userLogin;
+
+        $projectname = $this->session->get('projectname');
+        $this->view->projectname = $projectname;
+
+        $ownerLayout = $this->session->get('ownerLayout');
+        $this->view->ownerLayout = $ownerLayout;
+
+        $idProject = $this->session->get('idProject');
+        $this->view->idProject = $idProject;
+
+        $id = $this->request->getPost('id');
+        $requirement =  Requirement::findById($id);
+
+
+        $this->view->requirement = $requirement;
+        $this->tag->setDefault("idProject", $requirement->idProject);
+        $this->tag->setDefault("idRequirement", $id);
+        $this->tag->setDefault("editRequirementname", $requirement->name);
+        $this->tag->setDefault("editDescription", $requirement->description);
+        $this->tag->setDefault("editRequirementtype", $requirement->type);
+
+        $this->view->tasks = Common::addDataArray(new Tasks(), $requirement->tasks);
+        $this->view->stakeholders = Common::addDataArray(new Stakeholders(), $requirement->stakeholders);
+
+        $conditionStake = [];
+        $conditionStake["idProject"] = $idProject;
+        $stakeTags = Stakeholders::Find(array($conditionStake));
+        $this->view->stakeTags = $stakeTags;
+
+        $conditionTask = [];
+        $conditionTask["idProject"] = $idProject;
+        $conditionTask["name"] = ['$ne' => $requirement->name];
+        $taskTags = Tasks::Find(array($conditionTask));
+        $this->view->taskTags = $taskTags;
+    }
+
+    public function checkDuplicateRequirementNameAction() {
+        $requirementname = $this->request->getPost("requirementname");
+        $idProject = $this->requst->getPost("idProject");
+
+        $result = true;
+        $condition = [];
+
+        $condition["name"] = $requirementname;
+        $condition["idProject"] = $idProject;
+
+        $requirement = Requirement::Find(array($condition));
+        if($requirement) {
+            $result = false;
+        }
+
+        return json_encode($result);
+    }
+
+    public function checkDuplicateRequirementEditNameAction() {
+        $requirementname = $this->request->getPost("requirementanme");
+        $idProject = $this->request->getPost("idProject");
+        $idRequirement = $this->request->getPost("idRequirement");
+
+        $result = true;
+        $condition = [];
+
+        $condition["idProject"] = $idProject;
+        $condition["name"] = $requirementname;
+
+        $requirement = Requirement::Find(array($condition));
+        if($requirement) {
+            $result = false;
+        }
+
+        return json_encode($result);
     }
 }
 

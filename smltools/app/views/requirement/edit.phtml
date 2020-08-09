@@ -11,8 +11,8 @@
          "id" => "editRequirement"
       ]
    );
-   echo $this->tag->hiddenField(["idProject", "id" => "idProject" ]);
-   echo $this->tag->hiddenField(["idRequirement", "id" => "idRequirement"]);
+   echo $this->tag->hiddenField(["idProjectEdit", "id" => "idProjectEdit" ]);
+   echo $this->tag->hiddenField(["idRequirementEdit", "id" => "idRequirementEdit"]);
 ?>
 <div class="content">
    <div class="container-fluid">
@@ -116,6 +116,73 @@
 
 <!-- blockJS -->
 <script>
+var taskinput = '<?php echo json_encode($taskTags); ?>';
+taskinput = JSON.parse(taskinput);
+taskinput = createJSON(taskinput);
+taskinput = JSON.stringify(taskinput);
+
+var stakeholderinput = '<?php echo json_encode($stakeTags); ?>';
+stakeholderinput = JSON.parse(stakeholderinput);
+stakeholderinput = createJSON(stakeholderinput);
+stakeholderinput = JSON.stringify(stakeholderinput);
+
+var data_tasks = '<?php echo json_encode($tasks); ?>';
+var data_stakeholders = '<?php echo json_encode($stakeholders); ?>';
+
+$(document).ready(function() {
+   Tasks = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace("text"),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: JSON.parse(taskinput)
+   });
+
+   Tasks.initialize();
+
+   var editTasks = $("#editTasks");
+   editTasks.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs:{
+            name : 'name',
+            displayKey: 'text',
+            source: Tasks.ttAdapter(),
+            templates: {
+                  empty: '<div class="empty-message text-info"> No matches.</div>'
+            },
+      }
+   });
+   add(editTasks, data_tasks);
+
+   Stakeholder = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace("text"),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: JSON.parse(stakeholderinput)
+   });
+
+   Stakeholder.initialize();
+
+   var editStakeholders = $("#editStakeholders");
+   editStakeholders.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs:{
+            name : 'name',
+            displayKey: 'text',
+            source: Stakeholder.ttAdapter(),
+            templates: {
+                  empty: '<div class="empty-message text-info"> No matches.</div>'
+            },
+      }
+   });
+   add(editStakeholders, data_stakeholders);
+});
+
+
+function add($elt, data){
+   $.each(JSON.parse(data), function(index ,data){
+   $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
+   });
+}
 </script>
 
 <!-- /.blockJS -->
