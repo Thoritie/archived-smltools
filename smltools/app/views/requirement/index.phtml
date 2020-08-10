@@ -1,0 +1,151 @@
+<p><?php $this->flashSession->output() ?></p>
+
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-md-12">
+         <a href="<?=$this->url->get("requirement/create"); ?>" class="labelAdd btn btn-Primary pull-right"><i class="fa fa-plus"></i></a>
+      </div>
+   </div>
+
+   <div class="row" style="margin-top: 50px">
+      <div class="col-md-9">
+         <div class="fresh-table s-navShadow">
+            <table id="fresh-table" class="table">
+               <thead>
+                  <th data-field="id">No.</th>
+                  <th data-field="name" data-sortable="true">Name</th>
+                  <th data-field="country" data-sortable="true">Description</th>
+                  <th data-field="actions" data-formatter="" data-events="operateEvents" class="pull-right">Manage Actions</th>
+               </thead>
+               <tbody>
+                  <?php
+                     $i =1;
+                     foreach($requirement->items as $key => $showRequirement) {  ?>
+                  <tr>
+                     <td><?= $i ?></td>
+                     <td>
+                        <h6 style="color: #747474"><?=$showRequirement->name ?></h6>
+                     </td>
+                     <td><?=$showRequirement->description ?></td>
+                     <td>
+                        <a onclick="confirm('Are you sure delete <?=$showRequirement->name?>?')?deleteRequirement('<?=$showRequirement->_id?>'):false;" class="btn btn-danger btn-xs pull-right labelDanger" role="button" style="margin-left: 3px;" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>&nbsp;
+                        <a href="#" class="btn btn-primary btn-xs pull-right labelPrimary requirementEdit" data-id="<?=$showRequirement->_id?>" role="button" data-toggle="tooltip"  data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                        <a class="showDetailRequirement btn btn-xs pull-right" onclick="cloneModalDetailRequirement('<?=$showRequirement->_id?>')" role="button" style="margin-right: 3px;" data-toggle="tooltip" data-placement="top" title="Show"><i class="fa fa-eye"></i></a>&nbsp;
+                     </td>
+                  </tr>
+                  <?php  $i++; } ?>
+               </tbody>
+            </table>
+         </div>
+      </div>
+
+      <form action="<?=$this->url->get("requirement/index"); ?>" method="POST">
+        <div class="col-md-3">
+         <!-- Sort -->
+         <div class="card s-navShadow">
+            <div class="header">
+               <h4 class="title">Sort</h4>
+            </div>
+            <div class="content">
+               <div class="form-group">
+               <?php
+               echo $this->tag->select(
+                   [
+                           'sortBy',
+                           $arrSortBy,
+                           'value' => $sortBy,
+                           'class' => 'form-control',
+                           'id' => 'sel1',
+                           'onchange' => 'this.form.submit()'
+                   ]
+               );
+               ?>
+               </div>
+            </div>
+         </div>
+         <!-- Filter -->
+         <div class="card s-navShadow">
+            <div class="header">
+               <h4 class="title">Filter</h4>
+            </div>
+            <div class="content">
+                  <div class="form-group">
+                     <div class="form-group">
+                        <label>Requirement Name</label>
+                        <input type="text" class="form-control"  name="filter" value="<?=$filter?>">
+                     </div>
+                  </div>
+                  <div class="footer text-right">
+                     <button class="btn btn-default" type="submit">Filter</button>
+                  </div>
+               </div>
+         </div>
+        </div>
+      </form>
+   </div>
+
+</div>
+
+<div class="modal showRequirement" id="showRequirement" role="dialog">
+   <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content card">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Requirement Details</h4>
+         </div>
+         <div class="modal-body">
+            <div class="content">
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>Requirement name</label>
+                     <h5 id="showRequirementName"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Description</label>
+                     <h5 id="showRequirementDescription"></h5>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>Requirement Type</label>
+                     <h5 id="showRequirementType">Type</h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>From Stakeholders</label>
+                     <h5 id="showRequirementFromStakeholders"></h5>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <label>From Tasks</label>
+                     <h5 id="showRequirementFromTasks"></h5>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- blockJS -->
+<script>
+   function deleteRequirement(id){
+       var idRequirement = id;
+
+       $.post(baseUrl+"requirement/deleteRequirement",{
+           idRequirement : idRequirement
+       }, function(data){
+          window.location.href = baseUrl+"requirement";
+       },  "json");
+   }
+</script>
+<!-- /.blockJS -->

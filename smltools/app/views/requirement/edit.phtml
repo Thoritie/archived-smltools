@@ -1,0 +1,188 @@
+<ol class="breadcrumb inline-flex">
+   <li class="breadcrumb-item"><a href="<?=$this->url->get("project/index"); ?>">Project</a></li>
+   <li class="breadcrumb-item"><a href="<?=$this->url->get("requirement/index"); ?>">Requirement</a></li>
+   <li class="breadcrumb-item active"><a>Edit</a></li>
+</ol>
+<?php
+   echo $this->tag->form(
+      [
+         "autocomplete" => "off",
+         "class" => "",
+         "id" => "editRequirement"
+      ]
+   );
+   echo $this->tag->hiddenField(["idProjectEdit", "id" => "idProjectEdit" ]);
+   echo $this->tag->hiddenField(["idRequirementEdit", "id" => "idRequirementEdit"]);
+?>
+<div class="content">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="card s-navShadow">
+               <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                     <div class="header">
+                        <h4 class="title">Edit Requirement</h4>
+                     </div>
+                     <div class="content">
+                        <form>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Requirement Name</label>
+                                    <?php
+                                       echo $this->tag->textField(["editRequirementname", "size" => 30,
+                                       "class" => "form-control", "id" => "editRequirementname"])
+                                       ?>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>description</label>
+                                    <?php
+                                       echo $this->tag->textArea(["editDescription", "class" => "form-control",
+                                          "id" => "editDescription", "rows" => 3,])
+                                    ?>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group">
+                                    <label>Requirement Type</label>
+                                    <?php
+                                       echo $this->tag->selectStatic([
+                                          "editRequirementtype",
+                                          "class" => "form-control",
+                                          "id"    => "editRequirementtype",
+                                          [
+                                             "F" => "Functional Requirement",
+                                             "N" => "Nonfunctional Requirement",
+                                          ]
+                                       ])
+
+                                    ?>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group stakeholders">
+                                    <label>From Stakeholders</label>
+                                    <?php
+                                    echo $this->tag->textField([
+                                          "stakeholders",
+                                          "size"  => 30,
+                                          "class" => "form-control",
+                                          "id"    => "editStakeholders"
+                                    ])
+                                    ?>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group tasks">
+                                    <label>From Tasks</label>
+                                    <?php
+                                    echo $this->tag->textField([
+                                          "tasks",
+                                          "size"  => 30,
+                                          "class" => "form-control",
+                                          "id"    => "editTasks"
+                                    ])
+                                    ?>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <?php echo $this->tag->endForm(); ?>
+                           <button type="button" class="btn btn-info btn-fill pull-right"  id="saveEditRequirement">Save Requirement</button>
+                           <div class="clearfix"></div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- blockJS -->
+<script>
+var taskinput = '<?php echo json_encode($taskTags); ?>';
+taskinput = JSON.parse(taskinput);
+taskinput = createJSON(taskinput);
+taskinput = JSON.stringify(taskinput);
+
+var stakeholderinput = '<?php echo json_encode($stakeTags); ?>';
+stakeholderinput = JSON.parse(stakeholderinput);
+stakeholderinput = createJSON(stakeholderinput);
+stakeholderinput = JSON.stringify(stakeholderinput);
+
+var data_tasks = '<?php echo json_encode($tasks); ?>';
+var data_stakeholders = '<?php echo json_encode($stakeholders); ?>';
+
+$(document).ready(function() {
+   Tasks = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace("text"),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: JSON.parse(taskinput)
+   });
+
+   Tasks.initialize();
+
+   var editTasks = $("#editTasks");
+   editTasks.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs:{
+            name : 'name',
+            displayKey: 'text',
+            source: Tasks.ttAdapter(),
+            templates: {
+                  empty: '<div class="empty-message text-info"> No matches.</div>'
+            },
+      }
+   });
+   add(editTasks, data_tasks);
+
+   Stakeholder = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace("text"),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      local: JSON.parse(stakeholderinput)
+   });
+
+   Stakeholder.initialize();
+
+   var editStakeholders = $("#editStakeholders");
+   editStakeholders.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',
+      typeaheadjs:{
+            name : 'name',
+            displayKey: 'text',
+            source: Stakeholder.ttAdapter(),
+            templates: {
+                  empty: '<div class="empty-message text-info"> No matches.</div>'
+            },
+      }
+   });
+   add(editStakeholders, data_stakeholders);
+});
+
+
+function add($elt, data){
+   $.each(JSON.parse(data), function(index ,data){
+   $elt.tagsinput('add', { "value": data._id.$id, "text": data.name});
+   });
+}
+</script>
+
+<!-- /.blockJS -->
