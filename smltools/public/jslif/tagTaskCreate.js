@@ -303,6 +303,7 @@ $(document).ready(function() {
                 $('#saveTask').click(function () {
                     if($("#createTask-form").valid()){
                         var taskname = $("#taskname").val()
+                        var layerWorld = $("#layerWorld").val()
                         var isA = $("#isA").val()
                         var Description = $("#Description").val()
                         var includes = $("#includes").tagsinput('items');
@@ -374,6 +375,7 @@ $(document).ready(function() {
                                 data:{
                                     taskname : taskname,
                                     isA : isA,
+                                    layerWorld : layerWorld,
                                     Description : Description,
                                     includes : itemInclude,
                                     asIsState : asIsState,
@@ -403,6 +405,7 @@ $(document).ready(function() {
             if($("#editTask-form").valid()){
                 var taskname = $("#Edname").val();
                 var isA = $("#EdisA").val();
+                var layerWorld = $("#ElayerWorld").val()
                 var Description = $("#EdDescription").val();
                 var includes = $("#Edincludes").tagsinput('items')
                 itemIncludes = {};
@@ -475,6 +478,7 @@ $(document).ready(function() {
                         data:{
                             taskname : taskname,
                             isA : isA,
+                            layerWorld : layerWorld,
                             Description : Description,
                             includes : itemIncludes,
                             asIsState : asIsState,
