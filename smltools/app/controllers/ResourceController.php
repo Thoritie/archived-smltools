@@ -250,7 +250,9 @@ class ResourceController extends ControllerBase
         $this->tag->setDefault("idResource", $id);
         $this->tag->setDefault("editResName", $res->name);
         $this->tag->setDefault("editResDesCription", $res->description);
+        $this->tag->setDefault("layerWorld", $res->layerWorld);
 
+        $this->view->LayerWorld = Enum::$LayerWorld;
         $this->view->includes = Common::addDataArray(new Resource(), $res->includes);
 
         $this->view->rOwner = Common::addDataArray(new Stakeholders(), $res->rOwner);
@@ -258,7 +260,6 @@ class ResourceController extends ControllerBase
         $this->view->pOwner = Common::addDataArray(new Stakeholders(), $res->pOwner);
 
         $this->view->maintainer = Common::addDataArray(new Stakeholders(), $res->maintainer);
-
 
         $conditionStake = [];
         $conditionStake["idProject"] = $idProject;
@@ -270,10 +271,6 @@ class ResourceController extends ControllerBase
         $conditionResource["name"] = ['$ne' => $res->name];
         $resourceTags = Resource::Find(array($conditionResource));
         $this->view->resourceTags = $resourceTags;
-
-
-
-
     }
 
     public function showDetailResAction()
