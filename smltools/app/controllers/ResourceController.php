@@ -142,7 +142,7 @@ class ResourceController extends ControllerBase
         $id = $this->session->get('idProject');
         $this->tag->setDefault("idProject", $id);
         $this->view->idProject = $id;
-
+        $this->view->LayerWorld = Enum::$LayerWorld;
 
     }
 
@@ -158,6 +158,7 @@ class ResourceController extends ControllerBase
 
 
         $res->name = $this->request->getPost("resourcename");
+        $res->layerWorld = $this->request->getPost("layerWorld");
         $res->description = $this->request->getPost("Description");
         $res->includes = $this->request->getPost("includes");
         $res->rOwner = $this->request->getPost("rOwner");
