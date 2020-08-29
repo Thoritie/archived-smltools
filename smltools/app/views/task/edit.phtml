@@ -37,7 +37,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
                     <div class="content">
                        <form>
                           <div class="row">
-                             <div class="col-md-6">
+                             <div class="col-md-4">
                                 <div class="form-group">
                                    <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
                                    <?php 
@@ -46,7 +46,7 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
                                   ?>
                                 </div>
                              </div>
-                             <div class="col-md-6">
+                             <div class="col-md-5">
                                 <div class="form-group">
                                    <label>IsA</label>
                                    <?php 
@@ -55,6 +55,16 @@ echo $this->tag->hiddenField(["idTask", "id" => "EdidTask" ]);
                                   ?>
                                 </div>
                              </div>
+                             <div class="col-md-3">
+                                 <div class="form-group">
+                                    <label>Layer</label>
+                                    <?php
+                                       echo $this->tag->selectStatic(["layerWorld", "class" => "form-control",
+                                       "id" => "ElayerWorld"
+                                       ,$LayerWorld ])
+                                       ?>
+                                 </div>
+                              </div>
                           </div>
                           <div class="row">
                              <div class="col-md-12">

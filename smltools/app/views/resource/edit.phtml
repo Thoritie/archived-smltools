@@ -25,12 +25,22 @@
                      <div class="content">
                         <form>
                            <div class="row">
-                              <div class="col-md-12">
+                              <div class="col-md-9">
                                  <div class="form-group">
                                     <label>Resource Name</label>
                                     <?php 
                                        echo $this->tag->textField(["editResName", "size" => 30, 
                                        "class" => "form-control", "id" => "editResName"]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-3">
+                                 <div class="form-group">
+                                    <label>Layer</label>
+                                    <?php
+                                       echo $this->tag->selectStatic(["layerWorld", "class" => "form-control",
+                                       "id" => "editlayerWorld"
+                                       ,$LayerWorld ])
                                        ?>
                                  </div>
                               </div>

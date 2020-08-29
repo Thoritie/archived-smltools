@@ -175,6 +175,7 @@ $(document).ready(function() {
     $('#saveResource').click(function (){
         if($("#createResource-form").valid()){
             var resourcename = $("#resourcename").val();
+            var layerWorld = $("#layerWorld").val();
             var Description = $("#Description").val();
             var idProject = $("#idProject").val();
 
@@ -207,6 +208,7 @@ $(document).ready(function() {
                 url: baseUrl+"resource/save",
                 data:{
                     resourcename: resourcename,
+                    layerWorld: layerWorld,
                     Description: Description,
                     includes: item4,
                     rOwner : item1,
@@ -227,6 +229,7 @@ $(document).ready(function() {
     $('#saveEditResource').click(function (){
         if($("#editResource").valid()){
             var resourcename = $("#editResName").val();
+            var layerWorld = $("#editlayerWorld").val();
             var Description = $("#editResDesCription").val();
             var idProject = $("#idProjectEdit").val();
             var idResource = $("#idResourceEdit").val();
@@ -259,6 +262,7 @@ $(document).ready(function() {
                 url:  baseUrl+"resource/save",
                 data:{
                     resourcename: resourcename,
+                    layerWorld: layerWorld,
                     Description: Description,
                     includes: item4,
                     rOwner : item1,

@@ -436,78 +436,81 @@ $(document).ready(function () {
     ///saveOrganisation
     $('#SaveOr').click(function () {
         if ($("#create_organisation").valid()) {
-        var name = $("#OStakeName").val()
-        var Organisation = $("#OrganName").val()
-        var aka = $("#Oaka").val()
-        var description = $("#Odescription").val()
-        var concern = $("#Oconcern").val()
-        var representative = $("#Orepresentative").tagsinput('items');
-        itemrepresentative = {};
-        $.each(representative, function (index, input) {
-            itemrepresentative[index] = input.value
+            var name = $("#OStakeName").val()
+            var layerWorld = $("#OrLayerWorld").val()
+            var Organisation = $("#OrganName").val()
+            var aka = $("#Oaka").val()
+            var description = $("#Odescription").val()
+            var concern = $("#Oconcern").val()
+            var representative = $("#Orepresentative").tagsinput('items');
+            itemrepresentative = {};
+            $.each(representative, function (index, input) {
+                itemrepresentative[index] = input.value
+                });
+            var reports = $("#Oreports").tagsinput('items');
+            itemreports = {};
+            $.each(reports, function (index, input) {
+                itemreports[index] = input.value
+                });
+            var consults = $("#Oconsults").tagsinput('items');
+            itemconsults = {};
+            $.each(consults, function (index, input) {
+                itemconsults[index] = input.value
+                });
+            var liaises = $("#Oliaises").tagsinput('items');
+            itemliaises = {};
+            $.each(liaises, function (index, input) {
+                itemliaises[index] = input.value
+                });
+            var delegate = $("#Odelegate").tagsinput('items');
+            itemdelegate = {};
+            $.each(delegate, function (index, input) {
+                itemdelegate[index] = input.value
+                });
+            var dTask = $("#OdTask").tagsinput('items');
+            itemdTask = {};
+            $.each(dTask, function (index, input) {
+                itemdTask[index] = input.value
             });
-        var reports = $("#Oreports").tagsinput('items');
-        itemreports = {};
-        $.each(reports, function (index, input) {
-            itemreports[index] = input.value
-            });
-        var consults = $("#Oconsults").tagsinput('items');
-        itemconsults = {};
-        $.each(consults, function (index, input) {
-            itemconsults[index] = input.value
-            });
-        var liaises = $("#Oliaises").tagsinput('items');
-        itemliaises = {};
-        $.each(liaises, function (index, input) {
-            itemliaises[index] = input.value
-            });
-        var delegate = $("#Odelegate").tagsinput('items');
-        itemdelegate = {};
-        $.each(delegate, function (index, input) {
-            itemdelegate[index] = input.value
-            });
-        var dTask = $("#OdTask").tagsinput('items');
-        itemdTask = {};
-        $.each(dTask, function (index, input) {
-            itemdTask[index] = input.value
-        });
-        var wishes = $("#Owishes").val()
-        var idProject = $("#idProject").val();
-        var type;
-        if ($('#focal').is(':checked'))
-            type = 1;
-        else
-            type = 0;
-        $.ajax({
-            type: 'POST',
-            url: baseUrl + "stakeholder/save",
-            data: {
-                name: name,
-                Organisation: Organisation,
-                aka: aka,
-                description: description,
-                concern: concern,
-                representative: itemrepresentative,
-                reports: itemreports,
-                consults: itemconsults,
-                liaises: itemliaises,
-                delegate: itemdelegate,
-                dTask: itemdTask,
-                wishes: wishes,
-                type: type,
-                idProject: idProject
-            },
-            success: function (data) {
-                window.location.href = baseUrl+"stakeholder";
-            }
-        })
-    }
+            var wishes = $("#Owishes").val()
+            var idProject = $("#idProject").val();
+            var type;
+            if ($('#focal').is(':checked'))
+                type = 1;
+            else
+                type = 0;
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + "stakeholder/save",
+                data: {
+                    name: name,
+                    layerWorld: layerWorld,
+                    Organisation: Organisation,
+                    aka: aka,
+                    description: description,
+                    concern: concern,
+                    representative: itemrepresentative,
+                    reports: itemreports,
+                    consults: itemconsults,
+                    liaises: itemliaises,
+                    delegate: itemdelegate,
+                    dTask: itemdTask,
+                    wishes: wishes,
+                    type: type,
+                    idProject: idProject
+                },
+                success: function (data) {
+                    window.location.href = baseUrl+"stakeholder";
+                }
+            })
+        }
     });
 
     ///saveIndividual
     $('#Savein').click(function () {
         if ($("#create_individual").valid()) {
             var inname = $("#inStakeName").val()
+            var InLayerWorld = $("#InLayerWorld").val()
             var inaka = $("#inaka").val()
             var indescription = $("#indescription").val()
             var inconcern = $("#inconcern").val()
@@ -548,6 +551,7 @@ $(document).ready(function () {
                 url: baseUrl + "stakeholder/save",
                 data: {
                     name: inname,
+                    layerWorld: InLayerWorld,
                     aka: inaka,
                     description: indescription,
                     concern: inconcern,
@@ -573,6 +577,7 @@ $(document).ready(function () {
     $('#saveR').click(function () {
         if ($("#create_role").valid()) {
             var rname = $("#rStakeName").val()
+            var rLayerWorld = $("#rLayerWorld").val()
             var raka = $("#raka").val()
             var isA = $("#isA").val()
             var rdescription = $("#rdescription").val()
@@ -619,6 +624,7 @@ $(document).ready(function () {
                 url: baseUrl + "stakeholder/save",
                 data: {
                     name: rname,
+                    layerWorld: rLayerWorld,
                     aka: raka,
                     isA: isA,
                     description: rdescription,
@@ -688,6 +694,7 @@ $(document).ready(function () {
     $('#Save_edit_Organ').click(function () {
         if ($("#edit_organisation").valid()) {
             var name = $("#edStakeName").val()
+            var layerWorld = $("#OrLayerWorld").val()
             var Organisation = $("#OrganName").val()
             var aka = $("#Oaka").val()
             var description = $("#Odescription").val()
@@ -735,6 +742,7 @@ $(document).ready(function () {
                 url: baseUrl + "stakeholder/save",
                 data: {
                     name: name,
+                    layerWorld: layerWorld,
                     Organisation: Organisation,
                     aka: aka,
                     description: description,
@@ -793,6 +801,7 @@ $(document).ready(function () {
     $('#save_edit_individual').click(function () {
         if ($("#edit_individual").valid()) {
             var inname = $("#inStakeName").val()
+            var layerWorld = $("#InLayerWorld").val()
             var inaka = $("#inaka").val()
             var indescription = $("#indescription").val()
             var inconcern = $("#inconcern").val()
@@ -833,6 +842,7 @@ $(document).ready(function () {
                 type: 'POST',
                 url: baseUrl + "stakeholder/save",
                 data: {
+                    layerWorld: layerWorld,
                     name: inname,
                     aka: inaka,
                     description: indescription,
@@ -892,6 +902,7 @@ $(document).ready(function () {
     $('#save_edit_role').click(function () {
         if ($("#edit_role").valid()) {
             var rname = $("#edit_role_StakeName").val()
+            var layerWorld = $("#rLayerWorld").val()
             var raka = $("#raka").val()
             var isA = $("#isA").val()
             var rdescription = $("#rdescription").val()
@@ -941,6 +952,7 @@ $(document).ready(function () {
                 url: baseUrl + "stakeholder/save",
                 data: {
                     name: rname,
+                    layerWorld: layerWorld,
                     aka: raka,
                     isA: isA,
                     description: rdescription,

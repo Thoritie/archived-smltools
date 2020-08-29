@@ -31,6 +31,9 @@ class Enum
 	const Functional    = 'F';
 	const Nonfunctional = 'N';
 
+	const SubjectWorld = 1;
+	const DevelopmentWorld = 2;
+	const UsageWorld = 3;
 
 	public static $ToBeState = array(
 		self::ExistTobe   => "EXIST",
@@ -73,6 +76,12 @@ class Enum
 	public static $RequirementType = array(
 		self::Functional    => "Functional Requirement",
 		self::Nonfunctional => "Nonfunctional Requirement"
+	);
+
+	public static $LayerWorld = array(
+		 self::SubjectWorld 	=> 'Subject World',
+		 self::DevelopmentWorld => 'Development World',
+		 self::UsageWorld 		=> 'Usage World',
 	);
 }
 ?>
