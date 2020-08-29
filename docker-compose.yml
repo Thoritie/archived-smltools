@@ -5,6 +5,8 @@ services:
     image: mongo:4.0
     volumes:
       - ./local-data:/home/local-data
+    ports:
+      - 27017:27017
 
   web:
     image: lifzzz/phalcon-mongo:1.0
