@@ -446,6 +446,7 @@ class TaskController extends ControllerBase
         $arrTask['includes'] = $tempArray;
         $arrTask['asIsState'] =  Enum::$AsIsstate[$task->asIsState];
         $arrTask['toBeState'] = Enum::$ToBeState[$task->toBeState];
+        $arrTask['layerWorld'] = Enum::$LayerWorld[$task->layerWorld];
 
        
         if(isset($task->mom)){
