@@ -139,84 +139,41 @@ class StakeholderController extends ControllerBase
         //2 == individaul
         //3 == Role
         // data will be send from js like type=0 it mean Organisation
-        $name = $this->request->getPost("name");
-        $Organisationname = $this->request->getPost("Organisation");
-        $aka = $this->request->getPost("aka");
-        $description = $this->request->getPost("description");
-        $concern = $this->request->getPost("concern");
-        $representative = $this->request->getPost("representative");
-        $reports = $this->request->getPost("reports");
-        $consults = $this->request->getPost("consults");
-        $liaises = $this->request->getPost("liaises");
-        $delegate = $this->request->getPost("delegate");
-        $dTask = $this->request->getPost("dTask");
-        $wishes = $this->request->getPost("wishes");
+       
         $type = $this->request->getPost("type");
-        $idProject = $this->request->getPost("idProject");
-        $attitude = $this->request->getPost("attitude");
-        $domainKnowledge = $this->request->getPost("domainKnowledge");
-        $isA = $this->request->getPost("isA");
-        $PlayerType = $this->request->getPost("PlayerType");
-        $RolePlayer = $this->request->getPost("RolePlayer");
-        $NoStake = $this->request->getPost("NoStake");
-        $playRole = $this->request->getPost("playRole");
-        $roleTF = $this->request->getPost("roleTF");
-
-
         $id = $this->request->getPost("idStake");
         if(!$id){
             $stakeholders = new Stakeholders();
-            $stakeholders->idProject = $idProject;
+            $stakeholders->idProject = $idProject = $this->request->getPost("idProject");
         }else{
             $stakeholders = Stakeholders::findById($id);
         }
 
+        $stakeholders->name = $this->request->getPost("name");
+        $stakeholders->layerWorld = $this->request->getPost("layerWorld");
+        $stakeholders->aka = $this->request->getPost("aka");
+        $stakeholders->description = $this->request->getPost("description");
+        $stakeholders->concern = $this->request->getPost("concern");
+        $stakeholders->type = $this->request->getPost("type");
+        $stakeholders->dTask = $this->request->getPost("dTask");
+        $stakeholders->reports = $this->request->getPost("reports");
+        $stakeholders->consults = $this->request->getPost("consults");
+        $stakeholders->liaises = $this->request->getPost("liaises");
+        $stakeholders->delegate = $this->request->getPost("delegate");
+        $stakeholders->wishes = $this->request->getPost("wishes");
         if($type==2){
-            $stakeholders->name = $name;
-            $stakeholders->aka = $aka;
-            $stakeholders->description = $description;
-            $stakeholders->concern = $concern;
-            $stakeholders->attitude = $attitude;
-            $stakeholders->domainKnowledge = $domainKnowledge;
-            $stakeholders->reports = $reports;
-            $stakeholders->consults = $consults;
-            $stakeholders->liaises = $liaises;
-            $stakeholders->delegate = $delegate;
-            $stakeholders->dTask = $dTask;
-            $stakeholders->wishes = $wishes;
-            $stakeholders->type = $type;
+            $stakeholders->attitude = $this->request->getPost("attitude");
+            $stakeholders->domainKnowledge = $this->request->getPost("domainKnowledge");
         }else if($type==3){
-            $stakeholders->name = $name;
-            $stakeholders->aka = $aka;
-            $stakeholders->isA = $isA;
-            $stakeholders->description = $description;
-            $stakeholders->concern = $concern;
-            $stakeholders->PlayerType = $PlayerType;
-            $stakeholders->NoStake = $NoStake;
-            $stakeholders->playRole = $playRole;
-            $stakeholders->roleTF = $roleTF;
-            $stakeholders->RolePlayer = $RolePlayer;
-            $stakeholders->reports = $reports;
-            $stakeholders->consults = $consults;
-            $stakeholders->liaises = $liaises;
-            $stakeholders->delegate = $delegate;
-            $stakeholders->dTask = $dTask;
-            $stakeholders->wishes = $wishes;
-            $stakeholders->type = $type;
+            $stakeholders->isA = $this->request->getPost("isA");
+            $stakeholders->PlayerType = $this->request->getPost("PlayerType");
+            $stakeholders->NoStake = $this->request->getPost("NoStake");
+            $stakeholders->playRole = $this->request->getPost("playRole");
+            $stakeholders->roleTF = $this->request->getPost("roleTF");
+            $stakeholders->RolePlayer = $this->request->getPost("RolePlayer");
         }else{
-            $stakeholders->name = $name;
-            $stakeholders->OrganisationName = $Organisationname;
-            $stakeholders->aka = $aka;
-            $stakeholders->description = $description;
-            $stakeholders->concern = $concern;
-            $stakeholders->representative = $representative;
-            $stakeholders->reports = $reports;
-            $stakeholders->consults = $consults;
-            $stakeholders->liaises = $liaises;
-            $stakeholders->delegate = $delegate;
-            $stakeholders->dTask = $dTask;
-            $stakeholders->wishes = $wishes;
-            $stakeholders->type = $type;
+            $stakeholders->OrganisationName = $this->request->getPost("Organisation");
+            $stakeholders->representative = $this->request->getPost("representative");
         }
 
         try {
@@ -225,10 +182,6 @@ class StakeholderController extends ControllerBase
         } catch (Exception $e) {
         	$this->flashSession->error($e->getMessage());
         }
-
-
-
-
     }
 
     public function createAction()
@@ -245,6 +198,7 @@ class StakeholderController extends ControllerBase
 
         $userLogin = $this->session->get('userLogin');
         $this->view->userLogin = $userLogin;
+        $this->view->LayerWorld = Enum::$LayerWorld;
     }
     public function findStakeAction()
     {
@@ -305,20 +259,20 @@ class StakeholderController extends ControllerBase
         if($stake->type=='0'||$stake->type=='1'){
 
             $this->dispatcher->forward([
-            'controller' => "stakeholder",
-            'action' => 'editOrgan'
+                'controller' => "stakeholder",
+                'action' => 'editOrgan'
             ]);
 
         }else if($stake->type=='2')
         {
             $this->dispatcher->forward([
-            'controller' => "stakeholder",
-            'action' => 'editIndiv'
+                'controller' => "stakeholder",
+                'action' => 'editIndiv'
             ]);
         }else{
             $this->dispatcher->forward([
-            'controller' => "stakeholder",
-            'action' => 'editRole'
+                'controller' => "stakeholder",
+                'action' => 'editRole'
             ]);
         }
     }
@@ -354,10 +308,12 @@ class StakeholderController extends ControllerBase
         $idProject = $this->session->get('idProject');
         $this->view->idProject = $idProject;
 
+        $this->view->LayerWorld = Enum::$LayerWorld;
 
         $this->tag->setDefault("idProject", $idProject);
         $this->tag->setDefault("idStake", $idStake);
         $this->tag->setDefault("edStakeName", $edstake->name);
+        $this->tag->setDefault("layerWorld", $edstake->layerWorld);
         $this->tag->setDefault("edOrganName", $edstake->OrganisationName);
         $this->tag->setDefault("edOaka", $edstake->aka);
         $this->tag->setDefault("edOdescription", $edstake->description);
@@ -427,8 +383,9 @@ class StakeholderController extends ControllerBase
         $idProject = $this->session->get('idProject');
         $this->view->idProject = $idProject;
 
-
+        $this->view->LayerWorld = Enum::$LayerWorld;
         $this->tag->setDefault("idProject", $idProject);
+        $this->tag->setDefault("layerWorld", $edstake->layerWorld);
         $this->tag->setDefault("idStake", $idStake);
         $this->tag->setDefault("edinStakeName", $edstake->name);
         $this->tag->setDefault("edinaka", $edstake->aka);
@@ -490,8 +447,10 @@ class StakeholderController extends ControllerBase
         else
             $this->view->check_disable = 1;
 
+        $this->view->LayerWorld = Enum::$LayerWorld;
         $this->tag->setDefault("idProject", $idProject);
         $this->tag->setDefault("idStake", $idStake);
+        $this->tag->setDefault("layerWorld", $edstake->layerWorld);
         $this->tag->setDefault("edrStakeName", $edstake->name);
         $this->tag->setDefault("edraka", $edstake->aka);
         $this->tag->setDefault("edisA", $edstake->isA);

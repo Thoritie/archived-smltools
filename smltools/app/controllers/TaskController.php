@@ -144,6 +144,7 @@ class TaskController extends ControllerBase
         $this->view->userLogin = $userLogin;
 
         $this->view->ToBeState = Enum::$ToBeState;
+        $this->view->LayerWorld = Enum::$LayerWorld;
     }
 
     public function saveAction()
@@ -158,6 +159,7 @@ class TaskController extends ControllerBase
         }
 
         $task->name = $this->request->getPost("taskname");
+        $task->layerWorld = $this->request->getPost("layerWorld");
         $task->isA = $this->request->getPost("isA");
         $task->Description = $this->request->getPost("Description");
         $task->includes = $this->request->getPost("includes");
@@ -173,7 +175,7 @@ class TaskController extends ControllerBase
         $task->toUse = $this->request->getPost("toUse");
         $task->toProduce = $this->request->getPost("toProduce");
         $task->idProject = $this->request->getPost("idProject");
-       
+
         $save=0;
         if($task->save()) {
             $save=1;
@@ -301,10 +303,10 @@ class TaskController extends ControllerBase
                 $this->tag->setDefault("task_Description", $task->Description);
                 $this->tag->setDefault("asIsState", $task->asIsState);
                 $this->tag->setDefault("toBeState", $task->toBeState);
-               
-                   
-    
-                
+                $this->tag->setDefault("layerWorld", $task->layerWorld);
+
+                $this->view->LayerWorld = Enum::$LayerWorld;
+
                 $conditionStake = [];
                 $conditionStake["idProject"] = $idProject;
                 $tagsStake = Stakeholders::Find(array($conditionStake));
@@ -444,6 +446,7 @@ class TaskController extends ControllerBase
         $arrTask['includes'] = $tempArray;
         $arrTask['asIsState'] =  Enum::$AsIsstate[$task->asIsState];
         $arrTask['toBeState'] = Enum::$ToBeState[$task->toBeState];
+        $arrTask['layerWorld'] = Enum::$LayerWorld[$task->layerWorld];
 
        
         if(isset($task->mom)){

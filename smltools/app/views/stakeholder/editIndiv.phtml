@@ -15,7 +15,7 @@
                         <div class="content">
                             <form id="edit_individual">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Name</label>
 
@@ -25,7 +25,7 @@
                                         ?>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>aka</label>
 
@@ -33,6 +33,16 @@
                                         echo $this->tag->textField(["edinaka", "size" => 30, 
                                         "class" => "form-control", "id" => "inaka" ]) 
                                         ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Layer</label>
+                                            <?php
+                                            echo $this->tag->selectStatic(["layerWorld", "class" => "form-control",
+                                            "id" => "InLayerWorld"
+                                            ,$LayerWorld ])
+                                            ?>
                                         </div>
                                     </div>
                                 </div>

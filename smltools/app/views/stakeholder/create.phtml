@@ -27,11 +27,21 @@
                                             <input type="checkbox" id="focal"> Focal Organisation
                                         </label>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-9">
                                                 <div class="form-group">
                                                     <label>Name</label>
                                                     <input type="text" class="form-control" name="OStakeName" id="OStakeName"
                                                         placeholder="Stakeholder Name...">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Layer</label>
+                                                    <?php
+                                                    echo $this->tag->selectStatic(["layerWorld", "class" => "form-control",
+                                                    "id" => "OrLayerWorld"
+                                                    ,$LayerWorld ])
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -155,18 +165,28 @@
                                 <div class="content">
                                     <form id="create_individual">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Name</label>
                                                     <input type="text" name="inStakeName" id="inStakeName" class="form-control"
                                                         placeholder="Stakeholder name">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>aka</label>
                                                     <input type="text" name="inaka" id="inaka" class="form-control"
                                                         placeholder="it's alias me..">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Layer</label>
+                                                    <?php
+                                                    echo $this->tag->selectStatic(["layerWorld", "class" => "form-control",
+                                                    "id" => "InLayerWorld"
+                                                    ,$LayerWorld ])
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -288,18 +308,28 @@
                                 <div class="content">
                                     <form id="create_role">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Name</label>
                                                     <input type="text" name="rStakeName" id="rStakeName" class="form-control"
                                                         placeholder="Stakeholder name">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>aka</label>
                                                     <input type="text" name="raka" id="raka" class="form-control"
                                                         placeholder="it's alias me..">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Layer</label>
+                                                    <?php
+                                                    echo $this->tag->selectStatic(["layerWorld", "class" => "form-control",
+                                                    "id" => "rLayerWorld"
+                                                    ,$LayerWorld ])
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>

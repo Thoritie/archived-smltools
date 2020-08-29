@@ -36,7 +36,7 @@
                      <div class="content">
                         <form>
                            <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group">
                                     <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
                                     <?php 
@@ -45,12 +45,22 @@
                                        ?>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-5">
                                  <div class="form-group">
                                     <label>IsA</label>
                                     <?php 
                                        echo $this->tag->textField(["isA", "size" => 30, 
                                        "class" => "form-control", "id" => "isA" ]) 
+                                       ?>
+                                 </div>
+                              </div>
+                              <div class="col-md-3">
+                                 <div class="form-group">
+                                    <label>Layer</label>
+                                    <?php
+                                       echo $this->tag->selectStatic(["layerWorld", "class" => "form-control",
+                                       "id" => "layerWorld"
+                                       ,$LayerWorld ])
                                        ?>
                                  </div>
                               </div>
