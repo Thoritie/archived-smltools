@@ -1,3 +1,13 @@
+.caption h4 {
+    font-family: 'Prompt', sans-serif;
+}
+
+h6 {
+    font-family: 'Prompt', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400;
+}
+
 .icon-github {
     background: no-repeat url('../img/github-16px.png');
     width: 16px;

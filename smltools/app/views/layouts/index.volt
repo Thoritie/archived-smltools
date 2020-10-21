@@ -1,6 +1,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-icon-180x180.png">
   <link href="assets/favicon.ico" rel="icon">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;700&display=swap" rel="stylesheet">
+
   {{ stylesheet_link('homes/main.550dcf66.css') }}
 
     </head>
@@ -20,7 +21,7 @@
                             SML TOOLS
                           </a>
                         </div>
-                  
+
                         <div class="collapse navbar-collapse" id="navbar-collapse">
                           <ul class="nav navbar-nav navbar-right">
                             <li><a href="./index.html" title="">Home</a></li>
@@ -30,9 +31,9 @@
                                 <a href="auth/login" class="btn btn-default navbar-btn" title="">Login</a>
                               </p>
                             </li>
-                  
+
                           </ul>
-                        </div> 
+                        </div>
                       </div>
                     </nav>
                   </header>
@@ -45,15 +46,15 @@
           navbarFixedTopAnimation();
         });
       </script>
-      
+
       <footer class="footer-container white-text-container">
         <div class="container">
           <div class="row">
-      
-           
+
+
             <div class="col-xs-12">
               <h3>Software Modeling Tools</h3>
-      
+
               <div class="row">
                 <div class="col-xs-12 col-sm-7">
                   <p><small></small>
@@ -73,13 +74,13 @@
                   </p>
                 </div>
               </div>
-              
-              
+
+
             </div>
           </div>
         </div>
       </footer>
-      
+
       <script>
         document.addEventListener("DOMContentLoaded", function (event) {
           navActivePage();

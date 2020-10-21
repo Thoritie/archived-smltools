@@ -9,7 +9,7 @@
       <ul class="nav">
          <li class="active">
             <a href="#">
-               <i class="pe-7s-graph"></i>
+               <!-- <i class="pe-7s-graph"></i> -->
                <h6>Project : <?=$projectname?></h6>
                <hr class="proSide">
                <p>Owner : <?=$ownerLayout?></p>
@@ -45,12 +45,7 @@
                <p>Task</p>
             </a>
          </li>
-         <li>
-            <a href="<?=$this->url->get("requirement/"); ?>">
-              <i class="pe-7s-bell"></i>
-              <p>Requirements</p>
-            </a>
-         </li>
+
       </ul>
    </div>
 </div>
@@ -83,16 +78,16 @@
       </div>
    </nav>
    <div class="content">
-        <?php 
-            
+        <?php
+
             echo $this->render->getContent($this->getContent());
-                
-            
+
+
             $script = $this->render->getScript(
                 $this->getContent()
             );
         ?>
-        
+
    </div>
 </div>
 </div>
@@ -317,7 +312,7 @@
                                                       <input type="text" name="ModalInDelegate" id="ModalInDelegate" class="form-control" >
                                                    </div>
                                                 </div>
-               
+
                                                 <div class="col-md-6">
                                                    <div class="form-group">
                                                       <label>dTask</label>
@@ -492,9 +487,9 @@
                         <div class="form-group">
                            <input type="hidden" name="idProjectmodalResource" value="<?=$idProject?>" id="idProjectmodalResource">
                            <label>Resource Name</label>
-                           <?php 
-                              echo $this->tag->textField(["resourcename", "size" => 30, 
-                              "class" => "form-control", "id" => "Modalresourcename"]) 
+                           <?php
+                              echo $this->tag->textField(["resourcename", "size" => 30,
+                              "class" => "form-control", "id" => "Modalresourcename"])
                               ?>
                         </div>
                      </div>
@@ -503,9 +498,9 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>description</label>
-                           <?php 
-                              echo $this->tag->textArea(["Description", "class" => "form-control", 
-                               "id" => "ModalDesResource" ,"rows" => 3,]) 
+                           <?php
+                              echo $this->tag->textArea(["Description", "class" => "form-control",
+                               "id" => "ModalDesResource" ,"rows" => 3,])
                               ?>
                         </div>
                      </div>
@@ -514,9 +509,9 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>includes</label>
-                           <?php 
-                              echo $this->tag->textField(["includes", "size" => 30, 
-                              "class" => "form-control ModalincludesResource", "id" => "ModalincludesResource"]) 
+                           <?php
+                              echo $this->tag->textField(["includes", "size" => 30,
+                              "class" => "form-control ModalincludesResource", "id" => "ModalincludesResource"])
                               ?>
                         </div>
                      </div>
@@ -525,18 +520,18 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>r Owner</label>
-                           <?php 
-                              echo $this->tag->textField(["rOwner", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalrOwnerResource"]) 
+                           <?php
+                              echo $this->tag->textField(["rOwner", "size" => 30,
+                              "class" => "form-control", "id" => "ModalrOwnerResource"])
                               ?>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>p Owner</label>
-                           <?php 
-                              echo $this->tag->textField(["pOwner", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalpOwnerResource"]) 
+                           <?php
+                              echo $this->tag->textField(["pOwner", "size" => 30,
+                              "class" => "form-control", "id" => "ModalpOwnerResource"])
                               ?>
                         </div>
                      </div>
@@ -545,10 +540,10 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>Maintainer</label>
-                           <?php 
-                              echo $this->tag->textField(["maintainer", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalmaintainerResource"]) 
-                              ?>    
+                           <?php
+                              echo $this->tag->textField(["maintainer", "size" => 30,
+                              "class" => "form-control", "id" => "ModalmaintainerResource"])
+                              ?>
                         </div>
                      </div>
                   </div>
@@ -580,18 +575,18 @@
                         <div class="form-group">
                            <input type="hidden" name="idProjectmodalTask" value="<?=$idProject?>" id="idProjectmodalTask">
                            <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
-                           <?php 
-                              echo $this->tag->textField(["Modaltaskname", "size" => 30, 
-                              "class" => "form-control", "id" => "Modaltaskname" , ]) 
+                           <?php
+                              echo $this->tag->textField(["Modaltaskname", "size" => 30,
+                              "class" => "form-control", "id" => "Modaltaskname" , ])
                               ?>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>IsA</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalIsATask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalIsATask" ,]) 
+                           <?php
+                              echo $this->tag->textField(["ModalIsATask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalIsATask" ,])
                               ?>
                         </div>
                      </div>
@@ -600,9 +595,9 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>Description</label>
-                           <?php 
-                              echo $this->tag->textArea(["ModalDescriptionTask", "class" => "form-control", 
-                               "id" => "ModalDescriptionTask" ,"rows" => 3,]) 
+                           <?php
+                              echo $this->tag->textArea(["ModalDescriptionTask", "class" => "form-control",
+                               "id" => "ModalDescriptionTask" ,"rows" => 3,])
                               ?>
                         </div>
                      </div>
@@ -611,23 +606,23 @@
                      <div class="col-md-8">
                         <div class="form-group">
                            <label>Includes Tasks</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalincludesTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalincludesTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalincludesTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalincludesTask"])
                               ?>
                         </div>
                      </div>
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>as IsState</label>
-                           <?php 
-                              echo $this->tag->selectStatic(["ModalasIsStateTask", "class" => "form-control", 
-                              "id" => "ModalasIsStateTask" 
+                           <?php
+                              echo $this->tag->selectStatic(["ModalasIsStateTask", "class" => "form-control",
+                              "id" => "ModalasIsStateTask"
                               ,[
                                   "E" => "EXIST",
                                   "N" => "NEXIST",
                               ]
-                              ]) 
+                              ])
                               ?>
                         </div>
                      </div>
@@ -636,27 +631,27 @@
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>Owner</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalOwnerTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalOwnerTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalOwnerTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalOwnerTask" ])
                               ?>
                         </div>
                      </div>
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>Collaburator</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalCollaburatorTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalCollaburatorTask" ]) 
-                              ?>  
+                           <?php
+                              echo $this->tag->textField(["ModalCollaburatorTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalCollaburatorTask" ])
+                              ?>
                         </div>
                      </div>
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>Regulator</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalRegulatorTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalregulatorTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalRegulatorTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalregulatorTask"])
                               ?>
                         </div>
                      </div>
@@ -665,24 +660,24 @@
                      <div class="col-md-8">
                         <div class="form-group">
                            <label>Resource used</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalUsesTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalUsesTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalUsesTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalUsesTask" ])
                               ?>
                         </div>
                      </div>
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>to Be State</label>
-                           <?php 
-                              echo $this->tag->selectStatic(["ModalToBeStateTask", "class" => "form-control", 
-                              "id" => "ModalToBeStateTask" 
+                           <?php
+                              echo $this->tag->selectStatic(["ModalToBeStateTask", "class" => "form-control",
+                              "id" => "ModalToBeStateTask"
                               ,[
                                   "E" => "EXIST",
                                   "N" => "NEXIST",
                                   "A" => "ADEPTED",
                               ]
-                              ]) 
+                              ])
                               ?>
                         </div>
                      </div>
@@ -691,9 +686,9 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>Resource Produces</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalProducesTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalProducesTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalProducesTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalProducesTask" ])
                               ?>
                         </div>
                      </div>
@@ -702,18 +697,18 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>owner To Be</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalOwnerToBeTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalOwnerToBeTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalOwnerToBeTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalOwnerToBeTask"])
                               ?>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>collaborator To Be</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalCollaboratorToBeTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalCollaboratorToBeTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalCollaboratorToBeTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalCollaboratorToBeTask" ])
                               ?>
                         </div>
                      </div>
@@ -722,18 +717,18 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>Resource to used</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalToUseTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalToUseTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalToUseTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalToUseTask"])
                               ?>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>Resource to Produces</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalToProduceTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalToProduceTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalToProduceTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalToProduceTask"])
                               ?>
                         </div>
                      </div>

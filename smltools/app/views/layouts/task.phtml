@@ -9,7 +9,7 @@
          <ul class="nav">
             <li class="active">
                <a href="#">
-                  <i class="pe-7s-graph"></i>
+                  <!-- <i class="pe-7s-graph"></i> -->
                   <h6>Project : <?=$projectname?></h6>
                   <hr class="proSide">
                   <p>Owner : <?=$ownerLayout?></p>
@@ -45,12 +45,7 @@
                   <p>Task</p>
                </a>
             </li>
-            <li>
-                <a href="<?=$this->url->get("requirement/"); ?>">
-                  <i class="pe-7s-bell"></i>
-                  <p>Requirements</p>
-                </a>
-            </li>
+
          </ul>
       </div>
    </div>
@@ -83,10 +78,10 @@
          </div>
       </nav>
       <div class="content">
-         <?php 
+         <?php
             //eco เนื้อหาของแต่ละหน้า
             echo $this->render->getContent($this->getContent());
-                
+
             //ตัวแปรเก็บค่า script นำไป eco ในไฟล์ index.phtml
             $script = $this->render->getScript(
                 $this->getContent()
@@ -326,7 +321,7 @@
                                                       <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                                                    </div>
                                                 </div>
-               
+
                                                 <div class="col-md-6">
                                                    <div class="form-group">
                                                       <label>dTask</label>
@@ -507,9 +502,9 @@
                         <div class="form-group">
                            <input type="hidden" name="idProjectmodalResource" value="<?=$idProject?>" id="idProjectmodalResource">
                            <label>Resource Name</label>
-                           <?php 
-                              echo $this->tag->textField(["resourcename", "size" => 30, 
-                              "class" => "form-control", "id" => "Modalresourcename"]) 
+                           <?php
+                              echo $this->tag->textField(["resourcename", "size" => 30,
+                              "class" => "form-control", "id" => "Modalresourcename"])
                               ?>
                         </div>
                      </div>
@@ -518,9 +513,9 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>description</label>
-                           <?php 
-                              echo $this->tag->textArea(["Description", "class" => "form-control", 
-                               "id" => "ModalDesResource" ,"rows" => 3,]) 
+                           <?php
+                              echo $this->tag->textArea(["Description", "class" => "form-control",
+                               "id" => "ModalDesResource" ,"rows" => 3,])
                               ?>
                         </div>
                      </div>
@@ -529,9 +524,9 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>includes</label>
-                           <?php 
-                              echo $this->tag->textField(["includes", "size" => 30, 
-                              "class" => "form-control ModalincludesResource", "id" => "ModalincludesResource"]) 
+                           <?php
+                              echo $this->tag->textField(["includes", "size" => 30,
+                              "class" => "form-control ModalincludesResource", "id" => "ModalincludesResource"])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
@@ -541,9 +536,9 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>r Owner</label>
-                           <?php 
-                              echo $this->tag->textField(["rOwner", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalrOwnerResource"]) 
+                           <?php
+                              echo $this->tag->textField(["rOwner", "size" => 30,
+                              "class" => "form-control", "id" => "ModalrOwnerResource"])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
@@ -551,9 +546,9 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>p Owner</label>
-                           <?php 
-                              echo $this->tag->textField(["pOwner", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalpOwnerResource"]) 
+                           <?php
+                              echo $this->tag->textField(["pOwner", "size" => 30,
+                              "class" => "form-control", "id" => "ModalpOwnerResource"])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
@@ -563,11 +558,11 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>Maintainer</label>
-                           <?php 
-                              echo $this->tag->textField(["maintainer", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalmaintainerResource"]) 
+                           <?php
+                              echo $this->tag->textField(["maintainer", "size" => 30,
+                              "class" => "form-control", "id" => "ModalmaintainerResource"])
                            ?>
-                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>    
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
                      </div>
                   </div>
@@ -599,18 +594,18 @@
                         <div class="form-group">
                            <input type="hidden" name="idProjectmodalTask" value="<?=$idProject?>" id="idProjectmodalTask">
                            <label>Task name<span class="red-star" style="font-size: 14px"> *</span></label>
-                           <?php 
-                              echo $this->tag->textField(["Modaltaskname", "size" => 30, 
-                              "class" => "form-control", "id" => "Modaltaskname" , ]) 
+                           <?php
+                              echo $this->tag->textField(["Modaltaskname", "size" => 30,
+                              "class" => "form-control", "id" => "Modaltaskname" , ])
                               ?>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>IsA</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalIsATask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalIsATask" ,]) 
+                           <?php
+                              echo $this->tag->textField(["ModalIsATask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalIsATask" ,])
                               ?>
                         </div>
                      </div>
@@ -619,9 +614,9 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>Description</label>
-                           <?php 
-                              echo $this->tag->textArea(["ModalDescriptionTask", "class" => "form-control", 
-                               "id" => "ModalDescriptionTask" ,"rows" => 3,]) 
+                           <?php
+                              echo $this->tag->textArea(["ModalDescriptionTask", "class" => "form-control",
+                               "id" => "ModalDescriptionTask" ,"rows" => 3,])
                               ?>
                         </div>
                      </div>
@@ -630,9 +625,9 @@
                      <div class="col-md-8">
                         <div class="form-group">
                            <label>Includes Tasks</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalincludesTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalincludesTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalincludesTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalincludesTask"])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalTask($('#createTask'))"></i>
                         </div>
@@ -640,14 +635,14 @@
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>as IsState</label>
-                           <?php 
-                              echo $this->tag->selectStatic(["ModalasIsStateTask", "class" => "form-control", 
-                              "id" => "ModalasIsStateTask" 
+                           <?php
+                              echo $this->tag->selectStatic(["ModalasIsStateTask", "class" => "form-control",
+                              "id" => "ModalasIsStateTask"
                               ,[
                                   "E" => "EXIST",
                                   "N" => "NEXIST",
                               ]
-                              ]) 
+                              ])
                               ?>
                         </div>
                      </div>
@@ -656,9 +651,9 @@
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>Owner</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalOwnerTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalOwnerTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalOwnerTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalOwnerTask" ])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
@@ -666,19 +661,19 @@
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>Collaburator</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalCollaburatorTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalCollaburatorTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalCollaburatorTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalCollaburatorTask" ])
                            ?>
-                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>  
+                           <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
                      </div>
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>Regulator</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalRegulatorTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalregulatorTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalRegulatorTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalregulatorTask"])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
@@ -688,9 +683,9 @@
                      <div class="col-md-8">
                         <div class="form-group">
                            <label>Resource used</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalUsesTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalUsesTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalUsesTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalUsesTask" ])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
@@ -698,15 +693,15 @@
                      <div class="col-md-4">
                         <div class="form-group">
                            <label>to Be State</label>
-                           <?php 
-                              echo $this->tag->selectStatic(["ModalToBeStateTask", "class" => "form-control", 
-                              "id" => "ModalToBeStateTask" 
+                           <?php
+                              echo $this->tag->selectStatic(["ModalToBeStateTask", "class" => "form-control",
+                              "id" => "ModalToBeStateTask"
                               ,[
                                   "E" => "EXIST",
                                   "N" => "NEXIST",
                                   "A" => "ADEPTED",
                               ]
-                              ]) 
+                              ])
                               ?>
                         </div>
                      </div>
@@ -715,9 +710,9 @@
                      <div class="col-md-12">
                         <div class="form-group">
                            <label>Resource Produces</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalProducesTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalProducesTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalProducesTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalProducesTask" ])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
@@ -727,9 +722,9 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>owner To Be</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalOwnerToBeTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalOwnerToBeTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalOwnerToBeTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalOwnerToBeTask"])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
@@ -737,9 +732,9 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>collaborator To Be</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalCollaboratorToBeTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalCollaboratorToBeTask" ]) 
+                           <?php
+                              echo $this->tag->textField(["ModalCollaboratorToBeTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalCollaboratorToBeTask" ])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalStakeholder($('#createStakeholder'))"></i>
                         </div>
@@ -749,9 +744,9 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>Resource to used</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalToUseTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalToUseTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalToUseTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalToUseTask"])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
@@ -759,9 +754,9 @@
                      <div class="col-md-6">
                         <div class="form-group">
                            <label>Resource to Produces</label>
-                           <?php 
-                              echo $this->tag->textField(["ModalToProduceTask", "size" => 30, 
-                              "class" => "form-control", "id" => "ModalToProduceTask"]) 
+                           <?php
+                              echo $this->tag->textField(["ModalToProduceTask", "size" => 30,
+                              "class" => "form-control", "id" => "ModalToProduceTask"])
                            ?>
                            <i class="fa fa-plus iconInput" onclick="cloneModalResource($('#createResource'))"></i>
                         </div>
