@@ -16,3 +16,7 @@ $docker-compose up -d
 $ ./import_local_data.sh
 ```
 
+```
+user : admin
+password : admin
+```

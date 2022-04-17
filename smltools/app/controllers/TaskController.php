@@ -93,7 +93,7 @@ class TaskController extends ControllerBase
         $paginator = new Pagination(
         	array(
         		'model' => $model,
-        		'limit' => 8,
+        		'limit' => 20,
         		'page' => $currentPage,
         		'query' => $query,
         		'sort' => $sortBy,
